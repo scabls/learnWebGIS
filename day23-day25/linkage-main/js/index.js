@@ -28,6 +28,7 @@
     }
     position.lastElementChild.appendChild(fragment)
   }
+
   addToponym(dataArr, province)
 
   btns.forEach(element => {
@@ -44,6 +45,7 @@
   function findChildren(placeArr, name) {
     return placeArr.find(place => place.label == name).children
   }
+
   lists.forEach(ul => {
     ul.addEventListener('click', function (e) {
       if (e.target.tagName === 'LI') {

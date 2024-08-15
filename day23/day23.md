@@ -50,6 +50,34 @@ xhr.send()
 
 ### Promise函数封装
 
+**普通函数封装的弊端**
+从服务器获取数据,是一个耗时操作,直接返回数据,是拿不到数据的
+需要等待获取到服务器返回的数据之后,再把这个数据传过去
+**解决**
+使用promise封装异步操作
+**做法**
+将整个操作放到一个promise对象中,将服务器返回的数据放到结果属性中
+将来如果想获取异步操作的数据,通过then方法或者await来拿到promise执行之后结果属性中的值
+
+```js
+function getDataP(method,url) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest()
+        xhr.open(method, url)
+        xhr.addEventListener('readystatechange', function () {
+            if (this.readyState == 4 && this.status == 200) {
+                resolve(this.responseText)
+            }
+        })
+        xhr.send()
+    })
+}
+async function getData(method,url) {
+    console.log(await getDataP(method,url));
+}
+getData('GET','http://project.x-zd.net:3001/apis/herolist')
+```
+
 
 
 ## ES6模块化
@@ -79,3 +107,127 @@ ES6 引入了模块化，其设计思想是在编译时就能确定模块的依�
 ES6 的模块化分为导出（export） 与导入（import）两个模块。
 
 ### 基本的导入导出
+
+导入使用import 导出使用export
+
+#### 普通导出
+
+```js
+//导出变量
+export const str = 'aaa'
+
+//导出函数
+export function fn() {
+    console.log('bbb');
+}
+
+//导出类
+export class Student {
+    constructor(name) {
+        this.name = name
+    }
+}
+```
+
+#### 普通导入
+
+```html
+<script type="module">
+    // 基本导入，顺序可以乱，名字不能错
+    import { str, fn, Student } from './04-基本导出.js';
+
+    console.log(str);
+    console.log(fn);
+    console.log(Student);
+</script>
+```
+
+#### 注意点
+
+export 命令导出的接口名称，须和模块内部的变量有一一对应关系。
+
+导入的变量名，须和导出的接口名称相同，即顺序可以不一致。
+
+### 默认的导入导出
+
+导入使用import 导出使用export default
+
+#### 默认导出
+
+```js
+//最好先定义变量
+const str = 'aaa'
+// 默认导出（仅有一个）
+export default str
+```
+
+#### 默认导入
+
+```html
+<script type="module">
+    // 随便取名，无需括号
+    import s from './06-默认导出.js';
+
+    console.log(s);
+
+</script>
+```
+
+#### 注意点
+
+在一个文件或模块中，export、import 可以有多个，export default 仅有一个。
+
+export default 中的 default 是对应的导出接口变量。
+
+通过 export 方式导出，在导入时要加{ }，export default 则不需要。
+
+export default 向外暴露的成员，可以使用任意变量来接收。
+
+### 混合导入导出
+
+#### 混合导出
+
+```js
+//导出变量
+export const str = 'aaa'
+
+//导出函数
+export function fn() {
+    console.log('bbb');
+}
+
+//导出类
+export class Student {
+    constructor(name) {
+        this.name = name
+    }
+}
+
+//默认导出（仅有一个）
+export default function () {
+    console.log('匿名函数');
+}
+```
+
+#### 混合导入
+
+```html
+<script type="module">
+    // 默认导入要写在括号外最前面，随便取名
+    // 基本导入，括号里面，顺序可以乱，名字不能错
+    // as用来将基本导入值赋给其他变量名（如果导入变量名和已有变量名起冲突时）
+    import f, { str as string, fn, Student } from './08-混合导出.js'
+    console.log(string)
+    console.log(fn)
+    console.log(Student)
+    console.log(f)
+</script>
+```
+
+#### 注意点
+
+导入的时候,默认导入要写到括号外最前面，与普通导入的括号以逗号分隔
+
+#### 别名问题
+
+如果导出的变量和当前文件定义的变量冲突,使用as起别名

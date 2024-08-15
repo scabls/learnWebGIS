@@ -523,10 +523,15 @@ H5可以通过 data-自定义属性名 的方式给元素添加自定义属性
             元素对象.dataset.自定义属性名
         */
 
-        var radio1 = document.querySelector('.radio')
-        radio1.dataset.name = 'free'
-        console.log(radio1.dataset.type);
-        console.log(radio1.dataset.value);
+       //需求1:通过代码给radio1再添加一个自定义属性(data-name),值为free
+       var radio1 = document.querySelector('.radio1')
+       radio1.dataset.name = 'free'  //通过控制台审查元素可以看到radio1多了一个data-name属性
+
+       //需求2:获取radio1元素上携带的数据
+       console.log(radio1.dataset.type)//pay_type
+       console.log(radio1.dataset.value)//10
+
+       //将来就可以把pay_type==10作为条件到英雄数据中查找,本周免费的英雄
     </script>
 </body>
 ```
