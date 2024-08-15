@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        石头剪刀布！
+        */
+        function game(playerA, playerB) {
+            switch (true) {
+                case playerA == '石头' && playerB == '剪刀':
+                case playerA == '剪刀' && playerB == '布':
+                case playerA == '布' && playerB == '石头':
+                    return `玩家A出了${playerA}，玩家B出了${playerB}，玩家A获胜！`;
+
+                case playerA == '石头' && playerB == '布':
+                case playerA == '剪刀' && playerB == '石头':
+                case playerA == '布' && playerB == '剪刀':
+                    return `玩家A出了${playerA}，玩家B出了${playerB}，玩家B获胜！`;
+
+                case playerA == playerB:
+                    return `玩家A出了${playerA}，玩家B出了${playerB}，平局！`;
+
+                default:
+                    return "有人违规！";
+            }
+        }
+
+        var playerA = prompt("玩家A请输入:石头/剪刀/布");
+        var playerB = prompt("玩家B请输入:石头/剪刀/布");
+
+        document.write(game(playerA, playerB))
+    </script>
+</body>
+
+</html>

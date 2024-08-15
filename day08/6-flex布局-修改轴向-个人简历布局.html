@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./fontawesome/css/all.min.css">
+    <style>
+        /* 清楚默认内外边距
+        设置宽高计算方式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        .container {
+            display: flex;
+            /* 不设置宽度，会默认和body的宽度一致 */
+            /* 设为100%，会和父元素的宽度一致 */
+            width: 100%;
+
+            /* 渐变色，特殊的image背景 */
+            background-image: linear-gradient(to right top, #FF1493, #2A7FB9);
+
+            /* 设置内边距，约束文本内容 */
+            padding: 100px 10%;
+
+        }
+
+
+
+        /* 左侧信息 */
+        .profile {
+            position: sticky;
+            width: 30%;
+            top: 1rem;
+            height: 400px;
+            background-color: white;
+            border-right: 1px solid gray;
+            text-align: center;
+
+        }
+
+        .profile .profilePicture img {
+            width: 150px;
+            height: 150px;
+            border: 2px solid gray;
+            border-radius: 50%;
+            margin: 1rem auto 1rem;
+            border-radius: 50%;
+        }
+
+        .profile p {
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: #2980B9;
+        }
+
+        .profile .webIcon {
+            margin-bottom: 1rem;
+        }
+
+        .profile .webIcon i {
+            width: 2rem;
+            height: 2rem;
+            background-color: #EEEEEE;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .profile .webIcon i:hover {
+            background-color: #2980B9;
+            color: white;
+        }
+
+        /* 为什么图片之间有空隙？
+        破案：因为代码中有空格和换行 */
+
+        .profile .phoneIcon {
+            display: inline-block;
+            background-color: #2980B9;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            /* 阴影效果 */
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile .phoneIcon:hover {
+            background-color: #FF1493;
+        }
+
+        /* 右侧信息 */
+        .information {
+            width: 70%;
+            background-color: white;
+            padding: 2rem;
+        }
+
+        .information h2 {
+            color: #2980B9;
+
+        }
+
+        /* 人物介绍 */
+        .about {
+            margin-bottom: 1rem;
+        }
+
+        .about p {
+            margin: 1rem 0;
+            line-height: 2rem;
+            color: #777777;
+        }
+
+        .about article {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-content: space-between;
+            gap: 1rem;
+        }
+
+        .about article div {
+            flex: 1;
+            line-height: 2.5rem;
+            font-weight: bold;
+        }
+
+        .about div span {
+            color: #777777;
+        }
+
+        /* 技术栈 */
+
+        .technologyStack {
+            margin-bottom: 1rem;
+        }
+
+        .technologyStack .technologis {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            align-content: space-between;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: bold;
+            color: #777777;
+        }
+
+        .technologyStack .technologis .technologyBox {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background-color: #EEEEEE;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        /* 有没有其他排列在一行均匀排列盒子的方法？
+        现在有了，就是我们万能的flex和justify-content属性！ */
+
+        .technologyStack .technologis .technologyBox img {
+            height: 2.5em;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 技能熟练度 */
+
+        .skills {
+            margin-bottom: 1rem;
+        }
+
+        .skills article {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-content: space-between;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skills .left,
+        .skills .right {
+            flex: 1;
+        }
+
+        .skills .skillBarBox .textPart {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .skills .skillBarBox .textPart .skillName {
+            font-weight: bold;
+        }
+
+        .skills .skillBarBox .textPart .progressNumber {
+            color: #777777;
+            font-weight: bold;
+        }
+
+        .skills .skillBarBox .progressBar {
+            height: 0.6rem;
+            background-color: #EEEEEE;
+            border-radius: 1rem;
+            margin: 0.4rem 0;
+        }
+
+        .skills .skillBarBox .progressBar .innerBar {
+            height: 0.6rem;
+            background-color: #2980B9;
+            border-radius: 1rem;
+        }
+
+        .progressBar .innerBar1 {
+            width: 95%;
+        }
+
+        .progressBar .innerBar2 {
+            width: 80%;
+        }
+
+        .progressBar .innerBar3 {
+            width: 65%;
+        }
+
+        .progressBar .innerBar4 {
+            width: 70%;
+        }
+
+        .progressBar .innerBar5 {
+            width: 90%;
+        }
+
+        .progressBar .innerBar6 {
+            width: 75%;
+        }
+
+        .progressBar .innerBar7 {
+            width: 65%;
+        }
+
+        .progressBar .innerBar8 {
+            width: 70%;
+        }
+
+        /* 学习工作经历 */
+        .experiences {
+            margin-bottom: 1rem;
+        }
+
+        .experiences section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-content: space-between;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .experiences .left,
+        .experiences .right {
+            flex: 1;
+            background-color: #EEEEEE;
+            padding: 1rem;
+            padding-bottom: 3rem;
+            border-radius: 0.5rem;
+        }
+
+        .experiences .time {
+            color: #2980B9;
+            margin: 0.5em 0;
+        }
+
+        .experiences .workExperience {
+            font-weight: bold;
+            font-size: large;
+        }
+
+        .experiences .experienceText {
+            margin-top: 1em;
+            font-size: 0.9em;
+            line-height: 2em;
+            color: #777777;
+        }
+
+        /* 联系方式 */
+
+        .contact article {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-content: space-between;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact .category {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .contact i {
+            background-color: #2980B9;
+            width: 2.5rem;
+            height: 2.5rem;
+            margin: 0.5rem;
+            padding: 0.5rem;
+            text-align: center;
+            line-height: 1.5rem;
+            border-radius: 50%;
+        }
+
+        .contact .category .textBox .name {
+            font-weight: bold;
+            font-size: large;
+            margin: 0.5em 0;
+        }
+
+        .contact .category .textBox .detail {
+            color: #777777;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 语义化标签模式 -->
+    <main class="container">
+        <!-- 左边：个人摘要 -->
+        <aside class="profile">
+            <div class="profilePicture">
+                <img src="./images/m1.jpg" alt="">
+            </div>
+            <h3>新中地</h3>
+            <p>WebGIS开发工程师</p>
+            <div class="webIcon">
+                <i class="fa-brands fa-github"></i>
+                <i class="fa-brands fa-weibo"></i>
+                <i class="fa-brands fa-weixin"></i>
+                <i class="fa-brands fa-qq"></i>
+            </div>
+
+            <a href="#" class="phoneIcon">联系我</a>
+
+        </aside>
+        <!-- 右边：详细信息 -->
+        <aside class="information">
+            <!-- 个人介绍 -->
+            <section class="about">
+                <h2>个人介绍</h2>
+                <p>2022年毕业于武汉大学计算机科学专业，学校主修方向为计算机前端，大四在字节跳动公司完成了1年的实习。
+                </p>
+                <p>对前端主流技术生态体系有一定的理解，能够运用主流技术框架解决常见业务问题，英语和数学能力优异,期望在前端领域持续深入地学习。
+                </p>
+                <article>
+                    <div class="left">
+                        <span>年龄:</span>22<br>
+                        <span>地址:</span>武汉市洪山区<br>
+                        <span>手机号:</span>18712345678<br>
+                        <span>Email:</span>Xzd@Mapgis.Com
+                    </div>
+                    <div class="right">
+                        <span>岗位:</span>GIS开发工程师<br>
+                        <span>外语:</span>英语六级<br>
+                        <span>工作经验:</span>1年<br>
+                        <span>到岗时间:</span>随时
+                    </div>
+                </article>
+
+            </section>
+            <!-- 技术栈 -->
+            <section class="technologyStack">
+                <h2>技术栈</h2>
+                <div class="technologis">
+                    <div class="technologyBox">
+                        <img src="./images/icon-1.png" alt="">
+                        <span>HTML5</span>
+                    </div>
+                    <div class="technologyBox">
+                        <img src="./images/icon-2.png" alt="">
+                        <span>CSS3</span>
+                    </div>
+                    <div class="technologyBox">
+                        <img src="./images/icon-3.png" alt="">
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="technologyBox">
+                        <img src="./images/icon-4.png" alt="">
+                        <span>SASS</span>
+                    </div>
+                    <div class="technologyBox">
+                        <img src="./images/icon-5.png" alt="">
+                        <span>JQuery</span>
+                    </div>
+                    <div class="technologyBox">
+                        <img src="./images/icon-6.png" alt="">
+                        <span>React.js</span>
+                    </div>
+                </div>
+            </section>
+            <!-- 技能熟练度 -->
+            <article class="skills">
+                <h2>技能熟练度</h2>
+                <article>
+                    <!-- 左侧列表 -->
+                    <div class="left">
+                        <!-- 进度项 -->
+                        <div class="skillBarBox">
+                            <div class="textPart">
+                                <div class="skillName">Html</div>
+                                <div class="progressNumber">95%</div>
+                            </div>
+                            <div class="progressBar">
+                                <div class="innerBar innerBar1"></div>
+                            </div>
+                        </div>
+                        <div class="skillBarBox">
+                            <div class="textPart">
+                                <div class="skillName">Css</div>
+                                <div class="progressNumber">80%</div>
+                            </div>
+                            <div class="progressBar">
+                                <div class="innerBar innerBar2"></div>
+                            </div>
+                        </div>
+                        <div class="skillBarBox">
+                            <div class="textPart">
+                                <div class="skillName">JavaScript</div>
+                                <div class="progressNumber">65%</div>
+                            </div>
+                            <div class="progressBar">
+                                <div class="innerBar innerBar3"></div>
+                            </div>
+                        </div>
+                        <div class="skillBarBox">
+                            <div class="textPart">
+                                <div class="skillName">PhotoShop</div>
+                                <div class="progressNumber">70%</div>
+                            </div>
+                            <div class="progressBar">
+                                <div class="innerBar innerBar4"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右侧列表 -->
+                    <div class="right">
+                        <div class="skillBarBox">
+                            <div class="textPart">
+                                <div class="skillName">JQuery</div>
+                                <div class="progressNumber">90%</div>
+                            </div>
+                            <div class="progressBar">
+                                <div class="innerBar innerBar5"></div>
+                            </div>
+                        </div>
+                        <div class="skillBarBox">
+                            <div class="textPart">
+                                <div class="skillName">React</div>
+                                <div class="progressNumber">75%</div>
+                            </div>
+                            <div class="progressBar">
+                                <div class="innerBar innerBar6"></div>
+                            </div>
+                        </div>
+                        <div class="skillBarBox">
+                            <div class="textPart">
+                                <div class="skillName">Vue</div>
+                                <div class="progressNumber">65%</div>
+                            </div>
+                            <div class="progressBar">
+                                <div class="innerBar innerBar7"></div>
+                            </div>
+                        </div>
+                        <div class="skillBarBox">
+                            <div class="textPart">
+                                <div class="skillName">Small App</div>
+                                <div class="progressNumber">70%</div>
+                            </div>
+                            <div class="progressBar">
+                                <div class="innerBar innerBar8"></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </article>
+            <!-- 学习工作经历 -->
+            <section class="experiences">
+                <h2>学习工作经历</h2>
+                <section>
+                    <!-- 左侧信息 -->
+                    <article class="left">
+                        <p class="time">2018 - 2022</p>
+                        <p class="workExperience">武汉大学计算机科学专业</P>
+                        <p class="experienceText">
+                            在大学本科期间，通过专业学习和自我学习掌握了主流前端知识体系，能够独立完成具有一定业务复杂度的前端项目，毕业设计项目获得了老师的高度评价。
+                        </p>
+                    </article>
+                    <!-- 右侧信息 -->
+                    <article class="right">
+                        <p class="time">2021 - 2022</p>
+                        <p class="workExperience">字节跳动飞书项目组前端实习生</p>
+                        <p class="experienceText">
+                            2021-2022年在飞书项目组完成了一年的实习工作，接触了解了大型企业的工作流程，对DevOps工作流有了深刻的认识和使用经验。
+                        </p>
+                        <p class="experienceText">
+                            飞书项目组主要采用React技术栈，我个人参与了飞书文档的Web端需要优化，熟悉在线文档的开发。
+                        </p>
+                    </article>
+                </section>
+            </section>
+            <!-- 联系方式 -->
+            <section class="contact">
+                <h2>联系方式</h2>
+                <article>
+                    <div class="category address">
+                        <i class="fa-regular fa-map"></i>
+                        <div class="textBox">
+                            <p class="name">详细地址</p>
+                            <p class="detail">武汉市洪山区中地数码</p>
+                        </div>
+                    </div>
+                    <div class="category tel">
+                        <i class="fa-solid fa-phone-flip"></i>
+                        <div class="textBox">
+                            <p class="name">手机号</p>
+                            <p class="detail">18712345678</p>
+                        </div>
+                    </div>
+                    <div class="category email">
+
+                        <i class="fa-regular fa-envelope"></i>
+                        <div class="textBox">
+                            <p class="name">Email</p>
+                            <p class="detail">Xzd@Mapgis.Com</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </aside>
+    </main>
+</body>
+
+</html>

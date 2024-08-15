@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 传统div模式：div+class名称 -->
+    <div class="container">
+        <!-- 左边：个人摘要 -->
+        <div class="aside"></div>
+        <!-- 右边：详细信息 -->
+        <div class="article">
+            <!-- 个人介绍 -->
+            <div class="about"></div>
+            <!-- 技术栈 -->
+            <div class="servers"></div>
+            <!-- 技能熟练度 -->
+            <div class="skills"></div>
+            <!-- 学习经历 -->
+            <div class="experiences"></div>
+            <!-- 联系方式 -->
+            <div class="contact"></div>
+        </div>
+    </div>
+
+    <!-- 语义化标签模式 -->
+    <main>
+        <!-- 左边：个人摘要 -->
+        <aside></aside>
+        <!-- 右边：详细信息 -->
+        <aside>
+            <!-- 个人介绍 -->
+            <section class="about"></section>
+            <!-- 技术栈 -->
+            <section class="servers"></section>
+            <!-- 技能熟练度 -->
+            <section class="skills"></section>
+            <!-- 学习经历 -->
+            <section class="experiences"></section>
+            <!-- 联系方式 -->
+            <section class="contact"></section>
+        </aside>
+    </main>
+</body>
+
+</html>

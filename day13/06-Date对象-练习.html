@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // console.log(`${date1.getHours()}时${date1.getMinutes()}分${date1.getSeconds()}秒`);
+        function time() {
+            var date1 = new Date()
+            var weekDay = date1.getDay()
+            if (weekDay == 0) {
+                return `今天是${date1.getFullYear()}年${date1.getMonth() + 1}月${date1.getDate()}日，星期7`;
+            } else {
+                return `今天是${date1.getFullYear()}年${date1.getMonth() + 1}月${date1.getDate()}日，星期${weekDay}`;
+
+            }
+        }
+        console.log(time());
+
+    </script>
+</body>
+
+</html>

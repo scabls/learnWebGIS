@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+
+            background-color: lightskyblue;
+            /* 第一步 使用flex布局 */
+            display: flex;
+            height: 300px;
+            /* 
+            flex默认有两个轴
+                主轴：默认水平方向，即x轴。所以flex子项默认沿着水平方向排布（和主轴方向保持一致）
+                侧轴：默认与主轴垂直交叉，即y轴吗，跟主轴是相对的*/
+            /* 
+            /* align-items	定义flex子项在flex容器的当前行的侧轴（纵轴）方向上的对齐方式。
+                stretch     默认值。元素被拉伸以适应容器。
+                center      元素位于容器的中心。
+                flex-start	    元素位于容器的开头。
+                flex-end    元素位于容器的结尾。
+
+                注意：align-items属性有两个默认
+                    1.元素默认沿着容器的顶部排布
+                    2.默认是拉伸效果，（在子元素没有设置高度时有效）
+            */
+            align-items: flex-start;
+            /* 默认顶部对齐 */
+            align-items: stretch;
+            /* 子元素未设置高度时有效 */
+        }
+
+        .son {
+
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- flex容器/弹性容器 -->
+    <div class="father">
+        <!-- 弹性子元素/弹性元素/flex子项/弹性盒子 -->
+        <div class="son">1</div>
+        <div class="son">2</div>
+        <div class="son">3</div>
+    </div>
+</body>
+
+</html>

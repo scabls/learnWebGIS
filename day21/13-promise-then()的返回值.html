@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const p1 = new Promise((resolve, reject) => { })
+        const t1 = p1.then(() => { }, () => { })
+        console.dir(t1); // 
+
+        const p2 = new Promise((resolve, reject) => { resolve() })
+        const t2 = p2.then(() =>console.log('then执行了'))
+        console.dir(t2); // 
+        t2.then(()=>console.log('then又执行了'))
+
+        // 链式编程
+        new Promise((resolve, reject) => { resolve() }).then(() =>console.log('then执行了')).then(() =>console.log('then又执行了'))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function f() {
+            // var num1 = 20 //有声明关键字，num1在局部作用域下
+            num1 = 20 //没有声明关键字，num1则在全局作用域下;局部变量变成全局变量，可能会影响其他域中的值
+            console.log(num1);
+        }
+        f()
+        console.log(num1);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        逻辑运算符用于测定变量或值之间的逻辑
+            &&  and 与
+            ||  or  或
+            !   not 非
+        */
+
+        // 与运算符
+        // 同真为真，一假为假
+        console.log(true && true); // true
+        console.log(true && false); // false
+        console.log(false && true); // false
+        console.log(false && false); // false
+
+        // 或运算符
+        // 同假为假，一真为真
+        console.log(true || true); // true
+        console.log(true || false); // true
+        console.log(false || true); // true
+        console.log(false || false); // false
+
+        // 非运算符
+        // 取反
+        console.log(!true); // false
+        console.log(!false); // true
+
+        // 注意点
+        // 要求输入一个20与30之间的数
+        var num1 = +prompt("请输入一个20与30之前的数：");
+        // alert(20<=num1<=30); 错误的，因为是两个条件，不能写成一个条件
+        alert(num1 >= 20 && num1 <= 30)
+        // 闰年判断
+        var num2 = +prompt();
+        alert(num2 % 4 == 0 && num2 % 100 != 0 || num2 % 400 == 0);
+    </script>
+</body>
+
+</html>

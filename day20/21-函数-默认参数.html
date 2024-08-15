@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function multiply(a, b = 1) {
+            return a * b;
+        }
+
+        console.log(multiply(5, 2));// 10
+        console.log(multiply(5));// 5
+
+
+        function str(a = 1, b) {
+            console.log(`${a},${b}`);
+        }
+        str()//1,undefined
+        str(2)//2,undefined
+        str(2,2)//2,2
+        str(undefined)//1,undefined
+        str(undefined,2)//1,2
+
+    </script>
+</body>
+
+</html>

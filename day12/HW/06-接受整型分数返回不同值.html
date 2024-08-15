@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*  练习六
+            定义一个函数,可以接受一个整型的分数,
+            如果分数为[90,100]这个范围方法返回’A’
+            如果分数为[80,90)这个范围方法返回’B’
+            如果分数为[70,80)这个范围方法返回’C’
+            如果分数为[60,70)这个范围方法返回’D’
+            如果分数为[0,60)这个范围方法返回’E’
+            分数不在以上范围的返回’F’ 
+        */
+        function level(fraction) {
+            if (fraction < 0 || fraction > 100) {
+                return 'F'
+            } else if (fraction >= 90) {
+                return 'A'
+            } else if (fraction >= 80) {
+                return 'B'
+            } else if (fraction >= 70) {
+                return 'C'
+            } else if (fraction >= 60) {
+                return 'D'
+            } else if (fraction >= 0) {
+                return 'E'
+            }
+        }
+        var numerator = prompt('输入分子')
+        var denominator = prompt('输入分母')
+        var fraction = parseInt(numerator / denominator)
+        document.write(`分数取整为${fraction}，评级为${level(fraction)}`)
+    </script>
+</body>
+
+</html>

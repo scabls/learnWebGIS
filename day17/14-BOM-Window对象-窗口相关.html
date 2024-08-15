@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+
+<body>
+    <button class="open">打开窗口</button>
+    <button class="close">关闭窗口</button>
+    <script>
+        // 定义新变量，保存新窗口
+        var newWindow = null
+        var btn1 = document.querySelector('.open')
+        var btn2 = document.querySelector('.close')
+        btn1.addEventListener('click', function () {
+            newWindow = open('https://www.runoob.com/jsref/met-win-open.html')
+        })
+        btn2.addEventListener('click', function () {
+            // window.close() //谁调用就关闭谁
+            newWindow.close()
+        })
+    </script>
+</body>
+
+</html>

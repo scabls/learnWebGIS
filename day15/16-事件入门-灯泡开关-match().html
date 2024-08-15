@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <img src="./images/off.gif" alt="">
+    <script>
+
+
+        var img = document.querySelector('img')
+        console.log(img.src);
+        // 发现src的值是完整路径，不是我们传的相对路径
+        img.onclick = function () {
+            // 所以判断条件不能是等于相对路径
+            // 可以选择String对象的方法，match(),endsWith(),includes()
+            /* 
+            match() 方法可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配。
+                不包含返回null，布尔值是false；
+                包含则返回一个数组，其中存放了与它找到的匹配文本有关的信息，因为数组不为空，布尔值是true 
+                */
+            console.log(this.src.match(/on.gif/));
+            if (this.src.match(/on.gif/)) {
+                this.src = './images/off.gif'
+            }
+            else {
+                this.src = './images/on.gif'
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/01-可拖拽的模态框.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <a href="" id="link">点击我弹出登录框</a>
+        </header>
+        <div class="bg"></div>
+        <main>
+            <aside id="close">关闭</aside>
+            <section id="loginTitle">登录会员</section>
+            <section id="loginForm">
+                <form action="javascript:void(0);" id="login" method="post">
+                    <section class="inputRow">
+                        <label for="username">用户名：</label>
+                        <input type="text" id="username" name="username" placeholder="请输入用户名">
+                    </section>
+                    <section class="inputRow">
+                        <label for="password">登录密码：</label>
+                        <input type="password" id="password" name="password" placeholder="请输入登录密码">
+                    </section>
+                    <section>
+                        <button form="login" type="submit" id="submit">登录会员</button>
+                    </section>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="./js/01-可拖拽的模态框.js"></script>
+</body>
+
+</html>

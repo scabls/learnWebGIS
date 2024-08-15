@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            aspect-ratio: 1;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <button>按钮1</button><button>按钮2</button><button>按钮3</button><button>按钮4</button><button>按钮5</button>
+
+    <script>
+        // 需求，点击那个按钮，那个按钮就变成蓝色，其他按钮颜色不变
+        var btns = document.querySelectorAll('button')
+        btns.forEach(function (btn) {
+            console.log('最外部遍历函数的this',this);
+            btn.onclick = function () {
+
+                console.log('事件处理函数中的this',this);
+                // 使用排他思想
+                // 在设置当前点击的那个按钮的背景颜色之前,先把所有按钮的背景颜色都去掉
+                btns.forEach(function (btn) {
+                    console.log('最内部遍历函数的this',this);
+                    btn.style.backgroundColor = ''
+                })
+
+                // 设置当前点击按钮的背景
+                this.style.backgroundColor = 'lightblue'
+            }
+        })
+    </script>
+
+</body>
+
+</html>

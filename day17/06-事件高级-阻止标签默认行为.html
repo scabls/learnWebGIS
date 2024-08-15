@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <a href="https://www.baidu.com/" id="baidu">百度一下</a>
+    <script>
+        var baidu = document.querySelector('#baidu')
+        baidu.addEventListener('click', function (e) {
+            alert('百度一下')
+
+            // 阻止某些标签的默认行为
+            e.preventDefault()
+        })
+
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

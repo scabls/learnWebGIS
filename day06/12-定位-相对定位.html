@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .c1 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        .c2 {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            /* 
+            设置相对定位
+                特点 
+                    1.没有脱标，占据空间
+                    2.参照的原点：元素之前在标准流的左上角
+                应用场景
+                    1.用于小范围内的移动
+                    2.子绝父相(常见的布局技巧,子元素绝对定位,父元素相对定位,
+                                可以让子元素在父元素任意位置上移动)
+            */
+            position: relative;
+            top: 10px;
+            left: 10px;
+            margin-top: -10px;
+        }
+
+        .c3 {
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1"></div>
+    <div class="c2"></div>
+    <div class="c3"></div>
+</body>
+
+</html>

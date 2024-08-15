@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1,给第一个li设置成红色 */
+        li:first-child {
+            color:red;
+        }
+        /* li:firs-child 是交集选择器，选择元素类型是li，且是父元素下第一个子元素，
+         */
+
+        /* 2,给第二个li设置成绿色 */
+
+        /* li:nth-child(2)  选择元素类型是li，且是父元素下第2个子元素*/
+        li:nth-child(2) {
+            color:green;
+        }
+        /* 修改 */
+        /* li:nth-of-type(2)  选择元素类型是li，且是同类型的第2个兄弟元素， */
+        li:nth-of-type(2)
+        {
+            color:rgb(128, 0, 0);
+        }
+
+
+
+        /* 3,给最后一个li设置成蓝色 */
+        /* li:last-child 是选择父元素下最后一个子元素，且元素类型是li */
+        li:last-child {
+            color:blue;
+        }
+
+        /* 区别：
+        :first-child :last-child :nth-child() :不限制类型
+        :first-of-type :last-of-type :nth-of-type() :限制为同类型 */
+
+    </style>
+</head>
+
+<body>
+    <ul>
+        <p>第1个p</p>
+        <li>第1个li</li>
+        <li>第2个li</li>
+        <li>第3个li</li>
+        <li>第4个li</li>
+        <li>第5个li</li>
+        <li>第6个li</li>
+        <li>第7个li</li>
+        <li>第8个li</li>
+        <li>第9个li</li>
+        <li>第10个li</li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        星座查询
+        */
+        var month = +prompt("请输入月份：");
+        var day = +prompt("请输入日期：");
+        if (month == 1) {
+            if (day >= 1 && day <= 19) {
+                alert(`${month}月${day}日，属于12月22日-1月19日 摩羯座:实际、有责任心、保守`);
+            }
+            else if (day >= 20 && day <= 31) {
+                alert(`${month}月${day}日，属于1月20日-2月18日 水瓶座:独立、理性、善变`);
+            }
+            else {
+                alert("日期输入有误！");
+            }
+        }else if (month == 2) {
+            if (day >= 1 && day <= 18) {
+                alert(`${month}月${day}日，属于1月20日-2月18日 水瓶座:独立、理性、善变`);
+            }
+            else if (day >= 19 && day <= 29) {
+                alert(`${month}月${day}日，属于2月19日-3月20日 双鱼座:敏感、浪漫、理想主义`);
+            }
+            else {
+                alert("日期输入有误！");
+            }
+        }else if (month == 3) {
+            if (day >= 1 && day <= 20) {
+                alert(`${month}月${day}日，属于2月19日-3月20日 双鱼座:敏感、浪漫、理想主义`);
+            }
+            else if (day >= 21 && day <= 31) {
+                alert(`${month}月${day}日，属于3月21日-4月19日 白羊座:热情、勇敢、坚定`);
+            }
+            else {
+                alert("日期输入有误！");
+            }
+        }else if (month == 4) {
+            if (day >= 1 && day <= 19) {
+                alert(`${month}月${day}日，属于3月21日-4月19日 白羊座:热情、勇敢、坚定`);
+            }
+            else if (day >= 20 && day <= 30) {
+                alert(`${month}月${day}日，属于4月20日-5月20日 金牛座:稳重、踏实、顽固`);
+            }
+            else {
+                alert("日期输入有误！");
+            }
+        }else if (month == 5) {
+            if (day >= 1 && day <= 20) {
+                alert(`${month}月${day}日，属于4月20日-5月20日 金牛座:稳重、踏实、顽固`);
+            }
+            else if (day >= 21 && day <= 31) {
+                alert(`${month}月${day}日，属于5月21日-6月21日 双子座:聪明、好奇、善变`);
+            }
+            else {
+                alert("日期输入有误！");
+            }
+        }else if (month == 6) {
+            if (day >= 1 && day <= 21) {
+                alert(`${month}月${day}日，属于5月21日-6月21日 双子座:聪明、好奇、善变`);
+            }
+            else if (day >= 22 && day <= 30) {
+                alert(`${month}月${day}日，属于6月22日-7月22日 巨蟹座:温情、敏感、多愁善感`);
+            }
+            else {
+                alert("日期输入有误！");
+            }
+        }else if (month == 7) {
+            if (day >= 1 && day <= 22) {
+                alert(`${month}月${day}日，属于6月22日-7月22日 巨蟹座:温情、敏感、多愁善感`);
+            }
+            else if (day >= 23 && day <= 31) {
+                alert(`${month}月${day}日，属于7月23日-8月22日 狮子座:自信、慷慨、热心`);
+            }
+            else {
+                alert("日期输入有误！");
+            }
+        }else if (month == 8) {
+            if (day >= 1 && day <= 22) {
+                alert(`${month}月${day}日，属于7月23日-8月22日 狮子座:自信、慷慨、热心`);
+            }
+            else if (day >= 23 && day <= 31) {
+                alert(`${month}月${day}日，属于8月23日-9月22日 处女座:细心、完美主义、谦虚`);
+            }
+            else {
+                alert("日期输入有误！");
+            }
+        }else if (month == 9) {
+            if (day >= 1 && day <= 22) {
+                alert(`${month}月${day}日，属于8月23日-9月22日 处女座:细心、完美主义、谦虚`);
+            }
+            else if (day >= 23 && day <= 30) {
+                alert(`${month}月${day}日，属于9月23日-10月23日 天秤座:公正、优雅、追求平衡`);
+            }
+            else {
+                alert("日期输入有误！");
+            }
+        }else if (month == 10) {
+            if (day >= 1 && day <= 23) {
+                alert(`${month}月${day}日，属于9月23日-10月23日 天秤座:公正、优雅、追求平衡`);
+            }
+            else if (day >= 24 && day <= 31) {
+                alert(`${month}月${day}日，属于10月24日-11月22日 天蝎座:神秘、独立、富有魅力`);
+            }
+            else {
+                alert("日期输入有误！");
+            }
+        }else if (month == 11) {
+            if (day >= 1 && day <= 22) {
+                alert(`${month}月${day}日，属于10月24日-11月22日 天蝎座:神秘、独立、富有魅力`);
+            }
+            else if (day >= 23 && day <= 30) {
+                alert(`${month}月${day}日，属于11月23日-12月21日 射手座:乐观、热情、冒险`);
+            }
+            else {
+                alert("日期输入有误！");
+            }
+        }else if (month == 12) {
+            if (day >= 1 && day <= 21) {
+                alert(`${month}月${day}日，属于11月23日-12月21日 射手座:乐观、热情、冒险`);
+            }
+            else if (day >= 22 && day <= 31) {
+                alert(`${month}月${day}日，属于12月22日-1月19日 摩羯座:实际、有责任心、保守`);
+            }
+            else {
+                alert("日期输入有误！");
+            }
+        }else{
+            alert("月份输入有误！");
+        }
+    </script>
+</body>
+
+</html>

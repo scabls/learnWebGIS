@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var suits = ["♠", "♥", "♦", "♣"]
+        var ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+        var jokers = ['red joker', 'black joker']
+        var poker = suits.flatMap(function (suit) {
+            return ranks.map(function (rank) {
+                return suit + rank
+            })
+        })
+        poker.push(...jokers)
+        var shuffle = []
+        while (poker.length > 0) {
+            var j = Math.floor(Math.random() * (poker.length))
+            shuffle.unshift(poker[j])
+            poker.splice(j, 1)
+        }
+        var playerA = []
+        var playerB = []
+        var playerC = []
+        var reserve = []
+        shuffle.forEach(function (item, index, arr) {
+            if (index < arr.length - 3) {
+                if (index % 3 == 0) {
+                    playerA.push(item)
+                }
+                if (index % 3 == 1) {
+                    playerB.push(item)
+                }
+                if (index % 3 == 2) {
+                    playerC.push(item)
+                }
+            } else {
+                reserve.push(item)
+            }
+
+        })
+        console.log('洗牌：' + shuffle);
+        console.log('玩家A手牌：' + playerA);
+        console.log('玩家B手牌：' + playerB);
+        console.log('玩家C手牌：' + playerC);
+        console.log('底牌：' + reserve);
+
+    </script>
+</body>
+
+</html>

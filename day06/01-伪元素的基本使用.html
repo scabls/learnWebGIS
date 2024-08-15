@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            background-color: lightblue;
+        }
+
+        /* 在Div内容的最前面插入 */
+        div::before {
+            content: "新中地";
+            /* width: 100px;
+            height: 100px; */
+            /* 行级元素无法设置宽高 */
+            background-color: red;
+        }
+
+        /* 在Div内容的最后面插入 */
+        div::after {
+
+            content: "石墨文档";
+        }
+
+        div::after{
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        中地数码
+    </div>
+</body>
+
+</html>

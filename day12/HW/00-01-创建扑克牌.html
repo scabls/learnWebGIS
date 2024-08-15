@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var suit = ["♠", "♥", "♦", "♣"]
+        var rank = [
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "J",
+            "Q",
+            "K",
+            "A",
+        ];
+        var joker = ['red joker', 'black joker']
+
+        function poker(suit, rank, joker) {
+            let card = [];
+            for (i in suit) {
+                for (j in rank) {
+                    card[i * rank.length + +j] = suit[i] + rank[j]
+                }
+            }
+            for (k in joker) {
+                card[suit.length * rank.length + +k] = joker[k];
+            }
+            return card
+        }
+        console.log(poker(suit, rank, joker));
+    </script>
+</body>
+
+</html>

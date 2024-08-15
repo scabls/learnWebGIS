@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+
+            background-color: lightblue;
+            border: 1px solid green;
+
+            /* 内边距 */
+            padding: 50px;
+            /* 设置盒子边框和内容之间的间隙 */
+            /* 可以取四个值，按照顺时针上右下左赋值，如果某一边没有看对面，类似border-width
+             */
+
+            /* 
+            设置单一方向上的内边距
+            padding-top: 10px; 
+            padding-right: 20px; 
+            padding-bottom: 30px; 
+            padding-left: 40px;  */
+
+
+        }
+
+        .d1 {
+            /* 要求创建一个宽高200px的盒子 */
+
+            /* 手动内减 */
+            /* 一开始设置的宽高，是内容区的宽高，不是元素盒子宽高 */
+            width: 180px;
+            height: 180px;
+            border: 10px solid red;
+
+            padding: 10px;
+            /* border和padding都会附加到content的初始宽高上，呈现为元素的最终宽高
+            width(宽度) + padding(内边距) + border(边框) = 元素实际宽度
+            height(高度) + padding(内边距) + border(边框) = 元素实际高度
+            */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        我看什么都像你，我看月亮，像你，看星星，也像你。那些白亮透澈、温柔冷清的光，它们都让我想起你。其实我不太懂喜欢，可我想走向你。
+    </div>
+
+    <div class="d1">
+
+    </div>
+
+</body>
+
+</html>

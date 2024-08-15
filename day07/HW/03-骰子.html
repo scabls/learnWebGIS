@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .container .dice {
+            display: flex;
+            width: 100px;
+            height: 100px;
+            border: 1.5px solid black;
+            border-radius: 10px;
+            background-color: lightgray;
+        }
+
+        .container .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: black;
+        }
+
+        .container .dice:nth-child(1) {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container .dice:nth-child(2) {
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .container .dice:nth-child(3) {
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .container .dice:nth-child(3) .circle:nth-child(1) {
+            align-self: flex-start;
+        }
+
+        .container .dice:nth-child(3) .circle:nth-child(3) {
+            align-self: flex-end;
+        }
+
+        .container .dice:nth-child(4) {
+            justify-content: space-around;
+        }
+
+        .container .dice:nth-child(4)>div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .container .dice:nth-child(5) {
+            justify-content: space-around;
+        }
+
+        .container .dice:nth-child(5)>div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .container .dice:nth-child(6) {
+            justify-content: space-around;
+        }
+
+        .container .dice:nth-child(6)>div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="dice">
+            <div class="circle"></div>
+        </div>
+        <div class="dice">
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <div class="dice">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <div class="dice">
+            <div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            <div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </div>
+        <div class="dice">
+            <div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            <div>
+                <div class="circle"></div>
+            </div>
+            <div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </div>
+        <div class="dice">
+            <div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            <div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

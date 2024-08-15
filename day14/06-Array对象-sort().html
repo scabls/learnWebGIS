@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [7, 9, 3, 7, 5, 11, 1];
+
+        // a，b代表相邻两个元素，a表示左边的元素，b表示右边的元素
+        // 如果返回值>0,就交换a，b的位置，变为b，a，返回值<=0时，位置不交换
+        // 升序
+        // 对于升序，我们要求若a>b，则交换a，b位置。
+        // 交换位置要求返回值>0,所以将a-b作为返回值
+
+        var uarr = arr.sort(function (a, b) {
+            return a - b
+        })
+        console.log(uarr);
+        // 降序
+        // 对于降序，我们要求若b>a，则交换a，b位置。
+        // 交换位置要求返回值>0,所以将b-a作为返回值
+        var darr = arr.sort(function (a, b) {
+            return b - a
+        })
+        console.log(darr);
+    </script>
+</body>
+
+</html>

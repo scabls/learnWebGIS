@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .d1 {
+
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            border: 10px solid red;
+
+            padding: 10px;
+            /* 自动内减 */
+            /* box-sizing 定义如何计算一个元素的总宽度和总高度，主要设置是否需要加上内边距(padding)和边框等。*/
+            /* 
+            border-box 告诉浏览器：你想要设置的边框和内边距的值是包含在 width 内的。
+            也就是说，如果你将一个元素的 width 设为 100px，那么这 100px 会包含它的 border 和 padding，
+            内容区的实际宽度是 width 减 去(border + padding) 的值。
+            大多数情况下，这使得我们更容易地设定一个元素的宽高。
+                注：border-box 不包含 margin。
+            */
+            box-sizing: border-box;
+
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="d1">
+
+    </div>
+
+</body>
+
+</html>

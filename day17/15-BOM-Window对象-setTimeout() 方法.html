@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+
+<body>
+    <script>
+        function f1() {
+            console.log('一秒后打印');
+        }
+        function f2() {
+            console.log('两秒后打印');
+        }
+        // 方式一：传函数名（函数名代表整个函数）
+        setTimeout(f1, 1000)
+        // 方式二：传代码串
+        setTimeout('f2()', 2000)
+        // 方式三：匿名函数
+        var s3= setTimeout(function () {
+            console.log('三秒后打印');
+        }, 3000)
+
+        // 阻止定时操作
+        clearTimeout(s3)
+
+    </script>
+</body>
+
+</html>

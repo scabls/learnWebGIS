@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        div {
+            width: 300px;
+            height: 600px;
+            background-color: lightblue;
+            /* 
+            网页精准布局的时候，设置行高为1（line-height: 1;），可以取消行高的默认间隙
+            1代表字体尺寸的一倍行高等于字体尺寸的大小,后续可结合padding来更精确的设置
+            */
+            line-height: 1;
+            padding: 1em;
+
+            font: italic bold 1em "仿宋", sans-serif;
+            /* 
+            因为字体连写如果缺少了其他值，默认值将被插入，如果有默认值的话。
+            因为缺少了line-height，所以插入了默认值覆盖了之前单独设置的line-height。
+            */
+            /* 
+            解决方式一：
+            仅在在字体连写里设置行高
+
+            解决方式二（推荐）：
+            将单独行高设置放在字体连写后
+            */
+        }
+    </style>
+</head>
+
+<body>
+    <div>2024年</div>
+    
+
+</html>

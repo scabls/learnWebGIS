@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 创建发送ajax请求的XMLHttpRequest对象
+        const xhr = new XMLHttpRequest()
+        // 2. 设置请求方式和请求的url
+        xhr.open('GET', 'http://project.x-zd.net:3001/apis/herolist')
+        // 3. 监听请求对象状态的变化，设置处理函数（在这里可以接受服务器发送过来的数据）
+        xhr.addEventListener('readystatechange',function(){
+            // 当 readyState 等于 4 且状态为 200 时，表示响应已就绪
+            if(this.readyState==4&&this.status==200){
+                // 如需获得来自服务器的响应，请使用 XMLHttpRequest 对象的 responseText 或 responseXML 属性。
+                console.log(this.responseText);
+            }
+        })
+        // 4. 发送请求
+        xhr.send()
+    </script>
+</body>
+
+</html>

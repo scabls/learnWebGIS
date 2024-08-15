@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        font-family	规定文本的字体系列	
+            缩写 ff
+            默认值：取决于浏览器（Google默认微软雅黑）
+        font-size	规定文本的字体尺寸
+            缩写 fz	
+            取值：像素值，相对值（如em），百分比(相对于父类)
+        font-style	规定文本的字体样式
+            缩写 fs	
+        font-weight	规定字体的粗细
+            缩写 fw	
+        */
+        div {
+            font-family: "宋体", "Arial", sans-serif;
+            /* 设置字体系列,可以设置多个，如果浏览器不支持第一个字体，则会尝试下一个。 */
+
+            font-style: italic;
+
+            /* 
+        取值：normal/italic/oblique
+            normal：正常    
+            italic：斜体    
+            oblique：倾斜
+            */
+
+            font-weight: bold;
+            /* 
+            取值：normal/bold/bolder/lighter
+            normal：正常    
+            bold：加粗    
+            bolder：更加粗    
+            lighter：更加细
+            100-900：数值越大，字体越粗，normal=400，bold=700
+            */
+        }
+
+        div .p1 {
+            color: aqua;
+            font-size: 16px;
+            /* 固定长度 */
+        }
+
+        div .p2 {
+            color: blueviolet;
+            font-size: 1em
+            /* 它是描述相对于应用在当前元素的字体尺寸（相对于父元素），所以它也是相对长度单位。
+            一般浏览器字体大小默认为16px，则2em == 32px； */
+        }
+
+        div .p3 {
+            color: chocolate;
+            font-size: 100%;
+
+            /* 百分比 相对于父类的,这里没有父元素相对于浏览器的默认设置,200%相当于32px */
+        }
+
+        div .p4 {
+            font: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p class="p1">这是第一个段落</p>
+        <p class="p2">这是另一个段落</p>
+        <p class="p3">这是第三个段落</p>
+        <p class="p4">这是第四个段落</p>
+    </div>
+</body>
+
+</html>

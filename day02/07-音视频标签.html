@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 音频标签 -->
+    <!-- 
+       src: 音频文件路径
+       controls: 布尔值，可以显示播放控制按钮 -->
+    <audio src="audio.mp3" controls="controls"></audio>
+    <audio src="audio.mp3" controls></audio>
+    <audio controls>
+        <source src="audio.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 视频标签 -->
+    <!-- 现代浏览器（如Chrome、Firefox等）为了节省带宽和提高用户体验，通常会禁止自动播放带有声音的视频。
+    如果视频带有声音，浏览器可能会阻止其自动播放。
+    autoplay自动播放视频需要加上muted属性静音播放视频 -->
+    <video src="./成语接龙.mp4" controls autoplay muted></video>
+    <video controls autoplay muted>
+        <source src="./成语接龙.mp4" type="video/mp4">
+    </video>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <img src="./images/off.gif" alt="">
+    <script>
+
+        var img = document.querySelector('img')
+
+        img.onclick = function () {
+            // if(img.src.endsWith('on.gif')) {
+            //     img.src = './images/off.gif'
+            // }
+            // else {
+            //     img.src = './images/on.gif'
+            // }
+
+            /* 事件中this代表事件源对象,所以这里也可以使用this来实现 */
+            if(this.src.endsWith('on.gif')) {
+                this.src = './images/off.gif'
+            }
+            else {
+                this.src = './images/on.gif'
+            }
+        }
+
+    </script>
+</body>
+
+</html>

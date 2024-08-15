@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #FFA07A;
+        }
+        .page{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 400px;
+            background-color: white;
+            margin: 0 auto;
+            transition: all 0.5s;
+        }
+        .page:hover{
+            transform: translate(-50%, -50%) rotate(-10deg);
+        }
+        .text{
+            font-size: 3rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="text">欲练神功</div><div class="text">必先自宫</div>
+    </div>
+</body>
+
+</html>

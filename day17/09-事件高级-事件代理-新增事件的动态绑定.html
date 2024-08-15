@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .c1 {
+            width: 200px;
+            aspect-ratio: 1;
+            background: pink;
+        }
+
+        .c2 {
+            width: 100px;
+            aspect-ratio: 1;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="divA">This is <span>some</span> text!</div>
+    <ul>
+        <li>aaa</li>
+        <li>bbb</li>
+        <li>ccc</li>
+    </ul>
+    <button>新增li元素</button>
+    <script>
+        var ul = document.querySelector('ul')
+        var button = document.querySelector('button')
+        button.addEventListener('click', function () {
+            var li = document.createElement('li')
+            li.textContent='新的li！'
+            ul.appendChild(li)
+        })
+
+        // 可以实现新增元素的动态绑定
+        ul.addEventListener('click', function (e) {
+            alert(e.target.textContent)
+        })
+    </script>
+</body>
+
+</html>

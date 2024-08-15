@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script src="./02-外链式引入.js">
+        // 如果script标签既有外链文件，又有内嵌代码，只会执行外链文件
+        alert("hello money");
+    </script>
+
+    <script>
+        // 如果当前页面还需要编写JS代码,可以再开一个script标签,这些标签最终都在一个环境中
+        alert("hello money");
+    </script>
+</body>
+</html>

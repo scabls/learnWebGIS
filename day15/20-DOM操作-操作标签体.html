@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>新中地</div>
+    <p><em>中地数码</em></p>
+    <script>
+        /* 
+        分别使用innerHTML和innerText给div内添加标题
+        */
+        var div = document.querySelector('div')
+        var p = document.querySelector('p')
+        div.innerHTML = '<h1>XZD</h1>'// 解析为HTML
+        div.innerText = '<h1>XZD</h1>'//将<h1>XZD</h1>作为纯文本插入
+       
+        console.log(p.innerHTML);// 返回字符串化的HTML结构
+        console.log(p.innerText);// 仅返回文本，不包含任何html标签
+
+    </script>
+</body>
+
+</html>

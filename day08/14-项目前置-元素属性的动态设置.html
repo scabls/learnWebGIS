@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1.在根选择器中定义一个自定义的属性 */
+        :root{
+            --green:green;
+        }
+        /* 2.在页面中选择不同的元素，使用var()插入自定义属性的值 */
+        div{
+            color: var(--green);
+        }
+        p{
+            color: var(--green);
+        }
+    </style>
+</head>
+<body>
+    <div>ddd</div>
+    <p>ppp</p>
+</body>
+</html>

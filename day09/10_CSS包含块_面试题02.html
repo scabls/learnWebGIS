@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+              元素                              元素的包含块
+              html                          
+              body                            
+              div1                          
+              p1                                
+              p2                                
+              e1                                
+              s1                                
+        */
+        #div1{
+            position: absolute;
+            left: 50px;
+            top: 50px;
+        }
+        #e1{
+            position: absolute;
+            left: 50px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body id="body">
+    <div id="div1">
+        <p id="p1">p1</p>
+        <p id="p2">p2
+            <em id="e1">
+                <strong id="s1">strong</strong>
+            </em>
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            /* 先不设置宽高，宽度自动为父元素的100%，高度默认由子元素撑开 */
+            background-color: lightskyblue;
+            /* 第一步 使用flex布局 */
+            display: flex;
+
+            /*第二步 flex的属性对子元素水平均匀分布排列 */
+            justify-content: space-between;
+        }
+        .son{
+            /* 浮动布局的弊端，子元素浮动之后会脱标，父元素高度无法被撑开，影响布局 */
+            /* float: left; */
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son">1</div>
+        <div class="son">2</div>
+        <div class="son">3</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+在if语句中定义的变量，在else语句中拿不到值
+因为if-else只会执行其中之一的语句体，另一块不执行
+        */
+        if (false) {
+            var a = 10;
+        }
+        else {
+            alert(a + " " + typeof a)
+        }
+    </script>
+</body>
+
+</html>

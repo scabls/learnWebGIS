@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        div {
+            padding: 10px;
+            width: 100px;
+            aspect-ratio: 1;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 100px;">
+
+    </div>
+
+    <script>
+        const div = document.querySelector('div')
+
+        // 获取宽度
+        // 使用offset
+        console.log(div.offsetWidth);
+        /* 
+        获取的宽高不受限制（任何样式里面都可以），不带单位，包含边框和内边距
+        */
+
+        // 使用style
+        console.log(div.style.width);
+        /* 
+        只能获取行内样式里的style，是否包含边框和内边距要看box-sizing
+        */
+
+        //设置宽度
+        div.offsetWidth='400'   // Offset是一个只读属性只能获取不能设置
+        div.style.width='400px'// Style是一个可读写属性,可以设置宽高,也可以获取宽高,需要带单位
+    </script>
+</body>
+
+</html>

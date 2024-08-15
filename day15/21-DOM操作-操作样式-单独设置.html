@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+
+    <script>
+        var div = document.querySelector('div')
+        // 对于background-color使用小驼峰命名法改写
+        // 单独设置仅用在样式改变小的情况（颜色改变或者隐藏）
+        div.onclick =function(){this.style.backgroundColor='lightpink'}
+
+    </script>
+</body>
+
+</html>

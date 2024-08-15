@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        /* 
+        onload 事件会在页面或图像加载完成后立即发生。
+        onload 通常用于 <body> 元素，在页面完全载入后(包括图片、css文件等等。)执行脚本代码。
+
+            在 HTML 中:
+                <body onload="SomeJavaScriptCode">
+            在 JavaScript 中:
+                window.onload=function(){SomeJavaScriptCode};
+        */
+        window.addEventListener('load', function () {
+            btn = document.querySelector('button')
+            btn.addEventListener('click', function () {
+                alert('我被点了')
+            })
+        })
+
+
+    </script>
+
+
+
+    <button>按钮</button>
+</body>
+
+</html>

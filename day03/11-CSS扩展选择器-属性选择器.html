@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 给元素添加自定义属性的好处: 既可以选择全部包含自定义属性的元素,还可以选择特定的某一类元素设置样式 */
+
+        /* [属性名] 选择器的作用:全部包含自定义属性的元素:可以设置通用的样式*/
+
+        /*  [attribute] 选择器
+        用于选择具有特定属性的元素的元素,属性可以是自定义属性
+        [attribute]*/
+        [myColor] {
+            color: red;
+        }
+
+        /* [attribute=value]选择器
+        用于选择具有特定属性和值的元素的元素 
+        [attribute=value]*/
+        [myColor="blue"] {
+            color: blue;
+        }
+
+        /* [attribute~=value]选择器
+        选择特定属性的值包含指定值的元素的元素
+        表示带有以 attribute 命名的属性的元素，
+        并且该属性是一个以空格作为分隔的值列表，其中至少有一个值为 value。
+        [attribute~=value] */
+        [myColor~=green] {
+            color: green;
+        }
+
+
+        /* [attr^=value]
+        表示带有以 attr 命名的属性，且属性值是以 value 开头的元素。 */
+        [myColor^='pink'] {
+            color: pink;
+        }
+
+        [myColor=flower] {
+            color: rgb(192, 222, 255);
+        }
+
+        /* 不起作用是应为=应完全匹配value， 
+        "pink flower"整体是一个值，而不是两个值*/
+    </style>
+</head>
+
+<body>
+    <div>
+        <p myColor>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, reprehenderit!</p>
+        <p myColor="blue">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, ad.</p>
+        <p myColor="orange">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, alias!</p>
+        <p myColor="green tree">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, voluptatem.</p>
+        <p myColor="green-tree">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, nesciunt?</p>
+        <p myColor="pink flower">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, eaque.</p>
+        <p myColor="pink-flower">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, eaque.</p>
+    </div>
+</body>
+
+</html>

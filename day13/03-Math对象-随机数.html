@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        //返回介于 0（包含） ~ 1（不包含） 之间的一个随机数
+        console.log(Math.random());
+        // 生成[1,10)随机整数
+        onsole.log(Math.floor(Math.random() * 9) + 1);
+        // 生成[1,10]随机整数
+        console.log(Math.floor(Math.random() * 10) + 1);
+        // 生成[10,100)随机整数
+        console.log(Math.floor(Math.random() * 90) + 10);
+        // 生成[10,100]随机整数
+        console.log(Math.floor(Math.random() * 91) + 10);
+
+        // 规律
+        //以下函数返回 min（包含）～ max（不包含）之间的数字：
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+        //以下函数返回 min（包含）～ max（包含）之间的数字：
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+
+<body>
+    <script>
+        function f1() {
+            console.log('每一秒打印');
+        }
+        function f2() {
+            console.log('每两秒打印');
+        }
+        // 方式一：传函数名（函数名代表整个函数）
+        setInterval(f1, 1000)
+        // 方式二：传代码串
+        setInterval('f2()', 2000)
+        // 方式三：匿名函数
+        var s3 = setInterval(function () {
+            console.log('每三秒打印');
+        }, 3000)
+
+        // 阻止循环定时操作
+        clearInterval(s3)
+
+    </script>
+</body>
+
+</html>

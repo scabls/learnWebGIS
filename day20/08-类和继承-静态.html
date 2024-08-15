@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Student {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            study() {
+                alert('学习')
+            }
+            // 静态属性
+            static country='China'
+            // 静态方法
+            static exam(){
+                console.log('考试');
+            }
+        }
+        console.dir(Student);
+
+        const stu1 = new Student('张三', 19)
+        console.dir(stu1);
+
+        Student.exam()
+        stu1.exam()
+
+
+    </script>
+</body>
+
+</html>

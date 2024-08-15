@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [7, 9, 3, 7, 5, 11, 1];
+        //反转
+        var rarr = arr.reverse()
+        console.log(arr);
+        console.log(rarr);
+        //升序
+        var uarr = rarr.sort(function (a, b) {
+            return a - b
+        })
+        console.log(uarr);
+        //降序
+        var darr = rarr.sort(function (a, b) {
+            return b - a
+        })
+        console.log(darr);
+        // 求和
+        var total = arr.reduce(function (total, item) {
+            return total + item;
+        })
+        console.log(total);
+        //拼接
+        var arr1 = [1, 2, 3]
+        var arr2 = [4, 5, 6]
+        var arr12 = arr1.concat(arr2)
+        console.log(arr12);
+        // 拆分
+            //前闭后开
+        var arr12_1 = arr12.slice(0, 3)
+        console.log(arr12_1);
+        var arr12_2 = arr12.slice(3, 6)
+        console.log(arr12_2);
+        // 转字符串
+        var starr12 = arr12.toString()
+        console.log(starr12);
+        var jarr12 = arr12.join(' ')
+        console.log(jarr12);
+    </script>
+</body>
+
+</html>

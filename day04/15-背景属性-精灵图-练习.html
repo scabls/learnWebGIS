@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        概念
+            将项目中用到的多张小图,合成一张大图,大图就是精灵图
+        好处
+            减少服务器请求图片的次数,提高网页的加载效率
+        步骤
+            1.创建一个div,(将来用于展示小图标)
+            2.设置div的大小为要展示图标的大小(使用pxCook量取)
+            3.设置精灵图作为Div的background-image
+            4.获取要展示的图标左上角在精灵图的坐标，取负值，设置为background-position
+*/
+
+
+        .left {
+            width: 683px;
+            height: 600px;
+            background-image: url(./images/fm.jpg);
+            background-position: 0px 0px;
+            border-right: 10px solid #ccc;
+            float: left;
+        }
+
+        .right {
+            width: 683px;
+            height: 600px;
+            background-image: url(./images/fm.jpg);
+            background-position: -683px 0px;
+            float: left;
+            clear: right;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+
+    </div>
+</body>
+
+</html>

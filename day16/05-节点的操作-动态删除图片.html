@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>动态删除图片</button>
+    <img src="./images/zxy.jpg" alt="">
+    <script>
+        /*
+        删除
+        element.removeChild() 删从子节点列表中删除某个节点
+        */
+        var btn = document.querySelector('button')
+        btn.onclick = function () {
+            // 获取要删除的节点
+            var img = document.querySelector('img')
+            // // 方式一：直接获取到父元素body，再删除
+            // var body = document.querySelector('body')
+            // body.removeChild(img)
+            // // 方式二：可以通过子元素找到父元素，然后再删除
+            // var parent = img.parentElement
+            // parent.removeChild(img)
+
+            // 使用document的body属性
+            document.body.removeChild(img)
+
+
+        }
+    </script>
+</body>
+
+</html>

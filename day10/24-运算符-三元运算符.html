@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        一元运算符：一个元素参与的运算  +、++
+        二元运算符：两个元素参与的运算  +、-、*、/、%、==、!=、>、<、>=、<=
+        三元运算符：三个元素参与的运算  条件运算符 variablename=(condition)?value1:value2
+        */
+        var a = 10;
+        var b = 90;
+        var c = 70;
+        var d = 100;
+        // 思路先比较前两个值的较大值,然后将较大值与下一个值比较
+        var max = a > b ? a : b;
+        max = max > c ? max : c;
+        max = max > d ? max : d;
+        console.log(max); // 100
+        // 三元运算符的嵌套
+        // 嵌套的可读性太差了,如果不加小括号，代码更是难以理解，不建议使用嵌套
+        alert(a > b ? (a > c ? (a > d ? a : d) : (c > d ? c : d)) : (b > c ? (b > d ? b : d) : (c > d ? c : d)));
+
+    </script>
+</body>
+
+</html>

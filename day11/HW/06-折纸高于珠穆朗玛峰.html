@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var altitude = 8844430;
+        var thickness = 0.1;
+        var count = 0;
+        while (thickness < altitude) {
+            thickness *= 2;
+            count++;
+        }
+        alert(`折了${count}次纸，厚度是${thickness}毫米，高于珠穆朗玛峰高度${altitude}毫米`)
+    </script>
+</body>
+
+</html>

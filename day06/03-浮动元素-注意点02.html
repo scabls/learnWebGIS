@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+span{
+    /* 
+    行级元素浮动后可以设置宽高
+        因为浮动之后会脱标，脱标后会不受标准流约束，可以设置宽高
+        但是不限于浮动，只要是脱标，比如定位（绝对定位）导致的行级元素脱标，都可以设置宽高
+    好处
+        将来无需给脱标的行级元素添加display: block这个属性,就可以给行级元素设置宽高 */
+    float: left;
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+}
+    </style>
+</head>
+
+<body>
+    <span>s1</span><span>s2</span>
+</body>
+
+</html>

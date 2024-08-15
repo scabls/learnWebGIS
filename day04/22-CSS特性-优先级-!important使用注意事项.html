@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 虽然!important优先级别最高，但它作用在li上，对于a是继承属性，继承的优先级最低 */
+        li {
+            color: red !important;
+        }
+
+        li a {
+            color: purple;
+        }
+
+        .myLink {
+            color: lightblue;
+        }
+
+        #myLi .myLink {
+            color: green;
+        }
+
+        #myLi a{
+            color: gray;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li id="myLi">
+                <a href="" class="myLink">新中地</a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

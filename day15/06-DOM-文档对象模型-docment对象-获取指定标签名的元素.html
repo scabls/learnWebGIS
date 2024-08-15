@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>Lorem, ipsum dolor.</li>
+        <li>Rerum, expedita! Amet?</li>
+        <li>Molestias, accusamus natus!</li>
+        <li>Illo, aperiam doloremque!</li>
+    </ul>
+    <script>
+        var liCol = document.getElementsByTagName('li')
+        // 生成伪数组
+        console.log(liCol);
+        console.dir(liCol);
+        // 将伪数组展开，再转成新数组
+        var liArr = [...liCol]
+        liArr.reverse()
+        for (i in liArr) {
+            liArr[i].style.color = 'lightblue'
+            console.log(liArr[i].innerHTML);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var itemPrice1 = +prompt("请输入商品1的价格：");
+        var itemPrice2 = +prompt("请输入商品2的价格：");
+        var itemPrice3 = +prompt("请输入商品3的价格：");
+        var discount = 0.85;
+        var totalPrice = itemPrice1 + itemPrice2 + itemPrice3
+        var finalPrice = itemPrice1 > 50 || itemPrice2 > 50 || itemPrice3 > 50 || totalPrice > 100 ?
+            totalPrice * discount : totalPrice;
+        alert("最终价格为：" + finalPrice);
+    </script>
+</body>
+
+</html>

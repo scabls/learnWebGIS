@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 第一步：引入字体包内的 inconfont.css -->
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+
+    <style>
+        /* 第三步：修改样式 */
+        /* 
+        问题
+            试图修改图标尺寸，没有成功
+        原因
+            修改字体大小没有成功因为iconfont自带的属性中有font-size属性。使用的是类选择器
+            而我们修改尺寸用的是元素选择器，优先级没有类选择器高
+        解决
+            可以使用类选择器来修改样式
+            建议只选择要修改的图标的类，不要选择所有图标的类
+        */
+
+
+        .icon-computer,
+        .icon-phone {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 第二步：挑选相应图标并获取类名，应用于页面： -->
+     <!-- 图标都是用类+伪元素插入的，可以用font-size调整大小，color调整颜色，但要注意选择器优先级 -->
+    <span class="iconfont icon-computer"></span>
+    <span class="iconfont icon-phone"></span>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Event Target vs CurrentTarget</title>
+</head>
+
+<body>
+    <div id="parent" style="padding: 20px; background-color: lightblue;">
+        Parent
+        <button id="child" style="margin: 20px;">Child</button>
+    </div>
+
+    <script>
+        document.getElementById('parent').addEventListener('click', function (event) {
+            console.log('Parent clicked');
+            console.log('target:', event.target); // 事件最初触发的元素
+            console.log('currentTarget:', event.currentTarget); // 当前正在处理事件的元素
+        });
+
+        document.getElementById('child').addEventListener('click', function (event) {
+            console.log('Child clicked');
+            console.log('target:', event.target); // 事件最初触发的元素
+            console.log('currentTarget:', event.currentTarget); // 当前正在处理事件的元素
+        });
+    </script>
+</body>
+
+</html>

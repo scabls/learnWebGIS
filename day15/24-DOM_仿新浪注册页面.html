@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 600px;
+            margin: 100px auto;
+        }
+
+        .message {
+            display: inline-block;
+            font-size: 12px;
+            color: #999;
+            background: url(images/mess.png) no-repeat left center;
+            padding-left: 20px;
+        }
+
+        .wrong {
+            color: red;
+            background-image: url(images/wrong.png);
+        }
+
+        .right {
+            color: green;
+            background-image: url(images/right.png);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register">
+        <input type="password" class="ipt">
+        <p class="message">请输入6~16位密码</p>
+    </div>
+    <script>
+        var input = document.querySelector('input')
+        var p = document.querySelector('p')
+        // 首先判断的事件是表单失去焦点 onblur
+        input.onblur = function () {
+            // 如何获取文本框中输入的内容,使用文本框对象的value属性
+            var password = this.value
+
+            // 如果输入不是6到16位，则提示错误信息颜色为红色 小图标变化
+            var pwdLen = this.value.length
+            if (!this.value.match(/^\w{6,16}$/)) {
+                p.classList.remove('right')
+                p.classList.add('wrong')
+            } else if (password == '12345678') {
+                // 如果输入正确则提示正确的信息颜色为绿色小图标变化
+                p.classList.remove('wrong')
+                p.classList.add('right')
+            } else {
+                p.classList.remove('right')
+                p.classList.add('wrong')
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

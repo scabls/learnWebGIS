@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //方式一：无参数，创建当前时间的时间对象
+        var d1 = new Date()
+        console.log(d1);
+
+        //方式二：使用带参的构造，构造出来的是指定的时间对象（）
+            // var d2 = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+            // year, month, day, hours, minutes, seconds, milliseconds 分别表示年、月、日、时、分、秒、毫秒。
+            // 注意：月份是从零开始计算的，7代表8月
+        var d2= new Date(2020,8,1)
+        console.log(d2);
+
+        //方式三：使用带参的构造，创建出来的也是指定的时间对象
+            // var d3 = new Date(dateString); 
+            // dateString 参数表示日期的字符串值。
+        var d3=new Date('2020-9-1')
+        console.log(d3);
+
+        /*
+        使用场景
+            只想获取当前时间使用方式一
+            想获取指定的时间对象使用方式三
+        */
+    </script>
+</body>
+
+</html>

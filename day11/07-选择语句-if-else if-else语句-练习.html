@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var money = prompt("请输入期望价格：（单位：万元）");
+        if (money > 35.99 || money < 9.99) {
+            alert('Are you OK ?!')
+        }else if (money <= 14.99) {
+            alert('雷神！')
+        }else if (money <= 19.99) {
+            alert('雷总')
+        }else if (money <= 24.99) {
+            alert('雷子？')
+        }else {
+            alert('避雷！')
+        }
+    </script>
+</body>
+
+</html>

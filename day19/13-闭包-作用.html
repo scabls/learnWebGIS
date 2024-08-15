@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            aspect-ratio: 1;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var num3 = 30
+        function f1() {
+            var num1 = 10
+
+            function f2() {
+                var num2 = 20
+                function fn() {
+                    // 函数内部可以读取全局变量，也可以通过闭包访问其余函数外变量
+                    console.log(num1, num2, num3);
+                }
+                fn()
+                console.dir(fn);
+            }
+            f2()
+        }
+        f1()
+        // 在函数内部无法读取函数内部的局部变量
+        console.log(num1, num2);
+
+    </script>
+</body>
+
+</html>

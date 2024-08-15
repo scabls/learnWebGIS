@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        方式一：常规方式:先定义，再初始化
+        */
+        // 创建空数组--对象的创建方式
+        var arr1 = new Array()
+        console.log(arr1);
+        //    赋值
+        arr1[0] = 'aaaa'
+        arr1[1] = 'bbbb'
+        arr1[2] = 'cccc'
+        console.log(arr1);
+        /*
+        方式二：简介方式:定义时初始化
+        */
+       var arr2=new Array('aaaa','bbbb','cccc')
+       console.log(arr2);
+        /*
+        方式三：字面量
+            字面上的含义（[]代表数组，{}代表对象）
+            本质上还是使用new Array来创建的
+        */
+       var arr3=['aaaa','bbbb','cccc']    
+       console.log(arr3);   
+    </script>
+</body>
+
+</html>

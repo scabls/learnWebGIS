@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+
+<body>
+    书名：<input type="text" id="bookname" name="bookname"><br />
+    作者：<input type="text" id="bookauthor" name="bookauthor"><br />
+    价格：<input type="text" id="bookprice" name="bookprice"><br />
+    折扣：<input type="text" id="booksale" name="booksale"><br />
+    <input type="button" id="totalBtn" value="计算折扣价">
+
+    <!--点击按钮弹出以下内容-->
+    <!--这本书名为<<abc>>,zhangsan编著的书，折扣为:0.8折，折扣后价格为:96-->
+
+    <script>
+        //通过三种方法获取(getElementById,getElementsByTagName,querySelector) 书名 作者 价格 折扣 中的数据
+        var bookname = document.getElementById('bookname')
+        var bookauthor = document.getElementsByTagName('input')[1]
+        var bookprice = document.getElementsByName('bookprice')[0]
+        var booksale = document.querySelector('#booksale')
+        var button = document.querySelector('#totalBtn')
+        button.onclick = function () {
+            alert(
+    `这本书名为《${bookname.value}》,${bookauthor.value}编著的书，折扣为:${booksale.value}折，折扣后价格为:${bookprice.value * booksale.value}`
+            )
+        }
+
+
+    </script>
+</body>
+
+</html>

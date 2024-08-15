@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = parseInt(prompt("请输入第一个数字："));
+        var b = parseFloat(prompt("请输入第二个数字："));
+        alert(a + '+' + b + '=' + (a + b));
+        alert(a + '-' + b + '=' + (a - b));
+        // parseInt():    可解析一个字符串，并返回一个整数
+        // parseFloat():  可解析一个字符串，并返回一个浮点数
+
+        /* parseInt()和Number()区别
+        相同点
+            都可以将数字类型的字符串转成数值
+        不同点
+            parseInt可以逐个解析，直到遇到非数字的字符才会停止
+            Number不会逐个解析，只要有非数字的字符直接显示NaN
+        */
+        console.log(parseInt("123.456")); // 123
+        console.log(Number("123.456a")); // NaN
+
+    </script>
+</body>
+
+</html>

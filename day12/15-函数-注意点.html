@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function myAdd(num1, num2) {
+            return num1 + num2;
+        }
+        document.write(myAdd(1, 100));
+        document.write(`<br>`)
+        // 函数名代表整个函数,类似数组名代表整个数组,因为它们都是对象类型
+        document.write(myAdd)
+        document.write(`<br>`)
+        // 若实参个数小于形参，没有被赋值的形参的值就是undefined
+        document.write(myAdd(1));// NaN
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 垂直排布的两个盒子，设置上边盒子的下外边距，设置下边盒子的上外边距，最终二者间隙为margin中的较大值 */
+
+        /* 应用：垂直方向上的距离，只需设置其中一个元素的外边距即可 */
+        .c1 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            
+
+            margin-bottom: 100px;
+        }
+        .c2 {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            
+
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="c1"></div>
+    <div class="c2"></div>
+    
+    <!-- 
+    每一个P标签都有默认的上下外边距,这里也出现了margin合并情况
+    -->
+    <p>第1段</p>
+    <p>第2段</p>
+    <p>第3段</p>
+    <p>第4段</p>
+</body>
+</html>

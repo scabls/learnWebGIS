@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 静态成员
+        function Student() {
+        }
+        // 添加静态属性
+        Student.country = '中国'
+        // 添加静态方法
+        Student.exam = function () {
+            alert('考试')
+        }
+
+        // 调用--无需创建对象，直接使用构造函数名调用
+        console.log(Student.country);
+        Student.exam()
+
+        console.dir(Student);
+    </script>
+</body>
+
+</html>

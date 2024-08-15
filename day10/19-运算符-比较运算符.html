@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* > < >= <= == != === !==  */
+        // 特点：结果都是boolean值，将来可以作为判断/循环语句的条件 ----条件表达式
+
+        console.log(5 > 3); // true
+        console.log(5 < 3); // false
+        console.log(5 >= 3); // true
+        console.log(5 <= 3); // false
+
+        console.log(10 == "10");// true == 等于 只比较值，不比类型
+        console.log(10 === "10"); // false  === 绝对等于 比较值和类型
+        console.log(10 != "10"); // false   != 只比较值，不比类型
+        console.log(10 !== "10"); // true !== 不绝对等于（值和类型有一个不相等，或两个都不相等）
+
+
+        //NaN比较，六亲不认
+        console.log(NaN == NaN); // false
+        console.log(NaN === NaN); // false
+
+    </script>
+</body>
+
+</html>

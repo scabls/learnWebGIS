@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 打印1到10
+        for (var i = 1; i <= 10; i++) {
+            console.log(i);
+        }
+        // 2. 打印10到1
+        for (var i = 10; i >= 1; i--) {
+            console.log(i);
+        }
+
+        // 3. 求1到10的和
+
+        // 第一步：在循环外定义一个求和变量(容器)
+        var sum = 0;
+        for (var i = 1; i <= 10; i++) {
+            // 第二步：在循环中，拿到每一个元素，累加到求和变量中
+            sum += i;
+        }
+        // 第三步：循环结束后，求和变量中的值，就是求和结果
+        console.log("1到10的和为：" + sum);
+
+
+        // 4. 求1到10的偶数和
+
+        var sum = 0;
+        for (var i = 1; i <= 10; i++) {
+            //在累加之前做一个判断，只累加偶数
+            if (i % 2 == 0) {
+                sum += i;
+            }
+        }
+        console.log("1到10的偶数和为：" + sum);
+
+
+        // 5. 1-10中，除3余1打印出来，除3余2打印出来，剩余的打印出来
+        // 定义三个字符串，用字符串拼接存储数字
+        var group1 = "";
+        var group2 = "";
+        var group3 = "";
+
+        for (var i = 1; i <= 10; i++) {
+            if (i % 3 == 1) {
+                group1 += i + " ";
+            } else if (i % 3 == 2) {
+                group2 += i + " ";
+            } else {
+                group3 += i + " ";
+            }
+        }
+        console.log("1-10中，除3余1：" + group1);
+        console.log("1-10中，除3余2：" + group2);
+        console.log("1-10中，其他：" + group3);
+    </script>
+</body>
+
+</html>

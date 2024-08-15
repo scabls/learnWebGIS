@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        Promise.resolve() 静态方法将给定的值转换为一个 Promise。
+            相当于使用new创建了一个promise对象，状态属性是fulfilled，已兑现；结果属性是resolve中给定的值
+        */
+        const p1 = Promise.resolve(111)
+        console.dir(p1);
+        // 等同于：
+        const p2 = new Promise((resolve, reject) => { resolve(111) })
+        console.dir(p2);
+
+        // 使用then为已敲定（兑现或拒绝）的Promise设置回调函数，获得敲定值并返回新Promise
+        p1.then(value => console.log(value))
+        p2.then(value => console.log(value))
+
+    </script>
+</body>
+
+</html>

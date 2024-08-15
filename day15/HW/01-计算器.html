@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 1fr;
+            gap: 2rem;
+            aspect-ratio: 4/5;
+            width: 30%;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #495678;
+            border-radius: 20px;
+        }
+
+        main div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+
+        .screen {
+            grid-column: 2/5;
+            overflow: hidden;
+            background-color: #98D1DC;
+            color: #FFFFFF;
+        }
+
+        .clear,
+        .output {
+            background-color: #E3844C;
+            color: #FFFFFF;
+        }
+
+        .number {
+            background-color: #72778B;
+            color: #FFFFFF;
+        }
+
+        .operator {
+            background-color: #FFFFFF;
+        }
+
+        .pressDown {
+            background-color: #98D1DC;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <main>
+            <div class="clear">C</div>
+            <div class="screen"></div>
+            <div class="number">7</div>
+            <div class="number">8</div>
+            <div class="number">9</div>
+            <div class="operator">+</div>
+            <div class="number">4</div>
+            <div class="number">5</div>
+            <div class="number">6</div>
+            <div class="operator">*</div>
+            <div class="number">1</div>
+            <div class="number">2</div>
+            <div class="number">3</div>
+            <div class="operator">-</div>
+            <div class="number">0</div>
+            <div class="operator">.</div>
+            <div class="operator">/</div>
+            <div class="output">=</div>
+        </main>
+    </div>
+
+    <script>
+        var btns = document.querySelectorAll('main div:not(.screen)')
+        var screen = document.querySelector('.screen')
+        var flag = false //为什么把flag放外面？
+        btns.forEach(function (item) {
+            item.onmousedown = function () {
+                this.classList.add('pressDown')
+            }
+            item.onmouseup = function () {
+                this.classList.remove('pressDown')
+            }
+            item.onclick = function () {
+                var content = item.innerText
+                if (content == 'C') {
+                    screen.innerHTML = ''
+                } else if (content == '=') {
+                    flag = true
+                    if (screen.innerHTML != '') {
+                        screen.innerHTML = eval(screen.innerText)
+                    }
+                } else {
+                    if (flag) {
+                        screen.innerHTML = ''
+                        screen.innerHTML += item.innerText
+                        flag = false
+                    } else {
+                        screen.innerHTML += item.innerText
+                    }
+
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

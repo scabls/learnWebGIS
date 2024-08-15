@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        双色球由33个红球和16个蓝球组成，1注双色球包括6个不重复的红球和1个蓝球。
+            实现“随机一注”功能，
+            以字符串形式输出“随机一注”结果，选中的红蓝球用"|“隔开，
+            红球在前，号码间用逗号隔开，
+            如"06,10,13,18,23,27|05”
+        */
+        var red = [];
+        while (true) {
+            for (var i = 0; i < 6; i++) {
+                red[i] = Math.floor(Math.random() * 33) + 1
+                if (red[i] < 10) {
+                    red[i] = '0' + red[i]
+                }
+            }
+            var tempArr = red.filter(function (item, index, arr) {
+                return arr.indexOf(item) == index
+            })
+            if (red.length == tempArr.length) {
+                break
+            }
+        }
+        var blue = Math.floor(Math.random() * 16) + 1
+        if (blue < 10) {
+            blue = '0' + blue
+        }
+        var note = red.join() + '|' + blue
+        document.write(note)
+    </script>
+</body>
+
+</html>

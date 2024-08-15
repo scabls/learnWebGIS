@@ -1,0 +1,641 @@
+/* 样式表中通过:root伪类抽取了常用的公共样式 通过var()使用 
+:root 选择器是一个伪类，表示文档根元素，所有主流浏览器均支持 ，除了 IE8 及更早的版本。
+在:root中声明相当于全局属性，只要当前页面引用了:root所在文件，都可以使用var()来引用。
+*/
+/* 公共样式 */
+
+:root {
+    /* 颜色相关样式 */
+    /* 本项目中的颜色模式采用hsl 可以理解为和RGB类似 3个参数分别表示色相 饱和度 和明度 一般由设计师决定 */
+    --sonic-silver: hsl(0, 0%, 47%);
+    --marigold: hsl(39, 96%, 48%);
+    --white: hsl(0, 0%, 100%);
+    --jet: hsl(0, 0%, 21%);
+    --light-gray: hsl(0, 0%, 83%);
+    --davys-gray: hsl(0, 0%, 30%);
+    /* 字体相关样式 */
+    --ff-wryh: "微软雅黑", sans-serif;
+    --fs-70: 7rem;
+    --fs-42: 4.2rem;
+    --fs-38: 3.8rem;
+    --fs-36: 3.6rem;
+    --fs-34: 3.4rem;
+    --fs-32: 3.2rem;
+    --fs-30: 3rem;
+    --fs-24: 2.4rem;
+    --fs-20: 2rem;
+    --fs-18: 1.8rem;
+    --fs-14: 1.4rem;
+    --fs-12: 1.2rem;
+    /* 间距 */
+    --section-padding-100: 100px;
+    /* 圆角 */
+    --radius-circle: 50%;
+    --radius-20: 20px;
+    --radius-15: 15px;
+    --radius-10: 10px;
+    /* 阴影 */
+    --shadow-1: 0 0 30px 4px hsla(0, 0%, 0%, 0.05);
+    --shadow-2: -1px 15px 26px -4px hsla(0, 5%, 61%, 0.15);
+    /* 过渡动画 */
+    --transition-1: 0.25s ease;
+    --transition-2: 0.5s ease;
+}
+
+/* 默认样式修改 */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+/* 常见行内元素改为块级元素 */
+a,
+img,
+span,
+input,
+button {
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    height: auto;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+.w {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+html {
+    font-family: var(--ff-wryh);
+    /* rem参照的基准值 */
+    font-size: 10px;
+    /* 让滚动条滑动更顺畅 */
+    scroll-behavior: smooth;
+}
+
+/* =========== 设置通用样式 ========= */
+
+.btn {
+    background-color: var(--marigold);
+    color: var(--white);
+    font-family: var(--ff-wryh);
+    border-radius: var(--radius-10);
+}
+
+
+/* =========== 设置主容器样式 ========= */
+.container {
+    background-color: var(--white);
+}
+
+
+/* =========== 设置header部分样式 ========= */
+.header {
+    padding: 0 var(--section-padding-100);
+    background-image: url(../images/hero-bg.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* ======== 设置header中nav部分样式 ========= */
+.header nav {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.header nav .logo,
+.header nav .buy-btn {
+    flex: 2 2 20%;
+}
+
+.header nav .logo {
+    display: flex;
+    align-items: center;
+
+}
+
+.header nav ul {
+    flex: 6 6 60%;
+    display: flex;
+}
+
+.header nav ul li a {
+    padding: 30px 50px;
+    font-size: var(--fs-18);
+}
+
+.header nav .buy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header nav .buy-btn .fa-cart-arrow-down {
+    padding: var(--fs-12);
+    background-color: var(--white);
+    color: var(--marigold);
+    font-size: var(--fs-18);
+    border-radius: var(--radius-10);
+}
+
+.header nav .buy-btn .btn {
+    padding: var(--fs-14) var(--fs-20);
+    margin-left: 2rem;
+    font-size: var(--fs-18);
+
+}
+
+/* ======== 设置header中section部分样式 ========= */
+.header .order-1 {
+    display: flex;
+}
+
+
+.header .order-1 article {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.header .order-1 article h1 {
+    font-size: var(--fs-70);
+    line-height: 1.5;
+}
+
+.header .order-1 article p {
+    margin: 20px 0;
+    font-size: var(--fs-14);
+    color: var(--sonic-silver);
+}
+
+.header .order-1 article .btn {
+    padding: var(--fs-14) var(--fs-18);
+    margin-top: 15px;
+    font-size: var(--fs-14);
+
+}
+
+.header .order-1 aside {
+    flex: 1 1 50%;
+    display: flex;
+}
+
+.header .order-1 aside div {
+    position: relative;
+}
+
+.header .order-1 aside img:nth-child(2) {
+    position: absolute;
+    bottom: 5%;
+}
+
+.header .order-1 aside img:nth-child(3) {
+    position: absolute;
+    top: 11.5%;
+    right: -5%;
+}
+
+/* ========== 设置method部分样式 ========= */
+.method {
+    padding: var(--section-padding-100) var(--section-padding-100) 0;
+    text-align: center;
+}
+
+.method h2 {
+    margin-bottom: 30px;
+    font-size: var(--fs-42);
+}
+
+.method p {
+    font-size: var(--fs-14);
+    color: var(--sonic-silver);
+}
+
+.method article {
+    display: flex;
+    gap: 10px;
+    margin-top: var(--section-padding-100);
+}
+
+.method article div {
+    flex: 33%;
+}
+
+.method article div img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.method article div h5 {
+    margin: 30px auto;
+    font-size: var(--fs-24);
+    color: var(--marigold);
+}
+
+/* ========== 设置restaurant部分样式 ========= */
+
+.restaurant {
+    display: flex;
+    flex-direction: column;
+    padding: var(--section-padding-100);
+}
+
+
+.restaurant article {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+}
+
+.restaurant article div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.restaurant article div h2 {
+    font-size: var(--fs-42);
+}
+
+.restaurant article div p {
+    margin-top: 10px;
+    font-size: var(--fs-14);
+    color: var(--sonic-silver);
+}
+
+.restaurant article div img {
+    border-radius: var(--radius-20);
+    margin-bottom: 20px;
+}
+
+.restaurant article div h6 {
+    margin-top: 10px;
+    font-size: var(--fs-20);
+}
+
+.restaurant article div .fa-star {
+    font-size: var(--fs-18);
+}
+
+.restaurant article div section {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.restaurant article div section span {
+    padding: var(--fs-12) var(--fs-14);
+    border: 1px solid var(--marigold);
+    color: var(--marigold);
+    font-family: var(--ff-wryh);
+    font-size: var(--fs-12);
+    border-radius: var(--radius-10);
+}
+
+.restaurant article div:nth-child(n+2) p {
+    color: black;
+}
+
+.restaurant .btn {
+    align-self: center;
+    padding: var(--fs-12) var(--fs-14);
+    margin-top: 50px;
+    font-size: var(--fs-14);
+}
+
+/* ==========设置点单2部分样式 ========= */
+.order-2 {
+    display: flex;
+    padding: var(--section-padding-100);
+    background-image: url(../images/hero-bg.png);
+    background-repeat: no-repeat;
+}
+
+.order-2 aside {
+    flex: 50%;
+    display: flex;
+}
+
+.order-2 aside div {
+    position: relative;
+}
+
+
+.order-2 article {
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.order-2 article h3 {
+    font-size: var(--fs-38);
+}
+
+.order-2 article p {
+    margin: 10px 0;
+    font-size: var(--fs-14);
+    color: var(--sonic-silver);
+}
+
+.order-2 article .btn {
+    padding: var(--fs-14) var(--fs-18);
+    margin-top: 15px;
+    font-size: var(--fs-14);
+
+}
+
+/* ==========achievement部分样式 ========= */
+.achievement {
+    display: flex;
+    gap: 20px;
+    padding: 0 var(--section-padding-100);
+}
+
+.achievement h4,
+.achievement div {
+    flex: 25%;
+}
+
+.achievement h4 {
+    align-self: center;
+    font-size: var(--fs-36);
+}
+
+.achievement div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+    font-size: var(--fs-14);
+    color: var(--sonic-silver);
+    border-radius: var(--radius-15);
+    box-shadow: var(--shadow-1);
+}
+
+.achievement div span {
+    margin-right: 20px;
+    font-size: var(--fs-38);
+    font-weight: bold;
+    color: var(--marigold);
+}
+
+
+/* ==========evaluation部分样式 ========= */
+.evaluation {
+    padding: var(--section-padding-100);
+}
+
+.evaluation {
+    display: flex;
+}
+
+
+.evaluation article {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.evaluation article h4 {
+    margin-top: 100px;
+    font-size: var(--fs-36);
+    line-height: 1.5;
+}
+
+.evaluation article p {
+    margin: 20px 0;
+    font-size: var(--fs-14);
+    color: var(--sonic-silver);
+    line-height: 2;
+}
+
+.evaluation article div {
+    display: flex;
+    align-items: center;
+}
+
+.evaluation article div span {
+    margin-left: 10px;
+    font-size: var(--fs-14);
+}
+
+.evaluation article div span .fa-stars {
+    font-size: var(--fs-12);
+}
+
+.evaluation aside {
+    flex: 1 1 50%;
+    display: flex;
+}
+
+.evaluation aside div {
+    position: relative;
+}
+
+/* ==========join部分样式 ========= */
+
+.join {
+    padding: var(--section-padding-100);
+    background-color: var(--jet);
+}
+
+.join h2 {
+    font-size: var(--fs-42);
+    color: var(--white);
+    text-align: center;
+}
+
+.join article {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 60px;
+}
+
+.join article aside {
+    flex: 50%;
+    position: relative;
+    border: 5px solid var(--marigold);
+    border-radius: var(--radius-20);
+}
+
+.join article aside img {
+    object-fit: cover;
+    border-radius: var(--radius-15);
+}
+
+.join article aside div {
+    position: absolute;
+    left: 40px;
+    bottom: -30px;
+}
+
+.join article aside div h6 {
+    margin: 20px;
+    font-size: var(--fs-24);
+    font-weight: bold;
+    color: var(--white);
+}
+
+.join article aside div span {
+    padding: 20px 40px;
+    font-size: var(--fs-18);
+}
+
+/* ==========设置order-3部分样式 ========= */
+.order-3 {
+    display: flex;
+    gap: 50px;
+    padding: var(--section-padding-100);
+}
+
+.order-3 aside {
+    flex: 50%;
+    display: flex;
+}
+
+.order-3 aside div {
+    position: relative;
+}
+
+
+.order-3 article {
+    flex: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.order-3 article h3 {
+    font-size: var(--fs-38);
+    line-height: 1.5;
+}
+
+.order-3 article form {
+    position: relative;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.order-3 article form input[type="text"] {
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    box-shadow: var(--shadow-2);
+    border-radius: var(--radius-10);
+}
+
+.order-3 article form .btn {
+    position: absolute;
+    left: -15px;
+    padding: 15px 40px;
+    margin-top: 20px;
+    font-size: var(--fs-14);
+}
+
+/* ==========设置footer部分样式 ========= */
+footer {
+    background-color: var(--jet);
+    padding: var(--section-padding-100) var(--section-padding-100) 0;
+}
+
+footer section {
+    display: flex;
+    padding-bottom: 50px;
+    border-bottom: 1px solid var(--davys-gray);
+}
+
+footer section .left {
+    flex: 35%;
+}
+
+footer section .left h3 {
+    margin: 20px 0;
+    font-size: var(--fs-38);
+    line-height: 1.5;
+    color: var(--white);
+}
+
+footer section .left p {
+    color: var(--light-gray);
+    font-size: var(--fs-14);
+}
+
+footer section .center {
+    flex: 30%;
+    padding-left: 50px;
+}
+
+footer section .right {
+    flex: 35%;
+}
+
+footer section .center dl dt,
+footer section .right dl dt {
+    font-size: var(--fs-24);
+    font-weight: bold;
+    color: var(--davys-gray);
+    padding-bottom: 12.5px;
+}
+
+footer section .center dl dd,
+footer section .right dl dd {
+    color: var(--light-gray);
+    font-size: var(--fs-14);
+    padding: 12.5px 0;
+}
+
+footer section .right dl dd:first-of-type {
+    border-bottom: 1px solid var(--davys-gray);
+}
+
+footer section .right dl dd:nth-of-type(n+2) {
+    padding: 30px 0 0;
+}
+
+footer section .right dl dd i {
+    margin-right: 10px;
+}
+
+footer>p {
+    padding: 30px 0;
+    color: var(--davys-gray);
+    font-size: var(--fs-14);
+    text-align: center;
+}

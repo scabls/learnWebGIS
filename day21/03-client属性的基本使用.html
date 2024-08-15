@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+*{
+    box-sizing: border-box;
+}
+        div {
+            width: 200px;
+            aspect-ratio: 1;
+            background-color: lightblue;
+            padding: 10px;
+            margin: 11px;
+            border: 12px solid pink;
+            overflow: auto; /* 滚动条会占用可视区的空间，但不属于可视区 */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        头顶一块布，天下我最富
+        头顶一块布，天下我最富
+        头顶一块布，天下我最富
+        头顶一块布，天下我最富
+        头顶一块布，天下我最富
+        头顶一块布，天下我最富
+        头顶一块布，天下我最富
+        头顶一块布，天下我最富
+        头顶一块布，天下我最富
+        头顶一块布，天下我最富
+        头顶一块布，天下我最富
+        头顶一块布，天下我最富
+        头顶一块布，天下我最富
+        头顶一块布，天下我最富
+    </div>
+
+    <script>
+        const div = document.querySelector('div')
+
+        console.log(div.clientTop); //上边框
+        console.log(div.clientLeft); //左边框
+        console.log(div.clientWidth); //可视区宽度，仅包含内容区和内边距
+        console.log(div.clientHeight); //可视区高度，仅包含内容区和内边距
+    </script>
+</body>
+
+</html>

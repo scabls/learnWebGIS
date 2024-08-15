@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        传统复制粘贴
+            1.代码冗余，不简洁
+            2.不利于次数统计和后期维护
+            3.没有技术含量。容易被歧视
+
+        解决方式
+            循环语句
+        
+        for循环
+            for(初始化语句; 条件判断语句; 循环增量语句){
+                循环体语句
+            }
+        
+        执行流程
+            1.初始化语句：声明变量i，并初始化为0
+            2.条件判断语句：判断i是否小于65，如果是，则执行循环体语句
+            3.循环增量语句：将i的值加1
+            4.循环体语句：输出"Hello"和i的值
+        执行顺序
+            1 -- 2 -- 4 -- 3 -- 2 -- 4 -- 3······（当i不小于65时，跳出循环）
+        */
+        for (let i = 0; i < 65; i++) {
+            console.log("Hello", i);
+        }
+    </script>
+</body>
+</html>

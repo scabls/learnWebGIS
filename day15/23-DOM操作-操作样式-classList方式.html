@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+        }
+
+        .c1 {
+            background-color: lightpink;
+            border-radius: 50%;
+        }
+
+        .c2 {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1"></div>
+
+    <script>
+        var div = document.querySelector('div')
+        div.onclick = function () {
+            // 添加
+            this.classList.add('c1', 'c2') 
+            // 切换
+            // this.classList.toggle('c2')
+            //判断
+            // console.log(this.classList.contains('c1'));
+            // 移除
+            // this.classList.remove('c1')
+        }
+
+    </script>
+</body>
+
+</html>

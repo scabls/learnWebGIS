@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            position: relative;
+            overflow: hidden;
+            width: 1366px;
+            height: 600px;
+            background-image: url(./images/bg.jpg);
+            margin: 0 auto;
+        }
+
+        .container::before,.container::after {
+            content: "";
+            width: 50%;
+            height: 600px;
+            background-image: url(./images/fm.jpg);
+            transition: all 2s;
+        }
+
+        .container::after {
+            background-position: -100%;
+        }
+        /* 注意使用伪元素时中间不要有空格 */
+        .container:hover::before {
+            transform: translateX(-100%);
+        }
+
+        .container:hover::after {
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"></div>
+</body>
+
+</html>

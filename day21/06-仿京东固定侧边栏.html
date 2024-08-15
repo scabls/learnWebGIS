@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .slider-bar {
+            position: absolute;
+            left: 50%;
+            top: 300px;
+            margin-left: 600px;
+            width: 45px;
+            height: 130px;
+            background-color: pink;
+        }
+
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+
+        .header {
+            height: 150px;
+            background-color: purple;
+        }
+
+        .banner {
+            height: 250px;
+            background-color: skyblue;
+        }
+
+        .main {
+            height: 1000px;
+            background-color: yellowgreen;
+        }
+
+        span {
+            display: none;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+
+    <script>
+        const siderBar = document.querySelector('.slider-bar')
+        const goBack = document.querySelector('.goBack')
+        const banner = document.querySelector('.banner')
+        const main = document.querySelector('.main')
+
+        const bannerY = banner.offsetTop
+        const siderBarY = siderBar.offsetTop
+        const mainY = main.offsetTop
+
+        const fixedY = siderBarY - bannerY
+
+        window.addEventListener('scroll', () => {
+            if (scrollY >= bannerY) {
+                siderBar.style.position = 'fixed'
+
+                // console.log('重新计算前siderBar.offsetTop：',siderBar.offsetTop);
+                // console.log('重新计算前banner.offsetTop：',banner.offsetTop);
+
+                // siderBar.style.top = `${siderBar.offsetTop-banner.offsetTop}px` // 不行，因为（）
+                // /* 
+                // 因为offsetTop是动态获取的，
+                // 所以改变siderbar的style.top后，下次用于计算的siderbar.offsetTop就会变化，也导致算出来的style.top又会改变。
+                // 每一次滚动都会导致style.top和offsetTop不断更新 
+                // */
+
+                // console.log('计算后的siderBar.style.top：',siderBar.style.top);
+                // console.log('计算后的siderBar.offsetTop：',siderBar.offsetTop);
+                siderBar.style.top = `${fixedY}px`
+            } else {
+                siderBar.style.position = 'absolute'
+                siderBar.style.top = `300px`
+            }
+
+            if (scrollY >= mainY) {
+                goBack.style.display = 'block'
+            } else {
+                goBack.style.display = 'none'
+            }
+        })
+    </script>
+</body>
+
+</html>

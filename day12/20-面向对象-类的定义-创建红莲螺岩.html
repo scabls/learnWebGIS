@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 机甲
+        function Mecha(name, pilot, power) {
+            this.name = name
+            this.pilot = pilot
+            this.power = power
+            this.evolution = function (level) {
+                switch (level) {
+                    case 1:
+                        alert('level 1')
+                        break
+                    case 2:
+                        alert('level 2')
+                        break
+                    case 3:
+                        alert('level 3')
+                        break
+                    default:
+                        alert('螺旋力不足')
+                }
+            }
+        }
+        //创建 机甲 红莲螺岩
+        var lagann = new Mecha('Gurren Lagann', 'Simon', 'infinite')
+        console.log(lagann);
+        lagann.evolution(3);
+
+    </script>
+</body>
+
+</html>

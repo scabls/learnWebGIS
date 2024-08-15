@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="radio" data-type="pay_type" data-value="10">本周免费</div>
+    <div class="radio" data-type="pay_type" data-value="11">新手推荐</div>
+    <script>
+        /*
+        H5可以通过 data-自定义属性名 的方式给元素添加自定义属性
+    
+        设置
+            直接在标签上设置：<标签名 data-自定义属性名="值">
+            通过js代码设置：元素对象.dataset.自定义属性名='值'
+                两种方式值使用单双引号都可以，只不过为了区分，html双引号，js单引号
+        获取自定义属性值
+            元素对象.dataset.自定义属性名
+        */
+
+        var radio1 = document.querySelector('.radio')
+        radio1.dataset.name = 'free'
+        console.log(radio1.dataset.type);
+        console.log(radio1.dataset.value);
+    </script>
+</body>
+
+</html>

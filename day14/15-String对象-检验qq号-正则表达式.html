@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+          写一个方法校验qq号
+           1,必须是5-15位
+           2,第一位不能是0
+           3,全部都是数字
+       */
+      qq='3'
+        var reg =/^[1-9]\d{4,14}$/
+        var res1 =  reg.test(qq)
+        var res2 =  qq.match(reg)!=null
+        console.log(res1);
+        console.log(res2);
+    </script>
+</body>
+
+</html>

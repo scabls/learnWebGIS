@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        手动抛出异常
+            程序可能没有问题，程序员根据变成需要，通过throw关键字人为抛出异常，达到某些目的
+            手动抛出异常后，后续代码也是无法执行
+            一般配合异常的处理，来完成某些特殊需求
+        */
+        let age = 10
+        console.log(111);
+        console.log(222);
+        if (age <= 18) {
+            throw '未成年'
+        }
+        console.log(333);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        使用链式编程的特点
+        new promise(代码1).then(代码2).then(代码3) 
+        代码1是同步代码，代码2和代码3是异步代码 
+        永远只能保证 代码1完成之后代码2开始执行,
+        不能保证代码3在代码2后面执行
+        */
+        new Promise((resolve, reject) => 
+            setTimeout(() => {
+                console.log('first');
+                resolve()
+            }, 1000)
+        ).then(() => 
+            new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log('second');
+                    resolve()
+                }, 2000)
+            })
+        ).then(() => 
+           new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log('third');
+                    resolve()
+                }, 3000)
+            })
+        )
+
+
+    </script>
+</body>
+
+</html>

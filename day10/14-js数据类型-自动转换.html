@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        /* 
+        自动类型转换
+            隐式转换（转换的过程是看不到的，但是它的内部确实做了转换）
+            
+        特点
+            任意类型数据+字符串，执行的就是字符串的拼接
+            true、false、null跟数字运算的时候，都会被转为数值
+
+        对于+运算的规律
+            如果有字符串参与运算，则会自动转换为字符串的拼接
+            如果没有字符串参与，默认使用Number()函数进行转换，再进行运算
+            */
+        var a = 10;
+        var b = "20";
+        var c = true;
+        var d = null;
+        var e;
+        console.log(a + d);//10 隐含了将null转为数值0的过程（自动转换）
+        console.log(b + d);//"20null" 隐含了将null转为字符串"null"的过程（自动转换）
+        console.log(c,typeof d,c + d);//1 隐含了将true转为数值1和null转为数值0的过程（自动转换）
+        console.log(a + e);//NaN 隐含了将undefined转为NaN的过程（自动转换）
+    </script>
+</body>
+
+</html>

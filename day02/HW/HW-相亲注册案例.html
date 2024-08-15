@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>青春不常在，抓紧搞学习</h1>
+    <hr>
+    <form action="./">
+        <label for="name">昵称</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <br>
+        <label>性别：</label>
+        <label for="male">男</label>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="female">女</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <br><br>
+        <label for="city">所在城市：</label>
+        <select id="city" name="city" required>
+            <option value="" disabled selected>请选择一个城市</option>
+            <option value="shanghai">上海</option>
+            <option value="beijing">北京</option>
+            <option value="guangzhou">广州</option>
+        </select>
+        <br><br>
+        <label>婚姻状况：</label>
+        <label for="unmarried">未婚</label>
+        <input type="radio" id="unmarried" name="marriage" value="unmarried" required>
+        <label for="married">已婚</label>
+        <input type="radio" id="married" name="marriage" value="married">
+        <label for="secret">保密</label>
+        <input type="radio" id="secret" name="marriage" value="secret">
+        <br><br>
+        <label>喜欢的类型：</label>
+        <input type="checkbox" id="lovely" name="type" value="lovely">
+        <label for="lovely">可爱</label>
+        <input type="checkbox" id="sexy" name="type" value="sexy">
+        <label for="sexy">性感</label>
+        <input type="checkbox" id="royal" name="type" value="royal">
+        <label for="royal">御姐</label>
+        <input type="checkbox" id="loly" name="type" value="loly">
+        <label for="loly">萝莉</label>
+        <br><br>
+        <label for="introduction">个人介绍</label>
+        <br><br>
+        <textarea name="introduction" id="introduction" cols="30" rows="10" placeholder="请输入个人介绍" required></textarea>
+        <br>
+
+        <h3>我承诺</h3>
+        <ul>
+            <li>年满18岁,单身</li>
+            <li>抱着严谨的态度</li>
+            <li>真诚寻找另一半</li>
+        </ul>
+        <input type="checkbox" id="promise" name="promise" value="promise" required>
+        <label for="">我同意所有条款</label>
+        <br><br>
+        <input type="submit" value="免费注册">
+        <input type="reset">
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function getData(method, url) {
+
+            const xhr = new XMLHttpRequest()
+            xhr.open(method, url)
+            xhr.addEventListener('readystatechange', function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    return this.responseText
+                }
+            })
+            xhr.send()
+
+        }
+        console.log(getData('GET', 'http://project.x-zd.net:3001/apis/herolist'));//undefiend
+        /* 
+        从服务器获取数据，是一个耗时操作，直接返回数据，是拿不到数据的
+        需要等待获取到服务器返回的数据之后，再把这个数据传过去
+        */
+    </script>
+</body>
+
+</html>

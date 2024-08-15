@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        .son {
+            /* 不设置宽度，默认是auto，一般自动适应父元素的宽度 */
+            height: 50px;
+            background-color: green;
+            /* 设置左右内边距，content的width因为是auto，所以会自动调整，适应父元素的宽度 */
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+
+</html>

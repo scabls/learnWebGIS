@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class MyClass {
+            constructor() {
+                this.name = 'MyClass Instance';
+                // 构造函数内方法
+                this.arrowMethod1 = () => {
+                    console.log(this.name);
+                };
+            }
+            // 实例字段
+            arrowMethod2 = () => {
+                console.log(this.name);
+            };
+        }
+
+        const instance = new MyClass();
+        console.dir(instance);
+        instance.arrowMethod1(); // 输出：MyClass Instance
+        instance.arrowMethod2(); // 输出：MyClass Instance
+    </script>
+</body>
+
+</html>

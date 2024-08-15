@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 逻辑与的短路问题
+        // 如果左边的表达式不成立（值为false），则右边的表达式不再执行
+
+        var a = 3;
+        var b = 4;
+        console.log(a++ < 2 && b++ > 3); 
+        console.log(a);
+        console.log(b);
+
+        // 逻辑或的短路问题
+        // 如果左边的表达式成立（值为true），则右边的表达式不再执行
+
+        var c = 3;
+        var d = 4;
+        console.log(c++ > 2 || d++ < 3); 
+        console.log(c);
+        console.log(d);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function arrMaxMin(arr) {
+            var max = arr[0];
+            var min = arr[0];
+            for (var i = 1; i < arr.length; i++) {
+                max = arr[i] > max ? arr[i] : max;
+                min = arr[i] < min ? arr[i] : min;
+            }
+            return [max, min]
+        }
+        var result = arrMaxMin([100, 60, 70, 70]);
+        document.write(`数组中最大值是${result[0]},最小值是${result[1]}`) 
+    </script>
+</body>
+
+</html>

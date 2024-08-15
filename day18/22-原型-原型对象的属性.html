@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 实例成员
+        function Student(name, age) {
+            // 实例属性
+            this.name = name
+            this.age = age
+            // 实例方法
+            this.study = function () {
+                alert('学习')
+            }
+        }
+        Student.prototype.country = 'China'
+        Student.prototype.school = 'AB'
+        var stu1 = new Student('张三', '18')
+        stu1.name = 'aaa'
+        stu1.weapon = 'star'
+        stu1.school='CD'
+        
+        console.log(stu1);
+        console.log(stu1.name);
+        console.log(stu1.country);
+        console.log(stu1.school);
+        console.dir(Student);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* 
+        浮动元素特点：
+        1.脱标（脱离标准流），在标准流中不占位置，从大地飞上了天空
+        2.浮动元素比标准流级别高，可以覆盖标准流元素
+        3，下一个浮动元素会在上一个浮动元素的基础上进行水平排布,实现了跨元素水平排布
+        */
+
+        /* 注意：
+        浮动元素因为脱标，其父元素的内容区域不会包含浮动元素，
+        所以父元素的高度不会被浮动元素撑开，
+        解决方案
+            目前学习阶段：父元素设置高度
+        */
+        /* 
+        浮动布局比行内块布局的好处
+            行内块布局如果元素代码有换行，就会产生间隙
+            浮动布局没有这个问题，浮动也是一个主流布局方式
+        */
+        .c1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            float: left;
+        }
+
+
+        .c2 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1"></div>
+    <div class="c2"></div>
+</body>
+
+</html>

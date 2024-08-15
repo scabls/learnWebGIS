@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const p = new Promise(function (resolve, reject) {
+            resolve(1);//PromiseState: fulfilled; PromiseResult: 1
+        }).then(function (value) { // 获取兑现值1
+            console.log(value);
+            return value * 2; // 返回兑现值2，则Promise：PromiseState: fulfilled; PromiseResult: 2
+        }).then(function (value) { // 获取兑现值2;
+            console.log(value); // 没有返回值，则Promise：PromiseState: fulfilled; PromiseResult: undefined
+        }).then(function (value) { // 获取兑现值undefined
+            console.log(value);
+            return Promise.resolve('resolve');// 返回一个兑现的Promise, 兑现值'resolve', 则Promise: PromiseState: fulfilled; PromiseResult: 'resolve'
+        }).then(function (value) { // 获取兑现值'resolve'
+            console.log(value);
+            return Promise.reject('reject');// 返回一个拒绝的Promise, 拒绝值'reject', 则Promise: PromiseState: rejected; PromiseResult: 'reject'
+        }).then(function (value) {// 不执行 
+            console.log('resolve:' + value);
+        }, function (err) {// 获取拒绝值'reject'
+            console.log('reject:' + err);// 没有返回值，则Promise：PromiseState: fulfilled; PromiseResult: undefined
+        }).then(value => { // 获取兑现值undefined
+            console.log('resolve:' + value);// 返回兑现值undefined，则Promise：PromiseState: fulfilled; PromiseResult: undefined
+        }).then(function (value) {// 兑现值undefined
+            console.log(value);// 没有返回值，则Promise：PromiseState: fulfilled; PromiseResult: undefined
+        });
+
+
+        //执行结果??
+    </script>
+</body>
+
+</html>

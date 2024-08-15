@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+
+            background-color: lightskyblue;
+            /* 第一步 使用flex布局 */
+            display: flex;
+            width: 500px;
+            height: 500px;
+            /* 
+            flex默认有两个轴
+                主轴：默认水平方向，即x轴。所以flex子项默认沿着水平方向排布（和主轴方向保持一致）
+                侧轴：默认与主轴垂直交叉，即y轴吗，跟主轴是相对的*/
+
+            /* 设置子元素的间隙 */
+            gap: 1rem;
+
+            
+            /* 限制flex容器宽度，发现子项不换行，只会压缩宽度在一行显示
+            原因：
+                flex-wrap	该属性控制flex容器是单行或者多行，同时横轴的方向决定了新行堆叠的方向。
+                
+                    nowrap	默认值。规定灵活的项目不拆行或不拆列。
+                    wrap	规定灵活的项目在必要的时候拆行或拆列。
+            解决
+                设置flex-wrap: wrap; 允许子项换行 
+            */
+            flex-wrap: wrap;
+        }
+
+
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- flex容器/弹性容器 -->
+    <div class="father">
+        <!-- 弹性子元素/弹性元素/flex子项/弹性盒子 -->
+        <div class="son">1</div>
+        <div class="son">2</div>
+        <div class="son">3</div>
+        <div class="son">4</div>
+        <div class="son">5</div>
+        <div class="son">6</div>
+        <div class="son">7</div>
+        <div class="son">8</div>
+        <div class="son">9</div>
+    </div>
+</body>
+
+</html>

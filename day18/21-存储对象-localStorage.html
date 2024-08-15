@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <button class="btn1">存储</button>
+    <button class="btn2">获取</button>
+    <button class="btn3">删除</button>
+    <button class="btn4">清空</button>
+    <button class="btn5">测试</button>
+    <script>
+        var input = document.querySelector('input')
+
+        document.querySelector('.btn1').addEventListener('click', function () {
+            localStorage.setItem('username', input.value)
+            localStorage.setItem('password', input.value)
+        })
+        document.querySelector('.btn2').addEventListener('click', function () {
+            console.log(localStorage.getItem('username'));
+            console.log(localStorage.getItem('username'));
+        })
+        document.querySelector('.btn3').addEventListener('click', function () {
+            localStorage.removeItem('username')
+        })
+        document.querySelector('.btn4').addEventListener('click', function () {
+            localStorage.clear()
+        })
+        document.querySelector('.btn5').addEventListener('click', function () {
+            open('http://127.0.0.1:5500/ss.html')
+        })
+    </script>
+</body>
+
+</html>

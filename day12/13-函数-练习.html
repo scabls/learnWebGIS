@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function myAdd(num1, num2) {
+            return num1 + num2;
+        }
+        document.write(myAdd(1, 100));
+        document.write('<hr>')
+
+        function arrMax(arr) {
+            var max = arr[0];
+            var min = arr[0];
+            for (var i = 1; i < arr.length; i++) {
+                max = arr[i] > max ? arr[i] : max;
+                min = arr[i] < min ? arr[i] : min;
+            }
+            return [max,min]
+        }
+        var arr1 = [1, 2, 3, 4, 10];
+        // 调用方式一：直接传一个数组
+        document.write(arrMax([1, 2, 3, 4, 10]))
+        document.write('<br>')
+        // 调用方式二：传一个数组名
+        document.write(arrMax(arr1))
+    </script>
+</body>
+
+</html>

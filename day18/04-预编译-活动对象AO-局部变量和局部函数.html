@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function a() {
+
+            var num = 10
+            function b() {
+                console.log(num);
+            }
+            b()
+        }
+        // 函数一旦调用完毕，就会被销毁。里面的环境和数据都会消失
+        a()
+
+    </script>
+</body>
+
+</html>

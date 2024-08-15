@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+       练习十,求出1到100之间的既是3的倍数又是5倍数的数字之和. 
+        */
+        var sum = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                sum += i;
+            }
+        }
+        alert(`1到100之间的既是3的倍数又是5倍数的数字之和是${sum}`)
+    </script>
+</body>
+
+</html>

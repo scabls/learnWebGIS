@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        练习一:用三种方式判断一个数是奇数还是偶数(3元,if,switch)
+        */
+        var num = +prompt("请输入一个整数：");
+        // 方法1：使用三元运算符
+        alert(
+            num % 2 == 0 ? `${num}是偶数` :
+                (num % 2 == 1 || num % 2 == -1 ? `${num}是奇数` : `${num}不是整数，请输入一个整数`)
+        );
+        // 方法2：使用if语句
+        if (num % 2 == 0) {
+            alert(`${num}是偶数`);
+        } else if (num % 2 == 1 || num % 2 == -1) {
+            alert(`${num}是奇数`);
+        } else {
+            alert(`${num}不是整数，请输入一个整数`);
+        }
+        // 方法3：使用switch语句
+        switch (num % 2) {
+            case 0:
+                alert(`${num}是偶数`);
+                break;
+            case 1:
+            case -1:
+                alert(`${num}是奇数`);
+                break;
+            default:
+                alert(`${num}不是整数，请输入一个整数`);
+                break;
+        }
+    </script>
+</body>
+
+</html>

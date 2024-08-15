@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 发现计时器只打印出了4
+        // for (var i = 1; i < 4; i++) {
+        //     console.log(i);
+        //     setInterval(function () {
+        //         console.log(i);
+        //     }, 1000)
+        // }
+
+        // 方式一：let关键字
+        // for (let i = 1; i < 4; i++) {
+        //     console.log(i);
+        //     setInterval(function () {
+        //         console.log(i);
+        //     }, 1000)
+        // }
+
+
+        //方式二，立即执行函数
+        // (function () {
+        //     console.log('aaa');
+        // })();
+
+        (function (num) { console.log('aaa' + num); })(100);
+
+        for (var i = 1; i < 4; i++) {
+            (function (index) {
+                setInterval(function () {
+                    console.log(index);
+                },1000)
+            })(i)
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

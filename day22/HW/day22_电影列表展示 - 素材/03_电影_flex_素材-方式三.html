@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <!-- 解决图片403防盗链问题 -->
+  <meta name="referrer" content="no-referrer" />
+  <style>
+    /* 容器样式 */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      padding: 30px;
+      gap: 50px;
+      width: 1000px;
+      margin: 0 auto;
+      border: 1px solid #333;
+      overflow: hidden;
+    }
+
+    /* 电影元素item样式 */
+    .item {
+      width: 140px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    .item img {
+      width: 100px;
+      height: 140px;
+    }
+
+    .item p {
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      /* 文字不换行 */
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+
+  </div>
+
+  <script>
+
+    //获取所有电影数据的方法,返回的是一个装有电影数据的promise对象
+    function getData(url) {
+      return new Promise(function (resolve) {
+        //创建XMLHttpRequest对象
+        const xhr = new XMLHttpRequest();
+        //设置请求
+        xhr.open("GET", url);
+        //发送请求
+        xhr.send();
+        //通过xhr的一个事件监听来获取请求的响应状态和数据
+        xhr.onreadystatechange = function () {
+          //readyState这个状态会从0逐渐变化到4 如果变到了4说明请求响应成功了
+          if (xhr.readyState === 4) {
+            //说明请求数据成功了 可以将当前的Promise修改为成功状态 并且存储数据
+            resolve(xhr.response);
+          }
+        };
+      });
+    }
+
+    //提示:需要先调用getData方法获取promise对象,然后从结果属性中取出所有电影数据的数组
+    /*
+      然后遍历数组元素 转成 如下 div元素  拼接到  container 下
+
+      <div class="item">
+          <img src="https://img2.doubanio.com/view/subject/s/public/s34327482.jpg" alt="">
+          <p>长安的荔枝</p>
+      </div>
+
+    */
+
+    async function fn(url) {
+      const dataJSON = await getData(url);
+      const dataObj = JSON.parse(dataJSON)
+      const dataArr = dataObj.data
+
+      dataArr.sort((a, b) => b.info.pingfen - a.info.pingfen)
+
+      const container = document.querySelector('.container')
+
+      container.innerHTML = dataArr.map(item =>
+        `
+        <div class="item">
+            <img src=${item.info.imgurl} alt="">
+            <p>${item.info.pingfen}分</p>
+            <p>${item.title}</p>
+        </div>
+        `).join('')
+    }
+    fn('./db.json')
+  </script>
+</body>
+
+</html>

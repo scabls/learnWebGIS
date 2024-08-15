@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        JavaScript 中的模板字符串是一种方便的字符串语法，允许你在字符串中嵌入表达式和变量。
+        模板字符串使用反引号 `` 作为字符串的定界符分隔的字面量。
+        模板字面量是用反引号（`）分隔的字面量，允许多行字符串、带嵌入表达式的字符串插值和一种叫带标签的模板的特殊结构。
+        */
+        var number = +prompt("请输入班级人数：")
+        var score = 0;
+        // 定义一个计数器（跟求和思想很类似，只不过每次加1）
+        var pass = 0;
+        var totalscore = 0;
+        if (number > 0) {
+            for (var i = 1; i <= number; i++) {
+                score = +prompt(`请输入第${i}个学生的成绩：`);
+                totalscore += score
+                // 判断是否及格并计数
+                if (score >= 60) {
+                    pass++;
+                }
+            }
+        }
+        console.log(`所有同学的总分为${totalscore}`);
+        console.log(`平均分为${totalscore / number}`);
+        console.log(`及格同学数为${pass}`);
+    </script>
+</body>
+
+</html>

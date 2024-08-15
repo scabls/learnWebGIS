@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // getTime()	返回 1970 年 1 月 1 日至今的毫秒数。
+        // valueOf()	返回 Date 对象的原始值。
+            //原始值返回1970年1月1日午夜以来的毫秒数！
+        // parse()	返回1970年1月1日午夜到指定日期（字符串）的毫秒数。
+            
+        // 普通方式
+        var date =new Date()
+        console.log(date.getTime());
+        console.log(date.valueOf())
+
+        // 简单方式
+            // 一元运算符+
+        console.log(+date);
+
+        // H5方式
+            // 不需要创建对象，直接使用类名调用----其实是静态方法后面会讲
+            console.log(Date.now());
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [['吴敏', 2520088], ['张静', 1291168], ['冯欣怡', 44256]]
+        var arr2 = arr.map(function (mi) {
+            return [mi[0], mi[1] * 2]
+            // map()的处理就是将返回值添加到新数组，为了新数组仍是二维数组，返回一个一维数组
+        })
+        console.log(arr2);
+    </script>
+</body>
+
+</html>

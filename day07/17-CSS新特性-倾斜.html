@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        skewX(angle)	定义沿着 X 轴的 2D 倾斜转换。
+        skewY(angle)	定义沿着 Y 轴的 2D 倾斜转换。
+        */
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            margin-top: 100px;
+            transition: all 2s;
+        }
+        .box1:hover {
+            transform: skewY(30deg);
+        }
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            margin-top: 100px;
+            margin-left: 100px;
+            transition: all 2s;
+        }
+        .box2:hover {
+            transform: skewX(30deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+
+</html>

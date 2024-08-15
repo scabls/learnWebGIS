@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var str = '有钱人终成眷属,没钱人亲眼目睹'
+        //查找索引为3的字符
+        console.log(str[3]);
+        //查找第一个钱所在的索引
+        console.log(str.indexOf('钱'));
+        //查找最后一个钱所在的索引
+        console.log(str.lastIndexOf('钱'));
+        //将'眷属'截取出来打印
+        console.log(str.substring(5, 7));
+        //将第一个'钱'替换成'情'
+        console.log(str.replace('钱', '情'));
+        //将里面的'人'替换成'的'
+        console.log(str.replaceAll('人', '的'));
+        //将字符串'1,2,3,4,5' ---> 切割成数组
+        console.log('1,2,3,4,5'.split())
+        //将'xzd'转成大写
+        console.log('xzd'.toUpperCase());
+        //判断'xxx.jpg'是不是以jpg格式结尾
+        console.log('xxx.jpg'.endsWith('.jpg'));
+        //修剪'  xzd  '两端的空白
+        console.log('  xzd  '.trim());
+ 
+    </script>
+</body>
+
+</html>

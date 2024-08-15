@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*  */
+        .c1 {
+            float: left;
+            width: 10px;
+            height: 200px;
+            border: 1px solid lightgreen;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 100;
+        }
+
+        .c2 {
+            width: 10px;
+            height: 200px;
+            background-color: lightblue;
+            box-sizing: border-box;
+            animation: myRotate 1s linear infinite;
+            position: relative;
+            transform-origin: center 80%;
+        }
+
+        .c1:hover~.c2 {
+            animation-play-state: paused;
+        }
+
+        @keyframes myRotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1"></div>
+    <div class="c2"></div>
+
+</body>
+
+</html>

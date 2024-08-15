@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 768px;
+            height: 542px;
+            background-image: url(./images/product.jpeg);
+
+        }
+
+        .shadow {
+            height: 100%;
+            transition: all 1s;
+        }
+
+        .container:hover .shadow {
+            background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="shadow"></div>
+    </div>
+</body>
+
+</html>

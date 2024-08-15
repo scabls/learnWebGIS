@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+         练习十四
+        需求：水仙花数是一个三位数，
+        这个三位数的每一位数字的立方和等于该数本身，
+        打印所有水仙花数。
+        */
+        var onesPlace = 0;
+        var tensPlace = 0;
+        var hundredsPlace = 0;
+        var total = 0;
+        var count = 0;
+        for (var i = 100; i < 1000; i++) {
+            onesPlace = i % 10;
+            tensPlace = parseInt(i / 10) % 10;
+            hundredsPlace = parseInt(i / 100);
+            total = Math.pow(onesPlace, 3) + Math.pow(tensPlace, 3) + Math.pow(hundredsPlace, 3);
+            if (total == i) {
+                count++;
+                if (count % 5 == 0) {
+                    document.write(`${i}<br>`)
+                } else {
+                    document.write(`${i}&nbsp;&nbsp;`)
+                }
+            }
+        }
+        document.write(`<br>三位数的水仙花数共有${count}个`);
+    </script>
+</body>
+
+</html>

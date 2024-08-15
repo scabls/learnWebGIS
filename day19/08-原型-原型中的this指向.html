@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function Student(name, age) {
+            this.name = name
+            this.age = age
+            console.log('构造函数里的this', this);//this代表创建出来的那个对象
+        }
+        Student.prototype.study = function () {
+            console.log('学习');
+            console.log('原型对象里的this', this);//指向调用方法的那个对象,(谁调用,代表谁)
+        }
+
+        var stu1 = new Student('张三', '18')
+        var stu2 = new Student('李四', '18')
+        stu1.study()
+        stu2.study()
+
+
+
+
+
+    </script>
+</body>
+
+</html>

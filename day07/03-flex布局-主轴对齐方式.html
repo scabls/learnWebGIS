@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+
+            background-color: lightskyblue;
+            /* 第一步 使用flex布局 */
+            display: flex;
+            height: 300px;
+            /* 
+            flex默认有两个轴
+                主轴：默认水平方向，即x轴。所以flex子项默认沿着水平方向排布（和主轴方向保持一致）
+                侧轴：默认与主轴垂直交叉，即y轴吗，跟主轴是相对的*/
+            /* 
+            justify-content属性：设置或检索弹性盒子在主轴方向上的对齐方式。
+                flex-start	默认值。从行首起始位置开始排列。	
+                flex-end	从行尾位置开始排列。	
+                center	居中排列。	
+                space-between	均匀排列每个元素，首个元素放置于起点，末尾元素放置于终点。	
+                                间隙在子元素中间，两端没间隙，中间间隙等分
+                space-evenly	均匀排列每个元素，每个元素之间的间隔相等。	
+                                所有间隙等分，两端有间隙，中间有间隙
+                space-around	均匀排列每个元素，每个元素周围分配相同的空间。
+                                间隙环绕在子元素中间，两端有间隙，中间间隙是两端的两倍
+            */
+            justify-content: space-between;
+        }
+
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- flex容器/弹性容器 -->
+    <div class="father">
+        <!-- 弹性子元素/弹性元素/flex子项/弹性盒子 -->
+        <div class="son">1</div>
+        <div class="son">2</div>
+        <div class="son">3</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./fontawesome-free-6.6.0-web/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1;
+        }
+
+        header {
+            padding: 1rem;
+            background-color: lightblue;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+            font-size: 3rem;
+            color: white;
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        section input,
+        section button {
+            height: 3rem;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 30rem;
+            padding-left: 1rem;
+        }
+
+        input:focus {
+            outline: 2px solid pink;
+        }
+
+        button {
+            width: 6rem;
+            font-size: 1.2rem;
+            color: skyblue;
+        }
+
+        button:hover {
+            background-color: pink;
+            color: white;
+        }
+
+        li {
+            display: flex;
+            font-size: 1.2rem;
+            list-style: none;
+        }
+
+        li:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        li:hover {
+            cursor: pointer;
+            background-color: #dddddd;
+        }
+
+        li .fa-check,
+        li .fa-xmark {
+            flex: 0 0 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        li span {
+            flex: auto;
+            padding: 1rem 0.5rem;
+            word-break: break-word;
+        }
+
+
+        .fa-check {
+            visibility: hidden;
+        }
+
+        .fa-xmark:hover {
+            background-color: pink;
+            color: white;
+        }
+
+        li.checked {
+            background-color: lightgoldenrodyellow;
+            color: lightsalmon;
+        }
+
+        .checked span {
+            text-decoration: line-through;
+        }
+
+        .checked .fa-check {
+            visibility: visible;
+        }
+
+        aside {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>My ToDo List</h1>
+            <section>
+                <input type="text" placeholder="请输入待办事项" class="input">
+                <button class="add">添加</button>
+            </section>
+        </header>
+        <main>
+            <ul>
+            </ul>
+        </main>
+    </div>
+
+    <script>
+        /* 
+        实现本地存储的思路
+            1.确定使用的是localStorage对象
+            2.需要保存两个数据：代表事项内容 和 代表事项的选中状态（true和false）
+            3.可以在localStorage中，将待办事项内容作为key，将选中状态作为value
+            4.为了查看效果，可以在localStorage中添加假数据，将来获取出来显示
+        步骤
+            一、编写一个方法，displayTask用于在页面加载完成之后展示localStorage中的数据
+              //前三步：数据驱动视图思想
+                1.获取本地存储中的所有键的数组:Object.keys(localStorage)
+                2.遍历数组拿到里面所有元素，（key：代表事项的内容）填充到li中
+                3.根据key获取value的值（选中状态），重新设置li的选中状态
+              //后两步：视图的影响改变数据
+                4.在li的点击事件中，根据li的选中状态，重新设置localStorage中key对应的value值
+                5.在li的删除事件中，删除localStorage中key对应的键值对
+
+            二、实现添加的逻辑
+              //可以直接操作本地存储localStorage中的数据，用来实现数据的影响改变视图（数据驱动视图）
+                1.直接将input中的数据保存到localStorage中
+                2.重新调用一下displayTasks的方法(相当于渲染页面)
+                3.还需要在调用displayTasks方法之前，渲染数据之前，对ul中的数据做一次清空
+
+            三、解决重复事项覆盖问题
+              思路
+                给待办事项前面加上序号，让序号自增，防止被覆盖（类似数据库中的主键自增效果）
+                存储格式：[1-aaa false],[2-bbb true]
+              步骤
+                1,先设置假数据:[1-aaa  false], [2-bbb  true]
+                2,展示数据的时候,需要将前面的分隔符去掉
+                3,定义一个起始索引,值为本地存储中键值对的个数
+                4,添加代办事项的时候,让索引自增,并加上序号,存到localStorage中
+                5,在展示数据之前,对键的数组进行一个排序
+
+
+        */
+        var ul = document.querySelector('ul')
+        var input = document.querySelector('input')
+        var btn = document.querySelector('button')
+        // 编写一个方法，displayTask用于在页面加载完成之后展示localStorage中的数据
+        function displayTask() {
+            // 获取本地存储中的所有键的数组:Object.keys(localStorage)
+            var keyArr = Object.keys(localStorage);
+            // 在展示数据之前,对键的数组进行一个排序
+            keyArr.sort(function (a, b) {
+                return parseInt(a) - parseInt(b)
+            })
+            //遍历数组拿到里面所有元素，（key：代表事项的内容）填充到li中
+            keyArr.forEach(function (key) {
+                var li = document.createElement('li')
+                var i1 = document.createElement('i')
+                var span = document.createElement('span')
+                var i2 = document.createElement('i')
+                var identifier = document.createElement('aside')
+                i1.classList.add('fa-solid', 'fa-check')
+                // 展示数据的时候,需要将前面的分隔符去掉
+                span.textContent = key.slice(key.indexOf('-') + 1)
+                i2.classList.add('fa-solid', 'fa-xmark')
+                // 将序号存储在li里的另一个页面元素内
+                identifier.textContent = parseInt(key)
+                li.append(i1, span, i2, identifier)
+                // 根据key获取value的值（选中状态），重新设置li的选中状态
+                if (localStorage.getItem(key) === 'true') {
+                    li.classList.add('checked')
+                }
+                ul.appendChild(li)
+            })
+        }
+        //调用方法
+        window.addEventListener('load', displayTask)
+
+
+        btn.addEventListener('click', function () {
+            // 定义一个起始索引,当没有待办项的时候索引为0。有待办事项的时候。索引为最后一个待办项的索引加一
+            var asides = [...document.querySelectorAll('aside')]
+            var asideContent = asides.map(function (aside) {
+                return aside.textContent
+            })
+            if (asideContent.length == 0) {
+                var i = 0
+            } else {
+                i = +asideContent[asideContent.length - 1] + 1
+            }
+            /* 
+            或者
+            var keyArr = Object.keys(localStorage);
+            keyArr.sort(function (a, b) {
+                return parseInt(a) - parseInt(b)
+            })
+            if (keyArr.length == 0) {
+                var i = 0
+            } else {
+                i = parseInt(keyArr[keyArr.length - 1])+ 1
+            }
+            */
+
+            if (input.value != '') {
+                // 直接将input中的数据保存到localStorage中
+                // 添加代办事项的时候,加上序号,存到localStorage中
+                localStorage.setItem(`${i}-${input.value}`, false)
+
+                input.value = ''
+                // 还需要在调用displayTasks方法之前，渲染数据之前，对ul中的数据做一次清空
+                ul.innerHTML = ''
+                // 重新调用一下displayTasks的方法(相当于渲染页面)
+                displayTask()
+            }
+        })
+        
+        ul.addEventListener('click', function (e) {
+            if (e.target.classList.contains('fa-xmark')) {
+                ul.removeChild(e.target.parentElement)
+                // 在li的删除事件中，删除localStorage中key对应的键值对
+                localStorage.removeItem(`${e.target.parentElement.children[3].textContent}-${e.target.parentElement.children[1].textContent}`)
+            } else if (e.target.classList.contains('fa-check') || e.target.tagName === 'SPAN') {
+                e.target.parentElement.classList.toggle('checked')
+                // 在点击事件中，根据li的选中状态，重新设置localStorage中key对应的value值
+                if (e.target.parentElement.classList.contains('checked')) {
+                    localStorage.setItem(`${e.target.parentElement.children[3].textContent}-${e.target.parentElement.children[1].textContent}`, true)
+                } else {
+                    localStorage.setItem(`${e.target.parentElement.children[3].textContent}-${e.target.parentElement.children[1].textContent}`, false)
+                }
+            } else if (e.target.tagName === 'LI') {
+                e.target.classList.toggle('checked')
+                // 在点击事件中，根据li的选中状态，重新设置localStorage中key对应的value值
+                if (e.target.classList.contains('checked')) {
+                    localStorage.setItem(`${e.target.children[3].textContent}-${e.target.children[1].textContent}`, true)
+                } else {
+                    localStorage.setItem(`${e.target.children[3].textContent}-${e.target.children[1].textContent}`, false)
+                }
+                /* 
+                或者
+                var checked= e.target.classList.toggle('checked')
+                localStorage.setItem(`${e.target.children[3].textContent}-${e.target.children[1].textContent}`, checked)
+                */
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

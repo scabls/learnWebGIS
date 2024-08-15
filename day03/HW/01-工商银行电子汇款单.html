@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        caption {
+            text-align: left;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        tbody th,
+        tbody td {
+            padding: 1px;
+            border: 1px solid black;
+        }
+
+        th.chuiZhi {
+            writing-mode: vertical-lr;
+            text-orientation: upright;
+        }
+
+        th.width-2,td.width-2 {
+            width: 2em;
+        }
+
+        th.width-4 {
+            width: 4em;
+            text-align: left;
+        }
+
+        tfoot td {
+            padding-top: 10px;
+        }
+
+        td.piaoJuDanWei {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <caption>工商银行电子汇款单</caption>
+        <tbody>
+            <tr><!-- 1 -->
+                <th colspan="2" class="width-4">回单类型</th>
+
+                <td>网上转账汇款</td>
+                <th colspan="2" class="width-4">指令序号</th>
+
+                <td>HQH000000000013878172</td>
+            </tr>
+            <tr><!-- 2 -->
+                <th rowspan="4" class="chuiZhi width-2">收款人</th>
+                <td class="width-2">户名</td>
+                <td>老牟</td>
+                <th rowspan="4" class="chuiZhi width-2">付款人</th>
+                <td class="width-2">户名</td>
+                <td>老刘</td>
+            </tr>
+            <tr><!-- 3 -->
+
+                <th class="width-2">卡号</th>
+                <td>000000000001</td>
+
+                <th class="width-2">卡号</th>
+                <td>000000000002</td>
+            </tr>
+            <tr><!-- 4 -->
+
+                <td class="width-2">地区</td>
+                <td>南京</td>
+
+                <td class="width-2">地区</td>
+                <td>杭州</td>
+            </tr>
+            <tr><!-- 5 -->
+
+                <th class="width-2">网点</th>
+                <td>网点工商江苏南京业务处理中心</td>
+
+                <th class="width-2">网点</th>
+                <td>网点江苏徐州业务处理中心</td>
+            </tr>
+            <tr><!-- 6 -->
+                <th colspan="2" class="width-4">币种</th>
+
+                <td>人民币</td>
+                <th colspan="2" class="width-4">钞汇标志</th>
+
+                <td>钞票</td>
+            </tr>
+            <tr><!-- 7 -->
+                <th colspan="2" class="width-4">金额</th>
+
+                <td>1.00元</td>
+                <th colspan="2" class="width-4">手续费</th>
+
+                <td>0.57元</td>
+            </tr>
+            <tr><!-- 8 -->
+                <th colspan="2" class="width-4">合计</th>
+                <td colspan="4">人民币(大写):壹圆整</td>
+
+
+
+
+
+            </tr>
+            <tr><!-- 9 -->
+                <th colspan="2" class="width-4">交易时间</th>
+
+                <td>2023年6月1日</td>
+                <th colspan="2" class="width-4">时间戳</th>
+
+                <td>2023-06-01-13.00.00.00000</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6">票据打印时间:2023-06-01 15:00:12</td>
+            </tr>
+            <tr>
+                <td colspan="6" class="piaoJuDanWei">票据打印单位:江苏徐州业务中心</td>
+            </tr>
+            <tr>
+                <td colspan="6">操作员:大曾</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>

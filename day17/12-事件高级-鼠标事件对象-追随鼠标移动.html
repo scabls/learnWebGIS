@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            position: absolute;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<img src="./images/梦奇.jpg" alt="">
+
+<body>
+    <script>
+        document.addEventListener('mousemove', function (e) {
+
+            var img = document.querySelector('img')
+            img.style.left = e.clientX+'px'
+            img.style.top = e.clientY+'px'
+
+        })
+    </script>
+</body>
+
+</html>

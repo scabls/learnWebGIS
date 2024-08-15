@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            width: 50%;
+            aspect-ratio: 3 / 2;
+            background-image: url(./images/bg.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin: 0 auto;
+            font-size: 3rem;
+            border: 1px solid #333;
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 15px 0;
+        }
+
+        section div {
+            flex-basis: 120px;
+            padding: 5px 0;
+            background-color: #eee;
+            border: 1px solid #333;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        section div:hover {
+            background-color: #999;
+            color: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <main>
+            <section>
+                <div class="scissors">剪刀</div>
+                <div class="rock">石头</div>
+                <div class="paper">布</div>
+            </section>
+            <section class="player">你出的：</section>
+            <section class="computer">电脑出的：</section>
+            <section class="result">结果：</section>
+        </main>
+
+    </div>
+    <script>
+        /* 
+        石头剪刀布！
+        */
+        function Game(choice) {
+            this.arr = ['剪刀', '石头', '布']
+            this.choice = choice
+            this.rnum = Math.floor(Math.random() * this.arr.length)
+            this.computer = function () {
+                return this.arr[this.rnum]
+            }
+            this.player = function () {
+                return this.arr[this.choice]
+            }
+            this.win = function () {
+                var computerChoice = this.computer()
+                var playerChoice = this.player()
+                switch (true) {
+                    case computerChoice == '石头' && playerChoice == '剪刀':
+                    case computerChoice == '剪刀' && playerChoice == '布':
+                    case computerChoice == '布' && playerChoice == '石头':
+                        return `电脑获胜`;
+                    case computerChoice == playerChoice:
+                        return `平局`;
+                    default:
+                        return `玩家获胜`;
+                }
+            }
+        }
+
+        alert('请点击按钮出拳！');
+        var scissors = document.querySelector('.scissors');
+        var rock = document.querySelector('.rock');
+        var paper = document.querySelector('.paper');
+        var player = document.querySelector('.player');
+        var computer = document.querySelector('.computer');
+        var result = document.querySelector('.result');
+
+        function publish(choice) {
+            var winner = new Game(choice);
+            player.innerHTML = `你出的：${winner.player()}`;
+            computer.innerHTML = `电脑出的：${winner.computer()}`;
+            result.innerHTML = `结果：${winner.win()}`;
+        }
+        
+        scissors.onclick = function () {
+            publish(0);
+        }
+        rock.onclick = function () {
+            publish(1);
+        }
+        paper.onclick = function () {
+            publish(2);
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

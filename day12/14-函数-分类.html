@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        命名函数：有名字
+            调用：使用函数名（有参数就给，有返回值就接）
+        */
+        function myAdd(num1, num2) {
+            return num1 + num2;
+        }
+        document.write(myAdd(1, 100));
+
+        /* 
+        匿名函数：没名字
+            一般需要定义一个变量来接收这个匿名函数（此时变量名相当于函数名）
+            调用：使用变量名（有参数就给，有返回值就接）
+
+            匿名函数本身经常作为参数进行传递
+        */
+        var f = function (num1, num2) {
+            return num1 + num2;
+        }
+        document.write(f(1, 100));
+    </script>
+</body>
+
+</html>

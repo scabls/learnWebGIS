@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        flex-shrink:设置子项的缩小比例，默认是1.如果flex容器空间不足，子元素会跟着缩小
+
+        操作
+            将flex容器宽度缩小，发现flex子项宽度跟着变小
+        原因
+            flex子项flex-shrink的值为默认值1.会跟着缩小
+
+        解决
+            在flex子项设置flex-shrink:0;
+        */
+        .father {
+            display: flex;
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+        }
+
+        .son1 {
+            flex-shrink: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        .son2 {
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+        }
+
+        .son3 {
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son1">1</div>
+        <div class="son2">2</div>
+        <div class="son3">3</div>
+    </div>
+</body>
+
+</html>

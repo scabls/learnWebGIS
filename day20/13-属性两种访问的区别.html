@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //练习(for...of遍历)
+        var array = [
+            { name: "河南省", cities: ["郑州", "洛阳", "开封"] },
+            { name: "辽宁省", cities: ["沈阳", "大连", "鞍山"] },
+            { name: "山东省", cities: ["青岛", "济南", "烟台"] },
+        ];
+        for (const province of array) {
+            console.log(province['name']);
+        }
+        // for...of优势，遍历同时进行解构
+        for (const {name,cities} of array) {
+            console.log(name);
+        }
+
+        /* 
+        
+        */
+    </script>
+</body>
+
+</html>

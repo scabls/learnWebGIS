@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [1500, 1200, 2000, 2100, 2200, 1800]
+        // 方式二 
+        // 创建新数组，遍历原数组，将不超过2000的添加到新数组
+        var newArr = []
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] <= 2000) {
+                newArr.push(arr[i])
+            }
+        }
+        console.log(newArr);
+
+    </script>
+</body>
+
+</html>

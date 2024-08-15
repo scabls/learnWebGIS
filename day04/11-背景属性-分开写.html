@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        background-color	(bgc) 设置或检索对象的背景颜色。
+
+        background-image	(bgi) 设置或检索对象的背景图像。
+
+        background-position	(bgp) 设置或检索对象的背景图像位置。必须先指定background-image属性。
+            left top (默认)
+            left center
+            left bottom
+            right top
+            right center
+            right bottom
+            center top
+            center center
+            center bottom	如果仅指定一个关键字，其他值将会是"center"
+            x% y%	第一个值是水平位置，第二个值是垂直。左上角是0％0％。右下角是100％100％。如果仅指定了一个值，其他值将是50％。 。默认值为：0％0％
+
+            xpos ypos	第一个值是水平位置，第二个值是垂直。左上角是0。单位可以是像素（0px0px）或任何其他 CSS单位。如果仅指定了一个值，其他值将是50％。你可以混合使用％和positions
+            inherit	指定background-position属性设置应该从父元素继承
+
+        background-repeat	(bgr) 设置或检索对象的背景图像如何铺排填充。必须先指定background-image属性。
+            repeat	背景图像将向垂直和水平方向重复。这是默认
+            repeat-x	只有水平位置会重复背景图像
+            repeat-y	只有垂直位置会重复背景图像
+            no-repeat	background-image 不会重复
+            inherit	指定 background-repeat 属性设置应该从父元素继承
+
+        background-size	    (bgs) 检索或设置对象的背景图像的尺寸大小。
+            给一个值：这个值指定图片的宽度，图片的高度隐式的为 auto
+            给两个值：第一个值指定图片的宽度，第二个值指定图片的高度。
+                     可以使用百分比，表示表示占据父元素宽高的百分比
+            cover：   此时会保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小尺寸。
+            contain： 此时会保持图像的纵横比并将图像缩放成完全装入背景定位区域的最大尺寸。 
+        */
+        div
+        {
+            width: 400px;
+            height: 300px;
+            background-color: lightskyblue;
+            background-image: url(./images/1.jpg);
+            background-repeat: no-repeat;
+            /* background-position: 50% 50%;
+            background-position: 100px 100px; *//* 居中，注意百分比的计算方式 */
+            background-size: auto ;
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    2024
+</div>
+</body>
+
+</html>

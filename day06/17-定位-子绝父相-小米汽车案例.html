@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 1058px;
+            height: 595px;
+            margin: 0 auto;
+            /* background-image: url(./images/Xiaomi_car.png);  */
+            position: relative;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-position: 50% 50%;
+            object-fit: cover;
+        }
+
+        a {
+            /* 绝对定位，脱标
+            自动变成块元素 */
+            position: absolute;
+            padding: 1rem 2rem;
+            border: 1px solid white;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, -50%);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="./images/Xiaomi_car.png" alt="">
+        <a href="">探索Xiaomi SU7</a>
+    </div>
+</body>
+
+</html>

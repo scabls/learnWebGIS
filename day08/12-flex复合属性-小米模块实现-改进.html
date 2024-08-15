@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        容器和子项的宽度使用flex设置
+        除了最里面的flex子项高度固定以外，其他元素的高度都注释掉，让它由内容撑开
+        */
+        .container {
+            display: flex;
+            gap: 14px;
+            width: 90%;
+            /* height: 614px; */
+            margin: 0 auto;
+        }
+
+
+        .left {
+            flex: 234px;
+            /* height: 614px; */
+            background-color: lightblue;
+        }
+
+        .right {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            flex: 978px;
+            /* height: 614px; */
+        }
+
+        .right div {
+            
+            flex: 234px;
+            height: 300px;
+            background-color: lightpink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</body>
+
+</html>

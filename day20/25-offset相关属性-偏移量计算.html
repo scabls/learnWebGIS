@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .father {
+            position: relative;
+
+            width: 200px;
+            height: 200px;
+            background: lightblue;
+
+            margin: 100px;
+            /* 为了跟body区分,添加一个偏移值 */
+            padding: 11px;
+            border: 12px solid grey;
+        }
+
+        .son {
+            /* position: relative; */
+            /* position: absolute; */
+            left: 20px;
+            top: 20px;
+            transform: translate(14px, 14px);
+            width: 100px;
+            height: 100px;
+            background: green;
+            margin: 10px;
+            border: 8px solid grey;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+    <script>
+        /* 需求:获取son的offset相关的属性值 */
+        const son = document.querySelector('.son')
+
+        console.log(son.offsetTop)//0 ----此时偏移父容器就是father
+        console.log(son.offsetLeft)
+        console.log(son.offsetWidth)
+        console.log(son.offsetHeight)
+        console.log(son.offsetParent)//father
+        console.log(son.parentNode) //father 
+
+    </script>
+</body>
+
+</html>

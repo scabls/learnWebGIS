@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            /* 先不设置宽高，宽度自动为父元素的100%，高度默认由子元素撑开 */
+            background-color: lightskyblue;
+            /* 第一步 使用flex布局 */
+            display: flex;
+
+            /*第二步 flex的属性对子元素水平均匀分布排列 */
+            justify-content: space-between;
+
+            /* 
+            flex默认有两个轴
+                主轴：默认水平方向，即x轴。所以flex子项默认沿着水平方向排布（和主轴方向保持一致）
+                侧轴：默认与主轴垂直交叉，即y轴吗，跟主轴是相对的
+
+                如果改变主轴的方向，flex子项的方向会变吗？
+            */
+            flex-direction: column;
+            /* 改变主轴的方向，子项沿着纵轴方向排布 */
+        }
+
+        .son {
+            /* 浮动布局的弊端，子元素浮动之后会脱标，父元素高度无法被撑开，影响布局 */
+            /* float: left; */
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- flex容器/弹性容器 -->
+    <div class="father">
+        <!-- 弹性子元素/弹性元素/flex子项/弹性盒子 -->
+        <div class="son">1</div>
+        <div class="son">2</div>
+        <div class="son">3</div>
+    </div>
+</body>
+
+</html>

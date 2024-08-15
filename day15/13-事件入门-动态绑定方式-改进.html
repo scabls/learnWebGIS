@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 1 事件源 -->
+
+    <!-- 使用行内绑定的方式，直接绑定在标签上，需要传递方法执行的字符串 -->
+    <button>秋香</button>
+    <script>
+        //事件处理函数
+
+
+        //动态绑定：先获取按钮对象，然后再给按钮对象的属性赋值
+        var btn = document.querySelector('button')
+        // 箭头函数改进
+        // btn.onclick = () => alert('真香')
+        // 匿名函数改进
+        btn.onclick = function () { alert('真香') }
+
+    </script>
+</body>
+
+</html>

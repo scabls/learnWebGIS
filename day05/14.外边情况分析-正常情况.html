@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 水平排布的两个盒子，设置左边盒子的右外边距，设置右边盒子的左外边距，最终二者间隙为margin值的和 */
+
+        .c1 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            display: inline-block;
+
+            margin-right: 100px;
+        }
+        .c2 {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            display: inline-block;
+
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="c1"></div>
+    <div class="c2"></div>
+</body>
+</html>

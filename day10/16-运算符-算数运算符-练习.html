@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 弹框输入一个三位数,求每一位上的数的和
+        var a = +(prompt("请输入一个三位数数字："));
+        // 运算一
+        alert(parseInt(a / 100) + parseInt(a % 100 / 10) + a % 10);
+        // 运算二
+        alert(a % 10 + parseInt(a / 10) % 10 + parseInt(a / 100));
+
+        
+    </script>
+</body>
+
+</html>

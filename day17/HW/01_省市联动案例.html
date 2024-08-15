@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+	<!-- 
+			
+		    "郑州","洛阳","开封"
+		    "沈阳","大连","鞍山"
+		    "青岛","济南","烟台"
+		    
+		-->
+</head>
+
+<body>
+	<select id="province">
+		<option>--选择省--</option>
+		<option>河南省</option>
+		<option>辽宁省</option>
+		<option>山东省</option>
+	</select>
+
+	<select id="city">
+		<option>--选择市--</option>
+	</select>
+	<script>
+		var province = document.querySelector('#province')
+		province.addEventListener('change', function () {
+			var city = document.querySelector('#city')
+			var citys = [[], ['郑州', '洛阳', '开封'], ['沈阳', '大连', '鞍山'], ['青岛', '济南', '烟台']]
+			
+			// 方式一
+			// city.innerHTML = '<option>--选择市--</option>'
+			// citys.forEach(function (citysOfP, index) {
+			// 	if (index == province.selectedIndex) {
+			// 		citysOfP.forEach(function (item) {
+			// 			var option = document.createElement('option')
+			// 			option.textContent = item
+			// 			city.appendChild(option)
+			// 		})
+			// 	}
+			// })
+
+			// 方式二 更换清除选项的方法和匹配的方法
+			while (city.length > 1) {
+				city.removeChild(city.lastElementChild)
+			}
+			citys[this.selectedIndex].forEach(function (item) {
+				var option = document.createElement('option')
+				option.textContent = item
+				city.appendChild(option)
+			})
+
+		})
+	</script>
+</body>
+
+</html>

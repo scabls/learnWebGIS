@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Student {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            study() {
+                alert('学习')
+            };
+            eat() {
+                alert('学习')
+            };
+
+            country='China'
+        }
+        console.dir(Student);
+
+        const stu1 = new Student('张三', 19)
+        const stu2 = new Student('李四', 19)
+        console.dir(stu1);
+        console.log(stu2.study == stu1.study);
+
+    </script>
+</body>
+
+</html>

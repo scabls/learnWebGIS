@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /* 
+        自增自减
+            在自身的基础上加1或者减1
+            
+        语法
+            变量++ 或者 变量--  （只能写在变量上）    
+
+        结论
+            可以理解为只要有++就已经自增了, 变量的位置只决定参与运算时用的是自增前的还是自增后的
+            --同理
+            前提是这段代码被执行，如果没有被执行，自增自减不会生效。比如后面的逻辑短路问题
+            */
+
+            // ++在前，变量在后，运算时使用自增后的值
+            var a=1;
+            console.log(++a + 1);
+            console.log(a);
+            // ++在后，变量在前，运算时使用自增前的值
+            var b=1;
+            console.log(b++ + 1);
+            console.log(b);
+
+    </script>
+</body>
+
+</html>

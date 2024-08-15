@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>从前面添加图片</button>
+    <!-- 
+    动态添加：先创建img标签，再给src属性赋值 
+    -->
+    <script>
+        /* 
+        创建
+        document.createElement()	创建元素节点。
+        */
+        /*
+        添加
+        element.appendChild(node)	现有的子元素之后添加一个新的子元素
+        element.insertBefore(newnode,existingnode)	现有的子元素之前插入一个新的子元素
+        */
+        var btn = document.querySelector('button')
+        btn.onclick = function () {
+            // 创建
+            var img = document.createElement('img')//创建后只存在内存中，暂不可见，需要添加到某个元素后面
+            // 设置img的src属性
+            img.src = './images/zxy.jpg'
+            // 添加
+            document.querySelector('body').insertBefore(img, this)//this代表事件源对象，此处指btn
+        }
+    </script>
+</body>
+
+</html>

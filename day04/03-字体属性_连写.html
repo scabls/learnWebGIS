@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     /* 
+      顺序："font-style font-variant font-weight font-size/line-height font-family"
+        中间空格隔开
+        font-size和font-family的值是必需的。如果缺少了其他值，默认值将被插入，如果有默认值的话。
+      技巧：取首字母swsf：稍微舒服
+            注意：line-height属性设置行与行之间的空间。
+     */
+
+     div{
+        font: italic bold 1em/1em "宋体","Arial", sans-serif;
+     }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p class="p1">这是第一个段落</p>
+        <p class="p2">这是另一个段落</p>
+        <p class="p3">这是第三个段落</p>
+        <p class="p4">这是第四个段落</p>
+        <p style="line-height: 3em; font:inherit small-caps  bold /inherit 'Courier New', monospace;">这是第五个段落</p>
+    </div>
+</body>
+
+</html>

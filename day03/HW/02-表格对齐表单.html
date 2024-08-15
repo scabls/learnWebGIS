@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <form action="./" id="register-form">
+            <thead>
+                <th colspan="2">用户注册</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <th><label for="username">用户名</label></th>
+                    <td><input type="text" id="username" name="username" required></td>
+                </tr>
+                <tr>
+                    <th><label for="password">密码</label></th>
+                    <td><input type="password" id="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <th><label>性别</label></th>
+                    <td>
+                        <input type="radio" id="=male" name="gender" value="male" required>
+                        <label for="=male">男</label>
+                        <input type="radio" id="=female" name="gender" value="female">
+                        <label for="=female">女</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label>爱好</label></th>
+                    <td>
+                        <input type="checkbox" id="writing" name="hobby" value="writing">
+                        <label for="writing">写作</label>
+                        <input type="checkbox" id="music" name="hobby" value="music">
+                        <label for="music">音乐</label>
+                        <input type="checkbox" id="sport" name="hobby" value="sport">
+                        <label for="sport">体育</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="province">省份</label></th>
+                    <td>
+                        <select name="province" id="province" required>
+                            <option value="" selected disabled>请选择</option>
+                            <option value="beijing">北京</option>
+                            <option value="shanghai">上海</option>
+                            <option value="guangzhou">广州</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="intro">自我介绍</label></th>
+                    <td><textarea name="intro" id="intro" placeholder="这个家伙很什么都没写" required></textarea></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <th colspan="2">
+                    <button type="submit" form="" register-form"><img src="./images/submit.svg" alt="提交" title="提交"
+                            width="15"></button>
+                    <button type="reset" form="" register-form"><img src="./images/reset.svg" alt="重置" title="重置"
+                            height="15"></button>
+
+                </th>
+            </tfoot>
+        </form>
+    </table>
+</body>
+
+</html>

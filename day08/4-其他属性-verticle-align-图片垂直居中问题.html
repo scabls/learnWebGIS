@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            现象：
+                给Div设置内容的高度发现文字会居中但是图片没有居中
+            原因：
+                图片仍沿着基线对齐
+            解决：
+                设置vertical-align: middle;把此元素放置在父元素的中部
+                    vertical-align属性
+                    baseline	默认。元素放置在父元素的基线上。
+                    sub	垂直对齐文本的下标。
+                    super	垂直对齐文本的上标
+                    top	把元素的顶端与行中最高元素的顶端对齐
+                    text-top	把元素的顶端与父元素字体的顶端对齐
+                    middle	把此元素放置在父元素的中部。
+                    bottom	使元素及其后代元素的底部与整行的底部对齐。
+                    text-bottom	把元素的底端与父元素字体的底端对齐。
+                    length	将元素升高或降低指定的高度，可以是负数。
+        */
+        div{
+            width: 600px;
+            height: 600px;
+            /* 设置line-height为元素高度，保证文字居中，但不能保证图片居中 */
+            line-height: 600px;
+            background-color: lightskyblue;
+        }
+        img{
+            vertical-align: middle;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="./images/aa.jpg" alt="">这是一张image
+    </div>
+</body>
+
+</html>

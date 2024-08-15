@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .c1 {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+        }
+        /* 注意点
+        浮动元素会受到上面非浮动元素边界的影响，不会浮上去，只会左右平移
+        一直平移直到碰到了所处的容器的边框，或者碰到另外一个浮动的元素。
+        */
+        .c2 {
+            float: left;
+            width: 220px;
+            height: 220px;
+            background-color: pink;
+        }
+        .c3{
+            width: 240px;
+            height: 240px;
+            background-color: lightgreen;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1"></div>
+    <div class="c2"></div>
+    <div class="c2"></div>
+    <div class="c3"></div>
+</body>
+
+</html>

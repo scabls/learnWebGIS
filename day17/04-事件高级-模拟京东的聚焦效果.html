@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <script>
+        // 建议监听松开事件，这样文本框就不会输入字符
+        document.addEventListener('keyup', function (e) {
+            console.log(e.keyCode);//查看指定键的ASCII值
+            if (e.keyCode == 83) {
+                var input = document.querySelector('input')
+                input.focus()//使文本框聚焦
+            }
+        })
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

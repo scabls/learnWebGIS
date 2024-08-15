@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            background-color: lightblue;
+
+            /* 边框 */
+            /* 
+            border-width	指定边框的宽度
+            border-style	指定边框的样式
+            border-color	指定边框的颜色
+            */
+
+            /* 简写 */
+            /* 复合属性
+                全方向，复合宽度、样式和颜色
+                对于宽度、样式和颜色，若简写时省略，会自动插入默认值
+                因为同时控制四个方向，所以宽度、样式和颜色的值只能写一个 */
+            border: 1px solid green;
+
+            /* 分开写 */
+            border-width: 1px;
+            /* 复合属性，可分四个方向 */
+            /* 
+            一个值
+                四周
+            两个值
+                上下 左右
+            三个值
+                上 左右 下
+            四个值
+                上 右 下 左（顺时针）
+            */
+            /* 可以单独写某个方向的边框
+            border-top-width */
+
+            border-style: solid;
+            /* 复合属性，可以分为四个方向
+                上 右 下 左（顺时针） */
+            /* 
+            none	定义无边框。
+            hidden	与 "none" 相同。不过应用于表时除外，对于表，hidden 用于解决边框冲突。
+            dotted	定义点状边框。在大多数浏览器中呈现为实线。
+            dashed	定义虚线。在大多数浏览器中呈现为实线。
+            solid	定义实线。
+            double	定义双线。双线的宽度等于 border-width 的值。
+            */
+
+            border-color: green;
+            /* 复合属性，可以分为四个方向
+                上 右 下 左（顺时针） */
+
+            border-radius: 50px;
+            /* 复合属性，可以分为四个方向
+                左上角开始（顺时针） */
+            /* 
+            一个值 四周
+            两个值 正对角 反对角
+            三个值 左上 反对角 右下
+            四个值 左上 右上 右下 左下（顺时针）
+                */
+            /* 可以单独写某个方向的边框
+            border-top-left-radius: */
+
+            /* 对于方向复合，可以理解为省略值的默认值是对面位置的值 */
+
+
+
+            /* 内边距 */
+            padding: 50px;
+
+            /* 外边距 */
+            margin: 20px;
+        }
+
+        p {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            border-style:solid dotted dashed double;
+            border-radius: 50%;
+            /* border-radius: 50px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        我看什么都像你，我看月亮，像你，看星星，也像你。那些白亮透澈、温柔冷清的光，它们都让我想起你。其实我不太懂喜欢，可我想走向你。
+    </div>
+
+
+    <p>
+
+    </p>
+</body>
+
+</html>

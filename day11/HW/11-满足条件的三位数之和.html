@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+       练习十一:弹框录入一个大于100的三位数,求出100到该数字之间满足如下要求的数字之和:
+            1.数字的个位数不为7;
+            2.数字的十位数不为5;
+            3.数字的百位数不为3;
+        */
+        var limit = +prompt("请输入一个大于100的三位数:");
+        if (limit < 100 || limit > 999) {
+            alert("输入数字错误");
+        }
+        else {
+            var sum = 0;
+            var onesPlace = 0;
+            var tensPlace = 0;
+            var hundredsPlace = 0;
+            for (var i = 100; i <= limit; i++) {
+                onesPlace = i % 10;
+                tensPlace = parseInt(i / 10) % 10;
+                hundredsPlace = parseInt(i / 100);
+                if (onesPlace != 7 && tensPlace != 5 && hundredsPlace != 3) {
+                    sum += i;
+                }
+            }
+            alert(`上限是${limit},符合条件的数字之和为${sum}`)
+        }
+    </script>
+</body>
+
+</html>

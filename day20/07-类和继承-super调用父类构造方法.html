@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            eat() {
+                alert('吃饭')
+            }
+        }
+        class Student extends Person {
+            constructor(name, age, number) {
+                // 调用父类的构造方法
+                super(name, age)
+                this.number = number
+            }
+            study() {
+                alert('学习')
+            }
+        }
+        console.dir(Person);
+        console.dir(Student);
+
+        const stu1 = new Student('张三', 19, 10001)
+
+        console.log(stu1);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            aspect-ratio: 1;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function getSum(num1, num2) {
+            console.log(this);
+            return num1 + num2
+        }
+
+        // 方式一：传统方法
+        var sum1 = getSum(10, 20)
+        console.log(sum1);
+
+        // 方式二：使用call调用
+        // 格式：方法名.call(方法调用者,参数列表)
+        var sum2 = getSum.call(window, 20, 30)
+        console.log(sum2);
+        // 方式二可以更改this指向
+        var sum3 = getSum.call(sum2, 30, 40)
+        console.log(sum3);
+
+
+    </script>
+</body>
+
+</html>

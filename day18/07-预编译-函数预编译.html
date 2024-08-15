@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function a(num) {
+            console.log(i);
+
+            var i = 10
+            console.log(b);
+            function b() {
+                console.log(i);
+            }
+            b()
+        }
+        a(20)
+        /*
+        具体流程：
+            1.先全局预编译  ----如果调用了函数，再进行函数预编译
+                1. 先查找全局变量的**声明**，作为GO对象的属性名，值是**undefined**
+                        没有
+                2. 再查找全局函数的**声明**，作为GO对象的方法名，值是**function**
+                        GO{a:function}
+                3. 再从上往下依次执行代码（全局环境中的代码），声明的语句会被略过（上面两步已经处理了声明）
+                        执行第22行代码，调用a函数，调用的那一刻起，进行函数的预编译
+            2.函数预编译
+                1. 先查找**形参**和局部变量的**声明**，作为AO对象的属性名，值是**undefined**
+                        AO{num:undefined,i:undefined}
+                2. 使用**实参**的值替换形参的值
+                        AO{num:20,i:undefined}
+                3. 再查找局部函数的**声明**，作为AO对象的方法名，值是**function**
+                        AO{num:20,i:undefined,b:function}
+                4. 再从上往下依次执行代码，声明的语句会被略过（前面已经处理了声明）
+                        执行第13行代码，打印i，undefined
+                        执行第15行代码，给i赋值，AO{num:20,i:10,b:function}
+                        执行第16行代码，打印b，function
+                        执行第20行，调用b，又创建一个AO对象
+                            查找形参和局部变量的声明，没有局部变量和形参
+                            没有查到局部函数的声明
+                            依次执行代码
+        */
+    </script>
+</body>
+
+</html>

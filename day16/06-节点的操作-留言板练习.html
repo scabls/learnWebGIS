@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea {
+            width: 15rem;
+            aspect-ratio: 1/0.5;
+            resize: none;
+            border: 1px solid #000;
+            ;
+            outline: none;
+        }
+
+        ul {
+            width: 20rem;
+            padding: 1rem 0;
+            list-style: none;
+        }
+
+        li {
+            background-color: lightseagreen;
+            color: white;
+            font-size: 1.2rem;
+            margin: 10px 0;
+            padding: 4px 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id=""></textarea>
+    <button>发布</button>
+    <ul></ul>
+    <script>
+        var btn = document.querySelector('button')
+        var textarea = document.querySelector('textarea')
+        var ul = document.querySelector('ul')
+        btn.onclick = function () {
+            if (textarea.value != 0) {
+                var li = document.createElement('li')
+                li.innerHTML = textarea.value
+                ul.insertBefore(li, ul.children[0])
+                textarea.value = ''
+                textarea.placeholder = ''
+            } else {
+                textarea.placeholder = '输入内容不能为空'
+            }
+        }
+
+    </script>
+</body>
+
+</html>

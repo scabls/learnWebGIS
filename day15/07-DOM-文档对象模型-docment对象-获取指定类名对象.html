@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li class="11li">Lorem, ipsum dolor.</li>
+        <li class="11li">Rerum, expedita! Amet?</li>
+        <li class="11li">Molestias, accusamus natus!</li>
+        <li class="11li">Illo, aperiam doloremque!</li>
+    </ul>
+    <script>
+        var liCol = document.getElementsByClassName('11li')
+        console.log(liCol);
+        liArr = [...liCol]
+        liArr.reverse()
+        for (i in liArr) {
+            liArr[i].style.color = 'lightblue'
+            console.log(liArr[i].innerHTML);
+        }
+    </script>
+</body>
+
+</html>

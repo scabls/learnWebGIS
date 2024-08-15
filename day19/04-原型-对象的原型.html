@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 实例成员
+        function Student(name, age) {
+            // 实例属性
+            this.name = name
+            this.age = age
+
+        }
+        Student.prototype.country = 'China'
+        Student.prototype.study = function () {
+            console.log('学习');
+        }
+
+        var stu1 = new Student('张三', '18')
+        stu1.study()
+        console.log(stu1.country);
+        var stu2 = new Student('李四', '18')
+        stu2.study()
+        console.log(stu2.country);
+
+        // 对象的原型在对象上
+        console.dir(stu1);
+        console.dir(stu2);
+
+        // 通过__proto__属性获取对象的原型
+        console.log(stu1.__proto__);
+        console.log(stu2.__proto__);
+
+        // 获取Student类的原型（构造函数的原型对象）
+        console.log(Student.prototype);
+
+        // 比较：对象的原型（__proto__）和原型对象（prototype）是不是一个东西
+        console.log(stu1.__proto__ === Student.prototype); //true
+
+        /* 
+        为对象查找方法提供了一个机制，（先从对象中找，如果找不到，可以通过对象的原型指向的原型对象prototype中查找）
+        */
+    </script>
+</body>
+
+</html>

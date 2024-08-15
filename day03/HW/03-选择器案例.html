@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    a {
+      text-decoration: none;
+    }
+
+    /* 选择 侧导航栏下 右侧 a标签元素 设置成红色*/
+    .side-nav a:link,
+    .side-nav a:visited {
+      color: red;
+    }
+
+    .side-nav a:hover {
+      font-size: larger;
+    }
+
+    .side-nav a:active {
+      color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 主导航栏 -->
+  <nav class="top-nav">
+    <ul>
+      <li><a href="#">公司首页</a></li>
+      <li><a href="#">公司简介</a></li>
+      <li><a href="#">公司产品</a></li>
+      <li><a href="#">联系我们</a></li>
+    </ul>
+  </nav>
+  <!-- 侧导航栏 -->
+  <aside class="side-nav">
+    <div class="left">左侧侧导航栏</div>
+    <div class="right"><a href="#">登录</a></div>
+  </aside>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        function Student(name, age, home) {
+            this.name = name
+            this.age = age
+            this.home = home
+            this.intro = function () {
+                return `我叫${this.name}，今年${this.age}岁，来自${this.home}`;
+            }
+        }
+
+        // 方法一
+        // var z3 = new Student('张三', 180, '火星')
+        // var l4 = new Student('李四', 168, '水星')
+        // var w5 = new Student('王五', 16, '金星')
+        // var z6 = new Student('赵六', 1000, '月球')
+        // var stu = [z3, l4, w5, z6]
+
+        // 方法二
+        var stu = []
+        var stuName = ['张三', '李四', '王五', '赵六']
+        var age = [180, 168, 16, 1000]
+        var home = ['火星', '水星', '金星', '月球']
+        for (i in stuName) {
+            stu[i] = new Student(stuName[i], age[i], home[i])
+        }
+        console.log(stu[Math.floor(Math.random() * stu.length)].intro());
+
+
+
+    </script>
+</body>
+
+</html>

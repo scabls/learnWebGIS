@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        二维数组
+            概念
+                本质也是一维数组，里面的每一个元素都是一个一维数组
+            应用场景
+                三个小组，每组3个学生，用数组保存每小组每个学生的成绩
+                    var arr = [[1,2,3],[4,5,6],[7,8,9]]
+
+                gis绘制多边形
+                    多边形有多个点，每个点都有经纬度，使用二维数组保存多边形
+                    var arr = [[1,2],[4,5],[7,8],[1,2]]
+                        首尾坐标一样，形成封闭多边形    
+        */
+        var arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+        // arr[]
+        document.write(`${arr[0]}<br>`);
+        // arr[][]
+        document.write(`${arr[0][0]}<br>`);
+
+        // 遍历
+        for (i = 0; i < arr.length; i++) {
+            for (j = 0; j < arr[i].length; j++) {
+                document.write(arr[i][j])
+            }
+            document.write('<br>')
+        }
+
+    </script>
+</body>
+
+</html>

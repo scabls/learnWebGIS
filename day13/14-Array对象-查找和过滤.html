@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // find()	返回符合传入测试（函数）条件的数组元素。
+        // filter()	检测数值元素，并返回符合条件所有元素的数组。
+        var ages = [10, 15, 19, 18, 30]
+        function checkValue(value) {
+            return value >= 18
+        }
+        var res1=ages.find(checkValue)
+        console.log(res1);
+
+        var res2=ages.filter(checkValue)
+        console.log(res2);
+    </script>
+</body>
+
+</html>

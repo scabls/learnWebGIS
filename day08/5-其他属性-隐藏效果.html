@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .c1{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            /* 不显示，不占位置，在设置动画效果时会出问题 */
+            display: none;
+        }
+        .c2{
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            /* 不可见，占位置 */
+            visibility: hidden;
+        }
+        .c3{
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+            /* 透明化，占位置，更适合淡入淡出效果 */
+            opacity: 0;
+        }
+        .c4{
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+            /* 缩放大小为0，占原本大小的位置 */
+            transform:scale(0)
+        }
+        .c5{
+            width: 100px;
+            height: 100px;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <div class="c1"></div>
+    <div class="c2"></div>
+    <div class="c3"></div>
+    <div class="c4"></div>
+    <div class="c5"></div>
+</body>
+</html>

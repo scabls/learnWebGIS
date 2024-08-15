@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        background
+            背景缩写属性可以在一个声明中设置所有的背景属性。
+
+            可以设置的属性分别是：background-color、background-position、background-size、background-repeat、
+                                background-origin、background-clip、background-attachment 和 background-image。
+
+            各值之间用空格分隔，不分先后顺序。
+            
+            可以只有其中的某些值，例如 background：＃FF0000 URL（smiley.gif); 是允许的。
+
+            具体语法：
+            background:bg-color bg-image bg-position/bg-size bg-repeat
+        
+        */
+        div {
+
+            /* 分开写 */
+            width: 400px;
+            height: 400px;
+            background-color: lightskyblue;
+            background-image: url(./images/1.jpg);
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+
+            background-size: 40% 40%;
+
+            /* 连写 */
+            /* 注意未写的属性值会被设置为默认值,如果有默认值 */
+            background: lightblue url(./images/1.jpg) 50% 50% / 40% 40% no-repeat;
+
+            background: lightblue url(./images/1.jpg) 50% 50% / 40% 40% ;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+</body>
+
+</html>

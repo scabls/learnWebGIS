@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./fontawesome-free-6.6.0-web/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1;
+        }
+
+        header {
+            padding: 1rem;
+            background-color: lightblue;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+            font-size: 3rem;
+            color: white;
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        section input,
+        section button {
+            height: 3rem;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 30rem;
+            padding-left: 1rem;
+        }
+
+        input:focus {
+            outline: 2px solid pink;
+        }
+
+        button {
+            width: 6rem;
+            font-size: 1.2rem;
+            color: skyblue;
+        }
+
+        button:hover {
+            background-color: pink;
+            color: white;
+        }
+
+        li {
+            display: flex;
+            font-size: 1.2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        li:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        li:hover {
+            cursor: pointer;
+            background-color: #dddddd;
+        }
+
+        li .fa-check,
+        li .fa-xmark {
+            flex-basis: 3rem;
+            height: 3rem;
+            text-align: center;
+            line-height: 3rem;
+
+        }
+
+        li span {
+            flex: auto;
+        }
+
+        .fa-check {
+            visibility: hidden;
+        }
+
+        .fa-xmark:hover {
+            background-color: pink;
+            color: white;
+        }
+
+        li.checked {
+            background-color: lightgoldenrodyellow;
+            color: lightsalmon;
+        }
+
+        .checked span {
+            text-decoration: line-through;
+        }
+
+        .checked .fa-check {
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>My ToDo List</h1>
+            <section>
+                <input type="text" placeholder="请输入待办事项" class="input">
+                <button class="add">添加</button>
+            </section>
+        </header>
+        <main>
+            <ul>
+            </ul>
+        </main>
+    </div>
+
+    <script>
+        var ul = document.querySelector('ul')
+        var input = document.querySelector('input')
+        var btn = document.querySelector('button')
+        btn.addEventListener('click', function () {
+            var spans = [...document.querySelectorAll('span')]
+            var spanContent = spans.map(function (span) {
+                return span.textContent
+            })
+            if (input.value != '') {
+                if (!spanContent.includes(input.value)) {
+                    var li = document.createElement('li')
+                    var i1 = document.createElement('i')
+                    var span = document.createElement('span')
+                    var i2 = document.createElement('i')
+                    i1.classList.add('fa-solid', 'fa-check')
+                    span.textContent = input.value
+                    i2.classList.add('fa-solid', 'fa-xmark')
+                    i2.addEventListener('click', function (e) {
+                        // 阻止事件冒泡，防止事件传播到父元素
+                        e.stopPropagation()
+                        this.parentElement.parentElement.removeChild(this.parentElement)
+                    })
+                    li.append(i1, span, i2)
+                    li.addEventListener('click', function () {
+                        // if (!this.classList.contains('checked')) {
+                        //     this.classList.add('checked')
+                        // } else {
+                        //     this.classList.remove('checked')
+                        // }
+                        this.classList.toggle('checked')// 一行代码顶四（五）行
+                    })
+                    ul.appendChild(li)
+                    input.value = ''
+                    input.placeholder = '请输入待办事项'
+                } else {
+                    input.value = ''
+                    input.placeholder = '待办事项已存在'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

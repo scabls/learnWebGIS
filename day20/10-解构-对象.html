@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const stu = {
+            name: '张三',
+            age: 19,
+            // ES5定义方法
+            eat: function () {
+                console.log('吃饭');
+            },
+            // ES6定义方法
+            study() {
+                console.log('学习');
+            },
+        }
+        // 解构
+        const { name, age, eat, study } = stu
+        console.log(name);
+        console.log(age);
+        console.log(eat);
+        console.log(study);
+
+        const stu2 = {
+            name: '王五',
+            age: 28,
+            scores: [90, 100, 89]
+        }
+
+        const { name:stu_name, age:stu_age, scores:[a, b, c] } = stu2
+        console.log(stu_name);
+        console.log(stu_age);
+        console.log(a);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .card {
+      width: 60px;
+      height: 90px;
+      border: 1px solid black;
+      border-radius: 5px;
+      display: inline-block;
+      margin: 5px;
+      text-align: center;
+      line-height: 90px;
+      font-size: 20px;
+    }
+
+    .player {
+      margin-top: 20px;
+    }
+
+    .bottom-cards {
+      margin-top: 20px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>斗地主游戏</h1>
+  <button>发牌</button>
+  <h2>玩家1的牌:</h2>
+  <div class="player" id="player1">
+
+  </div>
+  <h2>玩家2的牌:</h2>
+  <div class="player" id="player2">
+
+  </div>
+  <h2>玩家3的牌:</h2>
+  <div class="player" id="player3">
+
+  </div>
+  <h2>底牌:</h2>
+  <div class="bottom-cards" id="bottomCards">
+
+  </div>
+
+  <script>
+
+    var btn = document.querySelector('button')
+    btn.addEventListener('click', function () {
+      var suits = ["♠", "♥", "♦", "♣"]
+      var ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+      var jokers = ['大王', '小王']
+      var poker = suits.flatMap(function (suit) {
+        return ranks.map(function (rank) {
+          return suit + rank
+        })
+      })
+      poker.push(...jokers)
+
+      var shuffle = []
+      while (poker.length > 0) {
+        var j = Math.floor(Math.random() * (poker.length))
+        shuffle.unshift(poker[j])
+        poker.splice(j, 1)
+      }
+      var playerA = document.querySelector('#player1')
+      var playerB = document.querySelector('#player2')
+      var playerC = document.querySelector('#player3')
+      var reserve = document.querySelector('#bottomCards')
+      playerA.innerHTML = ''
+      playerB.innerHTML = ''
+      playerC.innerHTML = ''
+      reserve.innerHTML = ''
+      shuffle.forEach(function (item, index, arr) {
+        var card = document.createElement('div')
+        card.classList.add('card')
+        card.textContent = item
+        if (index < arr.length - 3) {
+          if (index % 3 == 0) {
+            playerA.appendChild(card)
+          }
+          if (index % 3 == 1) {
+            playerB.appendChild(card)
+          }
+          if (index % 3 == 2) {
+            playerC.appendChild(card)
+          }
+        } else {
+          reserve.appendChild(card)
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        练习九:打印n行m列的星星(n和m由弹框录入)
+        */
+       var rows = prompt("请输入行数:");
+       var columns = prompt("请输入列数:");
+        // 外层控制行数
+        for (var i = 1; i <= rows; i++) {
+            // 内层控制列数
+            for (var j = 1; j <= columns; j++) {
+                document.write(`⭐`);
+            }
+            document.write("</br>");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* :nth-child(n)选择器和:nth-of-type(n)选择器
+         n可以是数字,也可以是公式,也可以是关键字
+         */
+
+
+        /* 1,选择奇数个li设置成红色 */
+        li:nth-child(odd) {
+            color: red;
+        }
+
+        /* 2,给偶数个li设置成绿色 */
+        li:nth-child(even) {
+            color: green;
+        }
+
+        /* 3,选择前3个li设置成紫色 */
+        li:nth-child(-n+3) {
+            color: purple;
+        }
+
+        /* 4,选择第4个以后的li设置成蓝色(包含第4个)*/
+        li:nth-child(n+4) {
+            color: blue;
+        }
+
+        /* 选择除第4个以外的li设置成红色 */
+        /* :not(selector)	:not(p)	选择每个并非p元素的元素 */
+        li:not(:nth-child(4)) {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>第1个li</li>
+        <li>第2个li</li>
+        <li>第3个li</li>
+        <li>第4个li</li>
+        <li>第5个li</li>
+        <li>第6个li</li>
+        <li>第7个li</li>
+        <li>第8个li</li>
+        <li>第9个li</li>
+        <li>第10个li</li>
+    </ul>
+</body>
+
+</html>

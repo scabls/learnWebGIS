@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="ul1">
+        <li>Lorem, ipsum dolor.</li>
+        <li>Rerum, expedita! Amet?</li>
+        <li>Molestias, accusamus natus!</li>
+        <li>Illo, aperiam doloremque!</li>
+    </ul>
+    <p class="c1">aaa</p>
+    <div class="c1">aaa</div>
+    <script>
+        /* 
+            document.querySelector()	返回文档中匹配指定的CSS选择器的第一元素
+            document.querySelectorAll()	返回文档中匹配的CSS选择器的所有元素节点列表
+        */
+       console.log(document.querySelector('#ul1'));
+       console.log(document.querySelectorAll('li'));
+       console.log(document.querySelectorAll('.c1'));
+
+        
+        // 优势:可以灵活地使用CSS选择器
+        console.log(document.querySelectorAll('li:nth-child(odd)'));
+    </script>
+</body>
+
+</html>

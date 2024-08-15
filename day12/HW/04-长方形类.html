@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        练习四: 
+    创建一个长方形类：
+       属性：长、宽
+       行为：计算周长的方法、计算面积的方法
+     创建对象,并给属性赋值,调用方法获取周长和面积
+        */
+        function Rectangle(height, width) {
+            this.height = height;
+            this.width = width;
+            this.perimeter = function () {
+                return 2 * (this.height + this.width)
+
+            }
+            this.area = function () {
+                return this.height * this.width
+            }
+        }
+        var height01 = +prompt('输入长方形的长：')
+        var width01 = +prompt('输入长方形的宽：')
+        var rect1 = new Rectangle(height01, width01);
+        document.write(`长方形的周长为${rect1.perimeter()}，长方形的面积为${rect1.area()}`)
+    </script>
+</body>
+
+</html>

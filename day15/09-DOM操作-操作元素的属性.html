@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="./images/off.gif" alt="">
+    <script>
+        // 原始方法
+        // element.setAttribute()	设置或者改变指定属性并指定值。
+        // element.getAttribute()	返回指定元素的属性值
+
+        // 简化方法
+        // 元素对象.属性名=属性值   设置或修改元素属性的值
+        // 元素对象.属性名          获取元素属性的值
+        var img = document.querySelector('img')
+        console.dir(img);
+        img.src = './images/on.gif'
+        console.log(img.src);// 打印的是完整路径，不是我们输入的相对路径
+    </script>
+</body>
+
+</html>

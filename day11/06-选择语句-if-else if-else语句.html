@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            if(条件表达式1){
+                语句体1
+            }
+            else if{
+                语句体2 
+            }
+            ···
+            else if{
+                语句体n-1
+            }
+            else{
+                语句体n
+            }
+
+            **执行流程**
+            从上往下依次判断每个条件，如果满足就执行对应的语句体，都不满足就执行最后的else内语句体
+        */
+        var money = prompt("请输入钱包里的钱：");
+        if (money >= 500) {
+            alert('大份餐！！')
+        }
+        else if(money >= 400){ // 注意点：else if的条件表达式隐含了不满足上面的条件表达式，主要是else在起作用
+            alert('中份餐！')
+        }
+        else if(money >= 300){
+            alert('快餐')
+        }
+        else if(money >= 200){
+            alert('小份餐？')
+        }
+        else if(money >= 100){
+            alert('泡面？？')
+        }
+        else{
+            alert('没钱啦！！')
+        }
+    </script>
+</body>
+
+</html>

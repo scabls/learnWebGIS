@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Phone {
+            call() {
+                console.log('打电话');
+            }
+        }
+        class NewPhone extends Phone{
+            call(){
+                // this用来调用父类的方法
+                super.call()
+                console.log('同时视频');
+                // this调用本类的其他方法
+                this.playGame()
+            }
+            playGame(){
+                console.log('玩游戏');
+            }
+        }
+
+        const p=new NewPhone()
+        p.call()
+
+    </script>
+</body>
+
+</html>

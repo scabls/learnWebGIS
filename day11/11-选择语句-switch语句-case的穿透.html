@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        case穿透产生的原因
+            如果case语句没有break，就会产生case穿透，因为break用于结束switch语句
+        
+        case穿透产生的现象
+            从满足条件的那个语句开始，依次执行，忽略后面case表达式的判断，执行语句直到遇到break语句
+
+        case穿透的好处
+            在某些情况下，可以使用case穿透来简化代码
+        */
+        var month = +prompt("请输入一个月份：");
+        switch (month) {
+            case 12:
+            case 1:
+            case 2:
+                alert("冬季");
+                break;
+            case 3:
+            case 4:
+            case 5:
+                alert("春季");
+                break;
+            case 6:
+            case 7:
+            case 8:
+                alert("夏季");
+                break;
+            case 9:
+            case 10:
+            case 11:
+                alert("秋季");
+                break;
+            default:
+                alert("请输入正确的月份");
+                break;
+        }
+
+        if (month === 12 || month === 1 || month === 2) {
+            alert("冬季");
+        } else if (month === 3 || month === 4 || month === 5) {
+            alert("春季");
+        } else if (month === 6 || month === 7 || month === 8) {
+            alert("夏季");
+        } else if (month === 9 || month === 10 || month === 11) {
+            alert("秋季");
+        } else {
+            alert("请输入正确的月份");
+        }   
+    </script>
+</body>
+
+</html>

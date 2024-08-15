@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        石头剪刀布！
+        */
+        arr = ['石头', '剪刀', '布']
+        function Game(arr, choice) {
+            this.arr = arr
+            this.choice = choice
+            this.rnum = Math.floor(Math.random() * this.arr.length)
+            this.computer = function () {
+                return this.arr[this.rnum]
+            }
+            this.player = function () {
+                return this.arr[this.choice]
+            }
+            this.win = function () {
+                var computerChoice = this.computer()
+                var playerChoice = this.player()
+                switch (true) {
+                    case computerChoice == '石头' && playerChoice == '剪刀':
+                    case computerChoice == '剪刀' && playerChoice == '布':
+                    case computerChoice == '布' && playerChoice == '石头':
+                        return `电脑获胜！`;
+                    case computerChoice == playerChoice:
+                        return `平局！`;
+                    default:
+                        return `玩家获胜！`;
+                }
+            }
+        }
+        var choice = +(prompt("玩家A请输入数字出拳:0-石头/1-剪刀/2-布"));
+        console.log(choice);
+        if (Number.isInteger(choice) && choice >= 0 && choice < arr.length) {
+            var result = new Game(arr, choice)
+            document.write(`玩家出了${result.player()}，电脑出了${result.computer()}，${result.win()}`)
+        } else {
+            document.write('请正确出拳')
+        }
+    </script>
+</body>
+
+</html>

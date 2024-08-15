@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .c1 {
+            float: left;
+            width: 10px;
+            height: 200px;
+            border: 1px solid lightgreen;
+            box-sizing: border-box;
+        }
+
+        .c2 {
+            width: 10px;
+            height: 200px;
+            background-color: lightblue;
+            box-sizing: border-box;
+            animation: myRotate 1s linear infinite;
+            /* 默认沿着中心点转动，此时旋转的基点就是中心点
+            transform-origin    设置旋转元素的基点位置
+                语法    transform-origin: x-axis y-axis z-axis;
+                默认值 50% 50% 0
+                x-axis	定义变形中心距离盒模型的左侧的<length>或<percentage>偏移值
+                y-axis	定义变形中心距离盒模型的顶的<length>或<percentage>偏移值
+                z-axis	定义变形中心距离用户视线（z=0 处）的<length>（不能是<percentage>）偏移值
+            */
+            transform-origin: center 80%;            
+        }
+
+        @keyframes myRotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1">
+        <div class="c2"></div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 并不是父类中所有的属性子类都可以继承，只有部分属性可以继承，如字体、文本、对齐 */
+        .father {
+            color: red;
+            font-size: 50px;
+            text-align: center;
+
+            /* 父类的高度，子类无法继承 */
+            height: 200px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="father">父亲
+        <div class="son">儿子</div>
+    </div>
+</body>
+</html>

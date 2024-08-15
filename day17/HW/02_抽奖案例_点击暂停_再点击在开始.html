@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+
+<body>
+    <span id="layer">000000</span>
+    <input id="btn" type="button" value='生成随机数' />
+
+    <script>
+        var span = document.querySelector('#layer')
+        var btn = document.querySelector('#btn')
+        var flag = true
+        var intervalID;
+        btn.addEventListener('click', function () {
+            flag = !flag
+            if (flag) {
+                clearInterval(intervalID)
+            } else {
+                intervalID = setInterval(function () {
+                    var content = Math.random().toFixed(6).slice(-6)
+                    span.textContent = content
+                }, 100)
+            }
+        })
+    </script>
+</body>
+
+</html>

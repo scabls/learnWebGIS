@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [11, 55, 22, 33, 44]
+        var sum = arr[0]; // 因为设置了循环是从1开始,直接访问数组的第二个元素,所以和的初始值取数据的第1个元素
+        // 擂台变量
+        var max = arr[0];   //为了确保初始值不比数组中所有元素的值大，取数组元素的值，一般取第一个
+        var min = arr[0];   //为了确保初始值不比数组中所有元素的值小，取数组元素的值，一般取第一个
+        for (i = 1; i < arr.length; i++) {
+            sum += arr[i];
+            // 其余元素和擂台元素比较，获胜的成为新的擂台元素
+            // 因为擂台元素取的第一个值，所以初始循环建议从1开始，直接索引数组第二个值
+            max = arr[i] > max ? arr[i] : max
+            min = arr[i] < min ? arr[i] : min
+        }
+        var mean = sum / arr.length;
+        document.write(`和是${sum},平均值是${mean},最大值是${max},最小值是${min}<br>`)
+
+
+        var num = +prompt('请输入数字');
+        var index = -1;
+        for (i in arr) {
+            if (arr[i] == num) {
+                index = i;
+                break
+            }
+        }
+        if (index == -1) {
+            document.write(`数字中没有这个元素`)
+        } else {
+            document.write(`要查找的数据在数组中第一次出现的索引为${index}`)
+        }
+        // 后续可以使用数组中的方法来实现（面向对象时的内容）
+        document.write(`<br>要查找的数据在数组中第一次出现的索引为${arr.indexOf(num)}`)
+
+
+    </script>
+</body>
+
+</html>

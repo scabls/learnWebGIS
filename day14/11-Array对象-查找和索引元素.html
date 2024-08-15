@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //查找4的位置
+        var arr = [1, 2, 3, 4, 5, 6, 4]
+        var lo4arr = arr.reduce(function (loc, item, index) {
+            if (item == 4) {
+                loc.push(index)
+            }
+            return loc
+        }, [])
+        console.log(lo4arr); 
+
+        // 查找100首次出现的位置
+        var lo100=arr.indexOf(100)//查不到返回-1
+        console.log(lo100);
+
+        //查找4最后出现的位置
+        var l4o=arr.lastIndexOf(4)
+        console.log(l4o);
+
+        //是否包含10
+        var c10=arr.includes(10)//不包含返回false
+        console.log(c10);
+
+    </script>
+</body>
+
+</html>

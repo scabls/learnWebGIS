@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button>按钮</button>
+    <script>
+
+        btn = document.querySelector('button')
+        btn.addEventListener('click', function (e) {// e 形参，传入事件对象
+            console.log('我被点了');
+            // e代表当前事件的事件对象
+            console.log(e);
+            // 获取当前事件类型
+            console.log(e.type);
+        })
+
+        document.addEventListener('keydown', function (e) {
+            console.log('键盘被按下了');
+            console.log(e);
+            // 监听键盘事件中按下了哪个键
+            console.log(e.key);// 按键的标识符
+            console.log(e.keyCode);// 按键标识符的ASCII值，默认是大写标识符的
+        })
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

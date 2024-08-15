@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        方式三：字面量
+            字面上的含义（[]代表数组，{}代表对象）
+            本质上还是使用new Array来创建的
+        */
+       var arr=['aaaa','bbbb','cccc']  
+        // 新增
+        arr[3]='dddd';
+        console.log(arr);
+        arr[5]='ffff'
+        console.log(arr);// arr[4]是空白
+        console.log(arr[4]);// undefined
+
+        // 修改
+        arr[2] = 'CCCC'
+        console.log(arr);
+
+        // 查找
+        // 取值：根据索引获取指定元素值
+        console.log(arr[2]);
+        // 长度：根据数组对象的一个属性length
+        console.log(arr.length);
+
+        // 删除
+        delete arr[1]
+        console.log(arr); // 删除之后数组长度没有变化，
+        console.log(arr[1]);// 被删的值变为undefined
+
+        /* 
+        结论：目前对数组的所有操作，都是通过它的索引来完成
+        */
+    </script>
+</body>
+
+</html>

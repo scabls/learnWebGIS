@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // 方法
+    // JSON.parse()	用于将一个 JSON 字符串转换为 JavaScript 对象。
+    // JSON.stringify()	用于将 JavaScript 值转换为 JSON 字符串。
+
+    var str = `{
+  "success": true,
+  "data": {
+    "typename": "nextday",
+    "name": "scorpio",
+    "title": "天蝎座",
+    "time": "8月3日",
+    "todo": {
+      "yi": "自带环保袋",
+      "ji": "三分钟热度"
+    },
+    "fortune": {
+      "all": 3,
+      "love": 4,
+      "work": 3,
+      "money": 4,
+      "health": 3
+    },
+    "shortcomment": "习惯与平淡相处",
+    "fortunetext": {
+      "all": "整体运势一般，你需要习惯与“平淡”相处。不要对生活抱有过高的期望，学会珍惜当下的平静和安宁。接受生活中的平凡，从中寻找美好和幸福。在平淡的日子里，培养自己的内心世界，让自己变得更加坚强和成熟。生活里，你可以选择在家中种植一些花草，悉心照料它们。看着植物生长的过程，你可以感受到生命的力量和美好，同时也能让自己的心情更加平静和愉悦。",
+      "love": "单身的你在感情方面可能没有明显的进展，但不要灰心丧气，耐心等待，属于你的缘分总会到来。已有伴者的你要多主动关心对方，了解对方的需求，让对方感受到你的爱意和温暖，增进彼此之间的感情。",
+      "work": "你需要稳住步伐，不要被外界的干扰所影响。可能会面临一些小挑战，但只要你保持冷静，认真分析问题，就能够找到解决办法。记住，稳步前进才是成功的关键，不要急于求成，相信自己的能力，你一定能够克服困难，取得进步。",
+      "money": "多学习理财技巧。可以通过阅读相关的书籍、参加理财讲座或者向专业人士请教等方式，不断提升自己的理财能力。只有掌握了更多的理财知识和技巧，才能更好地管理自己的财务状况，实现财富的增长。",
+      "health": "眼睛需要适度放松。长时间用眼，尤其是面对电子设备，容易导致眼睛疲劳。建议每隔一段时间就眺望远方，或者做一套眼保健操，缓解眼睛的疲劳和干涩，保护视力健康。"
+    },
+    "luckynumber": "1",
+    "luckycolor": "葱绿",
+    "luckyconstellation": "天蝎座",
+    "index": {
+      "all": "71%",
+      "love": "79%",
+      "work": "70%",
+      "money": "78%",
+      "health": "72%"
+    }
+  }
+}`
+
+    var obj = JSON.parse(str)
+    console.log(obj);
+    console.log(obj.data.fortunetext.love); 
+  </script>
+</body>
+
+</html>

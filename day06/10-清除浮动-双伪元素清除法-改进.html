@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+方案三：单伪元素法
+	使用伪元素替代额外标签,且伪元素为块元素，块级表格元素也可以
+    
+    改进：将清除浮动抽取到一个公共的类中，将来需要清除浮动时，只需要添加这个类即可。
+    类名一般设置为clearfix。
+*/
+        /* 方案四：双伪元素法 
+        在单伪元素基础上再添加一个伪元素，这个伪元素在父元素内容的最前面，用来解决margin塌陷问题
+        
+        改进：将前后伪元素相同的部分抽取处理（css层叠性），*/
+
+        .clearfix::before,
+        .clearfix::after {
+            content: "";
+            /* 使用block不行，仍会出现margin塌陷，必须使用table */
+            display: table;
+
+        }
+
+        .clearfix::after {
+            clear: both;
+        }
+
+        .father {
+            width: 120px;
+            background-color: lightgreen;
+        }
+
+        .son {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background-color: lightpink
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="father clearfix">
+        <div class="son">内容1</div>
+    </div>
+    <div class="father clearfix">
+        <div class="son">内容2</div>
+    </div>
+
+</body>
+
+</html>

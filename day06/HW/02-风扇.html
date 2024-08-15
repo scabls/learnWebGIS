@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bigCircle {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 0.6rem solid #3166AC;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+        .smallCircle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20%;
+            height: 20%;
+            background-color: #3166AC;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .leaf {
+            position: absolute;
+            left: 50%;
+            width: 20%;
+            height: 50%;
+            background-color: lightblue;
+            border-radius: 50%;
+            transform-origin: center bottom;
+        }
+
+        .leaf:first-child {
+            transform: translate(-50%, 0);
+        }
+
+        .leaf:nth-child(2) {
+            transform: translate(-50%, 0) rotate(120deg);
+        }
+
+        .leaf:last-child {
+            transform: translate(-50%, 0) rotate(-120deg);
+        }
+
+        .line {
+            position: absolute;
+            left: 50%;
+            width: 1%;
+            height: 50%;
+            background-color: #3166AC;
+            transform-origin: center bottom;
+        }
+
+        .line:first-child {
+            transform: translate(-50%, 0);
+        }
+
+        .line:nth-child(2) {
+            transform: translate(-50%, 0) rotate(30deg);
+        }
+
+        .line:nth-child(3) {
+            transform: translate(-50%, 0) rotate(60deg);
+        }
+
+        .line:nth-child(4) {
+            transform: translate(-50%, 0) rotate(90deg);
+        }
+
+        .line:nth-child(5) {
+            transform: translate(-50%, 0) rotate(120deg);
+        }
+
+        .line:nth-child(6) {
+            transform: translate(-50%, 0) rotate(150deg);
+        }
+
+        .line:nth-child(7) {
+            transform: translate(-50%, 0) rotate(180deg);
+        }
+
+        .line:nth-child(8) {
+            transform: translate(-50%, 0) rotate(210deg);
+        }
+
+        .line:nth-child(9) {
+            transform: translate(-50%, 0) rotate(240deg);
+        }
+
+        .line:nth-child(10) {
+            transform: translate(-50%, 0) rotate(270deg);
+        }
+
+        .line:nth-child(11) {
+            transform: translate(-50%, 0) rotate(300deg);
+        }
+
+        .line:last-child {
+            transform: translate(-50%, 0) rotate(330deg);
+        }
+
+        .square {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 20%;
+            height: 100%;
+            background-color: #3166AC;
+        }
+
+        .circle {
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: lightblue;
+            margin: 1rem auto;
+            text-align: center;
+            line-height: 1.5rem;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bigCircle">
+        <div class="smallCircle"></div>
+        <div class="leafs">
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+        </div>
+        <div class="lines">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="square">
+            <div class="circle">1</div>
+            <div class="circle">2</div>
+            <div class="circle">3</div>
+            <div class="circle">4</div>
+        </div>
+    </div>
+</body>
+
+</html>

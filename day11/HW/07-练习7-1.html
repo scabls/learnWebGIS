@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    1.按照从大到小的顺序输出四位数中的个位+百位=十位+千位(3553,2332,1166,8228,3773)的数字及个数
+	2.每行输出5个满足条件的数，之间用空格分隔
+        如：9999 9988 9977 9966 9955
+    -->
+    <script>
+        var onesPlace = 0;
+        var tensPlace = 0;
+        var hundredsPlace = 0;
+        var thousandsPlace = 0;
+        var count = 0;
+        for (var i = 1000; i < 10000; i++) {
+            onesPlace = i % 10;
+            tensPlace = parseInt(i / 10) % 10;
+            hundredsPlace = parseInt(i / 100) % 10;
+            thousandsPlace = parseInt(i / 1000);
+            if (onesPlace + hundredsPlace == tensPlace + thousandsPlace) {
+                count++;
+                if (count % 5 == 0) {
+                    document.write(`${i}<br>`);
+                } else {
+                    document.write(`${i}&nbsp;`);
+                }
+            }
+        }
+        document.write(`共有 ${count} 个符合条件的数。`);
+    </script>
+</body>
+
+</html>

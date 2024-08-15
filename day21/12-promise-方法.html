@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        then()
+            代表promise操作成功或失败后要做的事情，会分别放到一个函数中（回调函数：回头再调用的函数）
+
+        完整写法
+            then()方法接受两个函数类型的参数
+                第一个是promise执行成功后的回调函数
+                第二个是promise执行失败后的回调函数
+
+        注意点
+            then()只有在promise的PromiseState属性发生改变后才会执行，不能是pending状态
+            如果then()方法只有一个回调函数被传入，那么只有在成功状态才会调用，失败状态什么都不会调用
+
+        如何在then()方法中拿到promise结果属性中的值
+            给then()里面的回调函数添加一个参数，就可以拿到结果属性中的值
+        */
+
+        // 调用resolve()方法，then()方法会执行第一个回调函数
+        const p1 = new Promise((resolve, reject) => { resolve() })
+        p1.then(() => console.log('成功之后要做的事'), () => console.log('失败之后要做的事'))
+
+        // 调用reject()方法，then()方法会执行第二个回调函数
+        const p2 = new Promise((resolve, reject) => { reject() })
+        p2.then(() => console.log('成功之后要做的事'), () => console.log('失败之后要做的事'))
+
+        // then()方法只有一个回调函数被传入
+        const p3 = new Promise((resolve, reject) => { resolve() })
+        p3.then(() => console.log('成功之后要做的事'))
+
+        // 在成功状态的回调函数中拿到结果属性的值
+        const p4 = new Promise((resolve, reject) => { resolve('成功数据') })
+        p4.then(data => console.log('成功之后要做的事' + data), () => console.log('失败之后要做的事'))
+
+        // 在失败状态的回调函数中拿到结果属性的值
+        const p5 = new Promise((resolve, reject) => { reject('失败原因') })
+        p5.then(() => console.log('成功之后要做的事'), reason => console.log('失败之后要做的事' + reason))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var rag = /^[1][35789]\d{7,9}$/
+        while (true) {
+            var tel = prompt('输入你的9到11位的合法手机号')
+
+            if (rag.test(tel)) {
+                break
+            }
+        }
+        var i = Math.floor((tel.length - 4) / 2)
+        var encryTel = tel.substring(0, i) + '****' + tel.slice(i + 4)
+        alert(encryTel);
+    </script>
+</body>
+
+</html>

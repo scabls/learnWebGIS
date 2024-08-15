@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>动态表格</title>
+
+    <style>
+        table {
+            border: 1px solid;
+            margin: auto;
+            width: 500px;
+        }
+
+        td,
+        th {
+            text-align: center;
+            border: 1px solid;
+        }
+
+        div {
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div>
+        <input type="text" id="name" placeholder="请输入姓名" autocomplete="off">
+        <input type="text" id="age" placeholder="请输入年龄" autocomplete="off">
+        <input type="button" value="添加" id="add">
+    </div>
+
+    <table id="tb">
+        <caption>学生信息表</caption>
+        <tbody>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td>23</td>
+                <td><a href="JavaScript:void(0);">删除</a></td>
+            </tr>
+            <tr>
+                <td>李四</td>
+                <td>24</td>
+                <td><a href="JavaScript:void(0);">删除</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var sName = document.querySelector('#name')
+        var sAge = document.querySelector('#age')
+        var table = document.querySelector('#tb')
+        var tbody = document.querySelector('tbody')
+        var add = document.querySelector('#add')
+
+        add.addEventListener('click', function () {
+            if (sName.value != '' && sAge.value != '' && sAge.value - 18 >= 0 && sAge.value - 65 <= 0) {
+                var tr = document.createElement('tr')
+                var td1 = document.createElement('td')
+                var td2 = document.createElement('td')
+                var td3 = document.createElement('td')
+                var a = document.createElement('a')
+                a.href = 'JavaScript:void(0);'
+                a.textContent = '删除'
+                td3.appendChild(a)
+                td2.textContent = sAge.value
+                td1.textContent = sName.value
+                tr.append(td1, td2, td3)
+                tbody.appendChild(tr)
+            }
+        })
+
+        tbody.addEventListener('click', function (e) {
+            if (e.target.tagName === 'A') {
+                e.target.parentElement.parentElement.parentElement.removeChild(e.target.parentElement.parentElement)
+            }
+        })
+
+    </script>
+</body>
+
+
+</html>

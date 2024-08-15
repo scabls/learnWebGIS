@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script type="module">
+            // 默认导入要写在括号外最前面，随便取名
+            // 基本导入，括号里面，顺序可以乱，名字不能错
+            // as用来将基本导入值赋给其他变量名（如果导入变量名和已有变量名起冲突时）
+            import f, { str as string, fn, Student } from './08-混合导出.js'
+            console.log(string)
+            console.log(fn)
+            console.log(Student)
+            console.log(f)
+        </script>
+    </body>
+</html>

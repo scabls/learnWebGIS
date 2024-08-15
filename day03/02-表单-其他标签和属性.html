@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        1.required属性：
+            表示必填项，提交表单时，该项不能为空。
+            适用于下面的 input 类型：text、search、url、tel、email、password、date pickers、number、checkbox、radio 和 file。
+            布尔值
+        
+        2.记住用户名和密码
+            value属性：对于text和password设置默认输入值   
+            
+        3.label标签
+            用于关联表单元素，并提供文字说明。
+            for属性：与input标签的id属性对应，用于绑定。
+            如果在 label 元素内点击文本，就会触发此控件。
+                就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。
+
+        4.button标签
+            行级按钮容器，可以放置内容，比如文本或图像
+            type属性：submit、reset、button。
+                始终定义type属性，不同浏览器默认值不同。
+            form属性：与表单的id属性对应，用于绑定。
+            onclick属性：自定义按钮点击事件。
+            -->
+
+    <form action="./" method="get" id="registerForm">
+        <label for="username">用户名：</label>
+        <input type="text" id="username" name="username" value="李四" required>
+        <br>
+        <label for="password">密码：</label>
+        <input type="password" id="password" name="password" value="···" required>
+        <br>
+        <label>性别：</label>
+        <input type="radio" id="male" name="gender" value="male" checked>
+        <label for="male">男</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">女</label>
+        <br>
+        <label>爱好：</label>
+        <input type="checkbox" id="football" name="hobby" value="football" checked>
+        <label for="football">足球</label>
+        <input type="checkbox" id="basketball" name="hobby" value="basketball">
+        <label for="basketball">篮球</label>
+        <input type="checkbox" id="TableTennis" name="hobby" value="TableTennis">
+        <label for="tableTennis">乒乓球</label>
+        <br>
+        <label for="photo">照骗：</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+        <br>
+        <label for="subject">学科：</label>
+        <select name="subject" id="subject">
+            <option value="java">java</option>
+            <option value="php" selected>php</option>
+            <option value="python">python</option>
+        </select>
+        <br>
+        <label for="comment">评价：</label>
+        <textarea name="comment" id="comment" rows="10" cols="10" placeholder="请输入" required></textarea>
+        <br>
+        <button form="registerForm" type="submit">
+            <img src="./images/submit.svg" alt="提交" title="提交" height="15">
+        </button>
+        <button form="registerForm" type="reset">
+            <img src="./images/reset.svg" alt="重置" title="重置" height="15">
+        </button>
+        <button form="registerForm" type="button" onclick="alert('功能暂未开放')">
+            <img src="./images/待开发.svg" alt="待开发" title="待开发" height="15">
+        </button>
+    </form>
+
+
+
+
+</body>
+
+</html>

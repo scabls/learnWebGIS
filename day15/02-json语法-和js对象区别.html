@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //区别
+        // 语法上
+        // json字符串:属性名必须用双引号包含
+        var jsonStr = '{ "name": "Runoob", "url": "www.runoob.com" }'
+        // js对象：属性名可以不用引号,但可以使用单引号或双引号
+        var jsObj = { name: "Runoob", url: 'www.runoob.com' }
+        // 作用上
+        // json字符串:本质是一个字符串可以用于网络传输从后台接收到的数据大部分都是JSON数据
+        // js对象：本质是一个对象（类的实例），不能在网络上传输（后台经常会将这些对象转成JSON字符串，通过网络发送到前台）
+
+
+        //转换
+        // 目的
+        // 方便数据传输
+
+        // 方法
+        // JSON.parse()	用于将一个 JSON 字符串转换为 JavaScript 对象。
+        // JSON.stringify()	用于将 JavaScript 值转换为 JSON 字符串。
+
+        var jsObj1 = JSON.parse(jsonStr)
+        console.log(jsObj1);
+        var jsonStr1 = JSON.stringify(jsObj)
+        console.log(jsonStr1);
+    </script>
+</body>
+
+</html>

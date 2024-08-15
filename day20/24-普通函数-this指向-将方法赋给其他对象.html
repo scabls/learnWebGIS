@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class MyClass {
+            constructor() {
+                this.name = 'MyClass Instance';
+            }
+
+            regularMethod() {
+                console.log(this.name);
+            };
+        }
+
+        const instance = new MyClass();
+        instance.regularMethod(); // 输出：MyClass Instance
+        const myObj = {
+            name: 'Li'
+        }
+        myObj.fn = instance.regularMethod;
+        myObj.fn(); // 输出：Li
+    </script>
+</body>
+
+</html>

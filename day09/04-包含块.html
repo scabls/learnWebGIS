@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 400px;
+            height: 400px;
+            background-color: red;
+        }
+       .son {
+            width: 50%;
+            height: 50%;
+            background-color: blue;
+            /* 原本son的包含块是父元素father，但一旦绝对定位，包含块就变成了最近的非static的祖先元素,没有的话就是初始包含块
+            初始包含块（initial containing block）。对于浏览器而言，初始包含块的的大小等于视口 viewport 的大小，基点在画布的原点（视口左上角） */
+            position: absolute;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+</html>

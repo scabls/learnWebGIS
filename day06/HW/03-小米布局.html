@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .clearfix::after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix::after {
+            clear: both;
+        }
+
+        .container {
+            width: 1226px;
+            height: 614px;
+            margin: 0 auto;
+        }
+
+        .left {
+            float: left;
+            width: 234px;
+            height: 100%;
+            background-color: #800080;
+            margin-right: 14px;
+        }
+
+        .right {
+            float: left;
+            /* 不设置宽度会导致布局错乱
+            witdh自动适应为父类宽度，但因为是float，上一行放不下，只能挤到下一行 */
+            width: 978px;
+        }
+
+        .right div {
+            float: left;
+            width: 234px;
+            height: 300px;
+            background-color: #87ceeb;
+            margin-right: 14px;
+            margin-top: 14px;
+        }
+
+        .right div:nth-child(-n+4) {
+            margin-top: 0;
+        }
+
+        .right div:nth-child(4n) {
+            margin-right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container clearfix">
+        <div class="left"></div>
+        <div class="right clearfix">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 在上一小节已经解决行级元素相对于父空间居中问题（span相对于body居中）
+        
+        操作
+            给行级元素和块级元素都设置宽度和高度
+            发现行级元素的宽高没有变化,因为它的宽高是由内容决定的
+            块级元素的行高可以控制，但现在不相对于父空间居中
+
+        需求
+            想让块元素相对于父空间居中只能使用margin属性
+
+        总结
+            对于行级元素
+                因为它的宽高是由内容决定的，设置居中一般是通过它的父空间text align实现
+            对于块级元素
+                因为它的宽高是可以设置的，并且默认独占一行，想让它的内容居中，通过自身text align实现
+                想让它相对于父空间居中，通过自身的margin来实现
+        */
+
+
+
+        span {
+            text-align: center;
+
+            background-color: pink;
+            width: 100px;
+            height: 100px;
+            /* margin: 0 auto;行级元素不能通过margin来实现对于父空间驱动 */
+        }
+
+        div {
+            text-align: center;
+            background-color: lightblue;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto; /* 块级元素目前只能通过margin相对于父空间居中 */
+        }
+
+        body {
+
+            text-align: center;
+            background-color: lightgrey;
+        }
+    </style>
+</head>
+
+<body>
+    <span>This is a test of text alignment in a span element.</span>
+    <div>This is a test of text alignment in a div element.</div>
+
+</body>
+
+</html>

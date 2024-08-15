@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*         
+        全局环境：
+            浏览器中所有script标签其实都在一个环境中，这个环境叫做全局环境
+        全局对象（Global Object）
+            加载页面时，js引擎会整合所有script标签的内容，产生一个对象，就是全局对象。在浏览器中指window对象
+        全局变量
+            全局环境下定义的变量
+
+        全局变量和全局对象的关系
+            全局变量作为全局对象的属性存在
+        */
+        var a=10;
+       console.log(window);
+       console.log(window.a);
+    </script>
+</body>
+
+</html>

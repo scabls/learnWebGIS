@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  aspect-ratio: 16/9;
+  padding: 1rem 12rem;
+  background-color: #ecedf2;
+}
+
+.filter .recommend,
+.filter .profession {
+  display: flex;
+}
+
+.filter .recommend .left,
+.filter .profession .left {
+  flex-basis: 5rem;
+  background-color: #5488d5;
+  color: #fff;
+  line-height: 3.2;
+  text-align: center;
+  border-radius: 0.5rem 0 0 0;
+}
+
+.filter .profession .left {
+  border-radius: 0 0 0 0.5rem;
+}
+
+.filter .recommend .right,
+.filter .profession .right {
+  flex-grow: 1;
+  display: flex;
+  position: relative;
+  background-color: #fff;
+  padding-left: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+.filter .recommend .right .category,
+.filter .profession .right .category {
+  display: flex;
+  gap: 2rem;
+}
+
+.filter .right .radio {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.filter .right .radio::before {
+  content: '';
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+  outline: 1px solid #ccc;
+  border-radius: 50%;
+}
+
+.filter .right .radio::after {
+  content: '';
+  position: absolute;
+  left: 0.15rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  background-color: #5f89cf;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 0.25s;
+}
+
+.filter .right .radio.checked::after {
+  transform: scale(1);
+}
+
+.filter .profession .search {
+  align-self: center;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  right: 2rem;
+  width: 20rem;
+  height: 2.5rem;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+}
+
+.filter .profession .search input {
+  font-size: 0.8rem;
+  flex: 1;
+  height: 100%;
+  border: none;
+  border-right: 1px solid #ccc;
+  outline: none;
+}
+.filter .profession .search .icon {
+  padding-left: 0.6rem;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.show {
+  padding: 2rem 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+.show a {
+  color: #333;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+.show a img {
+  width: 90%;
+  border: 2px solid #5f89cf;
+  border-radius: 0.6rem 0;
+}

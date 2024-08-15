@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        flex-basis:设置子项在分配多余空间之前，子项占据的主轴空间，默认是auto，即子项本身的大小
+
+        操作
+            将flex容器宽度设置为600px，取消flex子项宽度设置，发现flex子项的宽度是由内容决定的
+                原因：flex-basis:auto，子项在主轴方向的空间是子项本身的，而子项在主轴方向的尺寸，宽度未设置，由内容决定
+            注意：flex子项的特点，默认宽高由内容决定但可以指定宽高
+        取值
+            auto 
+            number(px, em, %)
+        */
+        .father {
+            display: flex;
+            width: 400px;
+            height: 100px;
+            background-color: lightblue;
+        }
+
+        .son1 {
+            flex-basis: 100px;
+            width: 200px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        .son2 {
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+        }
+
+        .son3 {
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son1">1</div>
+        <div class="son2">2</div>
+        <div class="son3">3</div>
+    </div>
+</body>
+
+</html>

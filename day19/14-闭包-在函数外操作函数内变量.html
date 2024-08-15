@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            aspect-ratio: 1;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+
+        function f1() {
+            var num1 = 10
+            function f2() {
+                num1++
+                console.log(num1);
+            }
+            return f2
+        }
+        f1()
+
+        var f = f1()
+        setInterval(f, 1000)
+
+    </script>
+</body>
+
+</html>

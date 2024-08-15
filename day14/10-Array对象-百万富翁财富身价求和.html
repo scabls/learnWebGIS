@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 身价求和
+        var arr = [['张静', 1291168], ['吴敏', 2520088], ['冯欣怡', 44256]]
+        var arr2 = arr.reduce(function (total, mi) {
+            return total + mi[1]
+        }, 0)//规定total的初始值，迭代从arr[0]开始。不规定时默认是数组的第一个元素，迭代从arr[1]开始
+        console.log(arr2);
+    </script>
+</body>
+
+</html>

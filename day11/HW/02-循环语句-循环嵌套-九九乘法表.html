@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td{
+            width: 5rem;
+        }
+    </style>
+</head>
+
+<body>
+    </table>
+    <script>
+        /* 
+        练习二:将九九乘法表嵌套到表格中,实现工整对齐
+        */
+        document.write("<table>");
+        // 外层控制行数
+        for (var i = 1; i <= 9; i++) {
+            document.write("<tr>");
+            // 内层控制列数
+            // 分析每一行的列数和行序号的关系
+            for (var j = 1; j <= i; j++) {
+                document.write(`<td>${j}*${i}=${j * i}</td>`);
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    </script>
+</body>
+
+</html>

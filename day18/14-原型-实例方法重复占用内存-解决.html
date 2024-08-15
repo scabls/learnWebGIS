@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 实例成员
+        function Student(name, age) {
+            // 实例属性
+            this.name = name
+            this.age = age
+
+        }
+        Student.country = 'China'
+        // 类的prototype属性：不管什么类，都有这个属性，习惯称为类的原型。
+        // 可以把一些公共的方法放到这里，对象都可以共享
+
+
+        //把公共的方法定义在原型上（类的prototype属性），将来创建对象的时候，就不会为对象的方法重复开辟空间
+        Student.prototype.study = function () {
+            console.log('学习');
+        }
+        console.dir(Student);
+        var stu1 = new Student('张三', '18')
+        var stu2 = new Student('李四', '18')
+        console.log(stu1.study === stu2.study);// true 表示方法的地址相同，在同一个空间
+        console.dir(stu1);
+    </script>
+</body>
+
+</html>

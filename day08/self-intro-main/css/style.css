@@ -1,0 +1,408 @@
+/* 声明全局属性 */
+:root {
+  --blue: #2980b9;
+  --black: #333;
+  --white: #fff;
+  --light-color: #777;
+  --light-bg: #eee;
+  --box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 设置页面元素的默认样式 */
+* {
+  font-family: "Microsoft YaHei", sans-serif;
+  /* 清除内外边距 */
+  margin: 0;
+  padding: 0;
+  /* 设置尺寸计算方式 */
+  box-sizing: border-box;
+  /* 去掉轮廓：一般用于清除input标签的轮廓 */
+  outline: none;
+  /* 去掉边框 */
+  border: none;
+  /* 去掉下划线 */
+  text-decoration: none;
+  /* 强制每个单词的首字母转换为大写（根据情况选用，慎用）*/
+  /* text-transform: capitalize; */
+  /* 过渡效果 */
+  transition: all 0.2s linear;
+}
+
+/* 设置滚动条整体部分样式 */
+html::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* 设置滚动条的轨道样式 */
+html::-webkit-scrollbar-track {
+  background: var(--blue);
+}
+
+/* 设置滚动条里面的上下移动小方块的样式 */
+html::-webkit-scrollbar-thumb {
+  background: var(--white);
+  border-radius: 50px;
+}
+
+/* ============设置通用样式的属性============ */
+/* 不要用后代选择器 */
+/* 设置标题样式 */
+.title {
+  color: var(--blue);
+}
+
+/* ============设置main主题容器的属性============ */
+.container {
+  display: flex;
+  /* 不设置宽度，通栏的效果，会默认和body的宽度一致 */
+  /* 设置辅助高度，方便调试，后期注释掉靠内容撑起 */
+  /* height: 1000px; */
+
+  /* 不设置align-items的话，默认stretch，若子项侧轴方向未设置尺寸就会向侧轴方向拉伸 */
+  align-items: flex-start;
+
+  /* 渐变色，特殊的image背景 */
+  background-image: linear-gradient(to right top, deeppink, var(--blue));
+
+  /* 设置内边距，约束文本内容 */
+  padding: 6rem 10%;
+
+}
+
+
+/* ============设置左侧信息的属性============ */
+
+.profile {
+  flex: 3 3 30%;
+  position: sticky;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  text-align: center;
+  background-color: var(--white);
+  border-right: 2px solid var(--light-color);
+}
+
+.profile img {
+  width: 150px;
+  height: 150px;
+  border: 2px solid var(--light-color);
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+/* img的display属性值是inline，却可以设置宽高，是因为img是可替换元素，
+  默认尺寸是由被嵌入的图片的原始宽高来确定的，使得它就像inline-block一样 */
+
+
+.profile h3 {
+  color: var(--black);
+}
+
+.profile p {
+  font-size: 0.9rem;
+  color: var(--blue);
+}
+
+.profile .webIcon a {
+  /* 或者使用padding来达到增大宽高的效果，这样不用设置水平和垂直居中 */
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;
+  line-height: 2rem;
+  background-color: var(--light-bg);
+  border-radius: 50%;
+}
+
+.profile .webIcon a:hover {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+/* 为什么图片之间有空隙？
+      破案：display: inline-block; 且代码中有空格和换行 */
+
+.profile .phoneIcon a {
+  display: block;
+  background-color: var(--blue);
+  padding: 0.5rem 1rem;
+  color: var(--white);
+  border-radius: 0.625rem;
+  box-shadow: var(--box-shadow);
+}
+
+.profile .phoneIcon a:hover {
+  background-color: var(--black);
+}
+
+
+/* ============设置右侧信息的属性============ */
+.information {
+  flex: 7 7 70%;
+  display: flex;
+  flex-direction: column;
+  /* 不设置align-items的话，默认stretch，若项侧轴方向未设置尺寸就会向侧轴方向拉伸 */
+  gap: 1rem;
+  padding: 2rem;
+  background-color: var(--white);
+}
+
+
+/* =====人物介绍===== */
+
+
+.about p {
+  margin: 1rem 0;
+  line-height: 2rem;
+  color: var(--light-color);
+}
+
+.about article {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.about article div {
+  flex: 1;
+  line-height: 2.5rem;
+  font-weight: bold;
+  color: var(--black);
+}
+
+.about div span {
+  color: var(--light-color);
+}
+
+/* ======技术栈====== */
+
+.technologyStack .technologis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: var(--light-color);
+}
+
+.technologyStack .technologis .technologyBox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--light-bg);
+  padding: 1.3rem 0;
+  border-radius: 0.5rem;
+}
+
+/* 有没有其他排列在一行均匀排列盒子的方法？
+      现在有了，就是我们万能的flex和justify-content属性！ */
+
+.technologyStack .technologis .technologyBox img {
+  /* 只设置高度，宽度是auto，会自动适应
+  因为是flex子项，现在侧轴水平是方向，对应尺寸是宽度，子项没有设置，会自动拉伸。
+  但前面flex容器设置了align-items: center;子项会居中，宽度重新变为auto */
+  height: 2.5em;
+}
+
+
+/* =====技能熟练度===== */
+
+.skills section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(8, auto);
+  grid-auto-flow: column;
+  row-gap: 0.4rem;
+  column-gap: 1rem;
+  margin-top: 1rem;
+}
+
+.skills .textPart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skills .textPart .skillName {
+  font-weight: bold;
+  color: var(--black);
+}
+
+.skills .textPart .progressNumber {
+  color: var(--light-color);
+  font-weight: bold;
+}
+
+.skills .progressBar {
+  height: 0.6rem;
+  background-color: var(--light-bg);
+  border-radius: 1rem;
+}
+
+.skills .progressBar .innerBar {
+  height: 0.6rem;
+  background-color: var(--blue);
+  border-radius: 1rem;
+}
+
+.progressBar .innerBar1 {
+  width: 95%;
+}
+
+.progressBar .innerBar2 {
+  width: 80%;
+}
+
+.progressBar .innerBar3 {
+  width: 65%;
+}
+
+.progressBar .innerBar4 {
+  width: 70%;
+}
+
+.progressBar .innerBar5 {
+  width: 90%;
+}
+
+.progressBar .innerBar6 {
+  width: 75%;
+}
+
+.progressBar .innerBar7 {
+  width: 65%;
+}
+
+.progressBar .innerBar8 {
+  width: 70%;
+}
+
+/* =====学习工作经历===== */
+
+.experiences section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.experiences .left,
+.experiences .right {
+  flex: 1;
+  background-color: var(--light-bg);
+  padding: 1rem;
+  padding-bottom: 3rem;
+  border-radius: 0.5rem;
+}
+
+.experiences .time {
+  color: var(--blue);
+  margin: 0.5em 0;
+}
+
+.experiences .workExperience {
+  font-weight: bold;
+  font-size: large;
+  color: var(--black);
+}
+
+.experiences .experienceText {
+  margin-top: 1em;
+  font-size: 0.9em;
+  line-height: 2em;
+  color: var(--light-color);
+}
+
+/* =====联系方式===== */
+
+.contact article {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+  color: var(--black);
+}
+
+.contact .category {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.contact i {
+  background-color: var(--blue);
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0.5rem;
+  text-align: center;
+  line-height: 2.5rem;
+  border-radius: 50%;
+}
+
+.contact .category .textBox .name {
+  font-weight: bold;
+  font-size: large;
+  margin: 0.5em 0;
+}
+
+.contact .category .textBox .detail {
+  color: var(--light-color);
+}
+
+
+/* ============设置响应式样式的属性============ */
+/* 设置宽度不超过1200px的样式 */
+@media(max-width: 1200px) {
+  .container {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2%;
+  }
+
+  .container .profile {
+    position: static;
+    align-self: center;
+    padding: 1rem 4rem;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+  }
+}
+
+/* 设置宽度不超过600px的样式 */
+@media(max-width: 600px) {
+
+  .container .profile {
+    align-self: stretch;
+  }
+
+  .container .profile .phoneIcon {
+    align-self: stretch;
+  }
+
+  .container .information {
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+  }
+
+  .about article,
+  .experiences section,
+  .contact article {
+    flex-direction: column;
+  }
+
+  .contact article {
+    align-items: flex-start;
+  }
+  .skills section{
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(16, auto);
+
+  }
+}

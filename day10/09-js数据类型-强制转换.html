@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 类型转换的场景
+        /*         var age = prompt('请输入你的年龄')
+                console.log(age);
+                console.log(typeof age);//string
+                console.log(age+10); */
+        // 字符串类型在进行加法运行的时候，其实是执行字符串的拼接，想要得到正确的数据，就需要将字符串类型转换为数字类型
+        //  
+        /* 强制转换
+            又称为显式转换（能够看到的转换），其实是调用了一些方法
+            String()    将数据转成字符串
+            Number()    将数据转成数值
+                null可以被Number转成0,undefined不行，转出来的是NaN
+            Boolean()   将数据转成布尔类型
+            */
+
+        // String()    将数据转成字符串
+        var age = String(25);
+        console.log(age, typeof age);// "25" string
+        var a = String(true);//
+        console.log(a, typeof a);// "true" string
+        var b = String(null);
+        console.log(b, typeof b);// "null" string
+
+        // Number()    将数据转成数值
+        var c = Number(100);
+        console.log(c, typeof c);// 100 number
+        var d = Number(true);
+        console.log(d, typeof d);// 1 number
+        var e = Number(false);
+        console.log(e, typeof e);// 0 number
+        var f = Number(undefined);
+        console.log(f, typeof f);//NaN(not a number) number
+        var g = Number(null);
+        console.log(g, typeof g);// 0 number
+        var h = Number('h');
+        console.log(h, typeof h);//NaN number
+        var h1 = Number('');
+        console.log(h1, typeof h1);//NaN number
+        var h2 = Number(' ');
+        console.log(h2, typeof h2);//NaN number
+
+        // Boolean()   将数据转成布尔类型
+        var i = Boolean('false')//false带引号就不再是关键字false了，变成了字符串
+        console.log(i, typeof i);//true boolean
+        var j = Boolean(0);
+        console.log(j, typeof j);//false boolean
+        var k = Boolean(1);
+        console.log(k, typeof k);//true boolean
+        var l = Boolean(null);
+        console.log(l, typeof l);//false boolean
+        var m = Boolean(undefined);
+        console.log(m, typeof m);//false boolean
+        var n = Boolean("");//空字符串
+        console.log(n, typeof n);//false boolean
+        var o = Boolean(" ");//空格字符
+        console.log(o, typeof o);//true boolean
+        // 应用场景
+        if ("hhh") {//隐含了一个Boolean的转换
+            console.log("aaaaaa");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        练习1:猜年龄游戏 
+		随机生成一个女孩的名字(18-28之间)
+		让男生一直猜,提示:猜大了或者猜小了
+		当猜对了,就退出程序
+        */
+        var age =Math.floor(Math.random()*11)+18
+        console.log(age);
+        while(true){
+            var guess = +prompt('你猜多少岁？')
+            if(guess>age){
+                alert('猜大了')
+            }else if(guess<age){
+                alert('猜小了')
+            }else if(guess==age){
+                alert('猜对了')
+                break
+            }else{
+                alert('不积极参与就会无限循环哦')
+            }
+        }
+    </script>
+</body>
+</html>

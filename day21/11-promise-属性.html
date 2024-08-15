@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const p1 = new Promise((resolve, reject) => { })
+        console.dir(p1);
+        // 发现有两个属性
+            // 状态属性: PromiseState, 默认值: "pending"（准备状态）
+            // 结果属性: PromiseResult, 默认值: undefined（里面无数据）
+
+
+        // 修改状态属性 ---为了保证后面then()的执行
+            // 调用resolve()方法，当前的PromiseState就会从pending变成fulfilled（已成功）
+            const p2 = new Promise((resolve, reject) => { resolve() })
+            console.dir(p2);
+
+            // 调用reject()方法，当前的PromiseState就会从pending变成rejected（已失败）
+            const p3 = new Promise((resolve, reject) => { reject() })
+            console.dir(p3);
+
+        // 修改结果属性 ---方便后续将数据传递到then方法的参数中，进行后续操作
+            // 调用resolve()方法时，传递参数，将来数据就会被保存在结果属性中
+            const p4 = new Promise((resolve, reject) => { resolve('请求成功后的数据') })
+            console.dir(p4);
+
+            // 调用reject()方法时，传递参数，将来数据就会被保存在结果属性中
+            const p5 = new Promise((resolve, reject) => { reject('请求失败的原因') })
+            console.dir(p5);
+    </script>
+</body>
+
+</html>

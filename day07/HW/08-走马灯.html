@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .window {
+            position: relative;
+            width: 1440px;
+            height: 270px;
+            border: 10px solid #000;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .pictures {
+            width: 4800px;
+            display: flex;
+            animation: roll 10s linear infinite;
+        }
+
+        .pictures:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes roll {
+            100% {
+                transform: translateX(-3360px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="window">
+        <div class="pictures">
+            <img src="./images/1.jpg" alt="">
+            <img src="./images/2.jpg" alt="">
+            <img src="./images/3.jpg" alt="">
+            <img src="./images/4.jpg" alt="">
+            <img src="./images/5.jpg" alt="">
+            <img src="./images/6.jpg" alt="">
+            <img src="./images/7.jpg" alt="">
+            <img src="./images/1.jpg" alt="">
+            <img src="./images/2.jpg" alt="">
+            <img src="./images/3.jpg" alt="">
+        </div>
+    </div>
+</body>
+
+</html>

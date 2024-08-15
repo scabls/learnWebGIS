@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .c1 {
+            width: 200px;
+            aspect-ratio: 1;
+            background: pink;
+        }
+
+        .c2 {
+            width: 100px;
+            aspect-ratio: 1;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1">
+        <div class="c2"></div>
+    </div>
+    <script>
+        var c1 = document.querySelector('.c1')
+        var c2 = document.querySelector('.c2')
+        var body = document.querySelector('body')
+        c2.addEventListener('click', function (e) {
+            console.log(this);
+            e.stopPropagation()//阻止冒泡
+        })
+        c1.addEventListener('click', function (e) {
+            console.log(this);
+
+        })
+        body.addEventListener('click', function (e) {
+            console.log(this);
+
+        })
+    </script>
+</body>
+
+</html>

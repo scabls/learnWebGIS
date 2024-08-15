@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 获取指定日期距现在有多少天不足一天按一天计算
+        
+        // 方式一 先转换为毫秒
+        var ms1 = Date.now();
+        var ms2 = new Date('2000-01-01').getTime() // 链式编程，前面的返回值是时间对象，时间对象调用方法
+        var days = Math.ceil((ms1 - ms2) / (1000 * 60 * 60 * 24))
+        document.write(days + ' ')
+
+        // 方式二 直接相减 自动转换
+        var time = new Date() - new Date('2000-01-01')// 隐含了自动转换为毫秒,输出毫秒类型结果，不改变原变量类型
+        document.write(Math.ceil(time / (1000 * 60 * 60 * 24)) + ' ')
+
+        // 方式三 一元运算符+强制转换为毫秒
+        var ms11 = +new Date();
+        var ms22 = +new Date('2000-01-01')
+        var days = Math.ceil((ms11 - ms22) / (1000 * 60 * 60 * 24))
+        document.write(days + ' ')
+    </script>
+</body>
+
+</html>

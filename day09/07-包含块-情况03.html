@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            background-color: lightblue;
+        }
+
+        .son1 {
+            width: 200px;
+            height: 150px;
+            background-color: lightgreen;
+            margin: 100px;
+            /* 如果transform属性的值不是 none，则将创建一个层叠上下文。
+            在这种情况下，该元素将作为任何包含的 position: fixed; 或 position: absolute; 元素的包含块 */
+            transform: rotate(0);
+        }
+
+        .gson1 {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 50%;
+            height: 50%;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son1">
+            <div class="gson1"></div>
+        </div>
+    </div>
+</body>
+
+</html>

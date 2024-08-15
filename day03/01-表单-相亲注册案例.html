@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>青春不常在，抓紧搞学习</h1>
+    <hr>
+    <!-- form 表单标签
+         lable 标签用于描述表单元素的功能，for属性通过与input标签的id属性关联，用于指定与哪个标签关联
+         input 输入项标签/表单项标签，id属性用于标识元素，name属性用于提交表单时标识元素的值
+         select：下拉选择框
+         textarea：文本域标签 -->
+
+    <!-- form 表单标签：用于限定表单的提交范围，
+         action属性 指定提交的地址，默认提交到当前页面
+         method属性 指定提交的方式，默认是GET方式，另一种是post方式
+            get：将表单数据以名称/值对的形式附加到 URL 中；请求体中无数据
+                特点：方便，相对不安全，只能提交少量数据
+            post：将表单数据附加到 HTTP 请求的 body 内（数据不显示在 URL 中）
+                特点：安全，可以提交大量数据，主要用于文件上传和提交敏感信息
+             -->
+
+    <!-- 
+    通用属性:
+
+        name 属性：
+            1.规定 <input> 元素的名称。
+                只有设置了 name 属性的表单元素才能在提交表单时传递它们的值。
+            2.为单选框和复选框的选项分组，同一组的单选框只能选一个。 
+        
+        value属性:
+            1.对于单选框和复选框,需要制定value属性的值,用于区分选项。
+            2.设置下拉选择框的option的值，设置之后提交到后台就是value的值，否者提交的就是文本内容。
+            3.设置submit、reset、button按钮的value属性，设置之后提交按钮的显示文本。
+    -->
+
+
+    <!-- input 输入项标签：用于输入文本、数字、日期等信息，
+        重要属性：
+            type属性指定输入项类型，
+                text 文本框
+                password 密码框
+                radio 单选框
+                checkbox 复选框
+                file 文件上传框
+                reset 重置按钮
+                submit 提交按钮
+                button 普通按钮（配合js实现功能）
+            name属性用于提交表单时标识元素的值；
+            checked属性指定单选框或复选框的选项是否默认选中状态；（布尔值）
+         id属性用于标识元素，required属性表示必填项 
+    -->
+
+    <!-- select标签：下拉选择框标签，还可以做联动效果
+            option标签：下拉选择框的选项标签
+                selected属性指定选项是否默认选中状态（布尔属性）
+                disabled属性指定选项是否禁用状态 -->
+
+    <!-- textarea标签
+            cols属性指定文本域的列数
+            rows属性指定文本域的行数 -->
+
+    <form action="./">
+        <label for="name">昵称</label>
+
+        <input type="text" id="name" name="name" placeholder="请输入昵称" required>
+        <br>
+        <label>性别：</label>
+        <label for="male">男</label>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="female">女</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <br>
+        <label for="city">所在城市：</label>
+        <select id="city" name="city" required>
+            <!-- <option value="" disabled selected> 是一个占位选项，
+                它会显示为默认值，但无法选择 -->
+
+                <!-- 若没有value属性，则该选项的value值默认为文本内容 -->
+            <option value="" disabled selected>请选择一个城市</option>
+            <option value="shanghai">上海</option>
+            <option value="beijing">北京</option>
+            <option value="guangzhou">广州</option>
+        </select>
+        <br>
+        <label>婚姻状况：</label>
+        <label for="unmarried">未婚</label>
+        <input type="radio" id="unmarried" name="marriage" value="unmarried" required>
+        <label for="married">已婚</label>
+        <input type="radio" id="married" name="marriage" value="married">
+        <label for="secret">保密</label>
+        <input type="radio" id="secret" name="marriage" value="secret">
+        <br>
+        <label>喜欢的类型：</label>
+        <input type="checkbox" id="lovely" name="type" value="lovely" checked>
+        <label for="lovely">可爱</label>
+        <input type="checkbox" id="sexy" name="type" value="sexy">
+        <label for="sexy">性感</label>
+        <input type="checkbox" id="royal" name="type" value="royal">
+        <label for="royal">御姐</label>
+        <input type="checkbox" id="loly" name="type" value="loly">
+        <label for="loly">萝莉</label>
+        <br>
+        <label for="introduction">个人介绍</label>
+        <br>
+        <textarea name="introduction" id="introduction" cols="30" rows="10" placeholder="请输入个人介绍" required></textarea>
+        <br>
+
+        <h3>我承诺</h3>
+        <ul>
+            <li>年满18岁,单身</li>
+            <li>抱着严谨的态度</li>
+            <li>真诚寻找另一半</li>
+        </ul>
+        <!-- 如果只有一个复选框，value属性可以省略 -->
+        <input type="checkbox" id="promise" name="promise" value="promise" required>
+        <label for="">我同意所有条款</label>
+        <br>
+        <input type="submit" value="免费注册">
+        <input type="reset">
+    </form>
+
+</body>
+
+</html>

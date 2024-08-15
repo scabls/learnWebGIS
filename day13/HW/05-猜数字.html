@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        alert('游戏开始！你有三次机会猜四个数字。它们是1到9之间的随机整数');
+        var arr = []
+        for (var i = 0; i < 4; i++) {
+            arr[i] = Math.floor(Math.random() * 10)
+        }
+        var times = 0
+        while (times < 3) {
+            var index = 0
+            var guess = []
+            for (var i = 0; i < 4; i++) {
+                guess[i] = +prompt(`输入你猜的第${i + 1}个数字`)
+                if (arr[i] == guess[i]) {
+                    index++
+                }
+            }
+            if (index == 4) {
+                alert('全猜对了！')
+                break
+            } else {
+                alert(`你猜对了${index}个，猜错了${4 - index}个，`)
+                times++
+            }
+            if (times == 3) {
+                alert('机会用完了，下次再见！')
+            }
+        }
+    </script>
+</body>
+
+</html>

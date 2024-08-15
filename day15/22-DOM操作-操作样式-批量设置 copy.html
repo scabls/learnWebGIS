@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+        }
+
+        .c {
+            border: 1px solid #000;
+        }
+
+        .c1 {
+            background-color: lightpink;
+            border-radius: 50%;
+        }
+
+        /* 
+        做法
+            将要修改的属性放在一个类选择器中，再设置元素的className属性
+        方法
+            element.className   设置或返回元素的class属性
+        设置样式
+            元素对象.className = 定义好的类选择器的类名
+        使用场景
+            一般用在元素样式变化比较多的情况
+        弊端
+            会覆盖原来设置的类名，原来用类选择器设置的样式会失效
+        */
+    </style>
+</head>
+
+<body>
+    <div class="c"></div>
+
+    <script>
+        var div = document.querySelector('div')
+        div.onclick = function () {
+            this.className = 'c1'
+        }
+
+    </script>
+</body>
+
+</html>

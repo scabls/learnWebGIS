@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 数组去重
+        var arr1 = [11, 22, 33, 22, 33]
+        // 方式一
+        /* 
+        定义一个新数组，用来存储不重复元素
+        遍历原数组，拿到里面每一个元素，在放入新数组之前做一个判断（如果新数组中没有这个元素就放进去）
+        如何判断新数组中没有这个元素呢？
+        array.indexOf(元素) == -1表示不包含
+        array.includes(元素) == false表示不包含
+        */
+        var arr11 = []
+        arr1.forEach(function (item) {
+            if (arr11.indexOf(item) == -1) {
+                arr11.push(item)
+            }
+        })
+        console.log(arr11);
+
+        // 方式二
+        /* 
+        使用filter()过滤，过滤掉元素第一次出现的索引和当前索引不同的元素
+        或者过滤掉元素最后一次出现的索引和当前索引不同的元素
+        */
+        var arr12 = arr1.filter(function (item, index, arr) {
+            return arr.indexOf(item) == index
+        })
+        console.log(arr12);
+
+        // 方式三
+        /* 和方式一的思路是一样的 */
+        var arr13 = arr1.reduce(function (result, item) {
+            if (!result.includes(item)) {
+                result.push(item)
+            }
+            return result
+        }, [])
+        console.log(arr13);
+
+        // 方式四
+        //先将数组转成set集合
+        var set = new Set(arr1)
+        console.log(set);//现在这个set集合中存储的是不重复的数据
+        //将set集合转为数组
+            //方法一：展开运算符
+        var arr141=[...set]
+        console.log(arr141);
+            //方法二：使用array的静态方法将set转换成数组
+        var arr142=Array.from(set)
+        console.log(arr142);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            aspect-ratio: 1;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /* 书写一个函数作为参数的案例 */
+        // 定义一个参数是函数的函数
+        function f1(fn) {
+            fn()
+        }
+
+        //调用上面的函数（参数需要传递一个函数）
+        f1(function () { console.log('aaa'); })
+
+
+        /* 书写一个函数作为返回值的案例 */
+        function f3() {
+            function f4() {
+                console.log('bbb');
+            }
+            return f4
+        }
+
+        // f3()()
+        var f = f3()
+        f()
+
+    </script>
+</body>
+
+</html>

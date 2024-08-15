@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        现象
+            互相嵌套的块级元素，给子元素设置margin-top，导致父元素一起向下移动（塌陷）
+        原因
+            父子元素的margin-top值是紧贴一块的，给子元素设置margin-top，会作用在父元素上，导致二者一起塌陷
+
+            解决方式
+                给父子元素添加间隙，让他们的margin不紧贴在一块
+                
+
+
+        */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .father {
+            position: relative;
+            width: 200px;
+            /* height: 300px; */
+            background-color: lightblue;
+            margin-bottom: 50px;
+
+            /* 可以在父元素上设置一些属性解决塌陷问题（了解） */
+            /* border-top：0.1px solid #000;  */
+
+            /* padding-top：0.1px; */
+
+            /* overflow：hidden; */
+
+            /* display：inline-block; */
+
+            /* float：left; */
+        }
+
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        .father:first-child div:last-child{
+
+            margin-bottom: 100px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+    </div>
+    <div class="father">
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+    </div>
+</body>
+
+</html>

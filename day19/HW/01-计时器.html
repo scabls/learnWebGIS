@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function accumulator() {
+            var i = 1
+            console.log(`${i}秒`);
+            var s = setInterval(function () {
+                i++
+                console.log(`${i}秒`);
+                if (i == 10) {
+                    clearInterval(s)
+                    console.log('计时器结束');
+                }
+            }, 1000)
+        }
+        accumulator()
+    </script>
+</body>
+
+</html>

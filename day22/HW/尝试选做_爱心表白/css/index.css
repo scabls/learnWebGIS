@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    position: relative;
+    height: 100vh;
+    background-color: #0B3443;
+}
+
+.ask {
+    /* display: none; */
+    width: 50%;
+    margin: 0 auto;
+}
+
+.ask .topic,
+.ask .option {
+    display: flex;
+    justify-content: center;
+    padding-top: 5rem;
+    color: #eee;
+    font-size: 1.2rem;
+}
+
+.ask .topic span {
+    padding: 1rem;
+    font-size: 1.3rem;
+}
+
+.ask .option {
+    gap: 10rem;
+}
+
+.ask .option .icon-xihuan {
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.ask .option .icon-xihuan.agree {
+    color: #F45CAE;
+}
+
+.bg {
+    display: none;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .4);
+}
+
+.stalker {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    transform: translateX(-50%);
+    width: 95%;
+    background-color: #fff;
+    padding: 2.5rem;
+    text-align: center;
+    border-radius: 0.5rem;
+}
+.stalker .content{
+    color: #666;
+    padding-bottom: 1.5rem;
+}
+
+.stalker .button{
+    background-color: #F45CAE;
+    padding: 0.6rem 2.4rem;
+    border: none;
+    color: #fff;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.confession{
+    display: none;
+    width: 50%;
+    margin: 0 auto;
+    letter-spacing: 0.3rem;
+    padding-top: 4.5rem;
+    font-size: 1.8rem;
+    color: #ddd;
+}

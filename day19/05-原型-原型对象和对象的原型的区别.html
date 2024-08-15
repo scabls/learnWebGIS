@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 实例成员
+        function Student(name, age) {
+            // 实例属性
+            this.name = name
+            this.age = age
+
+        }
+        Student.prototype.country = 'China'
+        Student.prototype.study = function () {
+            console.log('学习');
+        }
+
+        var stu1 = new Student('张三', '18')
+
+        var stu2 = new Student('李四', '18')
+
+        // 原型对象（在构造函数上），本质是类的一个属性，每一个类都有
+        console.dir(Student);
+        console.dir(Student.prototype);
+
+        // 对象的原型（在对象上），本质是对象的一个属性，每一个属性都有
+        console.dir(stu1);
+        console.dir(stu1.__proto__);
+
+        // 对象的原型指向原型对象（角度不同）
+        console.log(stu1.__proto__ === Student.prototype); //true
+
+    </script>
+</body>
+
+</html>

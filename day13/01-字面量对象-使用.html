@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        传统：
+            先创建类，在创建对象
+        字面量法：
+            使用{}表示对象。使用键值对给属性和方法赋值,键和值用冒号连接，不同键值对用逗号分隔。可快速创建一个对象
+            本质还是new创建
+        */
+
+        var stu1 = {}
+        console.log(stu1);
+        console.log(typeof stu1);
+
+        var stu2 = {
+            name: 'simon',
+            age: 18,
+            study: function () {
+                console.log('学习');
+            }
+        }
+        console.log(stu2);
+        console.log(stu2.name);
+        console.log(stu2.age);
+        stu2.study()
+
+    </script>
+</body>
+
+</html>

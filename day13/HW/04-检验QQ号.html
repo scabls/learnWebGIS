@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var qq = prompt('请输入qq号')
+        var qLength = qq.length >= 5 && qq.length <= 15;
+        var not0 = !qq.startsWith('0')
+        var allNumber = !isNaN(+qq)
+        var noSpace = !qq.includes(' ')
+        if (qLength && not0 && allNumber && noSpace) {
+            alert("合格")
+        } else {
+            alert("不合格")
+        }
+    </script>
+</body>
+
+</html>

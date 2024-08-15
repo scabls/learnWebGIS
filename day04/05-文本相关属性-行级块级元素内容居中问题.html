@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        为什么在span和div元素中设置text-align:center;属性后，对行级元素不起作用？
+        
+        原因：
+            给行级元素和块级元素添加背景颜色，发现行级元素宽度是由内容决定的，
+            而块级元素独占一行，宽度默认跟父元素body的宽度一样，所以设置text-align:center;有效果。
+        需求：
+            让行级元素在页面居中就是设置span标签相对于父控件body居中
+        */
+
+
+        span{
+            text-align: center;
+            /* 一开始给行级元素设置了text-align:center;属性，但是没有效果。 */
+            background-color: pink;
+        }
+        div{
+            text-align: center;
+            /* 居中有效 */
+            background-color: lightblue;
+        }
+        body{
+            /* 给body设置text-align:center;属性，可以让body下的行级元素相对于页面居中 */
+            text-align: center;
+            background-color: lightgrey;
+        }
+    </style>
+</head>
+<body>
+    <span>This is a test of text alignment in a span element.</span>
+    <div>This is a test of text alignment in a div element.</div>
+    <input type="text">
+</body>
+</html>

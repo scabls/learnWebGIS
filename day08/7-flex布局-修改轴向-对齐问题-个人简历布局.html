@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./fontawesome/css/all.min.css">
+    <style>
+        /* 清楚默认内外边距
+        设置宽高计算方式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+
+        /* 技术栈 */
+
+        .technologyStack {
+            margin-bottom: 1rem;
+        }
+
+        .technologyStack .technologis {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            align-content: space-between;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: bold;
+            color: #777777;
+        }
+
+        .technologyStack .technologis .technologyBox {
+            flex: 1;
+            display: flex;
+            
+        /* 现在修改了轴向,水平方向是侧轴，垂直方向是主轴 */
+
+            flex-direction: column;
+            /* 想实现元素水平居中，现在水平方向是侧轴，使用align-items设置
+            注意，改变轴向后，align-items默认值stretch是否会触发变成了判断子元素有没有设置宽度
+            align-items默认值stretch在子元素没有设置侧轴方向的尺寸时有效
+            */
+            /* align-items: center; */
+            /* 想实现元素垂直居中，现在垂直方向是主轴，使用justify-content设置 */
+            justify-content: center;
+            background-color: #EEEEEE;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+
+        /* 有没有其他排列在一行均匀排列盒子的方法？
+        现在有了，就是我们万能的flex和justify-content属性！ */
+
+        .technologyStack .technologis .technologyBox img {
+            height: 2.5em;
+            margin-bottom: 0.5rem;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    <section class="technologyStack">
+        <h2>技术栈</h2>
+        <div class="technologis">
+            <div class="technologyBox">
+                <img src="./images/icon-1.png" alt="">
+                <span>HTML5</span>
+            </div>
+            <div class="technologyBox">
+                <img src="./images/icon-2.png" alt="">
+                <span>CSS3</span>
+            </div>
+            <div class="technologyBox">
+                <img src="./images/icon-3.png" alt="">
+                <span>JavaScript</span>
+            </div>
+            <div class="technologyBox">
+                <img src="./images/icon-4.png" alt="">
+                <span>SASS</span>
+            </div>
+            <div class="technologyBox">
+                <img src="./images/icon-5.png" alt="">
+                <span>JQuery</span>
+            </div>
+            <div class="technologyBox">
+                <img src="./images/icon-6.png" alt="">
+                <span>React.js</span>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 相对路径三种情况 -->
+    <!-- 1.图片在当前html的下一级目录中 -->
+    <!-- .图片目录名/图片文件名 或者 图片目录名/图片文件名 -->
+    <img src="images/20123291630449847780276.jpg" alt="图片1">
+    <img src="./images/20123291630449847780276.jpg" alt="">
+
+    <!-- 2.图片在当前html的同级目录中 -->
+    <!--  ./图片文件名 或者  图片文件名 -->
+    <img src="20123291630449847780276.jpg" alt="图片2">
+    <img src="./20123291630449847780276.jpg" alt="">
+
+    <!-- 3.图片在当前html的上一级目录中 -->
+
+    <!--  ../图片文件名 -->
+      <!-- 注意:open with live server时, 只能访问当前项目包含的目录,若上级目录不在当前项目中,则无法访问
+       最好将所有资源都放在项目内 -->
+    <img src="../20123291630449847780276.jpg" alt="图片3">
+
+
+</body>
+
+</html>

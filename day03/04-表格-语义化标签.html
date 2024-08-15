@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <!-- 
+    table标签用于创建表格，
+        align 规定表格相对周围元素的对齐方式
+        border属性设置边框宽度，
+        width和height属性设置表格的宽度和高度，
+        cellspacing属性设置单元格之间的间距，
+        cellpadding属性设置单元格内容与单元格边框的距离。
+    tr标签用于创建表格行，
+        align属性设置单元格内容的对齐方式，
+        bgcolor属性设置单元格背景色。
+    th标签用于创建表头单元格，
+        比td多了居中和加粗的效果
+        align属性设置单元格内容的对齐方式。
+        bgcolor属性设置单元格背景色。
+    td标签用于创建数据单元格，
+        align属性设置单元格内容的对齐方式。
+        bgcolor属性设置单元格背景色。
+    -->
+    <!-- 
+    语义化标签
+    thead
+        定义表格的页眉
+    tbody
+        定义表格的主体
+    tfoot
+        定义表格的页脚
+    -->
+    <table border="1" width="800px" height="300px" cellspacing="0" cellpadding="10">
+        <!-- 加上thead之后,这一行被视为表头,高度由内容决定 -->
+        <thead>
+            <tr align="center" height="75px">
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>毕业院校</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr align="center">
+                <td>张三</td>
+                <td>19</td>
+                <td>男</td>
+                <td>新中地</td>
+            </tr>
+            <tr align="center">
+                <td>张三</td>
+                <td>19</td>
+                <td>男</td>
+                <td>新中地</td>
+            </tr>
+            <tr align="center">
+                <td>张三</td>
+                <td>19</td>
+                <td>男</td>
+                <td>新中地</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

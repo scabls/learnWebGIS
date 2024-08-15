@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [1, 1]
+        for (var i = 2; i < 20; i++) {
+            arr[i] = arr[i - 1] + arr[i - 2]
+        }
+        document.write(`第20个月有${arr[19]}只兔子`)
+    </script>
+</body>
+
+</html>

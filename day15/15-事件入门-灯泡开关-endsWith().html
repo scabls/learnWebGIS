@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <img src="./images/off.gif" alt="">
+    <script>
+
+
+        var img = document.querySelector('img')
+        console.log(img.src);
+        // 发现src的值是完整路径，不是我们传的相对路径
+        img.onclick = function () {
+            // 所以判断条件不能是等于相对路径
+            // 可以选择String对象的方法，match(),endsWith(),includes()
+            /* 
+            endsWith() 方法用来判断当前字符串是否是以指定的子字符串结尾的（区分大小写）。
+            如果传入的子字符串在搜索字符串的末尾则返回 true，否则将返回 false
+            */
+            if (this.src.match('on.gif')) {
+                console.log(this.src.endsWith('on.gif'));
+                this.src = './images/off.gif'
+
+            }
+            else {
+                this.src = './images/on.gif'
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            aspect-ratio: 1;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        /* 
+            onkeydown	某个键盘按键被按下。	
+            onkeypress	某个键盘按键被按下并松开。
+                在所有浏览器中 onkeypress 事件只能监听字母和数字，
+                不能监听一些特殊按键（ALT、CTRL、SHIFT、ESC、箭头等）。
+                但是可以监听大小写
+                监听一个用户是否按下按键请使用 onkeydown 事件,所有浏览器都支持 onkeydown 事件。
+                	
+            onkeyup	某个键盘按键被松开。
+
+        */
+       document.onkeydown=function(){
+        console.log('键盘被按下了');
+       }
+       document.onkeyup=function(){
+        console.log('键盘被松开了');
+       }
+       document.onkeypress=function(){
+        console.log('键盘被按下并松开了');
+       }
+    </script>
+</body>
+
+</html>

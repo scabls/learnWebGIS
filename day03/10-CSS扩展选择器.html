@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 并集选择器
+        不同选择器之间用逗号隔开，会选中符合任意一个选择器条件的元素
+        选择器a,选择器b */
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+        }
+
+        /* 交集选择器
+        选择同时满足两个选择器条件的元素
+        选择器a选择器b */
+        tr.tr1 {
+            background-color: yellow;
+        }
+
+        /* 后代选择器
+        选择某一个元素下的，符合条件的所有后代元素
+        选择器a 选择器b */
+        div .p2 {
+            color: red;
+        }
+
+        /* 子选择器
+        选择某一个元素的符合条件的直接子元素
+        选择器a>选择器b */
+        div>.p1 {
+            color: blue;
+        }
+
+        /* 后续兄弟选择器
+        选择某一个元素的符合条件的所有后续兄弟元素
+        选择器a~选择器b */
+        div~.p1 {
+            color: green;
+        }
+
+        /* 相邻兄弟选择器
+        选择某一个元素的符合条件的紧接其后的相邻兄弟元素
+        选择器a+选择器b */
+        div+.p1 {
+            color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr class="tr1">
+            <td>111</td>
+            <td>111</td>
+        </tr>
+        <tr>
+            <td>111</td>
+            <td>111</td>
+        </tr>
+    </table>
+
+    <div>
+        <section>
+            <p class="p1 p2"> div内的section内的p</p>
+        </section>
+        <p class="p1"> div内的p1</p>
+        <p class="p2"> div内的p2</p>
+    </div>
+    <p class="p1">与div同级且随后相邻的p1</p>
+    <p class="p1">与div同级但不相邻的p1</p>
+</body>
+
+</html>

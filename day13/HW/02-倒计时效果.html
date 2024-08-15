@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        练习2: 倒计时效果 封装一个函数,用于计算未来到现在 有多少天多少时多少分多少秒
+        提示:创建具体到秒的方法是 new Date('2023-5-1 18:00:00')
+        计算的结果为 419天XX时XX分XX秒
+        */
+        function countDown(time) {
+            const now = new Date()
+            const future = new Date(time)
+            if (isNaN(future)) {
+                return "请输入合法日期"
+            } else {
+                const seconds = Math.floor((future - now) / 1000) % 60
+                const minutes = Math.floor((future - now) / (1000 * 60)) % 60
+                const hours = Math.floor((future - now) / (1000 * 60 * 60)) % 24
+                const days = Math.floor((future - now) / (1000 * 60 * 60 * 24))
+                return `${future}距${now}${days}天${hours}时${minutes}分${seconds}秒`
+            }
+        }
+        const year = prompt('请输入年份：')
+        const month = prompt('请输入月份')
+        const day = prompt('请输入日期')
+        const hour = prompt('请输入小时')
+        const minute = prompt('请输入分钟')
+        const second = prompt('请输入秒')
+        const time = `${year}-${month}-${day} ${hour}:${minute}:${second}`
+        console.log(time);
+        document.write(countDown(time))
+    </script>
+</body>
+
+</html>

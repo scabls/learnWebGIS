@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./fontawesome-free-6.6.0-web/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1;
+        }
+
+        header {
+            padding: 1rem;
+            background-color: lightblue;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+            font-size: 3rem;
+            color: white;
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        section input,
+        section button {
+            height: 3rem;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 30rem;
+            padding-left: 1rem;
+        }
+
+        input:focus {
+            outline: 2px solid pink;
+        }
+
+        button {
+            width: 6rem;
+            font-size: 1.2rem;
+            color: skyblue;
+        }
+
+        button:hover {
+            background-color: pink;
+            color: white;
+        }
+
+        li {
+            display: flex;
+            font-size: 1.2rem;
+            list-style: none;
+        }
+
+        li:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        li:hover {
+            cursor: pointer;
+            background-color: #dddddd;
+        }
+
+        li .fa-check,
+        li .fa-xmark {
+            flex: 0 0 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        li span {
+            flex: auto;
+            padding: 1rem 0.5rem;
+            word-break: break-word;
+        }
+
+
+        .fa-check {
+            visibility: hidden;
+        }
+
+        .fa-xmark:hover {
+            background-color: pink;
+            color: white;
+        }
+
+        li.checked {
+            background-color: lightgoldenrodyellow;
+            color: lightsalmon;
+        }
+
+        .checked span {
+            text-decoration: line-through;
+        }
+
+        .checked .fa-check {
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>My ToDo List</h1>
+            <section>
+                <input type="text" placeholder="请输入待办事项" class="input">
+                <button class="add">添加</button>
+            </section>
+        </header>
+        <main>
+            <ul>
+            </ul>
+        </main>
+    </div>
+
+    <script>
+        var ul = document.querySelector('ul')
+        var input = document.querySelector('input')
+        var btn = document.querySelector('button')
+        btn.addEventListener('click', function () {
+            var spans = [...document.querySelectorAll('span')]
+            var spanContent = spans.map(function (span) {
+                return span.textContent
+            })
+            if (input.value != '') {
+                if (!spanContent.includes(input.value)) {
+                    var li = document.createElement('li')
+                    var i1 = document.createElement('i')
+                    var span = document.createElement('span')
+                    var i2 = document.createElement('i')
+                    i1.classList.add('fa-solid', 'fa-check')
+                    span.textContent = input.value
+                    i2.classList.add('fa-solid', 'fa-xmark')
+                    li.append(i1, span, i2)
+                    ul.appendChild(li)
+                    input.value = ''
+                    input.placeholder = '请输入待办事项'
+                } else {
+                    input.value = ''
+                    input.placeholder = '待办事项已存在'
+                }
+            }
+        })
+        ul.addEventListener('click', function (e) {
+            console.dir(e.target);
+            if (e.target.classList.contains('fa-xmark')) {
+                ul.removeChild(e.target.parentElement)
+            } else if (e.target.classList.contains('fa-check') || e.target.tagName === 'SPAN') {
+                e.target.parentElement.classList.toggle('checked')
+            } else if (e.target.tagName === 'LI') {
+                e.target.classList.toggle('checked')
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+
+        // 同步
+        console.log(111);
+        console.log(222);
+        console.log(333);
+
+        // 异步
+        new Promise((resolve, reject) => {
+            console.log(444);
+            resolve()
+        }).then( //then()方法相当于新开了一个线程执行代码，不会阻塞后面主线程上777的打印
+            () => console.log(555)
+        ).then(
+            () => console.log(666)
+        )
+        console.log(777);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <img src="./images/off.gif" alt="">
+    <script>
+        /* 
+        使用奇偶数进行切换,不再依赖元素的属性判断
+        奇数开，偶数关
+        防止变量持续增大，在开灯后自减，关灯后自增
+        */
+
+        var img = document.querySelector('img')
+        var i = 1
+        img.onclick = function () {
+
+            if (i % 2 == 0) {
+                this.src = './images/off.gif'
+                i++
+            }
+            else {
+                this.src = './images/on.gif'
+                i--
+            }
+
+        }
+    </script>
+</body>
+
+</html>

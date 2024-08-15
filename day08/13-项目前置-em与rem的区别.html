@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 初始状态下，em与rem都是相对于浏览器默认字体大小的设置，1em/1rem=16px */
+        p {
+            font-size: 2em;
+        }
+
+        div {
+            font-size: 2rem;
+        }
+
+        /* 如果设置根选择器，em和rem都会相对于根选择器设定的字体尺寸计算 */
+        /* 根选择器方式一：html标签 */
+        html {
+            font-size: 32px;
+        }
+
+        /* 根选择器方式二：:root伪类 */
+        /* :root选择器用匹配文档的根元素。在HTML中根元素始终是HTML元素。 */
+        :root {
+            font-size: 48px;
+        }
+        section{
+            font-size: 100px;
+        }
+        /* 区别：em会继承父元素的字体尺寸 */
+    </style>
+</head>
+
+<body><section>
+    <p>em</p></section>
+    <div>rem</div>
+</body>
+
+</html>

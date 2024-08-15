@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .c1 {
+            width: 200px;
+            aspect-ratio: 1;
+            background: pink;
+        }
+
+        .c2 {
+            width: 100px;
+            aspect-ratio: 1;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>aaa</li>
+        <li>bbb</li>
+        <li>ccc</li>
+    </ul>
+    <script>
+        // 给li绑定事件，点击之后，弹出里面的内容
+        // 方式一 传统方式：获取所有li，遍历添加事件
+        // var lis = document.querySelectorAll('li')
+        // lis.forEach(function (li) {
+        //     li.addEventListener('click', function () {
+        //         alert(li.textContent)
+        //     })
+        // })
+
+        // 方式二 事件代理
+        var ul = document.querySelector('ul')
+        ul.addEventListener('click', function (e) {
+            alert(e.target.textContent)
+        })
+    </script>
+</body>
+
+</html>

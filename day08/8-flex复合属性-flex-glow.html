@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        flex-grow:设置子项的放大比例，默认是0.如果flex容器存在剩余空间，子元素不会跟着变大
+
+        操作
+            将flex容器宽度增大，发现flex子项宽度没有跟着变大
+        原因
+            flex子项flex-grow的值为默认值0.不会跟着放大
+
+        解决
+            在flex子项设置flex-grow:1;
+        */
+        .father {
+            display: flex;
+            width: 500px;
+            height: 100px;
+            background-color: lightblue;
+        }
+
+        .son1 {
+            flex-grow: 1;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        .son2 {
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+        }
+
+        .son3 {
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son1">1</div>
+        <div class="son2">2</div>
+        <div class="son3">3</div>
+    </div>
+</body>
+
+</html>

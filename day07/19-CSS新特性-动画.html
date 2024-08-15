@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            transition: all 1s;
+            /* 使用动画 */
+            animation: myRotate 2s infinite linear;
+        }
+
+        /* 定义一个动画 */
+        @keyframes myRotate {
+            0% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* animation是复合属性
+            未写值会自动插入默认值 
+                animation-name	指定要绑定到选择器的关键帧的名称
+                animation-duration	动画指定需要多少秒或毫秒完成
+                animation-timing-function	设置动画将如何完成一个周期
+                    linear	动画从头到尾的速度是相同的。	
+                    ease	默认。动画以低速开始，然后加快，在结束前变慢。	
+                    ease-in	动画以低速开始。	
+                    ease-out	动画以低速结束。	
+                    ease-in-out	动画以低速开始和结束。
+                animation-delay	设置动画在启动前的延迟间隔。
+                animation-iteration-count	定义动画的播放次数。*/
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

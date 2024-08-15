@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 原始值--基本类型
+        var num = 10.688
+        console.log(num);
+        console.log(typeof num);
+        // 将原始值包装成对象
+        var obj = new Number(num)
+        console.log(obj);
+        console.log(typeof obj);
+        // 将num包装成对象之后，会变得更加强大。因为可以调用Number对象中定义的属性和方法
+        console.log(obj.toFixed(2));
+
+
+        /* 
+        当你使用 Number 对象和原始 number 进行比较时，
+        JavaScript 会自动地将 Number 对象转换为原始的数值类型 (number) ，然后进行比较。
+        这是通过 valueOf 方法来实现的
+        */
+        let num1 = 5; // 原始数值类型
+        let num2 = new Number(10); // Number对象
+
+        console.log(num1 < num2); // true
+        console.log(num1 > num2); // false
+        console.log(num1 == num2); // false
+        console.log(num1 === num2); // false，因为类型不同
+
+        // 将 Number 对象转换为原始数值类型进行严格比较
+        console.log(10 === num2.valueOf()); // true
+
+    </script>
+</body>
+
+</html>

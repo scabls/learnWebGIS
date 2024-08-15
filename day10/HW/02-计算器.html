@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var num1 = +prompt("请输入第一个数字：");
+        var operator = prompt("请输入运算符：");
+        var num2 = +prompt("请输入第二个数字：");
+        // 方式一：使用eval()函数
+        alert(operator === "+" || operator === "-" || operator === "*" || operator === "/" ?
+            num1 + operator + num2 + " = " + eval(num1 + operator + num2) :
+            "请输入正确的运算符");
+        // 方式二：三元表达式-嵌套
+        alert(
+            num1 + operator + num2 + " = " + (
+                operator === "+" ? num1 + num2 : (
+                    operator === "-" ? num1 - num2 : (
+                        operator === "*" ? num1 * num2 : (
+                            operator === "/" ? num1 / num2 : "请输入正确的运算符")))
+            )
+        )
+        // 方式二：三元表达式-嵌套形式二-不加括号
+        alert(
+            num1 + operator + num2 + " = " + (
+                operator === "+" ? num1 + num2 :
+                    operator === "-" ? num1 - num2 :
+                        operator === "*" ? num1 * num2 :
+                            operator === "/" ? num1 / num2 : "请输入正确的运算符"
+            )
+        )
+        
+        // 方式三：switch语句
+        switch (operator) {
+            case "+":
+                alert(num1 + operator + num2 + " = " + (num1 + num2));
+                break;
+            case "-":
+                alert(num1 + operator + num2 + " = " + (num1 - num2));
+                break;
+            case "*":
+                alert(num1 + operator + num2 + " = " + (num1 * num2));
+                break;
+            case "/":
+                alert(num1 + operator + num2 + " = " + (num1 / num2));
+                break;
+            default:
+                alert("请输入正确的运算符");
+                break;
+        }
+    </script>
+</body>
+
+</html>

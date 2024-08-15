@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function f1() {
+            var num1 = 10;
+            function f2() {
+                function f3() {
+                    function f4() {
+                        console.log(num1);
+                    }
+                    f4()
+                    console.dir(f4);
+                }
+                f3()
+            }
+            /* 
+            [[Scopes]]: Scopes[2]       ---代表作用域链，     ---展示当前作用域的上层作用域
+                0: Closure (f1) {num1: 10}      --- 代表访问变量所在的f1形成的作用域
+                1: Global {window: Window, self: Window, document: document, name: '', location: Location, …}
+                        --- 全局作用域
+            */
+            f2()
+        }
+        /* 
+        作用域作用---为变量的查找提供一个机制
+            调用f4打印num1，先从它自己当前所在的域中查找num1，有没有定义num1
+            如果没有的话，就通过作用域链，找到它的上一层，f1函数有没有定义num1
+            如果没有的话，就通过作用域链，再找到f1的上一层，全局作用域有没有定义num1
+            如果都没有的话，就报错
+        */
+
+        f1()
+    </script>
+</body>
+
+</html>

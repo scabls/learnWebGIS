@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .header {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            display: flex;
+            width: 100%;
+            padding: 2rem 3rem;
+            color: white;
+            z-index: 2000;
+            transition: 0.5s;
+        }
+
+        .header.active {
+            position: fixed;
+            background-color: white;
+            color: #333;
+            padding: 1rem 3rem;
+            animation: sliderdown 0.5s;
+        }
+
+        .header.noactive {
+            animation: sliderup 0.5s;
+        }
+
+        /* 定义一个动画（header下滑的动画） */
+        @keyframes sliderdown {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* 定义一个动画（header复原的动画） */
+        @keyframes sliderup {
+            0% {
+                transform: translateY(100%);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .left {
+            flex: 50%;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .right {
+            flex: 50%;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: flex-end;
+            font-size: 1.2rem;
+        }
+
+        .right span {
+            display: flex;
+            align-items: center;
+        }
+
+        .car1 {
+            aspect-ratio: 1920/800;
+            background-image: url(./images/car1.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+
+        }
+
+        .car2 {
+            aspect-ratio: 1920/800;
+            background-image: url(./images/car2.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <aside class="left">LOGO</aside>
+        <aside class="right">
+            <span>探索车型</span>
+            <span>探索车型</span>
+            <span>探索车型</span>
+            <span>探索车型</span>
+            <span>探索车型</span>
+            <span>探索车型</span>
+        </aside>
+    </header>
+    <main>
+        <section class="car1"></section>
+        <section class="car2"></section>
+    </main>
+    <script>
+        const header = document.querySelector('.header')
+
+
+        window.addEventListener('scroll', () => {
+            if (scrollY >= header.offsetHeight) {
+                header.classList.remove('noactive')
+                header.classList.add('active')
+            } else if (header.classList.contains('active')) {
+                header.classList.remove('active')
+                header.classList.add('noactive')
+            }
+        })
+    </script>
+</body>
+
+</html>

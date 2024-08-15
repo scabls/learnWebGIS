@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .triangle-right {
+            display: inline-block;
+            text-align: right;
+        }
+
+        .diamond {
+            display: inline-block;
+            text-align: center;
+        }
+
+        .hollow-diamond {
+            display: inline-block;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /* 
+        练习八:尝试打印以下图案
+            图案一
+        */
+        document.write('<div class="triangle-right">')
+        for (var i = 1; i <= 5; i++) {
+            for (var j = 1; j <= i; j++) {
+                document.write("&nbsp;");
+            }
+            for (var k = 1; k <= 6 - i; k++) {
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+        document.write('</div>')
+        document.write('<hr>')
+        /* 
+        图案二
+        */
+        document.write('<div class="diamond">')
+        for (var i = 1; i <= 11; i++) {
+            if (i <= 6) {
+                for (var j = 1; j <= i; j++) {
+                    if (j == i) {
+                        document.write("*<br>");
+                    } else {
+                        document.write("*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                    }
+                }
+            } else {
+                for (var j = 1; j <= 5 - (i - 7); j++) {
+                    if (j == 5 - (i - 7)) {
+                        document.write("*<br>");
+                    } else {
+                        document.write("*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+                    }
+                }
+            }
+        }
+        document.write('</div>')
+        document.write('<hr>')
+        /* 
+        图案三
+        */
+        document.write('<div class="hollow-diamond">')
+        for (var i = 1; i <= 11; i++) {
+            if (i <= 6) {
+                for (var j = 1; j <= i; j++) {
+                    if (j == i) {
+                        document.write("*<br>");
+                    } else if (j == 1) {
+                        document.write("*&nbsp;&nbsp;");
+                    } else {
+                        document.write("&nbsp;&nbsp;&nbsp;&nbsp;");
+                    }
+                }
+            } else {
+                for (var j = 1; j <= 5 - (i - 7); j++) {
+                    if (j == 5 - (i - 7)) {
+                        document.write("*<br>");
+                    } else if (j == 1) {
+                        document.write("*&nbsp;&nbsp;");
+                    } else {
+                        document.write("&nbsp;&nbsp;&nbsp;&nbsp;");
+                    }
+                }
+            }
+        }
+
+        document.write('</div>')
+
+    </script>
+</body>
+
+</html>

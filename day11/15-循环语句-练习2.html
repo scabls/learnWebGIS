@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var number = +prompt("请输入班级人数：")
+        var score = 0;
+        // 定义一个计数器（跟求和思想很类似，只不过每次加1）
+        var pass = 0;
+        var totalscore = 0;
+        if (number > 0) {
+            for (var i = 1; i <= number; i++) {
+                score = +prompt("请输入第" + i + "个学生的成绩：");
+                totalscore += score
+                // 判断是否及格并计数
+                if (score >= 60) {
+                    pass++;
+                }
+            }
+        }
+        console.log("所有同学的总分为" + totalscore);
+        console.log("平均分为" + (totalscore / number));
+        console.log("及格同学数为" + pass);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function sum(num1, num2) {
+            // 为了保证函数顺利执行，有时候需要在操作之前对传入的数据进行判断
+            if(min>=max){
+                alert(`请确保第一个数小于第二个数`)
+                return  // 用于结束函数，后续代码不再执行
+            }
+            var sum1 = 0;
+            while (num1 <= num2) {
+                sum1 += num1;
+                num1++;
+            }
+            return sum1;
+            // 借助函数的返回值，在调用函数后拿到最终结果
+        }
+        alert(sum(1, 100));
+    </script>
+</body>
+
+</html>

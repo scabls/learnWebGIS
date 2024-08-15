@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log(111);
+        function fn(during) {
+            const start = Date.now()
+            while (Date.now() - start < during){}
+        }
+        setTimeout(() => console.log(222),1000)
+        console.log(333);
+        fn(2000)
+        console.log(444);
+        /*
+        1. 加载页面时，渲染页面开启，同时开启一个渲染主程序，执行全局的js代码
+        2. 第12行代码，是同步任务，直接放在主线程，打印111
+        3. 第17行代码，是异步任务，异步线程（计时器线程）启动，
+            同时因为定时是1秒，计时器线程会在1秒后把里面的匿名函数添加到消息队列中排队
+        4. 主线程会继续往下执行，执行到第18行，是同步任务，直接放在主线程执行，打印333
+        5. 主线程会继续往下执行，执行到第19行，是同步任务，直接放在主线程执行，调用fn，死循环2秒
+        6. 主线程会继续往下执行，执行到第20行，是同步任务，直接放在主线程执行，打印444
+        5. 所有同步任务执行完成之后，主线程再次回到消息队列中取出排队的函数，执行，打印222
+
+        */
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="" id="a1">My Link</a>
+    <script>
+        var a1 = document.getElementById('a1')
+        console.log(a1);// 打印元素dom结构（html结构）
+        console.dir(a1);//打印元素对象结构（属性和方法）
+
+        /* element.innerHTML	设置或者返回元素的内容。 */
+        console.log(a1.innerHTML);//获取
+        a1.innerHTML = '百度一下'//操作
+    </script>
+</body>
+
+</html>

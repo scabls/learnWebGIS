@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        手动处理异常
+            目的
+                确保程序即使有异常，也可以继续执行，增强程序的健壮性
+            语法
+                try {
+                    ...    //一般把可能会出现的问题的代码放在这里，或者做异常的手动抛出
+                } catch(e) {
+                    ...    //异常的捕获与处理
+                } finally {
+                    ...    //无论是否有异常都要执行的代码（如记录日志）
+                }
+        */
+        let age = 10
+        console.log(111);
+        console.log(222);
+        try {
+            if (age <= 18) {
+                throw '未成年'
+            }
+        } catch (e) {//e代表异常对象，系统会将捕捉到的异常信息放到里面
+            console.log(e);
+        } finally {//finally根据情况可写可不写
+            console.log('记录日志');
+        }
+
+        console.log(333);
+    </script>
+</body>
+
+</html>

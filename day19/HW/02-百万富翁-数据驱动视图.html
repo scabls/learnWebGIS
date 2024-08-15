@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1;
+        }
+
+        .container {
+            width: 44rem;
+            margin: 1rem auto;
+            padding: 1rem 2rem 2rem;
+            background-color: #F4F4F4;
+            border: 1px solid #1F1F1F;
+            border-radius: 1rem;
+        }
+
+        h1 {
+            padding-bottom: 2rem;
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+        }
+
+        aside {
+            flex: 13rem;
+            padding-right: 1rem;
+            padding-top: 0.5rem;
+            border-right: 1px solid #1F1F1F;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            border-radius: 0.5rem;
+            border: 1px solid #1F1F1F;
+            cursor: pointer;
+        }
+
+        article {
+            flex: 27rem;
+            padding-left: 1rem;
+            padding-top: 1rem;
+        }
+
+        .theader,
+        .tfooter div,
+        .tbody div {
+            display: flex;
+            justify-content: space-between
+        }
+
+        .theader,
+        .tfooter div {
+            padding-bottom: 1rem;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #1F1F1F;
+        }
+
+
+
+        .theader .left {
+            font-weight: bold;
+        }
+
+        .tbody {
+            padding: 0.5rem 0;
+        }
+
+        .tbody div {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .tbody .left {
+            font-weight: bold;
+        }
+
+        .tfooter div {
+            border-bottom: 1px solid #1F1F1F;
+        }
+
+        .pressDown {
+            background-color: #999;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>富豪排行榜</h1>
+        </header>
+        <main>
+            <aside>
+                <button class="add">增加富豪</button>
+                <button class="doubled">加倍财富</button>
+                <button class="rank">富豪排行</button>
+                <button class="sift">仅显示百万+富翁</button>
+                <button class="getSum">计算全部财富</button>
+                <button class="clearAll">清空榜单</button>
+            </aside>
+            <article>
+                <section class="theader">
+                    <span class="left">姓名</span>
+                    <span class="right">身价</span>
+                </section>
+                <section class="tbody">
+                    <!-- <div>
+                        <span class="left">李四</span>
+                        <span class="right">10000</span>
+                    </div>
+                    <div>
+                        <span class="left">张三</span>
+                        <span class="right">10000</span>
+                    </div>
+                    <div>
+                        <span class="left">张三</span>
+                        <span class="right">10000</span>
+                    </div>
+                    <div>
+                        <span class="left">张三</span>
+                        <span class="right">10000</span>
+                    </div> -->
+                </section>
+                <section class="tfooter">
+                    <!-- <div>
+                        <span class="left">总计:</span>
+                        <span class="right">10000</span>
+                    </div> -->
+                </section>
+            </article>
+        </main>
+
+    </div>
+
+    <script>
+        const firstNameArr = ['赵', '钱', '孙', '欧阳', '李', '周', '吴', '郑', '王', '冯', '陈', '褚', '卫', '蒋', '沈', '韩', '杨', '朱', '秦', '尤', '许', '何', '吕', '施', '张', '孔', '曹', '严', '华', '金', '魏', '陶', '姜']
+        const lastNameArr = ['伟', '芳', '娜', '敏', '静', '秀英', '浩然', '小蒙', '子轩', '欣怡', '梓涵', '浩宇', '雨桐', '子墨', '宇航']
+        const tbody = document.querySelector('.tbody')
+        const tfooter = document.querySelector('.tfooter')
+        const btns = document.querySelectorAll('button')
+        let entries = []
+        function addEntries(entries, position) {
+            entries.forEach(function (entry) {
+                let div = document.createElement('div')
+                let left = document.createElement('span')
+                left.classList.add('left')
+                left.textContent = entry[0]
+                let right = document.createElement('span')
+                right.classList.add('right')
+                right.textContent = entry[1]
+                div.append(left, right)
+                position.appendChild(div)
+            })
+        }
+
+        btns.forEach(function (btn) {
+            btn.addEventListener('mousedown', function () {
+                this.classList.add('pressDown')
+            })
+            btn.addEventListener('mouseup', function () {
+                this.classList.remove('pressDown')
+            })
+
+            btn.addEventListener('click', function () {
+
+                if (btn.classList.contains('add')) {
+                    let name = firstNameArr[Math.floor(Math.random() * firstNameArr.length)] + lastNameArr[Math.floor(Math.random() * lastNameArr.length)]
+                    let money = Math.floor(Math.random() * 1000000) + 500000
+                    entries.push([name, money])
+                    tbody.innerHTML = ''
+                    tfooter.innerHTML = ''
+                    addEntries(entries, tbody)
+
+                } else if (btn.classList.contains('doubled')) {
+                    entries = entries.map(function (entry) {
+                        return [entry[0], entry[1] * 2]
+                    })
+                    tbody.innerHTML = ''
+                    tfooter.innerHTML = ''
+                    addEntries(entries, tbody)
+
+                } else if (btn.classList.contains('rank')) {
+                    entries.sort(function (a, b) {
+                        return b[1] - a[1]
+                    })
+                    tbody.innerHTML = ''
+                    tfooter.innerHTML = ''
+                    addEntries(entries, tbody)
+
+                } else if (btn.classList.contains('sift')) {
+                    entries = entries.filter(function (entry) {
+                        return entry[1] > 1000000
+                    })
+                    tbody.innerHTML = ''
+                    tfooter.innerHTML = ''
+                    addEntries(entries, tbody)
+                } else if (btn.classList.contains('getSum')) {
+                    let getSum = entries.reduce(function (total, entry) {
+                        return [['总计', total[0][1] + entry[1]]]
+                    }, [['总计', 0]])
+                    tfooter.innerHTML = ''
+                    addEntries(getSum, tfooter)
+                } else {
+                    entries = []
+                    tbody.innerHTML = ''
+                    tfooter.innerHTML = ''
+                }
+            })
+
+
+        })
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+if语句
+    语法
+        if(条件表达式){
+            语句体
+        }
+    执行流程
+        如果表达式成立，就执行对应语句，否则就不执行
+        */
+        var money = prompt("请输入钱包里的钱：");
+        if (money >= 100) {  // 隐含了自动转换，在比较过程中，会把money临时转换为数字类型
+            alert('请客！')
+        } 
+        if (money < 100) {  // 隐含了自动转换，在比较过程中，会把money临时转换为数字类型
+            alert('AA！')
+        }
+        alert(typeof money)// 自动转换是临时的，运算后money仍是字符串
+    </script>
+</body>
+
+</html>

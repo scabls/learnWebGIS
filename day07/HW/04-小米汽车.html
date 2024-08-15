@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            position: relative;
+            width: 1600px;
+            height: 559px;
+            background-image: url(./images/contact_bg.png);
+        }
+
+        .right {
+            display: flex;
+            gap: 30px;
+            position: absolute;
+            top: 30%;
+            right: 0;
+            width: 800px;
+            height: 200px;
+            color: white;
+        }
+
+        .picture {
+            line-height: 2;
+        }
+
+        .right .picture img {
+            width: 150px;
+            height: 150px;
+        }
+
+        .right .text {
+            font-size: 50px;
+            font-weight: 200;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="right">
+            <div class="picture">
+                <img src="./images/wenxi.jpg" alt=""><br>
+                扫描二维码留下信息
+            </div>
+            <div class="text">欢迎第一时间<br>了解小米汽车最新动态</div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        参数
+            概念
+                相当于一个媒介，调用这个可以通过它将要操作的数据传递到函数内部，进行运算
+            做法
+                将函数体内变化的数据，提取出来，放到()里面，作为占位符（形式参数）
+                将来调用的时候，再用实际参数来替换形式参数，将值传递到函数内部
+            分类
+                形式参数：写在函数定义语句中的()中，占位符变量名，名字可以随意，在函数内部充当变量
+                实际参数：写在函数调用语句的()中，里面传递的是具体数据，赋值给形参
+        */
+        function sum(num1,num2) {
+            var sum1 = 0;
+            while (num1 <= num2) {
+                sum1 += num1;
+                num1++;
+            }
+            return sum1;
+            // 借助函数的返回值，在调用函数后拿到最终结果
+        }
+        alert(sum(1,100));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log(Math.PI);
+        console.log(Math.max(1, 2, 34, 111));
+        console.log(Math.min(1, 2, 34, 111));
+        console.log(Math.abs(-5));
+        console.log(Math.ceil(5.2));
+        console.log(Math.floor(5.8));
+        console.log(Math.round(5.45));
+        console.log(Math.pow(10, 3));
+
+        //返回介于 0（包含） ~ 1（不包含） 之间的一个随机数
+        console.log(Math.random());
+        // 生成[1,10)随机整数
+        onsole.log(Math.floor(Math.random() * 9) + 1);
+        // 生成[1,10]随机整数
+        console.log(Math.floor(Math.random() * 10) + 1);
+        // 生成[10,100)随机整数
+        console.log(Math.floor(Math.random() * 90) + 10);
+        // 生成[10,100]随机整数
+        console.log(Math.floor(Math.random() * 91) + 10);
+
+        // 规律
+        //以下函数返回 min（包含）～ max（不包含）之间的数字：
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+        //以下函数返回 min（包含）～ max（包含）之间的数字：
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function Student(name, age, home) {
+            this.name = name
+            this.age = age
+            this.home = home
+            this.intro = function () {
+                console.log(`我叫${this.name}，今年${this.age}岁，来自${this.home}`);
+            }
+        }
+
+
+        var arr = ['张三', '李四', '王五', '赵六']
+        console.log(arr[Math.floor(Math.random() * arr.length)]);
+
+
+
+    </script>
+</body>
+
+</html>

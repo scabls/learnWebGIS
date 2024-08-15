@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="猜猜我的年龄"><button>猜一猜</button>
+    <script>
+        var age = Math.floor(Math.random() * 61) + 10
+        var input = document.querySelector('input')
+        console.log(input);
+        var btn = document.querySelector('button')
+        btn.onclick = function () {
+            var guess = input.value
+            if (guess > age) {
+                input.value = ''
+                input.placeholder = '猜大了'
+            } else if (guess < age && guess > 0) {
+                input.value = ''
+                input.placeholder = '猜小了'
+            } else if (guess == age) {
+                input.value = ''
+                input.placeholder = '猜对了'
+            } else {
+                input.value = ''
+                input.placeholder = '猜猜我的年龄'
+            }
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>

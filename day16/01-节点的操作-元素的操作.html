@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<div class="c1">
+    <div class="c2"></div>
+    <div class="c2"></div>
+    <div class="c2"></div>
+    <div class="c2"></div>
+    <div class="c2"></div>
+</div>
+    <script>
+        /* 
+        在 HTML DOM (Document Object Model) 中 , 每一个元素都是 节点:
+
+        文档是一个文档节点。
+        所有的HTML元素都是元素节点。
+        所有 HTML 属性都是属性节点。
+        文本插入到 HTML 元素是文本节点。are text nodes。
+        注释是注释节点。
+        */
+        /*
+        element.firstChild	返回元素的第一个子节点
+        element.firstElementChild	返回元素的第一个子元素
+
+        element.lastChild	返回最后一个子节点
+        element.lastElementChild	返回指定元素的最后一个子元素
+
+        element.childNodes	返回元素的一个子节点的数组
+        element.children	返回元素的子元素的集合
+
+        element.parentNode	返回元素的父节点
+        element.parentElement	返回元素的父元素
+        */
+var c1=document.querySelector('.c1')
+console.log(c1.children);
+
+    </script>
+</body>
+
+</html>

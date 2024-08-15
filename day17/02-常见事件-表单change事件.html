@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <select id="province">
+        <option>--选择省--</option>
+        <option>河南省</option>
+        <option>辽宁省</option>
+        <option>山东省</option>
+    </select>
+
+
+    <script>
+        var province = document.querySelector('#province')
+
+        province.addEventListener('change', function () {
+            console.dir(this);
+            // 获取选项内容
+            // 查看控制台发现，被选内容在value属性中
+            // 下拉选择框的option的value值，设置之后提交到后台就是value值，否者提交的就是文本内容
+            console.log(`切换到了${this.value}`)
+            // 获取选项的索引
+            console.log(this.selectedIndex);
+        })
+
+    </script>
+
+
+
+</body>
+
+</html>

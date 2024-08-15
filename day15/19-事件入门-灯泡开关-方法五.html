@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <img src="./images/off.gif" alt="">
+    <script>
+        /* 
+        使用布尔值进行切换,不再依赖元素的属性判断
+
+        */
+
+        var img = document.querySelector('img')
+        // 在外定义一个标记变量跟灯泡的亮灭保持一致
+        // 现在是开就要关，现在是关就要开
+        var flag = false
+        img.onclick = function () {
+
+            if (flag) {
+                this.src = './images/off.gif'
+                flag = false //及时更新flag状态，和灯泡的亮灭保持一致
+            }
+            else {
+                this.src = './images/on.gif'
+                flag = true
+            }
+
+        }
+    </script>
+</body>
+
+</html>
