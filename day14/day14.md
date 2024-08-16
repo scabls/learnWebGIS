@@ -248,7 +248,7 @@ array.reduce(function(accumulator, currentValue, currentIndex, arr), initialValu
 
 必需。用于执行每个数组元素的函数。其返回值将作为下一次调用`function` 时的 `accumulator` 参数。对于最后一次调用，返回值将作为 `reduce()` 的返回值。该函数被调用时将传入以下参数：
 
-​		accumulator	必需。初始值, 或者上次计算结束后的返回值。上一次调用 `function` 的结果。在第一次调用时，如果指定了 `initialValue` 则为指定的值，否则为 `array[0]` 的值
+​		accumulator	必需。初始值。上一次调用 `function` 的结果。在第一次调用时，如果指定了 `initialValue` 则为指定的值，否则为 `array[0]` 的值
 
 ​		currentValue	必需。当前元素。在第一次调用时，如果指定了 `initialValue`，则为 `array[0]` 的值，否则为 `array[1]`。
 
@@ -289,7 +289,7 @@ Array 对象	返回一个新的数组。该数组是通过把所有 arrayX 参�
 ```js
 var arr1 = [7, 9, 3, 7, 5, 11, 1];
 var arr2 = [[7, 9], 11, 1];
-console.log(arr.concat(arr1));
+console.log(arr1.concat(arr2));
 // [7, 9, 3, 7, 5, 11, 1, [7, 9], 11, 1]
 ```
 

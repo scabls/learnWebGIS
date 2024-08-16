@@ -101,9 +101,25 @@ print(1000, "First").then(function () {
 
 #### Promise.resolve() 
 
-静态方法将给定的值转换为一个 Promise。
+```js
+Promise.resolve(value)
+```
+
+静态方法将给定的值转换为一个 `Promise`。
 
 相当于使用new创建了一个promise对象：状态属性是fulfilled，已兑现；结果属性是resolve中给定的值
+
+如果该值本身就是一个 Promise，那么该 Promise 将被返回
+
+#### Promise.reject()
+
+```js
+Promise.reject(reason)
+```
+
+返回一个已拒绝（rejected）的 `Promise` 对象，拒绝原因为给定的参数
+
+与 Promise.resolve() 不同，即使 reason 已经是一个 Promise 对象，Promise.reject() 方法也始终会将其封装在一个新的 Promise 对象中
 
 ### then()方法：链式操作
 
@@ -149,7 +165,7 @@ third		third是在second一秒后打印出的，不是三秒后
 
 - 返回一个值：`p` 以该返回值作为其兑现值。
 - 没有返回任何值：`p` 以 `undefined` 作为其兑现值。
-- 抛出一个错误：`p` 抛出的错误作为其拒绝值。
+- 抛出一个错误：`p` 将抛出的错误作为其拒绝值。
 - 返回一个已兑现的 Promise 对象：`p` 以该 Promise 的值作为其兑现值。
 - 返回一个已拒绝的 Promise 对象：`p` 以该 Promise 的值作为其拒绝值。
 - 返回另一个待定的 Promise 对象：`p` 保持待定状态，并在该 Promise 对象被兑现/拒绝后立即以该 Promise 的值作为其兑现/拒绝值。
@@ -190,7 +206,7 @@ third		third是在second三秒后打印出的
 */
 ```
 
-#### 异步函数
+#### Promise 函数
 
 之前我们已经学习了什么是Promise 函数
 
@@ -220,7 +236,7 @@ await: 等待的意思可以等待它后面的Promise对象执行完成之后，
 
 可以简化调用者执行promise 或者 获取promise结果属性值 的过程
 
-### 异步函数
+### 异步函数入门
 
 在 Promise 中我们编写过一个 Promise 函数：
 
@@ -276,7 +292,7 @@ async function asyncFunc() {
 asyncFunc();
 ```
 
-如果 Promise 有一个正常的返回值，await 语句也会返回它：
+如果 Promise 有一个正常的兑现值，await 语句也会返回它：
 
 ```js
 async function asyncFunc() {
@@ -292,7 +308,38 @@ asyncFunc();
 // Return value
 ```
 
+### async 函数
 
+#### 描述
+
+`async function` 声明创建一个 AsyncFunction 对象。每次调用异步函数时，都会返回一个新的 Promise 对象，该对象将异步函数的返回值作为兑现值，或者将异步函数中未被捕获的异常作为拒绝值。
+
+异步函数可以包含零个或者多个 await 表达式。await 表达式通过暂停执行使返回 promise 的函数表现得像同步函数一样，直到返回的 promise 被兑现或拒绝。返回的 promise 的兑现值会被当作该 await 表达式的返回值。使用 async/await 关键字就可以使用普通的 try/catch 代码块捕获异步代码中的错误。
+
+### await
+
+await 操作符用于等待一个 Promise 对象, 它只能在异步函数 async function 内部使用。
+
+#### 语法
+
+```js
+await expression;
+```
+
+await针对所跟不同表达式的处理方式：
+
+- Promise 对象：await 会暂停执行，等待 Promise 对象 resolve，然后恢复 async 函数的执行并返回解析值。
+- 非 Promise 对象：直接返回对应的值。
+
+#### 返回值
+
+返回 Promise 对象的处理结果。如果等待的不是 Promise 对象，则返回该值本身。
+
+如果一个 Promise 被传递给一个 await 操作符，await 将等待 Promise 正常处理完成并返回其处理结果。
+
+#### 异常
+
+拒绝（reject）的原因会被作为异常抛出。
 
 ## 事件循环(Event Loop)
 
