@@ -12,11 +12,9 @@
     }))(method, url)
 
   const dataArr = JSON.parse(dataJson).data
-  const province = document.querySelector('.province')
-  const city = document.querySelector('.city')
-  const area = document.querySelector('.area')
-  const btns = [province, city, area]
-  const lists = document.querySelectorAll('.options')
+  const levels = document.querySelectorAll('.level')
+  const selectors = document.querySelectorAll('.selector')
+  const lists = document.querySelectorAll('.list')
 
   function addToponym(placeArr, position) {
     position.lastElementChild.innerHTML = ''
@@ -29,12 +27,12 @@
     position.lastElementChild.appendChild(fragment)
   }
 
-  addToponym(dataArr, province)
+  addToponym(dataArr, levels[0])
 
-  btns.forEach(element => {
+  levels.forEach(element => {
     element.firstElementChild.addEventListener('click', function () {
       if (!this.parentElement.classList.contains('disabled')) {
-        btns.forEach(element => {
+        levels.forEach(element => {
           if (element != this.parentElement) element.classList.remove('clicked')
         })
         this.parentElement.classList.toggle('clicked')
@@ -43,45 +41,38 @@
   })
 
   function findChildren(placeArr, name) {
-    return placeArr.find(place => place.label == name).children
+    const children = placeArr.find(place => place.label == name).children
+    if (children == undefined) return []
+    else return children
   }
 
-  lists.forEach(ul => {
+  lists.forEach((ul, index) => {
     ul.addEventListener('click', function (e) {
       if (e.target.tagName === 'LI') {
         ;[...this.children].forEach(li => li.classList.remove('selected'))
         e.target.classList.add('selected')
-        this.parentElement.firstElementChild.firstElementChild.textContent = e.target.textContent
-        if (!this.parentElement.classList.contains('area')) {
+        selectors[index].textContent = e.target.textContent
+        if (index != 2) {
           const newArr = []
-          if (this.parentElement.classList.contains('province')) {
-            this.parentElement.nextElementSibling.firstElementChild.firstElementChild.textContent =
-              '请选择城市'
-            this.parentElement.nextElementSibling.nextElementSibling.firstElementChild.firstElementChild.textContent =
-              '请选择地区'
-            this.parentElement.nextElementSibling.nextElementSibling.classList.add('disabled')
+          if (index == 0) {
+            selectors[index + 1].textContent = '请选择城市'
+            selectors[index + 2].textContent = '请选择地区'
+            levels[index + 2].classList.add('disabled')
             findChildren(dataArr, e.target.textContent).forEach(city => newArr.push(city))
           }
-          if (this.parentElement.classList.contains('city')) {
-            this.parentElement.nextElementSibling.firstElementChild.firstElementChild.textContent =
-              '请选择地区'
-            const cities = findChildren(
-              dataArr,
-              this.parentElement.previousElementSibling.firstElementChild.firstElementChild
-                .textContent
-            )
+          if (index == 1) {
+            selectors[index + 1].textContent = '请选择地区'
+            const cities = findChildren(dataArr, selectors[index - 1].textContent)
             const areas = findChildren(cities, e.target.textContent)
-            if (areas != undefined) areas.forEach(area => newArr.push(area))
-            if (areas == undefined) {
-              this.parentElement.nextElementSibling.classList.add('disabled')
-            }
+            if (areas.length != 0) areas.forEach(area => newArr.push(area))
+            if (areas.length == 0) levels[index + 1].classList.add('disabled')
           }
           if (newArr.length != 0) {
-            addToponym(newArr, this.parentElement.nextElementSibling)
-            this.parentElement.nextElementSibling.classList.remove('disabled')
+            addToponym(newArr, levels[index + 1])
+            levels[index + 1].classList.remove('disabled')
           }
         }
-        this.parentElement.classList.remove('clicked')
+        levels[index].classList.remove('clicked')
       }
     })
   })

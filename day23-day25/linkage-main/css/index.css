@@ -35,7 +35,7 @@
 .container section.clicked .title .fa-angle-down {
   transform: rotate(180deg);
 }
-.container section .options {
+.container section .list {
   display: grid;
   grid-auto-flow: column;
   grid-template-rows: repeat(auto-fit, minmax(1.15rem, 1fr));
@@ -57,12 +57,12 @@
   transform: scaleY(0);
   opacity: 0;
 }
-.container section.clicked .options {
+.container section.clicked .list {
   transform: scaleY(1);
   opacity: 1;
 }
 
-.container section .options::before {
+.container section .list::before {
   content: '';
   position: absolute;
   top: -0.5rem;
@@ -74,7 +74,7 @@
   border-left: 1px solid #ccc;
   transform: rotate(45deg);
 }
-.container section .options li {
+.container section .list li {
   width: max-content;
   display: flex;
   align-items: center;
@@ -83,7 +83,7 @@
   font-size: 0.75rem;
   cursor: pointer;
 }
-.container section .options li.selected {
+.container section .list li.selected {
   background-color: #eec05a;
   border-radius: 5px;
 }

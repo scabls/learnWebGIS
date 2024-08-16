@@ -369,7 +369,7 @@ removeItem(keyname)	移除键
 clear()	清除存储对象中所有的键
 
 Object.keys(localStorage) 获取本地存储中所有的键
-Object.entries() 静态方法，返回一个二维数组，包含给定对象自有的可枚举字符串键属性的键值对
+Object.entries() 静态方法，返回一个二维数组，包含给定对象自有的可枚举字符串键属性的键值对。每个键值对都是一个包含两个元素的数组：第一个元素是属性的键（始终是字符串），第二个元素是属性值
 ```
 
 #### sessionStorage存储特点

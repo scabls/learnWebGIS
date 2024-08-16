@@ -64,7 +64,7 @@ Math 对象并不像 Date 和 String 那样是对象的类，因此没有构造�
 | [max(x,y,z,...,n)](https://www.runoob.com/jsref/jsref-max.html) | 返回 x,y,z,...,n 中的最高值。                                |
 | [min(x,y,z,...,n)](https://www.runoob.com/jsref/jsref-min.html) | 返回 x,y,z,...,n中的最低值。                                 |
 | [pow(x,y)](https://www.runoob.com/jsref/jsref-pow.html)      | 返回 x 的 y 次幂。                                           |
-| [random()](https://www.runoob.com/jsref/jsref-random.html)   | 返回 0 ~ 1 之间的随机数。                                    |
+| [random()](https://www.runoob.com/jsref/jsref-random.html)   | 返回 0 ~ 1 之间的随机数。[0,1)                               |
 | [round(x)](https://www.runoob.com/jsref/jsref-round.html)    | 四舍五入。                                                   |
 | [sin(x)](https://www.runoob.com/jsref/jsref-sin.html)        | 返回数的正弦。                                               |
 | [sqrt(x)](https://www.runoob.com/jsref/jsref-sqrt.html)      | 返回数的平方根。                                             |
@@ -217,7 +217,7 @@ Number 创建方式 new Number()。
 
 #### isNaN
 
-和全局函数 [isNaN()](https://www.runoob.com/jsref/jsref-isnan.html) 相比，Number.isNaN() 不会自行将参数转换成数字，只有在参数是值为 NaN 的数字时，才会返回 true
+和全局函数 [isNaN()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/isNaN#%E6%8F%8F%E8%BF%B0) 相比，Number.isNaN() 不会自行将参数转换成数字，只有在参数是值为 NaN 的数字时，才会返回 true
 
 ### 注意点
 
@@ -250,7 +250,7 @@ Number 创建方式 new Number()。
 | 函数                                                         | 描述                                               |
 | :----------------------------------------------------------- | :------------------------------------------------- |
 | [eval()](https://www.runoob.com/jsref/jsref-eval.html)       | 计算 JavaScript 字符串，并把它作为脚本代码来执行。 |
-| [isNaN()](https://www.runoob.com/jsref/jsref-isnan.html)     | 检查某个值是否是数字。注意与Number.isNaN()区别     |
+| [isNaN()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/isNaN#%E6%8F%8F%E8%BF%B0)     | 检查某个值是否是数字。注意与Number.isNaN()区别     |
 | [Number()](https://www.runoob.com/jsref/jsref-number.html)   | 把对象的值转换为数字。                             |
 | [parseFloat()](https://www.runoob.com/jsref/jsref-parsefloat.html) | 解析一个字符串并返回一个浮点数。                   |
 | [parseInt()](https://www.runoob.com/jsref/jsref-parseint.html) | 解析一个字符串并返回一个整数。                     |

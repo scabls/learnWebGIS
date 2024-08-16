@@ -83,7 +83,7 @@ myCars[0]="Opel";
 
 目前对数组的所有操作，都是通过它的索引来完成
 
-```
+```js
 var arr=['aaaa','bbbb','cccc'] 
 ```
 

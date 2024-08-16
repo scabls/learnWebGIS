@@ -36,7 +36,7 @@
 
 #### 概念
 
-每一个实例对象都有一个属性(`__proto__`),指向构造函数的原型对象(prototype)
+每一个实例对象都有一个属性(`__proto__`),指向构造函数的原型对象(`prototype`)
 `__proto__`习惯称为对象的原型
 
 ```js
@@ -186,14 +186,14 @@ setInterval(function() {}, 1000);  这个函数是定时器自动1秒钟调用�
 #### 语法
 
 ```js
-function [name]([param1[ = defaultValue1 ][, ..., paramN[ = defaultValueN ]]]) {
+function name (param1 = defaultValue1 , ... , paramN = defaultValueN ) {
     statements
 }
 ```
 
 #### 描述
 
-JavaScript 中函数的参数默认是 `undefined`。然而，在某些情况下可能需要设置一个不同的默认值。这是默认参数可以帮助的地方。
+JavaScript 中函数的参数值默认是 `undefined`。然而，在某些情况下可能需要设置一个不同的默认值。这是默认参数可以帮助的地方。
 
 ```js
 function multiply(a, b = 1) {
@@ -219,9 +219,9 @@ greet("David", "Hi"); // ["David", "Hi", "Hi David"]
 greet("David", "Hi", "Happy Birthday!"); // ["David", "Hi", "Happy Birthday!"]
 ```
 
-##### 位于默认参数之后非默认参数
+##### 位于普通参数之前的已设定默认值的参数
 
-参数仍然设置为从左到右，覆盖默认参数，即使后面的参数没有默认值。
+参数仍然设置为从左到右，覆盖默认参数值，即使后面的参数没有设定默认值。
 
 ```js
 function f(x = 1, y) {
@@ -320,7 +320,7 @@ console.log(res1)
 
 函数也是一个类型,也可以作为参数或者返回值,像这样的函数叫做高阶函数
 
-也就是 参数或者返回值 是函数类型 函数,叫做高阶函数
+也就是 参数或者返回值 是函数类型 的函数,叫做高阶函数
 
 #### 举例
 
