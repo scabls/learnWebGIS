@@ -28,18 +28,18 @@ async function fn() {
   function displayHero(heroArr) {
     // 获取外层容器
     const list = document.querySelector('.list')
-    // 填充之前先对容器进行清空
-    list.innerHTML = ''
-    // 遍历数组
-    for (const { ename, cname } of heroArr) {
-      list.innerHTML += `
-        <li>
-          <a href="https://pvp.qq.com/web201605/herodetail/${ename}.shtml" target="_blank">
-            <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/${ename}/${ename}.jpg"/>
-            <span>${cname}</span>
-          </a>
-        </li>`
-    }
+    // 使用数组的map方法，先将元素转成dom字符串，然后用join()将数组元素拼成一个字符串，最后填充到容器中
+    list.innerHTML = heroArr
+      .map(
+        hero => `
+          <li>
+            <a href="https://pvp.qq.com/web201605/herodetail/${hero.ename}.shtml" target="_blank">
+              <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/${hero.ename}/${hero.ename}.jpg"/>
+              <span>${hero.cname}</span>
+            </a>
+          </li>`
+      )
+      .join('')
   }
   /* ==========实现上层单选框的单选效果========== */
   const radios = document.querySelectorAll('.radio')
@@ -48,10 +48,8 @@ async function fn() {
     // 添加点击事件，实现单选效果
     radio.addEventListener('click', function () {
       // 实现点击哪一个则选中，其余的取消选中
-      // 排他思想：先清除所有radio样式
-      radios.forEach(radio => radio.classList.remove('checked'))
-      // 再给当前按钮添加样式
-      this.classList.add('checked')
+      // 调用方法实现单选效果
+      setRadioStyle(radio)
       /* ==========实现页面上层区域自定义单选框的数据筛选========== */
       // 先获取当前单选框radio的自定义属性的值
       const type = this.dataset.type
@@ -65,6 +63,15 @@ async function fn() {
       displayHero(filterArr)
     })
   })
+  // 编写实现自定义单选框单选效果功能
+  function setRadioStyle(element) {
+    // element代表当前点击的那个单选框（事件源对象）
+    // 先拿到之前选中的单选框，去掉样式
+    const preRadio = document.querySelector('.radio.checked')
+    if (preRadio) preRadio.classList.remove('checked')
+    // 给点击的元素设置样式
+    element.classList.add('checked')
+  }
   /* ==========实现上层区域的搜索内容========== */
   // 获取搜索框
   const input = document.querySelector('.input input')
@@ -81,9 +88,8 @@ async function fn() {
     ul.innerHTML = content
     // 如果没有输入，或者输入了空格，显示所有数据
     if (!value.trim()) displayHero(heroArr)
-    // 再次使用排他思想，取消所有单选框选中状态，将全选单选框设为选中状态
-    radios.forEach(radio => radio.classList.remove('checked'))
-    document.querySelector('.radio[data-type=all]').classList.add('checked')
+    // 调用方法，取消所有单选框选中状态，将全选单选框设为选中状态
+    setRadioStyle(document.querySelector('.radio[data-type=all]'))
   })
 }
 fn()
