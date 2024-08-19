@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        /* 设置宽高计算方式 */
+        box-sizing: border-box;
+      }
+      .list {
+        display: grid;
+        /* column关键字指定自动布局算法通过逐列填充来排列元素，在必要时增加新列 */
+        grid-auto-flow: column;
+        /* 使用repeat()函数，重复次数使用自动适应`auto-fit`，轨道定义使用固定尺寸 */
+        /* 为什么不使用自动填充`auto-fill`呢？
+        因为我们需要的是网格单元不足以填满一列时，则容器高度适应为网格单元的排列高度。
+        若使用`auto-fill`，就会使用空轨道填充，直到达到最大高度。 */
+        grid-template-rows: repeat(auto-fit, 1.15rem);
+        /* 设置行列间隙 */
+        gap: 0.4rem 1.8rem;
+        width: max-content;
+        min-width: 10rem;
+        /* 根据最大行数、轨道尺寸、行间隙，以及box-sizing: border-box设置下的padding和border计算所需的最小max-height */
+        max-height: 275.6px;
+        background-color: #fff;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        font-size: 0.9rem;
+        color: #666;
+        list-style: none;
+        border-radius: 5px;
+        box-shadow: 0px 0px 2px rgb(153, 153, 153);
+      }
+      .list li {
+        width: max-content;
+        display: flex;
+        align-items: center;
+        padding: 0.2rem 0.3rem;
+        line-height: 1;
+        font-size: 0.75rem;
+        cursor: pointer;
+      }
+      .list li.selected {
+        background-color: #eec05a;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="list">
+      <li>北京市</li>
+      <li>天津市</li>
+      <li>河北省</li>
+      <li>山西省</li>
+      <li>内蒙古</li>
+      <li>辽宁省</li>
+      <li>吉林省</li>
+      <li>黑龙江省</li>
+      <li>上海市</li>
+      <li>江苏省</li>
+      <li>浙江省</li>
+      <li>安徽省</li>
+      <li>福建省</li>
+      <li>江西省</li>
+      <li>山东省</li>
+      <li>河南省</li>
+      <li>湖北省</li>
+      <li>湖南省</li>
+      <li>广东省</li>
+      <li>广西壮族</li>
+      <li class="selected">海南省</li>
+      <li>重庆</li>
+      <li>四川省</li>
+      <li>贵州省</li>
+      <li>云南省</li>
+      <li class="">西藏</li>
+      <li>陕西省</li>
+      <li>甘肃省</li>
+      <li>青海省</li>
+      <li>宁夏</li>
+      <li>新疆</li>
+      <li class="">台湾省</li>
+      <li>香港</li>
+      <li>澳门</li>
+      <li>海外</li>
+    </ul>
+    <script>
+      const lists = document.querySelectorAll('.list')
+      lists.forEach((ul, index) => {
+        ul.addEventListener('click', function (e) {
+          if (e.target.tagName === 'LI') {
+            ;[...this.children].forEach(li => li.classList.remove('selected'))
+            e.target.classList.add('selected')
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

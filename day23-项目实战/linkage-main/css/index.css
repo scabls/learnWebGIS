@@ -38,7 +38,7 @@
 .container section .list {
   display: grid;
   grid-auto-flow: column;
-  grid-template-rows: repeat(auto-fit, minmax(1.15rem, 1fr));
+  grid-template-rows: repeat(auto-fit, 1.15rem);
   row-gap: 0.4rem;
   column-gap: 1.8rem;
   position: absolute;
