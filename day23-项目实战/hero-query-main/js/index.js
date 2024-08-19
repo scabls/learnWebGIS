@@ -11,7 +11,7 @@
       xhr.send()
     }))(method, url)
 
-  const dataArr = JSON.parse(dataJson).data
+  const dataArr = JSON.parse(dataJson).data.reverse()
   const show = document.querySelector('.show')
   function showHero(heroArr) {
     const fragment = document.createDocumentFragment()
