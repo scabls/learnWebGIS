@@ -1,0 +1,110 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
+}
+
+/* 下拉选择框 */
+.select {
+  position: relative;
+  display: inline-block;
+  margin: 0 5px;
+  /* 处理空格:不会超出容器宽度而发生换行 */
+  white-space: nowrap;
+  color: #666;
+}
+
+/* 下拉选择框左边的标题 */
+.select .title {
+  display: flex;
+  justify-content: space-between;
+  min-width: 150px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* 下拉选择框及标题的禁用状态 */
+.select.disabled {
+  color: #ccc;
+}
+.select.disabled .title {
+  cursor: not-allowed;
+}
+
+/* 下拉选择框右边的箭头图标 */
+.select .title .iconfont {
+  font-size: 10px;
+  transition: 0.5s;
+}
+.select.expand .iconfont {
+  transform: rotate(180deg);
+}
+
+/* 下拉框选择器下的列表区域 */
+.select  .options {
+  position: absolute;
+  top: 50px;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(auto-fit, 20px);
+  row-gap: 6px;
+  column-gap: 26px;
+  justify-items: left;
+
+  max-height: 300px;
+  min-width: 100%;
+  padding: 10px;
+  background: #fff;
+
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+
+  /* 刚开始是隐藏,并且缩放为0 */
+  opacity: 0;
+  transform: scaleY(0);
+  transition: 0.5s;
+  transform-origin: center -10px;
+}
+/* 下拉框选择器下的列表区域的展开状态 */
+.select.expand .options {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+/* 下拉框选择器下的列表区域上面的小凸起 */
+.select .options::before {
+  
+  content: "";
+  position: absolute;
+  left: 70px;
+  top: -6px;
+  width: 10px;
+  height: 10px;
+  
+  background: #fff;
+  border: 1px solid #ccc;
+  transform: rotate(45deg);
+  border-bottom: none;
+  border-right: none;
+}
+
+/* 下拉框选择器下的列表区域  */
+.select .options li {
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+.select .options li.active {
+  background: #eec05a;
+}

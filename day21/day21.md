@@ -190,7 +190,7 @@ value：此Promise 对象的兑现值。
 
 ###### onRejected 可选
 
-一个在此 Promise 对象被拒绝时异步执行的函数。它的返回值将成为 catch() 返回的 Promise 对象的兑现值。此函数被调用时将传入以下参数：
+一个在此 Promise 对象被拒绝时异步执行的函数。它的返回值将成为 then() 返回的 Promise 对象的兑现值。此函数被调用时将传入以下参数：
 
 reason：此Promise 对象被拒绝的原因。
 
