@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./03-模块作用域-自定义模块.js">
+      /*
+      全局变量污染问题
+          使用script的src属性这种方式，就是一个纯粹的拷贝，
+          它里面的变量可以随意访问，可能会跟当前页面定义的变量冲突，造成全局变量污染问题
+      */
+    </script>
+    <script>
+      const a = 20 /* SyntaxError: Identifier 'a' has already been declared (at 05-模块作用域-演示全局变量污染问题.html:10:13) */
+      console.log(a)
+    </script>
+  </body>
+</html>

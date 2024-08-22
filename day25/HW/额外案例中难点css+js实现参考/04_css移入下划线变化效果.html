@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: black;
+        }
+
+        a {
+            /* 使用纯白背景图片当做那条白线,起始宽度为0,高度为1px */
+            background-image: linear-gradient(white,white);
+            background-repeat: no-repeat;
+            background-position: left bottom;
+            background-size: 0 1px;
+
+            transition: all 0.5s;
+
+            color: white;
+            font-size: 30px;
+            text-decoration: none;
+        }
+
+        a:hover{
+            /* 鼠标移入的时候宽度为100% */
+            background-size: 100% 1px;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <a href="#">你若安好便是晴天</a>
+
+</body>
+
+</html>

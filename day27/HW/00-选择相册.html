@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        overflow: hidden;
+        perspective: 1800px;
+      }
+      main {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 400px;
+        height: 358px;
+        transform: translate(-50%, -50%);
+        transform-style: preserve-3d;
+        transform-origin: center center 290px;
+        animation: myRotate 10s linear infinite;
+      }
+      main:hover {
+        animation-play-state: paused;
+      }
+      main section {
+        position: absolute;
+        left: 50%;
+        display: grid;
+        row-gap: 20px;
+        transform-origin: center center 290px;
+      }
+      main section:nth-child(1) {
+        transform: translateX(-50%);
+      }
+      main section:nth-child(2) {
+        transform: translateX(-50%) rotateY(60deg);
+      }
+      main section:nth-child(3) {
+        transform: translateX(-50%) rotateY(120deg);
+      }
+      main section:nth-child(4) {
+        transform: translateX(-50%) rotateY(180deg);
+      }
+      main section:nth-child(5) {
+        transform: translateX(-50%) rotateY(240deg);
+      }
+      main section:nth-child(6) {
+        transform: translateX(-50%) rotateY(300deg);
+      }
+      section img:last-child {
+        transform: rotateX(180deg);
+        opacity: 0.3;
+      }
+      @keyframes myRotate {
+        100% {
+          transform: translate(-50%, -50%) rotateY(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <section>
+          <img src="./images/a1.jpg" alt="" />
+          <img src="./images/a1.jpg" alt="" />
+        </section>
+        <section>
+          <img src="./images/a2.jpg" alt="" />
+          <img src="./images/a2.jpg" alt="" />
+        </section>
+        <section>
+          <img src="./images/a3.jpg" alt="" />
+          <img src="./images/a3.jpg" alt="" />
+        </section>
+        <section>
+          <img src="./images/a4.jpg" alt="" />
+          <img src="./images/a4.jpg" alt="" />
+        </section>
+        <section>
+          <img src="./images/a5.jpg" alt="" />
+          <img src="./images/a5.jpg" alt="" />
+        </section>
+        <section>
+          <img src="./images/a6.jpg" alt="" />
+          <img src="./images/a6.jpg" alt="" />
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

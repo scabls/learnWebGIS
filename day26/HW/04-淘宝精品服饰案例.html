@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        padding: 2rem;
+      }
+      main {
+        display: flex;
+        width: max-content;
+        margin: 0 auto;
+      }
+      aside {
+        border: 1px solid pink;
+      }
+      aside .name {
+        padding: 0.4rem 0.8rem;
+        background-image: radial-gradient(rgb(255, 192, 203, 0.5), white);
+        text-align: center;
+        border-bottom: 1px solid pink;
+        cursor: pointer;
+      }
+      aside .name:hover {
+        background-image: radial-gradient(red, rgb(133, 1, 1));
+      }
+      aside .name:last-child {
+        border: none;
+      }
+
+      img {
+        /* img的宽度无法撑开article宽度，未解决 */
+        height: 100%;
+        aspect-ratio: 4/5;
+        border: 1px solid pink;
+        border-left: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <aside>
+          <div class="name">女靴</div>
+          <div class="name">雪地靴</div>
+          <div class="name">冬裙</div>
+          <div class="name">呢大衣</div>
+          <div class="name">毛衣</div>
+          <div class="name">棉服</div>
+          <div class="name">女裤</div>
+          <div class="name">羽绒服</div>
+          <div class="name">牛仔裤</div>
+        </aside>
+        <article>
+          <img src="./images/牛仔裤.jpg" alt="" />
+        </article>
+      </main>
+    </div>
+    <script>
+      const names = document.querySelectorAll('.name')
+      const img = document.querySelector('img')
+      names.forEach(name =>
+        name.addEventListener('mouseover', function () {
+          img.src = `./images/${name.textContent}.jpg`
+        })
+      )
+    </script>
+  </body>
+</html>

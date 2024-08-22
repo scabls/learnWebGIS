@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: black;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            position: relative;
+
+            width: 490px;
+            height: 375px;
+
+            margin: 100px;
+        }
+
+        .box img {
+            width: 490px;
+        }
+
+        /* 伪元素生成半透明的遮罩，先隐藏 */
+        .box::before{
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: '';
+            width: 490px;
+            height: 375px;
+            background: rgb(0, 0, 0,0.8);
+            transition: all 0.5s;
+            opacity: 0;
+        }
+
+        .box .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            padding: 10px;
+            border: 1px solid white;
+
+            font-size: 20px;
+            transform: translate(-50%, -100%);/* 起始位置,并且隐藏 */
+
+            transition: all 0.5s;
+            opacity: 0;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* 鼠标移入的时候,遮罩显示 */
+        .box:hover::before {
+            opacity: 1;
+        }
+
+        .box:hover .title {
+            transform: translate(-50%, -50%);/* 鼠标移入时候居中,并且显示 */
+            opacity: 1;
+        } 
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+        <img src="./img/project-1.jpg" alt="">
+
+        <a href="" class="title">
+            项目细节
+        </a>
+    </div>
+</body>
+
+</html>
