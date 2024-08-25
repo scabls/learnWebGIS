@@ -373,6 +373,26 @@ npm i 包名
 npm uninstall 包名
 ```
 
+##### 全局安装路径查询
+
+```powershell
+npm config get prefix
+```
+
+##### 全局安装路径设置
+
+```powershell
+npm config set prefix "新的路径"
+```
+
+注意设置后，将新路径添加到Windows的环境变量
+
+##### 恢复默认全局路径
+
+```powershell
+npm config delete prefix
+```
+
 ### nrm镜像管理工具
 
 #### 作用

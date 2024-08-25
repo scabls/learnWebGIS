@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入axios包 -->
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <script>
+      // 参数使用params指定
+      // 跟方式一原理是一样的
+      axios.get('http://localhost:3000/users', { params: { id: 1 } }).then(res => {
+        console.dir(res)
+        console.dir(res.data) //data是一个数组，里面有一个对象元素
+        console.log(res.data[0])
+      })
+    </script>
+  </body>
+</html>

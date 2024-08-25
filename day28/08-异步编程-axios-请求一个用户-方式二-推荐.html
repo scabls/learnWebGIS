@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入axios包 -->
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <script>
+      axios.get('http://localhost:3000/users/1').then(res => {
+        console.dir(res)
+        console.dir(res.data) //data是一个我们需要的对象元素
+      })
+    </script>
+  </body>
+</html>

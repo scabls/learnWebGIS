@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "username": "张三",
+      "password": "123",
+      "id": 1
+    },
+    {
+      "username": "李四",
+      "password": "124",
+      "id": 2
+    },
+    {
+      "username": "王五",
+      "password": "125",
+      "id": 3
+    }
+  ]
+}

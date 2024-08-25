@@ -36,7 +36,7 @@
 
 负责获取和消费资源的电脑，叫做客户端
 
-资源：互联网上的页面，音频，视频，数组都称为资源
+资源：互联网上的页面，音频，视频，数据都称为资源
 
 ### 网络通讯三要素
 
@@ -53,6 +53,8 @@
 ## URL地址
 
 ### 概念
+
+Uniform Resource Locator
 
 统一资源定位服务，可以定位互联网上唯一的一个资源
 
@@ -167,6 +169,10 @@ Host:域名+端口号
 
 user-agent:浏览器的版本型号
 
+##### 请求空行
+
+请求头和请求体之间的分隔符，表示请求头的结束
+
 ##### 请求体
 
 只有post请求才有
@@ -188,6 +194,10 @@ user-agent:浏览器的版本型号
 content-type:告诉浏览器我发送数据的类型和编码
 
 content-length:告诉浏览器我发送数据的字节长度
+
+##### 响应空行
+
+响应头和响应体之间的分隔符，表示响应头的结束。
 
 ##### 响应体
 
@@ -294,11 +304,13 @@ res.setHeader('content-type','text/html;charset=utf-8')//=前后不要有空格
 
 以下面这个访问路径进行解析
 
- `http://localhost:3000/detail?id=10`
+```
+http://localhost:3000/detail?id=10
 
- `http://		localhost		:3000		/detail				?id=10`
+http://		localhost		:3000		/detail				?id=10
 
-协议 						域名/ip					端口			访问路径(pathname)			请求参数(query)
+协议 		   域名/ip		  端口	  访问路径(pathname)     请求参数(query)
+```
 
 #### 步骤
 
@@ -310,7 +322,7 @@ res.setHeader('content-type','text/html;charset=utf-8')//=前后不要有空格
 
 ```js
 	const obj = url.parse(urlstr) 
-        第二个参数没有传,默认就是false,就不会解析query请求参数,query里面的值就是id=10
+        //第二个参数没有传,默认就是false,就不会解析query请求参数,query里面的值就是id=10
         Url {
           protocol: null,
           slashes: null,
@@ -327,7 +339,7 @@ res.setHeader('content-type','text/html;charset=utf-8')//=前后不要有空格
         }
         
  	const obj = url.parse(urlstr,true) 
-        第二个参数传true,就会解析query请求参数,query里面的值就是{id:'10'}
+        //第二个参数传true,就会解析query请求参数,query里面的值就是{id:'10'}。通过隐式调用querystring.parse()解析(无需单独引入模块)
          Url {
           protocol: null,
           slashes: null,
@@ -357,6 +369,22 @@ res.setHeader('content-type','text/html;charset=utf-8')//=前后不要有空格
 1. 首先判断请求路径是不是以/detail开头
 2. 如果是的话,再判断请求方式是不是get方式
 3. 如果是get请求,解析请求的url,拿到里面的query属性值即可
+
+```js
+server.on('request', (req, res) => {
+  res.setHeader('content-type', 'text/html; charset=utf-8')
+  const { pathname, query } = url.parse(req.url, true)
+  if (pathname == '/' || pathname == '/index') res.end('<h1>首页</h1>')
+  else if (pathname == '/list') res.end('<h1>列表页</h1>')
+  else if (pathname == '/detail') {
+    // console.log(req) // 发现请求方式存在于req对象的method属性中
+    if (req.method == 'GET') {
+      console.log(query), console.log(query.id)
+    }
+    res.end('<h1>详情页</h1>')
+  } else res.end('<h1>404找不到页面</h1>')
+})
+```
 
 #### 表单
 
@@ -394,7 +422,7 @@ req.on('end', () => {
 
 ```js
 // 封装获取post请求的方法
-function getqueryObj(req) {
+function getqueryStr(req) {
   return new Promise((resolve, reject) => {
     let postData = ''
     req.on('data', data => (postData += data))
@@ -405,17 +433,55 @@ function getqueryObj(req) {
 }
 ```
 
+### 综合实例
+
+如果是get请求,只要用户名是张三,密码是123,就在页面中显示登录成功,否则显示登录失败
+
+如果是post请求,只要用户名是张三,密码是123,就在页面中显示登录成功,否则显示登录失败
+
+```js
+const http = require('http')
+const url = require('url')
+const qs = require('querystring')
+const server = http.createServer()
+function getqueryStr(req) {
+  return new Promise((resolve, reject) => {
+    let postData = ''
+    req.on('data', data => (postData += data))
+    req.on('end', () => {
+      resolve(postData)
+    })
+  })
+}
+server.on('request', (req, res) => {
+  res.setHeader('content-type', 'text/html;charset=utf-8')
+  const { pathname, query } = url.parse(req.url, true)
+  if (pathname == '/login') {
+    if (req.method == 'GET') {
+      const { username, password } = query
+      if (username == '张三' && password == '123') res.end('<h1>GET方式登录成功</h1>')
+      else res.end('<h1>GET方式登录失败</h1>')
+    } else if (req.method == 'POST') {
+      ;(async () => {
+        const { username, password } = qs.parse(await getqueryStr(req))
+        if (username == '张三' && password == '123') res.end('<h1>POST方式登录成功</h1>')
+        else res.end('<h1>POST方式登录失败</h1>')
+      })()
+    } else res.end('<h1>不支持GET或POST之外的方式</h1>')
+  } else {
+    res.end('<h1>无限期开发中……</h1>')
+  }
+})
+server.listen(3000, function () {
+  console.log('服务器已启动，访问路径为http://localhost:3000')
+})
+```
+
 ## HTTP模块涉及的模块和对象
 
 ### 服务器对象(server对象)
 
 http.createServer([requestListener])返回的一个新建的 http.Server 实例
-
-#### 事件
-
-#### 属性
-
-#### 方法
 
 ### 请求对象(IncomingMessage对象)
 
@@ -425,7 +491,7 @@ IncomingMessage 对象由 http.Server 或 http.ClientRequest 创建，并作为�
 
 #### 属性
 
-##### url
+##### req.url
 
 仅在 http.Server 返回的请求中有效。
 
@@ -441,7 +507,7 @@ req.url
 
 如果想将 url 解析成各个部分，使用url模块的parse()方法
 
-##### method
+##### req.method
 
 HTTP 请求的方法，例如：`GET`, `POST`, `PUT`, `DELETE` 等
 
@@ -453,19 +519,15 @@ req.method
 
 返回值：`<string>`
 
-#### 方法
-
 ### 响应对象(ServerResponse对象)
 
-该对象在 HTTP 服务器内部被创建。 它作为第二个参数被传入 'request' 事件
+该对象在 HTTP 服务器内部被创建。 它作为第二个参数被传入 'request' 事件。
 
 常写作res
 
-#### 属性
-
 #### 方法
 
-##### end()
+##### res.end()
 
 该方法会通知服务器，所有响应头和响应主体都已被发送，即服务器将其视为已完成。 每次响应都必须调用 response.end() 方法。
 
@@ -475,15 +537,15 @@ req.method
 response.end([data][, encoding][, callback])
 ```
 
-data: ` <string>` | `<Buffer>`
-encoding:  `<string>`
-callback:  `<Function>`
+- data: ` <string>` | `<Buffer>`
+- encoding:  `<string>`
+- callback:  `<Function>`
 
 如果指定了 `data`，则相当于调用 `response.write(data, encoding)` 之后再调用 `response.end(callback)`。
 
 如果指定了 `callback`，则当响应流结束时被调用
 
-##### setHeader()
+##### res.setHeader()
 
 为一个隐式的响应头设置值。 如果该响应头已存在，则值会被覆盖。 如果要发送多个名称相同的响应头，则使用字符串数组。
 
@@ -493,11 +555,104 @@ callback:  `<Function>`
 response.setHeader(name, value)
 ```
 
-name:  `<string>`
-value:  `<string>` |` <string[]>`
+- name:  `<string>`
+- value:  `<string>` |` <string[]>`
 
 常用于解决中文乱码问题
 
 ### url模块
 
+`url` 模块提供了一些实用函数，用于 URL 处理与解析。 可以通过以下方式使用：
+
+```js
+const url = require('url');
+```
+
+#### 方法
+
+##### url.parse()
+
+`url.parse()` 方法会解析一个 URL 字符串并返回一个 URL 对象。
+
+注意：获取url字符串使用req.url
+
+###### 语法
+
+```js
+url.parse(urlString[, parseQueryString[, slashesDenoteHost]])
+```
+
+- urlString:  `<string>` 要解析的 URL 字符串。
+- parseQueryString:  `<boolean>` 如果为 true，则 query 属性总会通querystring 模块的 parse() 方法生成一个对象。 如果为 false，则返回的 URL 对象上的 query 属性会是一个未解析、未解码的字符串。 默认为 false。
+- slashesDenoteHost:  `<boolean>` 如果为 true，则 // 之后至下一个 / 之前的字符串会被解析作为 host。 例如，//foo/bar 会被解析为 {host: 'foo', pathname: '/bar'} 而不是 {pathname: '//foo/bar'}。 默认为 false。
+
+如果`urlString`不是字符串将会抛出`TypeError`。
+
+如果`auth`属性存在但无法编码则抛出`URIError`。
+
+### url对象
+
+#### 属性
+
+##### urlObject.pathname
+
+`pathname` 属性包含 URL 的整个路径部分。 它跟在 `host` （包括 `port`）后面，排在 `query` 或 `hash` 组成部分的前面且被 ASCII 问号（`?`）或哈希字符（`#`）分隔。
+
+例如：`'/p/a/t/h'`
+
+不会对路径字符串执行解码。
+
+##### urlObject.query
+
+`query` 属性是不含开头 ASCII 问号（`?`）的查询字符串，或一个被 `querystring` 模块的 `parse()` 方法返回的对象。 `query` 属性是一个字符串还是一个对象是由传入 `url.parse()` 的 `parseQueryString` 参数决定的。
+
+例如：`'query=string'` or `{'query': 'string'}`
+
+如果返回一个字符串，则不会对查询字符串执行解码。 如果返回一个对象，则键和值都会被解码。
+
 ### querystring模块
+
+`querystring` 模块提供了一些实用函数，用于解析与格式化 URL 查询字符串。 使用以下方法引入：
+
+```js
+const querystring = require('querystring');
+```
+
+#### 方法
+
+##### querystring.parse()
+
+该方法会把一个 URL 查询字符串 str 解析成一个键值对的集合。
+
+例子，查询字符串 `foo=bar&abc=xyz&abc=123` 被解析成：
+
+```js
+{
+  foo: 'bar',
+  abc: ['xyz', '123']
+}
+```
+
+###### 语法
+
+```js
+querystring.parse(str[, sep[, eq[, options]]])
+```
+
+- str:  `<string>` 要解析的 URL 查询字符串。
+- sep:  `<string>` 用于界定查询字符串中的键值对的子字符串。默认为 '&'。
+- eq:  `<string>` 用于界定查询字符串中的键与值的子字符串。默认为 '='。
+- options:  `<Object>`
+  - decodeURIComponent:  `<Function>` 解码查询字符串的字符时使用的函数。默认为 querystring.unescape()。
+  - maxKeys:  `<number>` 指定要解析的键的最大数量。默认为 1000。指定为 0 则不限制。
+
+该方法返回的对象不继承自 JavaScript 的 Object 类。 这意味着 Object 类的方法如 obj.toString()、obj.hasOwnProperty() 等没有被定义且无法使用。
+
+默认情况下，查询字符串中的字符会被视为使用 UTF-8 编码。 如果使用的是其他字符编码，则需要指定 decodeURIComponent 选项，例如：
+
+```js
+// 假设存在 gbkDecodeURIComponent 函数。
+querystring.parse('w=%D6%D0%CE%C4&foo=bar', null, null,
+                  { decodeURIComponent: gbkDecodeURIComponent });
+```
+

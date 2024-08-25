@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const res = fetch('http://localhost:3000/users')
+      // 返回一个兑现的promise对象，兑现值是一个response对象
+      console.log(res)
+      res
+        .then(res => {
+          console.log(res)
+          // 需要对response对象使用json()方法序列化出来
+          const data = res.json() // 序列化操作只能操作一次
+          console.log(data) // 得到的又是一个promise对象，它的兑现值是我们需要的数据
+          return data //回调函数返回的promise对象的状态和结果将成为then返回的promise的状态和结果
+        })
+        .then(data => console.log(data)) //在data中拿到了数据
+    </script>
+  </body>
+</html>

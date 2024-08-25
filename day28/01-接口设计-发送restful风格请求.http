@@ -1,0 +1,38 @@
+### 查询所有
+GET http://localhost:3000/users HTTP/1.1
+
+### 查询一个(方式一) 
+GET http://localhost:3000/users?id=1 HTTP/1.1
+
+### 查询一个(方式二) （推荐）
+GET http://localhost:3000/users/1 HTTP/1.1
+
+### 查询多个 
+GET http://localhost:3000/users?id=1&id=3 HTTP/1.1
+
+### 新增（方式一：模拟表单）
+POST http://localhost:3000/users HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+name=李四&age=24
+
+### 新增（方式二：模拟JSON）（推荐）
+POST http://localhost:3000/users HTTP/1.1
+Content-Type: application/json
+
+{"name":"王五","age":24}
+
+### 修改（方式一：模拟表单）
+PUT  http://localhost:3000/users/1 HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+name=张三三&age=24
+
+### 修改（方式二：模拟JSON）
+PUT  http://localhost:3000/users/4 HTTP/1.1
+Content-Type: application/json
+
+{"name":"李思思","age":24}
+
+### 删除
+DELETE http://localhost:3000/users/5 HTTP/1.1

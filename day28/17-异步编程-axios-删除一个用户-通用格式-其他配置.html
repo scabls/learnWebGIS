@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入axios包 -->
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <button type="button">删除</button>
+    <script>
+      // 定义一个全局默认的基础url
+      axios.defaults.baseURL = 'http://localhost:3000'
+      document.querySelector('button').addEventListener('click', function () {
+        axios({
+          method: 'DELETE',
+          url: '/users/5',
+        })
+      })
+    </script>
+  </body>
+</html>

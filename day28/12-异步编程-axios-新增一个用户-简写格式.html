@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入axios包 -->
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <button type="button">新增</button>
+    <script>
+      document.querySelector('button').addEventListener('click', function () {
+        axios.post('http://localhost:3000/users', { name: '王五', age: 24 })
+      })
+    </script>
+  </body>
+</html>
