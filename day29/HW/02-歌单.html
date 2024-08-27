@@ -25,12 +25,41 @@
         padding: 0 9rem;
         list-style: none;
       }
-      img {
-        object-fit: contain;
+      .cover {
+        position: relative;
+        overflow: hidden;
+      }
+      .cover::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 40%;
+        height: 40%;
+        background-image: url(./images/play.png);
+        background-size: contain;
+        z-index: 2000;
+        opacity: 0;
+        transition: all 0.3s;
+      }
+      .cover:hover::before {
+        opacity: 1;
+      }
+      .cover img {
+        width: 100%;
+        transition: all 0.3s;
+      }
+      .cover:hover img {
+        filter: blur(0.5px);
+        transform: scale(1.1);
       }
       .title {
+        margin: 0.5rem 0;
       }
       .access {
+        font-size: 0.95rem;
+        color: #666;
       }
     </style>
   </head>
@@ -38,38 +67,7 @@
     <div class="container">
       <header><h1>最新歌单</h1></header>
       <main>
-        <ul>
-          <li>
-            <img src="" alt="" />
-            <p class="title">a</p>
-            <p class="access">a</p>
-          </li>
-          <li>
-            <img src="" alt="" />
-            <p class="title">a</p>
-            <p class="access">a</p>
-          </li>
-          <li>
-            <img src="" alt="" />
-            <p class="title">a</p>
-            <p class="access">a</p>
-          </li>
-          <li>
-            <img src="" alt="" />
-            <p class="title">a</p>
-            <p class="access">a</p>
-          </li>
-          <li>
-            <img src="" alt="" />
-            <p class="title">a</p>
-            <p class="access">a</p>
-          </li>
-          <li>
-            <img src="" alt="" />
-            <p class="title">a</p>
-            <p class="access">a</p>
-          </li>
-        </ul>
+        <ul></ul>
       </main>
     </div>
     <script>
@@ -80,9 +78,9 @@
           .map(item => {
             return `
             <li>
-                <img src="${item.cover_url_medium}" alt="" />
+                <div class="cover"><img src="${item.cover_url_medium}" alt="" /></div>
                 <p class="title">${item.title}</p>
-                <p class="access">${convert(item.access_num)}</p>
+                <p class="access">播放量：${convert(item.access_num)}</p>
             </li>
         `
           })
