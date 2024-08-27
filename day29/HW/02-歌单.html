@@ -70,9 +70,6 @@
     </div>
     <script>
       const ul = document.querySelector('ul')
-      function convert(num) {
-        if (num >= Math.pow(10, 8)) return num / Math.pow(10, 8)
-      }
       axios.get('http://localhost:3000/songs').then(res => {
         const data = res.data
         ul.innerHTML = data
@@ -87,6 +84,11 @@
           })
           .join('')
       })
+      function convert(num) {
+        if (num >= Math.pow(10, 8)) return num / Math.pow(10, 8).toFixed(1) + '亿'
+        else if (num >= Math.pow(10, 4)) return num / Math.pow(10, 4).toFixed(1) + '万'
+        else return num
+      }
     </script>
   </body>
 </html>
