@@ -28,6 +28,10 @@
       img {
         object-fit: contain;
       }
+      .title {
+      }
+      .access {
+      }
     </style>
   </head>
   <body>
@@ -78,15 +82,15 @@
             <li>
                 <img src="${item.cover_url_medium}" alt="" />
                 <p class="title">${item.title}</p>
-                <p class="access"></p>
+                <p class="access">${convert(item.access_num)}</p>
             </li>
         `
           })
           .join('')
       })
       function convert(num) {
-        if (num >= Math.pow(10, 8)) return num / Math.pow(10, 8).toFixed(1) + '亿'
-        else if (num >= Math.pow(10, 4)) return num / Math.pow(10, 4).toFixed(1) + '万'
+        if (num >= Math.pow(10, 8)) return (num / Math.pow(10, 8)).toFixed(1) + '亿'
+        else if (num >= Math.pow(10, 4)) return (num / Math.pow(10, 4)).toFixed(1) + '万'
         else return num
       }
     </script>
