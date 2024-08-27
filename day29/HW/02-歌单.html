@@ -62,6 +62,34 @@
         font-size: 0.95rem;
         color: #666;
       }
+      aside {
+        position: fixed;
+        bottom: 10%;
+        right: 0px;
+        width: 100px;
+        height: 116px;
+        overflow: hidden;
+        opacity: 0;
+        transition: 0.3s;
+      }
+      aside img {
+        height: 100%;
+        transform: translateX(-80%);
+      }
+      @keyframes changeIcon {
+        0% {
+          transform: translateX(-20%);
+        }
+        33% {
+          transform: translateX(-40%);
+        }
+        66% {
+          transform: translateX(-60%);
+        }
+        100% {
+          transform: translateX(-80%);
+        }
+      }
     </style>
   </head>
   <body>
@@ -70,6 +98,9 @@
       <main>
         <ul></ul>
       </main>
+      <aside>
+        <img src="./images/back.png" alt="" />
+      </aside>
     </div>
     <script>
       const ul = document.querySelector('ul')
@@ -92,6 +123,26 @@
         else if (num >= Math.pow(10, 4)) return (num / Math.pow(10, 4)).toFixed(1) + '万'
         else return num
       }
+      const toTop = document.querySelector('aside')
+      const toTopImg = document.querySelector('aside img')
+      window.addEventListener('scroll', function () {
+        if (this.scrollY > ul.offsetTop) {
+          toTop.style.opacity = '1'
+        } else {
+          toTop.style.opacity = '0'
+        }
+      })
+      toTop.addEventListener('mousedown', function () {
+        toTopImg.style.transform = 'translate(0,5%)'
+      })
+      toTop.addEventListener('mouseup', function () {
+        toTopImg.style.transform = 'translateX(-20%)'
+        window.scroll({
+          top: 0,
+          behavior: 'smooth',
+        })
+        toTopImg.style.animation = 'changeIcon'
+      })
     </script>
   </body>
 </html>
