@@ -2,8 +2,8 @@
 
 ### 步骤
 
-1. node.js会假设它是一个内置模块，就回去系统的安装目录下查找
-2. 如果不是内置模块，就回去当前目录下的node_modules下查找
+1. node.js会假设它是一个内置模块，会去系统的安装目录下查找
+2. 如果不是内置模块，就去当前目录下的node_modules下查找
    1. 首先看有没有该名字对应的文件，如果有，就直接加载这个文件
    2. 如果没有，就看是否有该名字对应的文件夹
       1. 如果有，就会查看该文件夹的package.json的main属性的值，确定模块的入口文件
@@ -102,6 +102,18 @@ URL，全称是**Uniform Resource Locator**（统一资源定位符），是互�
 6. **片段标识符（Fragment Identifier）**（可选）: 指向资源中的某个部分，以 `#` 开始，通常用于定位页面内的某个元素。
    
    - 示例: `#section1`
+
+##### 注意
+
+一些名称的差别
+
+**path**: `/path/to/resource?key1=value1&key2=value2`
+
+**pathname**: `/path/to/resource`
+
+**search**: `?key1=value1&key2=value2`
+
+**query**: `key1=value1&key2=value2`
 
 #### URL 示例
 完整的 URL 示例如下：

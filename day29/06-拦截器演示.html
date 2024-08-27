@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <button class="btn1" type="button">发送get请求</button>
+    <button class="btn2" type="button">发送post请求</button>
+    <script>
+      // 添加请求拦截器
+      axios.interceptors.request.use(
+        config => {
+          // 在发送请求之前做些什么
+          console.log('请求拦截器执行了')
+          return config
+        },
+        error => {
+          // 对请求错误做些什么
+          return Promise.reject(error)
+        }
+      )
+      // 添加响应拦截器
+      // 添加响应拦截器
+      axios.interceptors.response.use(
+        response => {
+          // 对响应数据做点什么
+          return response.data //只响应data属性中的数据
+        },
+        function (error) {
+          // 对响应错误做点什么
+          return Promise.reject(error)
+        }
+      )
+      // 给btn1添加点击事件
+      document.querySelector('.btn1').addEventListener('click', function () {
+        // 发送get请求
+        axios.get('http://localhost:3000/users').then(res => console.log(res))
+      })
+      // 给btn2添加点击事件
+      document.querySelector('.btn2').addEventListener('click', function () {
+        // 发送post请求
+        axios
+          .post('http://localhost:3000/users', { username: '张三', password: '123' })
+          .then(res => console.log(res))
+      })
+    </script>
+  </body>
+</html>

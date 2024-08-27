@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* 
+        URLsearchParams
+            概念
+                js的内置对象，可以从url的search部分中获取特定参数，也可以添加、修改和删除查询数据
+            好处
+                简化了开发人员对参数字符串的操作
+            创建
+                new URLsearchParams(search部分的字符串)
+            方法
+                获取 get()
+                判断 has()
+                添加 append()
+                设置 set()
+                删除 delete()
+        */
+      //    创建
+      const searchParams = new URLSearchParams('?id=1&name=zhangsan&password=666')
+      // 获取
+      console.log(searchParams.get('id'))
+      // 判断
+      console.log(searchParams.has('name'))
+      // 添加
+      searchParams.append('age', 18)
+      console.log(searchParams)
+      console.log(searchParams.toString())
+      // 设置
+      // 有就修改
+      searchParams.set('password', 888)
+      console.log(searchParams.toString())
+      // 无就添加
+      searchParams.set('class', 'person')
+      console.log(searchParams.toString())
+      // 删除
+      searchParams.delete('class')
+      console.log(searchParams.toString())
+      for (const [key, value] of searchParams) {
+        console.log(key, value)
+      }
+      for (const [key, value] of searchParams.entries()) {
+        console.log(key, value)
+      }
+      searchParams.forEach((value, key) => {
+        console.log(value, key)
+      })
+    </script>
+  </body>
+</html>

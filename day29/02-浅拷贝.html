@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const stu = {
+        name: '张三',
+        age: 18,
+      }
+      //   浅拷贝只拷贝引用地址,不拷贝数据本身
+      const stu1 = stu
+      console.log(stu1)
+      //   浅拷贝弊端: 源数据如果发生改变,会影响拷贝数据
+      stu.name = '李四'
+      console.log(stu1)
+      //   本质是因为stu1和stu指向同一个地址
+      console.log(stu1 == stu)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const stu = {
+        name: '张三',
+        age: 18,
+      }
+      const stu1 = stu
+      // 深拷贝,拷贝数据本身,而不是地址
+      const stu2 = {}
+      // 将stu里面的键值对赋给stu2中的键值对
+      for (const key in stu) {
+        console.log(key)
+        stu2[key] = stu[key] //因为属性名是个变量,不能使用点号表示法,要使用方括号表示法
+      }
+      console.log(stu2)
+      // 深拷贝的好处: 源数据的改变不会影响拷贝后的数据
+      stu.name = '李四'
+      console.log(stu2)
+      console.log(stu == stu2) //false
+    </script>
+  </body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>升国旗</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .btn {
+        padding: 0 30px;
+        line-height: 200px;
+        text-align: center;
+        font-size: 50px;
+        font-weight: 700;
+        cursor: pointer;
+        color: #fff;
+        border-radius: 30px;
+        background-color: red;
+      }
+      .box {
+        position: relative;
+        width: 298px;
+        height: 570px;
+        display: none;
+      }
+      /* 旗杆顶部的小球 */
+      .circle {
+        position: relative;
+        top: 1px;
+        left: -5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        background-image: radial-gradient(#f5f5f5, #bebebe);
+      }
+      /* 旗杆 */
+      .flagpole {
+        width: 10px;
+        height: 500px;
+        background-image: linear-gradient(to right, #bebebe, #eee, #d2d2d2);
+      }
+      /* 红旗 */
+      .red_flag {
+        position: absolute;
+        left: 10px;
+        bottom: 50px;
+        width: 288px;
+        height: 192px;
+        background-color: red;
+      }
+      /* 五角星 */
+      .star img {
+        position: absolute;
+      }
+      .star1 img {
+        top: 20px;
+        left: 20px;
+        width: calc(192px * 0.3);
+        height: calc(192px * 0.3);
+      }
+      .star:not(:first-child) img {
+        width: calc(192px * 0.1);
+        height: calc(192px * 0.1);
+      }
+
+      .star2 img {
+        top: 10px;
+        left: 88px;
+        transform: rotate(-45deg);
+      }
+      .star3 img {
+        top: 30px;
+        left: 105px;
+        transform: rotate(-30deg);
+      }
+      .star4 img {
+        top: 58px;
+        left: 105px;
+      }
+      .star5 img {
+        top: 77px;
+        left: 88px;
+        transform: rotate(-45deg);
+      }
+      .soldier img {
+        position: relative;
+        left: 298px;
+        bottom: 0;
+      }
+      /* 旗杆的第一个底座 */
+      .platform1 {
+        position: absolute;
+        bottom: 30px;
+        left: -35px;
+        width: 80px;
+        height: 20px;
+        border-radius: 2px;
+        background-image: linear-gradient(to right, #bebebe, #eee, #d2d2d2);
+      }
+      /* 旗杆的第二个底座 */
+      .platform2 {
+        position: absolute;
+        bottom: 0;
+        left: -55px;
+        width: 120px;
+        height: 30px;
+        border-radius: 4px;
+        background-image: linear-gradient(to right, #bebebe, #eee, #d2d2d2);
+      }
+      .rise {
+        animation: rise forwards;
+      }
+      @keyframes rise {
+        100% {
+          transform: translateY(-308px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="btn">全体起立,奏国歌</div>
+    <div class="box">
+      <div class="circle"></div>
+      <div class="flagpole"></div>
+      <div class="red_flag">
+        <div class="star star1"><img src="images/star.png" alt="" /></div>
+        <div class="star star2"><img src="images/star.png" alt="" /></div>
+        <div class="star star3"><img src="images/star.png" alt="" /></div>
+        <div class="star star4"><img src="images/star.png" alt="" /></div>
+        <div class="star star5"><img src="images/star.png" alt="" /></div>
+      </div>
+      <div class="soldier"><img src="images/salute.png" alt="" /></div>
+      <div class="platform1"></div>
+      <div class="platform2"></div>
+    </div>
+    <audio src="images/义勇军进行曲.mp3"></audio>
+    <script>
+      document.querySelector('.btn').addEventListener('click', function () {
+        // 隐藏点击按钮,
+        this.style.display = 'none'
+        // 显示国旗所在容器
+        document.querySelector('.box').style.display = 'block'
+        // 播放国歌
+        const audio = document.querySelector('audio')
+        audio.play()
+        const time = audio.duration
+        // 让国旗随着国歌播放移动
+        const flag = document.querySelector('.red_flag')
+        flag.classList.add('rise')
+        flag.style.animationDuration = time - 4.5 + 's'
+        flag.style.animationTimingFunction = `steps(${Math.floor(time)})`
+      })
+    </script>
+  </body>
+</html>

@@ -102,6 +102,12 @@ ECMAScript + 内置模块（fs path http）
 
 可以避免全局变量污染问题
 
+##### 全局变量污染问题
+
+使用script的src属性引用的方式，就是一个纯粹的拷贝，
+
+它里面的变量可以随意访问，可能会跟当前页面定义的变量冲突，造成全局变量污染问题
+
 ### 模块间共享
 
 #### module对象
@@ -168,7 +174,7 @@ const { a, eat } = require('./07-模块间共享-自定义模块-module对象-�
 
 由于module.exports对象写起来比较麻烦，为了简化书写，node提供了一个exports对象，也可以用于导出
 
-默认情况下，module.exports和exports指向同一个对象，但通常还是使用module.export
+默认情况下，module.exports和exports指向同一个对象，但通常还是使用module.exports
 
 #### 总结
 
@@ -244,9 +250,9 @@ path.dirname(path) //返回路径中代表文件夹的部分
 
 path.join([...paths]) // 用于连接路径
 
-path.extname(path) // 返回文件的后缀名
+path.extname(path) // 返回文件的扩展名
 
-path.basename(path[, ext]) // 返回文件路径的最后一个部分；如果第二个参数传后缀名，获取出来的路径就没有后缀名
+path.basename(path[, ext]) // 返回文件路径的最后一个部分；如果第二个参数传扩展名，获取出来的路径就没有对应的扩展名
 ```
 
 node提供了一些获取文件路径的简单写法（不需要通过path模块）
@@ -302,14 +308,14 @@ path.join('foo', {}, 'bar');
 
 ##### path.extname(path)
 
-返回文件的后缀名
+返回文件的扩展名
 
 - path: `<string>`
 - 返回: ` <string>`
 
 ##### path.basename(path[, ext]) 
 
-返回文件路径的最后一个部分；如果第二个参数传后缀名，获取出来的路径就没有后缀名
+返回文件路径的最后一个部分；如果第二个参数传扩展名，获取出来的路径就没有对应的扩展名
 
 ### http模块
 

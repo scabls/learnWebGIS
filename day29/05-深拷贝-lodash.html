@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入 -->
+    <script src="./node_modules/lodash/lodash.min.js"></script>
+  </head>
+  <body>
+    <script>
+      const person = {
+        name: '张三',
+        age: 18,
+        dog: {
+          name: '大黄',
+          age: 3,
+          master: {
+            name: '张三',
+            age: 18,
+          },
+        },
+      }
+      // 调用lodash中的cloneDeep()方法实现深拷贝
+      const person2 = _.cloneDeep(person)
+      console.log(person2)
+      console.log(person2 == person)
+      person.age = 19
+      console.log(person)
+      console.log(person2)
+      // 还可以对数组进行深拷贝
+      const arr = [1, 2, 3]
+      const newArr = _.cloneDeep(arr)
+      console.log(newArr)
+      console.log(newArr == arr)
+      arr[0] = 8
+      console.log(newArr)
+    </script>
+  </body>
+</html>
