@@ -134,14 +134,14 @@
       })
       toTop.addEventListener('mousedown', function () {
         toTopImg.style.transform = 'translate(0,5%)'
+        toTopImg.style.animation = ''
       })
       toTop.addEventListener('mouseup', function () {
-        toTopImg.style.transform = 'translateX(-20%)'
         window.scroll({
           top: 0,
           behavior: 'smooth',
         })
-        toTopImg.style.animation = 'changeIcon 0.5s forwards'
+        toTopImg.style.animation = 'changeIcon 0.5s steps(1) forwards'
       })
     </script>
   </body>
