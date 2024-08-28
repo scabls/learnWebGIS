@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button v-on:click="count++">count is: {{count}}</button>
+    </div>
+
+    <script>
+      // 解构赋值
+      const { createApp } = Vue
+      const app = createApp({
+        // ES6对象的属性/方法简洁表示法
+        data() {
+          return {
+            // 先声明
+            count: 0,
+          }
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

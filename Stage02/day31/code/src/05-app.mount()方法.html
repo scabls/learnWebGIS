@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div class="app">{{msg}}</div>
+    <div class="app">{{msg}}</div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello',
+          }
+        },
+      })
+      // app.mount(),确定要替换的元素,将编译后的dom替换该元素
+      // 参数:dom对象|选择器字符串(推荐)
+      // 当选择器可以选中多个元素时,只会选择第一个
+      const instance = app.mount('.app')
+      console.dir(instance)
+      // 1.vue在内部会将配置对象(组件)=>组件上下文对象(ctx content)
+      // 2.组件的data中定义的属性会被挂载到ctx对象,在ctx对象上的属性和方法都可以在模板中访问
+      // 3.instance是基于ctx对象创建的代理对象(Proxy)
+      console.dir(app)
+      // 应用实例对象: createApp()返回的实例,也就是对象app
+      // 组件实例对象: app.mount()返回的实例.也就是对象instance
+    </script>
+  </body>
+</html>

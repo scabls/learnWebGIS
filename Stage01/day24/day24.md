@@ -15,6 +15,96 @@
 2. 将设置自定义单选框的单选样式抽取成一个方法
    - 没有使用排他思想,先找出之前选中的自定义单选框取消选中,然后让当前点击的单选框选中
 
+##### 另一种排他思想的函数封装
+
+先找到之前被设置样式的元素，取消掉元素样式，再设置当前元素样式
+
+```js
+function onlyMask(element) {
+    const preMask = document.querySelector('.masked')
+    if (preMask) preMask.classList.remove('masked')
+    element.classList.add('masked')
+}
+```
+
+##### element.querySelector()
+
+与document.querySelector()不同，element.querySelector()查询范围是当前dom元素的子元素
+
+##### 填充页面：map()
+
+```js
+// 获取英雄数据数组
+const dataArr = JSON.parse(dataJSON).data.reverse()
+// 定义展示函数
+function displayHero(dataArr) {
+    // 获取展示容器
+    const ul = document.querySelector('.list')
+    ul.innerHTML = dataArr
+        .map(
+        item => `
+        <li>
+          <a href="https://pvp.qq.com/web201605/herodetail/${item.ename}.shtml" target="_blank">
+            <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/${item.ename}/${item.ename}.jpg" />
+            <span>${item.cname}</span>
+          </a>
+        </li>
+      `
+    )
+        .join('') /* 注意将数组再转成一个字符串，分隔符空 */
+}
+// 调用展示函数
+displayHero(dataArr)
+```
+
+##### 填充页面：创建节点
+
+```js
+  const dataArr = JSON.parse(dataJson).data.reverse()
+  const show = document.querySelector('.show')
+  function showHero(heroArr) {
+    const fragment = document.createDocumentFragment()
+    for (const { ename: imgId, cname } of heroArr) {
+      const a = document.createElement('a')
+      a.href = `https://pvp.qq.com/web201605/herodetail/${imgId}.shtml`
+      a.target = '_blank'
+      const img = document.createElement('img')
+      img.src = `https://game.gtimg.cn/images/yxzj/img201606/heroimg/${imgId}/${imgId}.jpg`
+      const p = document.createElement('p')
+      p.innerHTML = `${cname}`
+      a.append(img, p)
+      fragment.appendChild(a)
+    }
+    show.appendChild(fragment)
+  }
+  showHero(dataArr)
+```
+
+##### 填充页面：for...of，解构赋值
+
+```js
+const heroArr = JSON.parse(res).data.reverse()
+//调用渲染方法，将数据渲染到页面
+displayHero(heroArr)
+// 实现渲染数据到页面的方法
+function displayHero(heroArr) {
+    // 获取外层容器
+    const list = document.querySelector('.list')
+    // 填充之前先对容器进行清空
+    list.innerHTML = ''
+    // 遍历数组
+    for (const { ename, cname } of heroArr) {
+        list.innerHTML += `
+        <li>
+          <a href="https://pvp.qq.com/web201605/herodetail/${ename}.shtml" target="_blank">
+            <img src="https://game.gtimg.cn/images/yxzj/img201606/heroimg/${ename}/${ename}.jpg"/>
+            <span>${cname}</span>
+          </a>
+        </li>`
+    }
+}
+```
+
 ## grid布局
 
 ### repeat函数

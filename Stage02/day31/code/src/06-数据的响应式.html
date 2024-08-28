@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div class="app">{{msg}}</div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello',
+            name: 'xiaoming',
+            age: 19,
+          }
+        },
+      })
+      // 如何在代码中读写msg的值?
+      // 在vue内部,data返回的对象中的属性,会被挂载到ctx对象,
+      // 而instance作为ctx的代理,也可以读写这些属性
+      // 所以,可以通过instance.msg来读写msg的值
+      const instance = app.mount('.app')
+      console.dir(instance)
+      setTimeout(() => {
+        instance.msg = '两秒后修改了msg'
+      }, 2000)
+    </script>
+  </body>
+</html>

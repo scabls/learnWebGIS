@@ -807,3 +807,59 @@ console.log(name2);// Jerry
 ```
 
 不同模块导出接口名称命名重复， 使用 as 重新定义变量名。
+
+## 作业总结
+
+### 解决img撑大网格元素
+
+给img设置宽度
+
+```css
+.cover img {
+    width: 100%;
+}
+```
+
+### 伪元素伪类实现中央悬浮播放图标
+
+```css
+.cover {
+    position: relative;
+    overflow: hidden;
+}
+.cover::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+    background-image: url(./images/play.png);
+    background-size: contain;
+    z-index: 2000;
+    opacity: 0;
+    transition: all 0.3s;
+}
+.cover:hover::before {
+    opacity: 1;
+}
+```
+
+### 实现鼠标悬浮时图片放大并模糊但显示尺寸不变
+
+```css
+.cover {
+    position: relative;
+    overflow: hidden;
+}
+.cover img {
+    width: 100%;
+    transition: all 0.3s;
+}
+.cover:hover img {
+    filter: blur(0.5px);
+    transform: scale(1.1);
+}
+```
+

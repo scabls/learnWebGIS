@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 1.引入vue.js -->
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- 2.编写页面容器 -->
+    <div class="container">
+      <p>用户名：{{username}}</p>
+      <p>年龄：{{age}}</p>
+      <p v-on:click="changeGender">性别：{{isMale?'男':'女'}}</p>
+      <p>女朋友：{{gf.name}}</p>
+      <p>爱好：{{hobbies[0]}} {{hobbies[1]}}</p>
+    </div>
+    <!-- 3.创建vue实例 -->
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            username: 'xiaoming',
+            age: 20,
+            isMale: true,
+            gf: {
+              name: 'xiaomei',
+            },
+            hobbies: ['吃饭', '睡觉'],
+          }
+        },
+        methods: {
+          changeGender() {
+            this.isMale = !this.isMale
+          },
+        },
+      })
+      app.mount('.container')
+    </script>
+  </body>
+</html>

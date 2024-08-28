@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <p>count:{{count}}</p>
+      <!-- 当点击按钮时，实际上是 Vue 的框架调用了 add 方法 -->
+      <button v-on:click="add">count+1</button>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        // data选项是个方法,返回一个对象,对象的属性存储数据
+        // 返回的对象中的属性会被挂载为ctx对象的属性
+        data() {
+          return {
+            count: 0,
+          }
+        },
+        // methods选项是个属性,值是一个对象,对象的方法用来修改数据
+        // 对象中的方法会被挂载为ctx对象的方法
+        methods: {
+          // es6的方法简写
+          add() {
+            // instance是ctx对象的代理，所以方法也相当于被挂载到了instance上
+            // 因此普通函数书写的方法中,this指向的是组件实例对象instance
+            // 同样data返回的对象中的属性也相当于挂载到了instance上，所以可使用this读写这些属性
+            this.count++
+            console.log(this == instance)
+          },
+          // 注意：箭头函数书写的方法中,this指向window
+          sub: () => console.log(this),
+        },
+      })
+      const instance = app.mount('.app')
+      console.dir(instance)
+      instance.add()
+      instance.sub()
+      console.dir(app)
+    </script>
+  </body>
+</html>
