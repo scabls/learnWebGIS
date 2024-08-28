@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .father {
+        position: relative;
+        left: 100px;
+        top: 100px;
+        width: 600px;
+        height: 100px;
+        background-color: lightblue;
+      }
+      .son {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100px;
+        height: 100px;
+        background-color: lightpink;
+        animation: transition 5s;
+        animation-timing-function: steps(5, jump-end);
+        /* 对于两个状态之间 */
+        /* steps(5, jump-start);起始跳跃，包括两端在内共六个节点，在不包含起始节点的五个节点分别停留1s */
+        /* steps(5, jump-end);末尾跳跃，包括两端在内共六个节点，在不包含末尾节点的五个节点分别停留1s */
+        /* steps(5, jump-both);两端跳跃，包括两端在内共七个节点，在不包含两端的五个节点分别停留1s */
+        /* steps(5, jump-none);两端无跳跃，包括两端在内共五个节点，在五个节点即 0%、25%、50%、75% 和 100% 处分别停留1s */
+        /* 总结 */
+        /* steps(n, jump-start);起始跳跃，包括两端在内共n+1个节点，在不包含起始节点的n个节点分别停留time/n*/
+        /* steps(n, jump-end);末尾跳跃，包括两端在内共n+1个节点，在不包含末尾节点的n个节点分别停留time/n */
+        /* steps(n, jump-both);两端跳跃，包括两端在内共n+2个节点，在不包含两端的五个节点分别停留time/n */
+        /* steps(n, jump-none);两端无跳跃，包括两端在内共n个节点，在包含两端的五个节点分别停留time/n */
+      }
+      ul {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        height: 100%;
+        list-style: none;
+      }
+      li {
+        height: 100%;
+        border-right: 2px solid #333;
+      }
+      @keyframes transition {
+        100% {
+          transform: translateX(500%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="father">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <div class="son"></div>
+    </div>
+  </body>
+</html>

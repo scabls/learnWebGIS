@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        min-height: 100vh;
+        background-color: lightblue;
+        align-content: center;
+      }
+      main {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        width: 28rem;
+        aspect-ratio: 1;
+        margin: 0 auto;
+        padding: 3rem;
+        border: 10px solid #eee;
+        border-radius: 1rem;
+      }
+      main div {
+        border-radius: 0.5rem;
+        align-content: center;
+      }
+      div[data-number] {
+        position: relative;
+        background-color: skyblue;
+      }
+      .start {
+        background-color: lightcoral;
+        font-size: 2rem;
+        color: #eee;
+        align-content: center;
+        text-align: center;
+      }
+      .start.clicked {
+        background-color: #999;
+      }
+      img {
+        width: 100%;
+        vertical-align: bottom;
+        object-fit: contain;
+      }
+      .masked::after {
+        content: url(./images/mask.png);
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        opacity: 0.6;
+        overflow: hidden;
+        border-radius: 0.5rem;
+      }
+      section {
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 2rem;
+        transform: translateX(-50%);
+        width: 20rem;
+        height: 5rem;
+        background: #eee;
+        border-radius: 1rem;
+        align-content: center;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <div data-number="1" class=""><img src="./images/1.png" alt="" /></div>
+        <div data-number="2"><img src="./images/2.png" alt="" /></div>
+        <div data-number="3"><img src="./images/3.png" alt="" /></div>
+        <div data-number="8"><img src="./images/4.png" alt="" /></div>
+        <div class="start">start</div>
+        <div data-number="4"><img src="./images/5.png" alt="" /></div>
+        <div data-number="7"><img src="./images/6.png" alt="" /></div>
+        <div data-number="6"><img src="./images/7.png" alt="" /></div>
+        <div data-number="5"><img src="./images/8.png" alt="" /></div>
+      </main>
+      <section>aaaa</section>
+      <script>
+        const start = document.querySelector('.start')
+        const section = document.querySelector('section')
+        const choiceNum = document.querySelectorAll('[data-number]')
+        const sortNum = [...choiceNum].sort((a, b) => a.dataset.number - b.dataset.number)
+        const choice = [
+          '游戏手柄',
+          '平板',
+          '谢谢参与',
+          '玩偶',
+          '汽车',
+          '笔记本电脑',
+          '手机',
+          '鞋子',
+        ]
+        function onlyMask(element) {
+          const preMask = document.querySelector('.masked')
+          if (preMask) preMask.classList.remove('masked')
+          element.classList.add('masked')
+        }
+        start.addEventListener('click', function () {
+          section.style.display = 'none'
+          if (this.classList.contains('clicked')) return
+          this.classList.add('clicked')
+          let times = Math.floor(Math.random() * 22) + 16
+          const slow = Math.floor(Math.random() * 5) + 4
+          let index = 0
+          let delay = 100
+          function run() {
+            onlyMask(sortNum[index])
+            const now = index
+            index = ++index % sortNum.length
+            times--
+            if (times <= slow) delay = 100 * (slow + 1 - times)
+            if (times > 0) {
+              setTimeout(run, delay)
+            } else {
+              start.classList.remove('clicked')
+              section.style.display = 'block'
+              section.textContent = `${choice[now]}`
+            }
+          }
+          run()
+        })
+      </script>
+    </div>
+  </body>
+</html>

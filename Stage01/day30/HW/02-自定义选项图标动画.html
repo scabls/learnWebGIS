@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        align-content: center;
+        min-height: 100vh;
+        background-image: linear-gradient(to right top, #93a5cf, #e4efe9);
+      }
+      .ask {
+        width: 40rem;
+        height: 20rem;
+        background-color: #382f45;
+        margin: 0 auto;
+        border-radius: 1rem;
+        box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+      }
+      .ask h1 {
+        margin-left: 6rem;
+        padding-top: 4rem;
+
+        font-size: 3rem;
+        font-weight: normal;
+        color: #ddd;
+      }
+      .ask .radios {
+        display: flex;
+        gap: 3rem;
+        margin-top: 3rem;
+        margin-left: 6rem;
+      }
+      .ask .radios label {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-left: 3.5rem;
+        font-size: 40px;
+        color: #ddd;
+      }
+      .ask .radios input {
+        display: none;
+      }
+      label div {
+        position: absolute;
+        left: 0px;
+        height: 40px;
+        aspect-ratio: 1;
+        transition: 0.5s;
+      }
+      label div::before {
+        content: '';
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        width: 4px;
+        height: 100%;
+        background-color: #ddd;
+        box-shadow: 36px 0px;
+        transition: 0.5s;
+      }
+      label div::after {
+        content: '';
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        width: 100%;
+        height: 4px;
+        background-color: #ddd;
+        box-shadow: 0px -36px;
+        transition: 0.5s;
+      }
+      .agree.checked div {
+        transform: translateY(-25%) rotate(-45deg);
+      }
+      .agree.checked div::before {
+        height: 50%;
+        background-color: lightgreen;
+        box-shadow: none;
+      }
+      .agree.checked div::after {
+        background-color: lightgreen;
+        box-shadow: none;
+      }
+      .refuse.checked div {
+        transform: rotate(-45deg);
+      }
+      .refuse.checked div::before {
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: lightpink;
+        box-shadow: none;
+      }
+      .refuse.checked div::after {
+        bottom: 50%;
+        transform: translateY(50%);
+        background-color: lightpink;
+        box-shadow: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="ask">
+        <h1>会给我三连吗？</h1>
+        <div class="radios">
+          <label for="agree" class="agree">
+            <div></div>
+            这次一定
+          </label>
+          <input type="radio" name="determine" id="agree" />
+          <label for="refuse" class="refuse">
+            <div></div>
+            下次一定
+          </label>
+          <input type="radio" name="determine" id="refuse" />
+        </div>
+      </div>
+    </div>
+    <script>
+      const agree = document.querySelector('.agree')
+      const refuse = document.querySelector('.refuse')
+      agree.addEventListener('click', function () {
+        this.classList.add('checked')
+        refuse.classList.remove('checked')
+      })
+      refuse.addEventListener('click', function () {
+        this.classList.add('checked')
+        agree.classList.remove('checked')
+      })
+    </script>
+  </body>
+</html>

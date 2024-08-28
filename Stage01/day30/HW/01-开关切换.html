@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        min-height: 100vh;
+        align-content: center;
+      }
+      .outer {
+        width: 16rem;
+        height: 6rem;
+        margin: 0 auto;
+        padding: 0.5rem;
+        background-color: #999;
+        border-radius: 3rem;
+        transition: 0.5s;
+      }
+      .inner {
+        width: 5rem;
+        height: 5rem;
+        background-color: #fff;
+        border-radius: 50%;
+        transition: 0.5s;
+      }
+      .greenBg {
+        background-color: lightgreen;
+      }
+      .rightMove {
+        transform: translateX(10rem);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="outer">
+        <div class="inner"></div>
+      </div>
+    </div>
+    <script>
+      const outer = document.querySelector('.outer')
+      const inner = document.querySelector('.inner')
+      outer.addEventListener('click', function () {
+        outer.classList.toggle('greenBg')
+        inner.classList.toggle('rightMove')
+      })
+    </script>
+  </body>
+</html>
