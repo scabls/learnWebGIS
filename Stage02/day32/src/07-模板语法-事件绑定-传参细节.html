@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- 编写页面容器 -->
+    <!-- 
+      模板语法分为
+      ● 插值语法: 在{{}}中书写的语法
+      ● 指令语法: 以v-开头的语法 
+    -->
+    <!-- 
+      指令语法
+      以v-开头的指令. 
+      在属性值中书写js表达式, 叫做 指令表达式
+      主要应用于属性节点
+      也可用于事件绑定
+    -->
+    <!-- 
+      将JS事件和对应的处理函数绑定
+      类似于原生的JS事件处理
+    -->
+    <div id="app">
+      <!-- 不加括号(70%): 直接写函数名称, 可以在回调函数中, 直接拿到事件对象event -->
+      <button @click="add1">点击了{{count}}次</button>
+      <!-- 加括号(20%): 加括号主要为了传参, 在回调函数中, 拿到参数 -->
+      <button @click="add2(1,2,3)">点击了{{count}}次</button>
+      <!-- 
+      加括号(10%): 有时, 除了拿到参数外, 还需要事件对象, 通过Vue的内置事件对象$event传递
+       $event要放在实参列表最后
+      -->
+      <button @click="add3(1,2,3,$event)">点击了{{count}}次</button>
+    </div>
+    <!-- 创建app实例 -->
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            count: 0,
+          }
+        },
+        methods: {
+          add1(event) {
+            this.count++
+            console.log(event)
+          },
+          add2(num1, num2, num3) {
+            console.log([num1, num2, num3])
+          },
+          // event形参放在参数列表最后
+          add3(num1, num2, num3, event) {
+            console.log(num1, num2, num3)
+            console.log(event)
+          },
+        },
+      })
+      const instance = app.mount('#app')
+      console.dir(instance)
+    </script>
+  </body>
+</html>

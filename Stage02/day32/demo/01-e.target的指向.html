@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      li {
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="ul01">
+      <li id="li01">1111</li>
+      <li id="li02">2222</li>
+      <li id="li03">3333</li>
+    </ul>
+    <script>
+      document.querySelector('#li01').addEventListener('click', function (e) {
+        console.log('li01的监听器:')
+        console.log(e)
+        console.log(e.target)
+        console.log(e.currentTarget)
+      })
+      document.querySelector('#ul01').addEventListener('click', function (e) {
+        console.log('ul01的监听器:')
+        console.log(e)
+        console.log(e.target)
+        console.log(e.currentTarget)
+      })
+    </script>
+  </body>
+</html>

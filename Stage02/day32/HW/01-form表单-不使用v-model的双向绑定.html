@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <form action="" id="form">
+      <!-- 类型一：input:text、input:password、textarea -->
+      <label for="username">用户名: </label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        :value="username"
+        @input="changeUsername"
+        required
+      />
+      <br />
+      <label for="password">密码: </label>
+      <input type="password" name="password" id="password" v-model="password" required />
+      <br />
+      <label for="age">年龄: </label>
+      <input type="text" name="age" id="age" v-model="age" required />
+      <br />
+      <!-- input:radio类型的双向绑定 -->
+      <label>性别: </label>
+      <input
+        type="radio"
+        name="gender"
+        id="male"
+        value="male"
+        :checked="picked=='male'"
+        @change="changePicked"
+      />
+      <label for="male">男</label>
+      <input
+        type="radio"
+        name="gender"
+        id="female"
+        value="female"
+        :checked="picked=='female'"
+        @change="changePicked"
+      />
+      <label for="female">女</label>
+      <br />
+      <!-- input:checkbox类型的双向绑定 -->
+      <label>爱好</label>
+      <input
+        type="checkbox"
+        name="hobby"
+        id="eat"
+        value="eat"
+        :checked="checked.includes('eat')"
+        @change="changeChecked"
+      />
+      <label for="eat">吃饭</label>
+      <input
+        type="checkbox"
+        name="hobby"
+        id="sleep"
+        value="sleep"
+        :checked="checked.includes('sleep')"
+        @change="changeChecked"
+      />
+      <label for="sleep">睡觉</label>
+      <br />
+      <!-- select类型的双向绑定 -->
+      <label for="city">城市</label>
+      <select name="city" id="city" :value="selected" @change="changeSelected">
+        <option value="wuhan">武汉</option>
+        <option value="zhengzhou">郑州</option>
+        <option value="beijing">北京</option>
+      </select>
+      <br />
+      <label for="signature">个人签名: </label>
+      <textarea name="signature" id="signature" v-model="signature"></textarea>
+    </form>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            username: 'admin',
+            password: '666666',
+            age: '20',
+            picked: 'male',
+            checked: [],
+            selected: 'wuhan',
+            signature: '武汉中地',
+          }
+        },
+        methods: {
+          changeUsername(e) {
+            this.username = e.target.checked
+          },
+          changePicked(e) {
+            this.picked = e.target.value
+          },
+          changeChecked(e) {
+            if (this.checked.includes(e.target.value)) {
+              this.checked = this.checked.filter(item => item != e.target.value)
+            } else {
+              this.checked.push(e.target.value)
+            }
+          },
+          changeSelected(e) {
+            this.selected = e.target.value
+          },
+        },
+      })
+      app.mount('#form')
+    </script>
+  </body>
+</html>

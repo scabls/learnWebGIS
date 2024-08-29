@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- 编写页面容器 -->
+
+    <div id="app">这里是页面容器的innerHTML</div>
+    <!-- 创建app实例 -->
+    <script>
+      // Vue 提供了一个 h() 函数用于创建 vnodes
+      const { createApp, h } = Vue
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello world',
+          }
+        },
+        template: `
+          <div>
+            <h1>template选项指定的内容</h1>
+            <p>{{msg}}</p>
+          </div>
+        `,
+        // render函数 > template > 容器
+        // render配置项也可以指定模板字符串. template字符串, 在vue的内部会编译成render函数
+        render() {
+          // 如果设置了render选项, 就直接使用render函数的返回值作为模板
+          // 在调用render函数时, 会产生虚拟DOM(简化版的DOM树)(Vnodes)
+          // <div><h1>hello</h1> <p>world</span></p>
+          return h('div', [h('h1', 'hello'), h('p', 'world')])
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

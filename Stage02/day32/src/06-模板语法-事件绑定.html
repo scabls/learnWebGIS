@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- 编写页面容器 -->
+    <!-- 
+      模板语法分为
+      ● 插值语法: 在{{}}中书写的语法
+      ● 指令语法: 以v-开头的语法 
+    -->
+    <!-- 
+      指令语法
+      以v-开头的指令. 
+      在属性值中书写js表达式, 叫做 指令表达式
+      主要应用于属性节点
+      也可用于事件绑定
+    -->
+    <!-- 
+      将JS事件和对应的处理函数绑定
+      类似于原生的JS事件处理
+    -->
+    <!-- 
+      1. 内联事件处理器
+        v-on:事件名="表达式"
+      2. 方法事件处理器
+        v-on:事件名="函数名"
+      3. 简写
+        @事件名="表达式/函数名"
+    -->
+    <!-- 
+      1. 内联事件处理器: 逻辑比较简单时使用
+      2. 方法事件处理器: 逻辑复杂时, 事件对应到一个方法    
+        ● methods中定义的函数会挂载到instance实例对象上
+        ● methods中定义的普通函数内部this指向instance
+        ● methods中, 不推荐使用箭头函数
+    -->
+    <div id="app">
+      <button v-on:click="count++">点击了{{count}}次</button>
+      <button @click="count++">点击了{{count}}次</button>
+      <button @click="add">点击了{{count}}次</button>
+    </div>
+    <!-- 创建app实例 -->
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            count: 0,
+          }
+        },
+        methods: {
+          add() {
+            this.count++
+            console.log('你使用了方法事件处理器')
+          },
+        },
+      })
+      const instance = app.mount('#app')
+      console.dir(instance)
+    </script>
+  </body>
+</html>

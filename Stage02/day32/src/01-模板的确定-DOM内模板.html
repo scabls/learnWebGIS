@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- 编写页面容器 -->
+    <!-- 根组件的模板通常是组件本身的一部分，但也可以直接通过在挂载容器内编写模板来单独提供 -->
+    <div id="app">{{msg}}</div>
+    <!-- 创建app实例 -->
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello world',
+          }
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

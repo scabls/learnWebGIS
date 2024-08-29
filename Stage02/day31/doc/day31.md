@@ -276,6 +276,8 @@ Vue的两个特点
 
 1. **声明式渲染**: 先声明后使用
 2. **响应式数据**: 数据驱动数据改变时, 视图会响应数据的改变, 重新渲染新的值
+   - 数据驱动视图
+
 
 ## 创建应用
 
@@ -329,7 +331,17 @@ createApp()方法传入一个对象，这个对象被称作根组件
 一个`应用实例`必须在调用了 .mount() 方法后才会渲染
 
 - 传入参数: 可以是一个 CSS 选择器字符串(**常用**) 或者 一个实际的 DOM 元素
+
+  - ```js
+    const instance = app.mount('.app')
+    ```
+
   - 当选择器可选择多个元素时，只会选择第一个元素
+
+  - ```js
+    const instance = app.mount(document.querySelector('.app'))
+    ```
+
 - 返回值: **根组件实例**
 
 #### 组件实例对象
@@ -358,6 +370,7 @@ createApp()方法传入一个对象，这个对象被称作根组件
     // 参数:dom对象|选择器字符串(推荐)
     // 当选择器可以选中多个元素时,只会选择第一个
     const instance = app.mount('.app')
+    // const instance = app.mount(document.querySelector('.app'))
     console.dir(instance)
     // 1.vue在内部会将配置对象(组件)=>组件上下文对象(ctx content)
     // 2.组件的data中定义的属性会被挂载到ctx对象,在ctx对象上的属性和方法都可以在模板中访问

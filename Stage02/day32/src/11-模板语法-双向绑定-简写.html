@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- 编写页面容器 -->
+    <!-- 
+      模板语法分为
+      ● 插值语法: 在{{}}中书写的语法
+      ● 指令语法: 以v-开头的语法 
+    -->
+    <!-- 
+      指令语法
+      以v-开头的指令. 
+      在属性值中书写js表达式, 叫做 指令表达式
+      主要应用于属性节点
+      也可用于事件绑定
+    -->
+
+    <div id="app">
+      <!-- 
+      :value将视图绑定到数据, 实现了数据->视图
+      @input将数据绑定到视图, 实现了视图->数据
+       -->
+      <!-- 在这里输入的内容会显示在下面:<input type="text" :value="msg" @input="setMsg" /> -->
+      <!-- 上边的简写如下 -->
+      在这里输入的内容会显示在下面:<input type="text" v-model="msg" />
+      <h3>{{msg}}</h3>
+    </div>
+    <!-- 创建app实例 -->
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            msg: '123',
+          }
+        },
+        // methods: {
+        //   setMsg(e) {
+        //     // e.target 正在操作的输入框
+        //     // e.target.value:获取到的property,表示用户在框中输入的数据
+        //     this.msg = e.target.value
+        //   },
+        // },
+      })
+      const instance = app.mount('#app')
+      console.dir(instance)
+    </script>
+  </body>
+</html>

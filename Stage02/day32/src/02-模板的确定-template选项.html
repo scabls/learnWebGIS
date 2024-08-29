@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- 编写页面容器 -->
+
+    <div id="app">这里是页面容器的innerHTML</div>
+    <!-- 创建app实例 -->
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello world',
+          }
+        },
+        // template选项就是确定模板字符串的
+        // 优先级: template > 容器
+        template: `
+          <div>
+            <h1>template选项指定的内容</h1>
+            <p>{{msg}}</p>
+          </div>
+        `,
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

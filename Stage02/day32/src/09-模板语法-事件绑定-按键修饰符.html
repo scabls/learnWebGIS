@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- 编写页面容器 -->
+    <!-- 
+      模板语法分为
+      ● 插值语法: 在{{}}中书写的语法
+      ● 指令语法: 以v-开头的语法 
+    -->
+    <!-- 
+      指令语法
+      以v-开头的指令. 
+      在属性值中书写js表达式, 叫做 指令表达式
+      主要应用于属性节点
+      也可用于事件绑定
+    -->
+    <!-- 
+      将JS事件和对应的处理函数绑定
+      类似于原生的JS事件处理
+    -->
+    <div id="app">
+      <input type="text" @keyup.enter="handleInput" />
+      <br />
+      <!-- 系统按键修饰符 -->
+      <!-- 
+      请注意，系统按键修饰符和常规按键不同。与 keyup 事件一起使用时，该按键必须在事件发出时处于按下状态。
+      换句话说，keyup.ctrl 只会在你仍然按住 ctrl 但松开了另一个键时被触发。若你单独松开 ctrl 键将不会触发。
+      -->
+      <input type="text" @keyup.ctrl="handleInput2" />
+      <br />
+      <!-- 
+      指定松开的普通按键
+      -->
+      <input type="text" @keyup.ctrl.enter="handleInput3" />
+      <br />
+    </div>
+    <!-- 创建app实例 -->
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        methods: {
+          handleInput(e) {
+            console.log(e)
+            console.log('看到我说明你按下然后松开了enter键')
+          },
+          handleInput2() {
+            console.log('必需按住ctrl并松开了其他键触发')
+          },
+          handleInput3() {
+            console.log('必需按住ctrl并松开了enter键触发')
+          },
+        },
+      })
+      const instance = app.mount('#app')
+      console.dir(instance)
+    </script>
+  </body>
+</html>

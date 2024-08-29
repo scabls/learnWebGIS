@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- 编写页面容器 -->
+    <!-- 
+      模板语法分为
+      ● 插值语法: 在{{}}中书写的语法
+      ● 指令语法: 以v-开头的语法 
+    -->
+    <!-- 
+      插值语法(Mustache)
+      在{{}}中书写的语法
+      {{}}里书写js表达式, 叫做 插值表达式
+      主要应用于文本节点
+    -->
+    <!-- 
+      插值表达式的特点
+        1. 要求是表达式, 不能是语句
+        2. 在{{}}可以直接访问instance实例上属性
+    -->
+    <div id="app">
+      <!-- 表达式本身有返回值 -->
+      {{ (()=>{ if(msg) {return msg} else {return 'aaa'} })() }} {{$.data}}
+      <!-- {{if (msg) {return msg} }} 是错误的, 这是if语句 -->
+    </div>
+    <!-- 创建app实例 -->
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello world',
+          }
+        },
+      })
+      const instance = app.mount('#app')
+      console.dir(instance)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入vue -->
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- 编写页面容器 -->
+    <!-- 
+      模板语法分为
+      ● 插值语法: 在{{}}中书写的语法
+      ● 指令语法: 以v-开头的语法 
+    -->
+    <!-- 
+      指令语法
+      以v-开头的指令. 
+      在属性值中书写js表达式, 叫做 指令表达式
+      主要应用于属性节点
+    -->
+    <!-- 
+      如果要将某一个属性的值和data中的状态绑定, 需要使用绑定指令
+      属性绑定
+      将 一个元素 的一个属性值和一个状态(变量)绑定
+     -->
+    <!-- 
+      v-bind 指令指示 Vue 将元素的 href attribute 与组件的 url 属性保持一致。
+      如果绑定的值是 null 或者 undefined，那么该 attribute 将会从渲染的元素上移除。 
+    -->
+    <!-- 
+      因为 v-bind 非常常用，我们提供了特定的简写语法
+      <div :href="url"></div>
+    -->
+    <!-- 
+      在指令后面的引号中, 可以使用类似于{{}}中一样的语法.
+        ● 可以使用 js表达式
+        ● 直接访问instance实例上的属性和方法
+        ● 不能是js语句
+    -->
+    <div id="app">
+      <a v-bind:href="url">模板语法</a>
+    </div>
+    <!-- 创建app实例 -->
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            url: 'https://cn.vuejs.org/guide/essentials/template-syntax',
+          }
+        },
+      })
+      const instance = app.mount('#app')
+      console.dir(instance)
+    </script>
+  </body>
+</html>

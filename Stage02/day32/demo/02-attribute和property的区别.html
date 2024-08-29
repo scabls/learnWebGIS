@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" name="" id="ipt" value="123" />
+    <script>
+      const ipt = document.querySelector('#ipt')
+      // property是dom对象的属性
+      // attribute是html元素标签上的属性
+
+      // 随着用户输入而变化,初始值是标签的value attribute所设置的
+      console.log(ipt.value)
+      // 获取标签的value attribute所设置的值
+      console.log(ipt.getAttribute('value'))
+
+      // 修改dom对象的属性
+      ipt.value = 456
+      // 修改标签上的属性
+      ipt.setAttribute('value', 234)
+    </script>
+  </body>
+</html>

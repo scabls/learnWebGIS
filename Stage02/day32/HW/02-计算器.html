@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="calc">
+      <input type="text" v-model="num1" />
+      <select v-model="operator">
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+        <option>%</option>
+      </select>
+      <input type="text" v-model="num2" />
+      <button @click="calculate">=</button>
+      <!-- 
+      设置双向绑定，手动修改结果输入框的值时更新状态 
+      否则，手动修改后，状态值不会改变，再点击等号按钮，状态没有发送变化，结果输入框的值不会更新
+      -->
+      <input type="text" v-model="result" />
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            num1: '',
+            num2: '',
+            operator: '+',
+            result: '',
+          }
+        },
+        methods: {
+          calculate() {
+            switch (this.operator) {
+              case '+':
+                this.result = +this.num1 + +this.num2
+                break
+              case '-':
+                this.result = this.num1 - this.num2
+                break
+              case '*':
+                this.result = this.num1 * this.num2
+                break
+              case '/':
+                this.result = this.num1 / this.num2
+                break
+              case '%':
+                this.result = this.num1 % this.num2
+                break
+            }
+          },
+        },
+      })
+      app.mount('#calc')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <form action="" id="form">
+      <label for="username">用户名: </label>
+      <input type="text" name="username" id="username" v-model="username" required />
+      <br />
+      <label for="password">密码: </label>
+      <input type="password" name="password" id="password" v-model="password" required />
+      <br />
+      <label for="age">年龄: </label>
+      <input type="text" name="age" id="age" v-model="age" required />
+      <br />
+      <label>性别: </label>
+      <input type="radio" name="gender" id="male" value="male" v-model="picked" />
+      <label for="male">男</label>
+      <input type="radio" name="gender" id="female" value="female" v-model="picked" />
+      <label for="female">女</label>
+      <br />
+      <label>爱好</label>
+      <input type="checkbox" name="hobby" id="eat" value="eat" v-model="checked" />
+      <label for="eat">吃饭</label>
+      <input type="checkbox" name="hobby" id="sleep" value="sleep" v-model="checked" />
+      <label for="sleep">睡觉</label>
+      <br />
+      <label for="city">城市</label>
+      <select name="city" id="city" v-model="selected">
+        <option value="wuhan">武汉</option>
+        <option value="zhengzhou">郑州</option>
+        <option value="beijing">北京</option>
+      </select>
+      <br />
+      <label for="signature">个人签名: </label>
+      <textarea name="signature" id="signature" v-model="signature"></textarea>
+    </form>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            username: 'admin',
+            password: '666666',
+            age: '20',
+            picked: 'male',
+            checked: [],
+            selected: 'wuhan',
+            signature: '武汉中地',
+          }
+        },
+      })
+      app.mount('#form')
+    </script>
+  </body>
+</html>
