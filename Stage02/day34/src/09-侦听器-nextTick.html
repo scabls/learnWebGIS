@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">{{msg}}</div>
+    <script>
+      const { createApp, nextTick } = Vue
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello',
+          }
+        },
+        watch: {
+          msg() {
+            // 若将操作放在nextTick的回调函数中, 操作会最后执行
+            // 这时获取的dom就是更新后的
+            // 注意, 先从Vue中引入nextTick方法
+            nextTick(() => {
+              console.log(document.querySelector('#app').innerHTML)
+            })
+          },
+        },
+      })
+      const instance = app.mount('#app')
+      setTimeout(() => {
+        instance.msg = 'world'
+      }, 1000)
+      // 默认情况
+      // msg: [watch的回调, 渲染函数, nextTick定义的回调]
+    </script>
+  </body>
+</html>

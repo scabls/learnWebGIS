@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">{{msg}}</div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello',
+          }
+        },
+        watch: {
+          // // 默认情况下, 会先执行回调函数, 再执行渲染函数
+          // msg() {
+          //   // 所以打印的dom的innerHTML是渲染前的
+          //   console.log(document.querySelector('#app').innerHTML)
+          // },
+
+          // 可以通过flush: 'post'设置在DOM更新之后调用回调
+          msg: {
+            flush: 'post',
+            handler() {
+              console.log(document.querySelector('#app').innerHTML)
+            },
+          },
+        },
+      })
+      const instance = app.mount('#app')
+      setTimeout(() => {
+        instance.msg = 'world'
+      }, 1000)
+    </script>
+  </body>
+</html>

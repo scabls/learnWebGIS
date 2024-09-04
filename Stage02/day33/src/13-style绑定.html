@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <p style="color: blue">原生内联style</p>
+      <!-- 展开对象的键值对 -->
+      <p :style="obj">style绑定对象</p>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            obj: {
+              color: 'red',
+              // 属性名有'-'时
+              'font-size': '1.2rem',
+              // 或者使用小驼峰命名法
+              backgroundColor: 'lightblue',
+            },
+          }
+        },
+      })
+
+      app.mount('#app')
+    </script>
+  </body>
+</html>

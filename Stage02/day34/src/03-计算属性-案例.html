@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      请输入一个字符串: <input type="text" v-model="str" />
+      <!-- 约定: 在模板中尽可能是使用简洁的表达式 -->
+      <h3>反转后的字符串(表达式实现): {{str.split('').reverse().join('')}}</h3>
+      <!-- 每次调用都会执行, 性能消耗大。注意调用方法要加() -->
+      <h3>方法实现: {{myReverse()}}--{{myReverse()}}--{{myReverse()}}</h3>
+      <!-- 计算属性存在缓存, 如果依赖的状态未发生改变, 就不会重新计算。注意计算属性是一个属性 -->
+      <h3>计算属性实现: {{reverseStr}}--{{reverseStr}}--{{reverseStr}}</h3>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            // 已有属性
+            str: '',
+          }
+        },
+        methods: {
+          myReverse() {
+            console.log('执行了方法')
+            return this.str.split('').reverse().join('')
+          },
+        },
+        // computed选项,是根组件对象的一个属性,值是一个对象
+        computed: {
+          // 计算属性名:方法名
+          reverseStr() {
+            // 计算属性值:方法返回值
+            console.log('使用了计算属性')
+            return this.str.split('').reverse().join('')
+          },
+        },
+      })
+      app.mount('#app')
+      // 在选项中定义的状态和方法不能重名, 因为它们都会被代理到组件实例上
+    </script>
+  </body>
+</html>

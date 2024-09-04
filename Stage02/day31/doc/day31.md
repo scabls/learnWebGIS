@@ -195,7 +195,7 @@ pnpm add vue
 
 #### 声明式渲染
 
-跟变量, 函数类似, 需要使用什么就先声明一下.
+跟变量、函数类似, 需要使用什么就先声明一下.
 
 Vue被称为`声明式渲染`, 使用步骤
 
@@ -891,8 +891,10 @@ filter() 方法创建给定数组一部分的浅拷贝，其包含通过所提�
 
 ##### 语法
 
+```js
 filter(callbackFn)
 filter(callbackFn, thisArg)
+```
 
 ###### 参数
 
@@ -953,8 +955,10 @@ map() 不会改变原始数组。
 
 ##### 语法
 
+```js
 some(callbackFn)
 some(callbackFn, thisArg)
+```
 
 ###### 参数
 
@@ -1035,8 +1039,10 @@ reducer 逐个遍历数组元素，每一步都将当前元素的值与前一步
 
 ##### 语法
 
+```js
 reduce(callbackFn)
 reduce(callbackFn, initialValue)
+```
 
 ###### 参数
 

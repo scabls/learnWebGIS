@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="flag=!flag">点击切换显示/隐藏</button>
+      <div v-show="flag">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Placeat, adipisci!
+      </div>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            flag: true,
+          }
+        },
+      })
+
+      app.mount('#app')
+    </script>
+  </body>
+</html>

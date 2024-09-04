@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <!-- 
+        Persons表示当前遍历的数组元素, 
+        person表示当前正在迭代的数组元素。
+        index表示当前元素的索引
+        person和index只能在 v-for 所绑定的元素上或是其内部访问，就像函数的作用域一样 -->
+        <!-- 
+        在v-for中, 需要将key属性和唯一值绑定, 
+        如果不写, 默认跟数组元素的索引绑定, 但是索引是会变化的, 可能会引起一些问题
+        key是vue的内置属性, 虚拟dom的唯一标识,不会被渲染到容器元素中
+        -->
+        <li v-for="(person,index) in persons" :key="person.id">
+          {{index+1}}号伞兵{{person.name}}
+          <button @click="deleteP(index)">删除</button>
+        </li>
+      </ul>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            persons: [
+              { id: 1, name: '卢本伟' },
+              { id: 2, name: '卢中伟' },
+              { id: 3, name: '卢小伟' },
+              { id: 4, name: '芦苇' },
+            ],
+          }
+        },
+        methods: {
+          deleteP(index) {
+            this.persons.splice(index, 1)
+          },
+        },
+      })
+
+      app.mount('#app')
+    </script>
+  </body>
+</html>

@@ -140,7 +140,7 @@ const app = createApp({
 
 ##### 直接使用实例上的属性
 
-在`{{}}`内, 可以直接访问当前实例上的属性
+在`{{}}`内, 可以直接访问当前实例上的属性和方法
 
 ##### 使用表达式
 
@@ -169,25 +169,40 @@ const app = createApp({
 </script>
 ```
 
+**单一表达式**，也就是一段能够被求值的 JavaScript 代码。一个简单的判断方法是是否可以合法地写在 `return` 后面
+
 ### 指令语法
+
+#### 概念
+
+指令(Directives)
+
+以`v-`开头
+
+在属性值中书写js表达式, 叫做 指令表达式
 
 #### 语法
 
-以v-开头的指令. 
+```html
+<a v-bind:href="url">百度</a>
+```
 
-在属性值中书写js表达式, 叫做 指令表达式
+![image-20240830121757628](day32.assets/image-20240830121757628.png)
+
+- 指令名
+  - 以`v-`开头
+- 参数 Arguments
+  - 在指令名后通过一个`:`隔开做标识，不包括`:`
+- 修饰符 Modifiers
+  - 以`.`开头的，包括`.`
+- 指令值
+  - 前面通过`=`隔开，包裹在`" "`中
 
 #### 应用
 
 主要应用于属性节点
 
 也可用于事件绑定
-
-#### 示例
-
-```html
-<a v-bind:href="url">百度</a>
-```
 
 ### 属性绑定
 
@@ -263,11 +278,13 @@ v-on:事件名="函数名"
 
 #### 使用
 
-    1. 内联事件处理器: 逻辑比较简单时使用
-    2. 方法事件处理器: 逻辑复杂时, 事件对应到一个方法    
-       - methods中定义的函数会挂载到instance实例对象上
-       - methods中定义的普通函数内部this指向instance
-       - methods中, 不推荐使用箭头函数
+```html
+1. 内联事件处理器: 逻辑比较简单时使用
+2. 方法事件处理器: 逻辑复杂时, 事件对应到一个方法    
+   - methods中定义的函数会挂载到instance实例对象上
+   - methods中定义的普通函数内部this指向instance
+   - methods中, 不推荐使用箭头函数
+```
 
 ```html
 <div id="app">
@@ -345,6 +362,20 @@ v-on:事件名="函数名"
      </script>
 ```
 
+访问事件参数也可以使用内联箭头函数
+
+```html
+<!-- 使用特殊的 $event 变量 -->
+<button @click="warn('Form cannot be submitted yet.', $event)">
+  Submit
+</button>
+
+<!-- 使用内联箭头函数 -->
+<button @click="(event) => warn('Form cannot be submitted yet.', event)">
+    Submit
+</button>
+```
+
 #### 事件修饰符
 
 在绑定事件的时候, 可以添加事件修饰符, 常用的事件修饰符如下:
@@ -389,6 +420,8 @@ v-on:事件名="函数名"
     const instance = app.mount('#app')
      </script>
 ```
+
+注意: 修饰语可以使用链式书写，但需要注意调用顺序，因为相关代码是以相同的顺序生成的
 
 #### 按键修饰符
 

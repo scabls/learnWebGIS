@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 
+      v-if可以和v-else配合使用,v-show不行
+      v-if可以和template配合使用,v-show不行
+      v-else必需跟在v-if后面,不能单独使用
+      v-if不能和v-for连用
+      -->
+      <div v-if="flag">这是通过v-if渲染的</div>
+      <div v-else="flag">这是通过v-else渲染的</div>
+
+      <!-- 
+      template不会被渲染到页面,标签上的v-if对被包含的元素进行批量控制
+      -->
+      <template v-if="flag">
+        <div>在template内</div>
+        <div>在template内</div>
+        <div>在template内</div>
+      </template>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            flag: true,
+          }
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

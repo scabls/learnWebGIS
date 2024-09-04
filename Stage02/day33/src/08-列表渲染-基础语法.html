@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>item1</div>
+      <div>item2</div>
+      <div>item3</div>
+      <hr />
+      <!-- 遍历数组 -->
+      <div v-for="item in items">{{item}}</div>
+      <hr />
+      <!-- 遍历对象 -->
+      <div v-for="value in obj">{{value}}</div>
+      <hr />
+      <!-- 遍历数字 -->
+      <!-- 从1开始 -->
+      <span v-for="num in 5">{{`${num},`}}</span>
+      <hr />
+      <!-- 遍历字符串 -->
+      <span v-for="str in 'hello'">{{`${str},`}}</span>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            items: ['item1', 'item2', 'item3', 'item4'],
+            obj: {
+              name: 'zhangsan',
+              age: 18,
+            },
+          }
+        },
+      })
+
+      app.mount('#app')
+    </script>
+  </body>
+</html>

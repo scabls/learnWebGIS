@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>对于值类型的数据(如字符串,数字,布尔值),watch选项可以获得新旧值</p>
+      <input type="text" v-model="msg" /><br />
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            msg: '',
+          }
+        },
+
+        watch: {
+          msg(newValue, oldValue) {
+            console.log('新值: ', newValue) //变化后的值
+            console.log('旧值: ', oldValue) //变化前的值
+          },
+        },
+      })
+      app.mount('#app')
+      // watch选项关注变化的`过程`，可以在回调函数中获取新旧值
+      // computed选项关注变化的`结果`
+    </script>
+  </body>
+</html>

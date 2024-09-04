@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="count++">点击+1</button>
+      <br />
+      当前计数为:{{count}}
+      <br />
+      双倍计数为:{{doubleCount}}
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            // 已有属性
+            count: 0,
+          }
+        },
+        // computed选项,是根组件对象的一个属性,值是一个对象
+        computed: {
+          // 计算属性名:方法名
+          doubleCount: function () {
+            // 计算属性值:方法返回值
+            return this.count * 2
+          },
+        },
+      })
+      const instance = app.mount('#app')
+      console.dir(instance)
+      // 结论
+      // 1. 计算属性会创造一个新的属性, 代理到当前组件实例上
+      // 2. 计算属性依据已有的状态进行计算, 将回调函数的返回值做为 计算属性的属性值
+    </script>
+  </body>
+</html>

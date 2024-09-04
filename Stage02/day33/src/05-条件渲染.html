@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- flag为true时,两者都会显示 -->
+      <!-- flag为false时, v-if不会创建元素,v-show创建元素但是设置内联样式为display:none -->
+      <!-- 频繁切换显示和隐藏时,推荐使用v-show -->
+      <div v-if="flag">这是通过v-if渲染的</div>
+      <div v-show="flag">这是通过v-show渲染的</div>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            flag: true,
+          }
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

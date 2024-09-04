@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>对于嵌套多层的对象,watch选项默认是浅层次侦听</p>
+      <p>只能侦听对象的顶层属性的变化,若某个属性值是对象,无法侦听这个对象的属性值变化</p>
+      <input type="text" v-model="msg" /><br />
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            stu: {
+              name: 'xiaoming',
+              age: 18,
+              gf: {
+                name: 'xiaomei',
+                age: 18,
+                city: {
+                  name: 'beijing',
+                },
+              },
+            },
+          }
+        },
+        watch: {
+          // // 函数语法
+          // stu() {
+          //   console.log('stu变化了')
+          // },
+          // 对象语法
+          stu: {
+            deep: true,
+            //  handler就是回调函数, 默认是懒执行的.
+            handler() {
+              console.log('stu变化了')
+            },
+          },
+        },
+      })
+      const instance = app.mount('#app')
+      setTimeout(() => {
+        console.log('长大了一岁')
+        instance.stu.age = 19
+      }, 1000)
+      // 默认是不能侦听到对象内部的对象的属性变化
+      // 如果希望深层次侦听，可以使用deep: true选项
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. 什么是回调函数?
+      // 如果一个函数B, 作为另一个函数A的参数, 那么函数B就是回调函数
+      // element.addEventListener('click', function () {})
+      // setTimeout(() => {}, 1000)
+
+      // 2. 回调函数为什么可以有参数
+      //   回调函数在函数B的内部执行, 可以向回调函数传递参数
+      function foo(callBack) {
+        // callBack就是回调函数
+        // 调用callBack。callBack == value=>{}, 将'hello作为实参赋值给value'
+        callBack('hello')
+      }
+      // foo() => 调用foo函数,并将箭头函数作为实参, 赋值给callBack, 传递给foo
+      // callBack = value=>{}
+      foo(value => console.log(value))
+
+      // 浏览器调试工具打断点
+      // 1. 在函数调用
+      // 2. 条件判断
+    </script>
+  </body>
+</html>

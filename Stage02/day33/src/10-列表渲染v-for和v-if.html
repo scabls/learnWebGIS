@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <!-- 报错，Property "todo" was accessed during render but is not defined on instance -->
+        <!-- 因为在同一元素时，v-if比v-for优先级更高，无法访问v-for作用域的变量todo -->
+        <!-- 
+        相当于
+        v-if{
+            v-for{}
+        }
+         -->
+        <!-- <li v-for="(todo,index) in todos" :key="todo.id" v-if="!todo.inDanger">
+          {{index+1}}号伞兵{{todo.name}}
+          <button @click="hidP(todo.id)">撤退</button>
+        </li> -->
+        <!-- 解决方法 -->
+        <template v-for="(todo,index) in todos" :key="todo.id">
+          <li v-if="!todo.inDanger">
+            {{index+1}}号伞兵{{todo.name}}
+            <button @click="hidP(todo.id)">撤退</button>
+          </li>
+        </template>
+      </ul>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            todos: [
+              { id: 1, name: '卢本伟', inDanger: false },
+              { id: 2, name: '卢中伟', inDanger: false },
+              { id: 3, name: '卢小伟', inDanger: false },
+              { id: 4, name: '芦苇', inDanger: false },
+            ],
+          }
+        },
+        methods: {
+          hidP(id) {
+            // 获取数组中存储的对象的地址
+            const todo = this.todos.find(item => item.id === id)
+            // 修改地址指向对象的属性
+            todo.inDanger = true
+          },
+        },
+      })
+
+      app.mount('#app')
+    </script>
+  </body>
+</html>

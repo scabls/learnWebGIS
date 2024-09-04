@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      姓: <input type="text" v-model="surname" /> <br />
+      名: <input type="text" v-model="name" />
+      <h3>姓名: {{fullName}}</h3>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            surname: '',
+            name: '',
+          }
+        },
+        computed: {
+          fullName() {
+            return this.surname + this.name
+          },
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

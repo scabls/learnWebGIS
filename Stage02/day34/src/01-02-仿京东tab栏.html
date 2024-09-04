@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .tab-main {
+        max-width: fit-content;
+        margin: 50px auto;
+        border: 1px solid #eee;
+        border-bottom: 1px solid #e4393c;
+      }
+      ul {
+        display: flex;
+        max-width: fit-content;
+        background-color: #fff;
+        color: #666;
+        list-style: none;
+      }
+      li {
+        padding: 10px 25px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      li:hover {
+        color: #e4393c;
+      }
+      li.current {
+        background-color: #e4393c;
+        color: #fff;
+        cursor: default;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="tab-main">
+        <ul>
+          <!-- 方式一:绑定三元表达式 -->
+          <!-- <li
+            v-for="(value,index) in lis"
+            :class="clickedIndex==index?'current':''"
+            @click="clickedIndex=index"
+          > -->
+          <!-- 方式二:绑定对象 -->
+          <li
+            v-for="(value,index) in lis"
+            :class="{current:clickedIndex===index}"
+            @click="clickedIndex=index"
+          >
+            {{value}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            lis: ['商品介绍', '规格与包装', '售后保障', '商品评价(10万+)', '手机社区'],
+            clickedIndex: 0,
+          }
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

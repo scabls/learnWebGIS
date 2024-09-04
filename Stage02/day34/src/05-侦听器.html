@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      姓: <input type="text" v-model="surname" /> <br />
+      名: <input type="text" v-model="name" />
+      <h3>姓名: {{fullName}}</h3>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            surname: '',
+            name: '',
+            fullName: '',
+          }
+        },
+        // watch选项是根组件的一个属性, 值是一个对象
+        // 可以通过watch配置项, 侦听已经存在的状态(组件实例上的属性)的改变
+        watch: {
+          // 方法名是侦听的属性名
+          // 侦听surname的改变
+          surname: function () {
+            console.log('surname改变了')
+            this.fullName = this.surname + this.name
+          },
+          // ES6简写形式
+          // 侦听name属性的改变
+          name() {
+            console.log('name改变了')
+            this.fullName = this.surname + this.name
+          },
+        },
+      })
+      app.mount('#app')
+      // 侦听器关注过程
+      // 计算属性关注结果
+    </script>
+  </body>
+</html>

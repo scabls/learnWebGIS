@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- .trim修饰符,修剪两端空格 -->
+      用户名: <input type="text" v-model.trim="username" />
+      <br />
+      密码: <input type="password" v-model.trim="password" />
+      <br />
+      <!-- .number修饰符,将输入框的字符串转数字类型 -->
+      年龄: <input type="text" v-model.number="age" />
+      <br />
+      <!-- Vue将为单选框选项分组: v-model绑定同一状态 -->
+      <!-- 储存的状态值value属性 -->
+      性别: <input type="radio" id="male" value="male" v-model="gender" /><label for="male"
+        >男</label
+      >
+      <input type="radio" id="female" value="female" v-model="gender" / ><label for="female"
+        >女</label
+      >
+      <br />
+      <!-- 复选框选项分组:  v-model绑定同一状态-->
+      <!-- 将选中的复选框的value保存到状态,状态是一个数组 -->
+      爱好: <input type="checkbox" id="eat" value="eat" v-model="hobby" /><label for="eat"
+        >吃饭</label
+      >
+      <input type="checkbox" id="sleep" value="sleep" v-model="hobby" /><label for="sleep"
+        >睡觉</label
+      >
+      <br />
+      <!-- 下拉选择框:select标签上v-model绑定状态 -->
+      <!-- 储存被选择的option标签上value的值 -->
+      <!-- select的value就是被选择的option的value -->
+      城市:
+      <select id="city" v-model="city">
+        <option value="wuhan">武汉</option>
+        <option value="shanghai">上海</option>
+      </select>
+      <br />
+      个人签名: <textarea name="sign" id="sign" v-model.trim="sign"></textarea>
+    </div>
+
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            username: 'admin',
+            password: '666666',
+            age: 18,
+            gender: 'male',
+            hobby: ['eat', 'sleep'],
+            city: 'wuhan',
+            sign: '武汉中地',
+          }
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

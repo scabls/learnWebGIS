@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 使用数组的方法 -->
+      <button @click="phones.push({ id: 4, name: 'vivo', price: '2999' })">添加购物车</button>
+      <button @click="phones.splice(3,1)">删除第四个</button>
+      <!-- 不使用方法直接修改数组 -->
+      <!-- [index]修改时,index<=arr.length时会成功,其余情况必报错 -->
+      <button @click="phones[3] = { id: 4, name: 'vivo', price: '2999' }">添加第四个</button>
+      <!-- 使用delete删除元素,报错 -->
+      <button @click="delete phones[3]">删除第四个</button>
+      <p>购物车</p>
+      <ul>
+        <li v-for="phone in phones" :key="phone.id">{{phone}}</li>
+      </ul>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            phones: [
+              { id: 1, name: '小米', price: '1999' },
+              { id: 2, name: '华为', price: '3999' },
+              { id: 3, name: 'oppo', price: '2999' },
+            ],
+          }
+        },
+        methods: {},
+      })
+
+      app.mount('#app')
+    </script>
+  </body>
+</html>

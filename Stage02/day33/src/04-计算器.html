@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model.number="num1" />
+      <select v-model="operator">
+        <option>+</option>
+        <option>-</option>
+        <option>*</option>
+        <option>/</option>
+        <option>%</option>
+      </select>
+      <input type="text" v-model.number="num2" />
+      <button @click="calc">=</button>
+      <input type="text" v-model.number="result" />
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            num1: '',
+            num2: '',
+            operator: '+',
+            result: '',
+          }
+        },
+        methods: {
+          calc() {
+            switch (this.operator) {
+              case '+':
+                this.result = this.num1 + this.num2
+                break
+              case '-':
+                this.result = this.num1 - this.num2
+                break
+              case '*':
+                this.result = this.num1 * this.num2
+                break
+              case '/':
+                this.result = this.num1 / this.num2
+                break
+              case '%':
+                this.result = this.num1 % this.num2
+                break
+            }
+          },
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

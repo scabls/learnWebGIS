@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul {
+        list-style: none;
+      }
+      .flex {
+        display: flex;
+        max-width: fit-content;
+      }
+      .ulbox {
+        background-color: #fff;
+        color: #666;
+        border-bottom: 1px solid #e4393c;
+      }
+      .libox {
+        padding: 10px 25px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      .hover:hover {
+        color: #e4393c;
+      }
+      .clicked {
+        background-color: #e4393c;
+        color: #fff;
+        cursor: default;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <ul :class="ul">
+        <li
+          v-for="(value,index) in arr"
+          :class="{libox: true,hover:clickedIndex!=index,clicked: clickedIndex==index,
+        }"
+          @click="clicked(index)"
+        >
+          {{value}}
+        </li>
+      </ul>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            arr: ['商品介绍', '规格与包装', '售后保障', '商品评价(10万+)', ' 手机社区'],
+            clickedIndex: 0,
+            ul: {
+              flex: true,
+              ulbox: true,
+            },
+          }
+        },
+        methods: {
+          clicked(index) {
+            this.clickedIndex = index
+          },
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

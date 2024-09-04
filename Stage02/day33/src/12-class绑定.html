@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+    <style>
+      /* css层叠性顺序依据是css的书写顺序 */
+      .pink {
+        color: pink;
+      }
+      .lightblue {
+        color: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <p class="lightblue pink">原生css</p>
+      <p :class="str">绑定静态字符串</p>
+      <p :class="'lightblue pink'">绑定静态字符串</p>
+      <p :class="arr">绑定静态数组</p>
+      <!-- 值为true的属性名添加到class -->
+      <p :class="{lightblue:false,pink:true}">绑定静态对象</p>
+      <p :class="obj">绑定动态对象</p>
+      <p :class="isActived?'pink':'lightblue'">绑定三元表达式</p>
+      <p :class="{lightblue:isActived}">静态对象常用的处理方式</p>
+      <p :class="str" class="green">class样式绑定和原有class属性会合并</p>
+      <!-- <div :class="{red: isActive == index}"></div> -->
+      <!-- 常见有两种语法
+        ● 数组写法
+        ● 对象写法
+      -->
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            str: 'pink',
+            arr: ['lightblue', 'pink'],
+            obj: { lightblue: true, pink: false },
+            isActived: true,
+          }
+        },
+        methods: {},
+      })
+
+      app.mount('#app')
+    </script>
+  </body>
+</html>
