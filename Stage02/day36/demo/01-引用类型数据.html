@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const arr = [
+        { name: '张三', age: 18 },
+        { name: '李四', age: 19 },
+        { name: '王五', age: 20 },
+      ]
+      const newArr = arr.filter(item => item.age === 20)
+      //   newArr中的元素和原数组的对象元素是同一个引用
+      console.log(newArr)
+      newArr[0].age = 24
+      console.log(arr)
+      //   引用类型变量中,保存的是引用地址
+    </script>
+  </body>
+</html>

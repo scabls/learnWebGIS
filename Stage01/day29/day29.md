@@ -156,7 +156,7 @@ const person = {
 
 #### 第三方包lodash
 
-1. 下载第三方包 pnpm add loadsh
+1. 下载第三方包 pnpm add lodash
 
 2. 页面中引入lodash.js文件
 

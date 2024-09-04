@@ -128,6 +128,8 @@ const app = createApp({
 
 主要应用于文本节点
 
+双大括号会将数据解释为纯文本，而不是 HTML。
+
 #### 语法
 
 ```html
@@ -170,6 +172,13 @@ const app = createApp({
 ```
 
 **单一表达式**，也就是一段能够被求值的 JavaScript 代码。一个简单的判断方法是是否可以合法地写在 `return` 后面
+
+双大括号会将数据解释为纯文本，而不是 HTML。若想插入 HTML，你需要使用 v-html 指令
+
+```html
+<p>Using text interpolation: {{ rawHtml }}</p>
+<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+```
 
 ### 指令语法
 

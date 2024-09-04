@@ -134,6 +134,8 @@ git reset --hard <版本的唯一标识>  切换版本
 	合并分支到当前分支
 删除分支
 	git branch -d 分支名
+创建一个新的分支同时切换到新创建的分支
+	git checkout -b <your-branch-name>
 ```
 
 ##### 操作
@@ -229,6 +231,9 @@ git reset --hard <版本的唯一标识>  切换版本
 推送指定本地分支到远程仓库并配置跟踪分支
 	git push -u <remote-name> <branch-name>
 	设置跟踪关系后, 可以直接使用 git push 或 git pull，而不必每次都指定远程仓库和分支名称。Git 会自动知道你要推送到或拉取自哪个远程分支。
+	
+显示所有本地分支，以及它们各自的跟踪信息（remote tracking branch）
+	git branch -vv
 ```
 
 ##### 远程拉取本地
