@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>当前计数为: {{count}}</p>
+      <my-counter @increment="handleAdd"></my-counter>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            count: 0,
+          }
+        },
+        methods: {
+          handleAdd(value) {
+            this.count += value
+          },
+        },
+        components: {
+          myCounter: {
+            template: `
+            <div>
+              n=<input type="text" v-model.number="n">
+              <button @click="handleClick">+n</button>
+              </div>
+            `,
+            data() {
+              return {
+                n: 0,
+              }
+            },
+            // 在emits选项中声明要抛出的事件
+            emits: ['increment'],
+            methods: {
+              handleClick() {
+                this.$emit('increment', this.n)
+              },
+            },
+          },
+        },
+      })
+
+      app.mount('#app')
+    </script>
+  </body>
+</html>

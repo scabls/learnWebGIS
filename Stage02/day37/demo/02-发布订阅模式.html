@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class EventDispatcher {
+        constructor() {
+          // 事件名: 回调函数
+          // 'close': [handleClose, handleClose2]
+          // 'input': [handleInput]
+          this.listeners = {}
+        }
+
+        on(eventType, callback) {
+          if (!this.listeners[eventType]) {
+            this.listeners[eventType] = []
+          }
+          this.listeners[eventType].push(callback)
+        }
+
+        emit(eventType, data) {
+          if (this.listeners[eventType]) {
+            this.listeners[eventType].forEach((callback) => callback(data))
+          }
+        }
+      }
+
+      const dispatcher = new EventDispatcher()
+
+      dispatcher.on('close', (value) => {
+        console.log(value)
+      })
+      function handleClose(value) {
+        console.log(value)
+      }
+      dispatcher.on('close', handleClose)
+
+      dispatcher.emit('close', '1111')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 引用组件 -->
+      <first-com></first-com>
+      <!-- second-com组件是在first-com中注册的,就只能在first-com的模板中使用 -->
+      <second-com></second-com>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        components: {
+          FirstCom: {
+            template: `
+            <div>
+              <h1>这是第一个组件</h1>
+              <second-com></second-com>
+              </div>
+            `,
+            components: {
+              SecondCom: {
+                template: '<div>这是第二个组件</div>',
+              },
+            },
+          },
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

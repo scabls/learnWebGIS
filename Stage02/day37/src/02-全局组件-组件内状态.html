@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 引用组件 -->
+      <!-- 每次引用组件,都会创建一个组件实例 -->
+      <com></com>
+      <com></com>
+      <com></com>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({})
+      // app.component('组件名', 组件配置对象{})
+      app.component('com', {
+        template: '<div>全局组件:{{msg}}<div>',
+        data() {
+          return {
+            msg: 'hello',
+          }
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

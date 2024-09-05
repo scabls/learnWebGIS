@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 借助与props中同名的自定义属性 向 组件 传递数据 -->
+      <!-- 使用属性绑定,将title attribute的值绑定为根组件的title property/状态 -->
+      <blog-post v-for="blog in blogs" :title="blog.title" :key="blog.id"></blog-post>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            blogs: [
+              { id: 1, title: '第一篇文章' },
+              { id: 2, title: '第二篇文章' },
+              { id: 3, title: '第三篇文章' },
+            ],
+          }
+        },
+        components: {
+          BlogPost: {
+            // 在props中声明一些属性, 可以接受外部传过来的数据
+            // props中的属性和data、methods中的一样, 会被挂载到当前组件实例上
+            props: ['title'],
+            template: `
+            <div>
+              <h2>这是BlogPost组件</h2>
+              <p>文章标题: {{title}}</p>
+              </div>
+            `,
+          },
+        },
+      })
+
+      app.mount('#app')
+    </script>
+  </body>
+</html>

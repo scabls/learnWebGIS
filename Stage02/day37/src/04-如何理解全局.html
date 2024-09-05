@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 引用组件 -->
+      <p><count-button></count-button></p>
+      <count-button></count-button>
+    </div>
+    <div id="app2">
+      <!-- 无法跨app访问组件 -->
+      <count-button></count-button>
+      <count-button></count-button>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({})
+      // 在app上注册的组件, 可以在app内任意处使用, 无论是根组件的模板内, 还是任何组件的模板内;
+      // 但不能在其他app使用
+      app.component('CountButton', {
+        template: '<button @click="count++">你点了我{{count}}次</button>',
+        data() {
+          return {
+            count: 0,
+          }
+        },
+      })
+      app.mount('#app')
+      const app2 = createApp({})
+      app2.mount('#app2')
+    </script>
+  </body>
+</html>

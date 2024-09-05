@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 引用组件 -->
+      <my-com></my-com>
+    </div>
+    <script>
+      const { createApp } = Vue
+      // 1. 声明局部组件(定义组件配置对象)
+      const MyCom = {
+        template: '<div>局部组件</div>',
+      }
+      // 2. 挂载局部组件(注册组件)
+      // 3. 使用局部组件(在模板中使用)
+      const app = createApp({
+        components: {
+          // 组件名: 组件配置对象
+          // 使用了ES6对象属性的简写形式
+          MyCom,
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

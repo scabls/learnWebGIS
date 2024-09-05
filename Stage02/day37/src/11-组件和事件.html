@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <blog-post v-if="isShow" @close="isShow=false"></blog-post>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            isShow: true,
+          }
+        },
+        components: {
+          BlogPost: {
+            template: `
+              <div>
+                <h2>这是BlogPost组件</h2>
+                <p>文章标题: 第一篇文章</p>
+                <button @click="handleClose">关闭</button>
+                </div>
+              `,
+            methods: {
+              handleClose() {
+                // 通过$emit抛出一个自定义事件
+                this.$emit('close')
+              },
+            },
+          },
+        },
+      })
+
+      app.mount('#app')
+    </script>
+  </body>
+</html>

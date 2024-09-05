@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 根组件没有指定template或render选项时,使用容器的innerHTML作为模板 -->
+      {{msg}}
+      <!-- 引用组件 -->
+      <com></com>
+      <com></com>
+      <com></com>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello',
+          }
+        },
+      })
+      // 通过应用实例的component方法创建全局组件
+      // app.component('组件名', 组件配置对象{})
+      app.component('com', {
+        // 在这个对象中, 可以配置各种选项
+        // 1. 通过template或render函数指定模板
+        template: '<div>全局组件<div>',
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

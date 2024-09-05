@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 引用组件 -->
+      <count-button></count-button>
+      <count-button></count-button>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({})
+      // app.component('组件名', 组件配置对象{})
+      // 1. 组件名不能跟html内置或保留的关键字同名(不跟固有元素重名)
+      // 2. 组件名称通常使用多个单词
+      // 3. 在js中使用大驼峰命名法, 在html中使用短横线`-`连接形式
+      app.component('CountButton', {
+        // 组件的状态能在模板直接访问
+        template: '<button @click="count++">你点了我{{count}}次</button>',
+        // 将data这种函数称为工厂函数
+        // Vue 将在创建新组件实例的时候调用此函数，并将函数返回的对象用响应式系统进行包装。
+        // 此对象的所有顶层属性都会被代理到组件实例 (即方法和生命周期钩子中的 this) 上
+        data() {
+          // 4. 返回一个新对象, 所以各组件的状态是独立的
+          return {
+            count: 0,
+          }
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

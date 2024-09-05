@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <blog-post
+        v-for="blog in filteredBlogs"
+        :title="blog.title"
+        :id="blog.id"
+        :key="blog.id"
+        @close="handleShow"
+      ></blog-post>
+      <!-- 内联形式: @close="id => blogs.find(blog => blog.id === id).isShow = false" -->
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            blogs: [
+              { id: 1, title: '第一篇文章', isShow: true },
+              { id: 2, title: '第二篇文章', isShow: true },
+              { id: 3, title: '第三篇文章', isShow: true },
+            ],
+          }
+        },
+        computed: {
+          filteredBlogs() {
+            return this.blogs.filter(blog => blog.isShow)
+          },
+        },
+        methods: {
+          handleShow(id) {
+            this.blogs.find(blog => blog.id === id).isShow = false
+          },
+        },
+        components: {
+          BlogPost: {
+            props: ['title', 'id'],
+            template: `
+            <div>
+              <h2>这是BlogPost组件</h2>
+              <p>文章标题: {{title}}</p>
+              <button @click="handleClose">关闭</button>
+              </div>
+            `,
+            emits:['close'],
+            methods: {
+              handleClose() {
+                // 通过$emit抛出一个自定义事件
+                this.$emit('close', this.id)
+              },
+            },
+          },
+        },
+      })
+
+      app.mount('#app')
+    </script>
+  </body>
+</html>

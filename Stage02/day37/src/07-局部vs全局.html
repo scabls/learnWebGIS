@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 引用组件 -->
+      <first-com></first-com>
+      <second-com></second-com>
+      <third-com></third-com>
+      <forth-com></forth-com>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        components: {
+          ThirdCom: {
+            template: `<first-com></first-com>
+      <second-com></second-com>`,
+          },
+        },
+      })
+      app.component('FirstCom', {
+        template: `
+            <div>
+              <h1>这是第一个组件</h1>
+              <second-com></second-com>
+              </div>
+            `,
+      })
+      app.component('SecondCom', {
+        template: '<div>这是第二个组件</div>',
+      })
+      app.component('ForthCom', {
+        template: '<third-com></third-com>',
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>
