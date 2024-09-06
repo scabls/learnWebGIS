@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{msg}}
+      <my-com></my-com>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello',
+          }
+        },
+        components: {
+          MyCom: {
+            template: '<div>这是MyCom组件</div>',
+            created() {
+              console.log('子组件创建')
+            },
+            mounted() {
+              console.log('子组件挂载')
+            },
+          },
+        },
+        created() {
+          console.log('父组件创建')
+        },
+        mounted() {
+          console.log('父组件挂载')
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

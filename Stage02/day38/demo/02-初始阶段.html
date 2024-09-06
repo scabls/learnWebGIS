@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">hello</div>
+    <script>
+      /* 
+        参数: options = {
+          data() {
+            return {
+              msg: 'hello',
+              count: 0
+            }
+          },
+          beforeCreate() {},
+          created() {}
+        }
+        返回值: app对象
+      */
+      function createApp(options) {
+        const app = {
+          _ctx: {},
+        }
+        // 1. 解析options
+        const data = options.data
+        const bc = options.beforeCreate
+        const c = options.created
+
+        bc() // 执行beforeCreate钩子
+        // 2. 创建响应式代理
+        const res = data() // 得到普通对象
+
+        // 代理到_ctx上
+        Object.keys(res).forEach(key => (app._ctx[key] = res[key]))
+
+        app.proxy = new Proxy(app._ctx, {
+          get(target, key) {
+            return target[key]
+          },
+          set(target, key, value) {
+            target[key] = value
+            // 更新dom
+            app.$el.innerHTML = value
+          },
+        })
+
+        c()
+
+        // 3. 返回app
+        app.mount = el => {
+          app.$el = document.querySelector(el)
+          return app.proxy
+        }
+
+        return app
+      }
+
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello',
+          }
+        },
+        beforeCreate() {
+          console.log('beforeCreate...')
+        },
+        created() {
+          console.log('created...')
+        },
+      })
+      const instance = app.mount('#app')
+
+      setTimeout(() => {
+        instance.msg = 'world'
+      }, 1000)
+    </script>
+  </body>
+</html>

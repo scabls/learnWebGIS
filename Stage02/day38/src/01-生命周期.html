@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">{{msg}}</div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello',
+          }
+        },
+        //创建阶段(初始化阶段)
+        beforeCreate() {
+          console.log('beforeCreate', this.msg, this.$el)
+        },
+        created() {
+          console.log('created', this.msg, this.$el)
+        },
+        // 挂载阶段(渲染阶段)
+        beforeMount() {
+          console.log('beforeMount')
+        },
+        mounted() {
+          console.log('mounted')
+        },
+        // 更新阶段
+        beforeUpdate() {
+          console.log('beforeUpdate')
+        },
+        updated() {
+          console.log('updated')
+        },
+        // 卸载阶段
+        beforeUnmount() {
+          console.log('beforeUnmount')
+        },
+        unmounted() {
+          console.log('unmounted')
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">{{msg}}</div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello',
+          }
+        },
+        // 更新阶段
+        // 更新的函数执行N次, N>=0,
+        // 在beforeUpdate中, 数据是新的, 页面还是旧的
+        beforeUpdate() {
+          console.log('beforeUpdate', this.msg)
+          console.log(document.querySelector('#app').innerHTML)
+        },
+        // 在update中, 数据是新的, 页面也是新的
+        updated() {
+          console.log('updated', this.msg)
+          console.log(document.querySelector('#app').innerHTML)
+        },
+      })
+      const instance = app.mount('#app')
+      setTimeout(() => {
+        instance.msg = 'world'
+      }, 1000)
+    </script>
+  </body>
+</html>

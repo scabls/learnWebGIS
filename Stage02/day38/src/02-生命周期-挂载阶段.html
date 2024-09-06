@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">{{msg}}</div>
+    <script>
+      const { createApp } = Vue
+      // 挂载:
+      // 1. 将template选项指定的模板, 编译成render函数
+      // 2. 调用render函数, 得到虚拟dom
+      // 3. 根据虚拟dom生成真实dom
+      // 4. 替换由$el指定的dom
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello',
+          }
+        },
+        // 挂载阶段(渲染阶段)
+        beforeMount() {
+          console.log('beforeMount', this.$el)
+        },
+        mounted() {
+          console.log('mounted', this.$el)
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

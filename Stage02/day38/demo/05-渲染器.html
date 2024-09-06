@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 模板(template或者容器innerHTML) => 编译器 => render函数 => 调用函数返回虚拟dom(vDom)
+      // vDom => 渲染器 => 真实dom
+      // 使用真实dom 替换掉 $el指定的挂载点
+      const vDom = {
+        tag: 'div',
+        type: 1,
+        children: [
+          {
+            tag: 'p',
+            type: 1,
+            children: [
+              {
+                tag: 'span',
+                type: 1,
+                children: [{ type: 3, text: 'vue' }],
+              },
+            ],
+          },
+          {
+            tag: 'h2',
+            type: 1,
+            children: [{ type: 3, text: 'hello' }],
+          },
+        ],
+      }
+
+      function renderer(vdom) {
+        let root = null
+        if (vdom.type === 1) {
+          root = document.createElement(vdom.tag) // 创建一个元素节点
+          if (vdom.children) {
+            vdom.children.forEach(child => {
+              root.appendChild(renderer(child)) // 递归调用
+            })
+          }
+        } else if (vdom.type === 3) {
+          root = document.createTextNode(vdom.text) // 创建一个文本节点
+        }
+        // 返回真实dom
+        return root
+      }
+
+      const realDom = renderer(vDom)
+      console.log(realDom)
+    </script>
+  </body>
+</html>

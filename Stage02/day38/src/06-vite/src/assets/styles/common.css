@@ -1,0 +1,14 @@
+body {
+  background-color: skyblue;
+  background-image: url(../images/bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}

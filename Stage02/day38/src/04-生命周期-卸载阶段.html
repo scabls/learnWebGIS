@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">{{msg}}</div>
+    <script>
+      const { createApp } = Vue
+      function handleClick(event) {
+        console.log('x:', event.clientX, 'y:', event.clientY)
+      }
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello',
+          }
+        },
+
+        mounted() {
+          document.addEventListener('click', handleClick)
+        },
+
+        // 卸载阶段
+        beforeUnmount() {
+          console.log('beforeUnmount')
+        },
+        unmounted() {
+          // 回收资源
+          console.log('unmounted')
+          // 解绑全局事件
+          document.removeEventListener('click', handleClick)
+        },
+      })
+      const instance = app.mount('#app')
+    </script>
+  </body>
+</html>
