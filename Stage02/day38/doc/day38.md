@@ -326,6 +326,7 @@ proxy是ES6新增的一个功能, 基于普通对象, 创建代理对象
           // 只要访问pObj的属性, 就会触发get方法
           console.log('get方法被执行了, key是: ', key)
           // 将pObj和obj关联起来, 可以认为pObj和obj拥有相同的属性
+          // get方法的返回值将是读操作的结果
           return target[key]
         },
         // 设置拦截器
@@ -337,6 +338,8 @@ proxy是ES6新增的一个功能, 基于普通对象, 创建代理对象
           target[key] = value
           // vue中,在set方法中新增了更新dom的操作
           document.querySelector('#app').innerHTML = value
+          // 返回 true 代表属性设置成功
+          return true
         },
       })
 
@@ -359,6 +362,8 @@ proxy是ES6新增的一个功能, 基于普通对象, 创建代理对象
       // 模板(template或者容器innerHTML) => 编译器 => render函数 => 调用函数返回虚拟dom(vDom)
       // vDom => 渲染器 => 真实dom
       // 使用真实dom 替换掉 $el指定的挂载点
+
+	  // vDOM对象是JS的一对象, 描述HTML结构
       const vDom = {
         tag: 'div',
         type: 1,

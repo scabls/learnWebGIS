@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">{{pObj.msg}}</div>
+    <script>
+      // 响应式: 当 数据改变时, 会执行 回调函数
+      // bucket: 副作用函数 桶
+      const bucket = {} // 属性名: []
+      let activeEffect = null
+
+      function reactive(obj) {
+        return new Proxy(obj, {
+          get(target, key) {
+            // 收集依赖 track函数
+            if (activeEffect) {
+              if (!bucket[key]) {
+                bucket[key] = []
+              }
+              bucket[key].push(activeEffect)
+            }
+            return target[key]
+          },
+          set(target, key, value) {
+            target[key] = value
+            // 执行依赖 Trigger函数
+            if (bucket[key]) {
+              bucket[key].forEach(fn => fn())
+            }
+          },
+        })
+      }
+
+      // 注册副作用函数
+      function effect(fn) {
+        activeEffect = fn
+        fn()
+        activeEffect = null
+      }
+
+      const pObj = reactive({
+        msg: 'hello',
+        name: 'xiaoming',
+      })
+
+      function e1() {
+        // 访问了 pObj.msg => 触发proxy的get操作, 在注册副作用函数时收集依赖
+        console.log(pObj.msg)
+      }
+      // 注册副作用函数
+      effect(e1)
+      function render() {
+        document.querySelector('#app').innerHTML = pObj.msg
+      }
+      effect(render)
+
+      function e2() {
+        console.log(pObj.name)
+      }
+      effect(e2)
+
+      setTimeout(() => {
+        pObj.msg = 'world'
+      }, 1000)
+    </script>
+  </body>
+</html>

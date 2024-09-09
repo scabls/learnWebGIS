@@ -20,6 +20,7 @@
           // 只要访问pObj的属性, 就会触发get方法
           console.log('get方法被执行了, key是: ', key)
           // 将pObj和obj关联起来, 可以认为pObj和obj拥有相同的属性
+          // get方法的返回值将是读操作的结果
           return target[key]
         },
         // 设置拦截器
@@ -31,6 +32,8 @@
           target[key] = value
           // vue中,在set方法中新增了更新dom的操作
           document.querySelector('#app').innerHTML = value
+          // 返回 true 代表属性设置成功
+          return true
         },
       })
 
