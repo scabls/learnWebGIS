@@ -45,7 +45,7 @@
       effect(e1)
 
       setTimeout(() => {
-        // 设置pObj.msg => 触发proxy的set操作, 执行依赖
+        // 设置pObj.msg => 触发proxy的set操作, 更新依赖
         pObj.msg = 'world'
       }, 1000)
     </script>
