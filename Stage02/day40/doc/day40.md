@@ -283,6 +283,12 @@ props.title = 'hahaha' // 无法修改, vue发出警告
 props.author.name = 'Titus'
 ```
 
+#### 本地ref同步
+
+可以在组件内部创建一个本地的 `ref` 来管理这个值，并手动将 `modelValue` 同步到这个 `ref`。
+
+这样就可以修改这个本地ref。还可以通过侦听和自定义事件间接修改prop并再同步到本地ref
+
 ## Emit
 
 我们会发现有时候子组件需要与父组件进行交互。
@@ -526,6 +532,8 @@ const isShow = ref(false)
 <button type="submit">Save</button>
 ```
 
+> slot标签的innerHTML就是默认内容
+
 ### 具名插槽
 
 有时在一个组件中包含多个插槽出口是很有用的。举例来说，在一个 `<BaseLayout>` 组件中，有如下模板：
@@ -564,7 +572,7 @@ const isShow = ref(false)
 
 在父组件中使用 `<BaseLayout>` 时，我们需要一种方式将多个插槽内容传入到各自目标插槽的出口。此时就需要用到**具名插槽**了：
 
-要为具名插槽传入内容，我们需要使用一个含 `v-slot` 指令的 `<template>` 元素，并将目标插槽的名字传给该指令：
+要为具名插槽传入内容，我们需要使用一个含 `v-slot` 指令的 `<template>` 元素，并将目标插槽的名字作为该指令的参数：
 
 ```vue
 <BaseLayout>
@@ -665,7 +673,9 @@ const isShow = ref(false)
 </MyComponent>
 ```
 
-子组件传入插槽的 props 作为了 `v-slot` 指令的值，可以在插槽内的表达式中访问。
+子组件传入插槽的 props对象 作为了 `v-slot` 指令的值，可以在插槽内的表达式中访问。
+
+> 对象名是任取的
 
 类比对象, 我们也可以在 `v-slot` 中使用解构：
 
@@ -806,9 +816,9 @@ const emit = defineEmits(['click'])
 
 ### 自定义透传
 
-当attribute 需要应用在根节点以外的其他元素上,就需要禁用 attribute 透传
+当attribute 需要应用在根节点以外的其他元素上,就需要禁用 attribute 继承
 
-#### 禁用透传
+#### 禁用属性继承
 
 如果你不想要一个组件自动地继承 attribute，你可以在组件选项中设置 inheritAttrs: false。
 
@@ -882,5 +892,3 @@ import { useAttrs } from 'vue'
 const attrs = useAttrs()
 console.log(attrs)
 ```
-
-### 

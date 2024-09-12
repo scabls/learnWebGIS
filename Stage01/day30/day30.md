@@ -136,6 +136,7 @@ git reset --hard <版本的唯一标识>  切换版本
 	git branch -d 分支名
 创建一个新的分支同时切换到新创建的分支
 	git checkout -b <your-branch-name>
+	git switch -c <your-branch-name>
 ```
 
 ##### 操作

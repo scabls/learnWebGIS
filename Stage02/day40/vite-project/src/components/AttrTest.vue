@@ -28,7 +28,7 @@ console.log(attrs)
 // 自定义透传
 // 在<script setup>中使用选项式API:defineOptions
 defineOptions({
-  // 禁用透传
+  // 禁用继承透传属性
   inheritAttrs: false,
 })
 </script>

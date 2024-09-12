@@ -316,6 +316,12 @@ const fullname = computed(() => surname.value + name.value)
 
 Vue 能够拦截对响应式对象所有属性的访问和修改，以便进行依赖追踪和触发更新。
 
+> reactive接收的参数, 是普通对象,但不单指Object, Array等引用类型的数据也是对象
+>
+> new Proxy(引用类型, )
+>
+> Map, Set, Array, Object, Function
+
 ### 实现简易版reactive
 
 ```vue
