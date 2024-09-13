@@ -38,6 +38,8 @@ Vue将为单选框选项分组: v-model绑定同一状态
 <input type="checkbox" id="sleep" value="sleep" v-model="hobby" /><label for="sleep">睡觉</label>
 ```
 
+对于单一的复选框，绑定布尔类型值：将布尔属性checked储存到一个布尔型状态
+
 ### select的双向绑定
 
 下拉选择框:select标签上v-model绑定状态
