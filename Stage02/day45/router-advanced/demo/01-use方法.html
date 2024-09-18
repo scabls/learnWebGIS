@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{msg}}
+
+      <router-link to="/about">About </router-link>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const app = createApp({
+        data() {
+          return {
+            msg: 'hello',
+          }
+        },
+      })
+      const router = {
+        // 插件对象, 必须包含install方法, 当app.use()时, 会调用install方法
+        install(app) {
+          console.log(app)
+          console.log('install 方法执行了')
+          // 注册一些全局组件
+          app.component('RouterLink', {
+            template: `
+            <a :href="to">
+              <slot></slot>    
+            </a>
+            `,
+            props: {
+              to: {
+                type: String,
+              },
+            },
+          })
+          // 挂载一些全局变量
+          app.config.globalProperties.$route = {
+            query: {},
+          }
+        },
+      }
+      app.use(router)
+      app.mount('#app')
+    </script>
+  </body>
+</html>

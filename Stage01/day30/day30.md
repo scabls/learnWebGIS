@@ -233,8 +233,14 @@ git reset --hard <版本的唯一标识>  切换版本
 	git push -u <remote-name> <branch-name>
 	设置跟踪关系后, 可以直接使用 git push 或 git pull，而不必每次都指定远程仓库和分支名称。Git 会自动知道你要推送到或拉取自哪个远程分支。
 	
+将本地分支推送到远程的指定分支
+	git push <remote-name> <loacal-branch-name>:<remote-branch-name>
+	
 显示所有本地分支，以及它们各自的跟踪信息（remote tracking branch）
 	git branch -vv
+	
+删除远程仓库的远程分支
+	git push 远程仓库名 --delete 分支名
 ```
 
 ##### 远程拉取本地
