@@ -1,6 +1,7 @@
 import request from './request'
 
 // 获取用户列表 GET /users
+// const getUsersApi = () => request.get('/users')
 const getUsersApi = () =>
   request({
     method: 'GET',

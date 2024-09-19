@@ -11,10 +11,10 @@ const instance = axios.create({
 // 设置拦截器
 // 请求拦截器
 
-// 相应拦截器
+// 响应拦截器
 instance.interceptors.response.use(
   // response就是原始响应数据
-  // 这里返回的数据将会是axios.get返回的promise的兑现值,会被then方法接收到
+  // 这里回调函数的返回值将会是axios.请求操作(get,post...)返回的promise的兑现值,会被then方法接收到
   response => response.data,
 
   // error表示错误信息
