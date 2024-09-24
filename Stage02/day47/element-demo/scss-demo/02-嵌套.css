@@ -1,0 +1,18 @@
+#content {
+  color: lightblue;
+}
+#content article h1 {
+  color: #333;
+}
+#content article p {
+  margin-bottom: 1.4em;
+}
+#content aside {
+  background-color: #eee;
+}
+#content:hover {
+  background-color: #ddd;
+}
+#content.active {
+  color: red;
+}/*# sourceMappingURL=02-嵌套.css.map */

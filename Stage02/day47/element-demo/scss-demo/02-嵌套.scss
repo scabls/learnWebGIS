@@ -1,0 +1,23 @@
+#content {
+  // 属性
+  color: lightblue;
+  // 嵌套选择器
+  article {
+    h1 {
+      color: #333;
+    }
+    p {
+      margin-bottom: 1.4em;
+    }
+  }
+  aside {
+    background-color: #eee;
+  }
+  &:hover {
+    background-color: #ddd;
+  }
+  // 父级选择器 &
+  &.active {
+    color: red;
+  }
+}
