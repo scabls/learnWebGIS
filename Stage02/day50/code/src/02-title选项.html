@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="../node_modules/echarts/dist/echarts.min.js"></script>
+  </head>
+  <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div id="container" style="width: 600px; height: 400px"></div>
+    <script>
+      // 基于准备好的dom，初始化echarts实例
+      //    注意这里init方法接收的是一个dom
+      const myChart = echarts.init(document.querySelector('#container'))
+      // 指定图表的配置项和数据
+      const option = {
+        // title: 配置标题
+        title: {
+          // 是否显示, 默认是true
+          show: true,
+          // 主标题文本
+          text: 'ECharts 入门示例',
+          // 主标题超链接
+          link: './02-title%E9%80%89%E9%A1%B9.html',
+          // 指定窗口打开主标题超链接
+          target: 'blank',
+          // 标题样式
+          textStyle: {
+            color: 'red',
+            fontSize: 20,
+          },
+          // 标题对齐
+          left: 40,
+        },
+        // 提示框
+        tooltip: {},
+        // 图例
+        legend: {
+          data: ['销量'],
+        },
+        xAxis: {
+          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+        },
+        yAxis: {},
+        series: [
+          {
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20],
+          },
+        ],
+      }
+      myChart.setOption(option)
+    </script>
+  </body>
+</html>

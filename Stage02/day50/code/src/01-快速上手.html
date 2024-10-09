@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="../node_modules/echarts/dist/echarts.min.js"></script>
+  </head>
+  <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div id="container" style="width: 600px; height: 400px"></div>
+    <script>
+      // 基于准备好的dom，初始化echarts实例
+      //    注意这里init方法接收的是一个dom
+      const myChart = echarts.init(document.querySelector('#container'))
+      // 指定图表的配置项和数据
+      const option = {
+        title: {
+          text: 'ECharts 入门示例',
+        },
+        tooltip: {},
+        legend: {
+          data: ['销量'],
+        },
+        // 必需
+        xAxis: {
+          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+        },
+        // 必需
+        yAxis: {},
+        series: [
+          {
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20],
+          },
+        ],
+      }
+      myChart.setOption(option)
+    </script>
+  </body>
+</html>
