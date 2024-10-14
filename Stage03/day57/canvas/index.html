@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <style>
+      canvas {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- canvas是可替换元素 需要设置宽高 -->
+      <!-- canvas有一个默认宽高 300x150 -->
+      <!-- canvas的宽高attribute 和style的宽高属性不一样 -->
+      <!-- 前者设置的是画布的实际像素尺寸, 后者设置显示大小 -->
+      <canvas id="canvas" width="500" height="300"></canvas>
+      <button>清除按钮</button>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
