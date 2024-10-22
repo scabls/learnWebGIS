@@ -125,6 +125,17 @@ onMounted(() => {
 
 关于 ref 注册时机的重要说明：因为 ref 本身是作为渲染函数的结果来创建的，必须等待组件挂载后才能对它进行访问。
 
+对于vue3.5+,要在组合式 API 中获取引用，我们可以使用辅助函数 useTemplateRef()
+
+```vue
+<script setup>
+import { ref, useTemplateRef, onMounted } from 'vue'
+const refTest = useTemplateRef('refTest') // 第一个参数必须与模板中的 ref 值匹配
+</script>
+```
+
+若要在父组件操控子组件中某个dom对象, 可以使用v-model向子组件传参, 在子组件中使用defineModel()宏双向绑定, 将defineModel()返回ref的value设置为useTemplateRef()返回ref的value
+
 ### 获取子组件的属性和方法
 
 使用 `<script setup>` 的组件是**默认关闭**的，**不会**暴露任何在 `<script setup>` 中声明的绑定。

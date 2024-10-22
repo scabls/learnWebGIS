@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      svg {
+        width: 300px;
+        height: 300px;
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <svg>
+      <defs>
+        <style>
+          .circle,
+          .rect {
+            fill: none;
+            stroke: green;
+            stroke-width: 5;
+            stroke-opacity: 0.5;
+            /* 
+            troke-dasharray: 252;  大于等于周长 
+            stroke-dashoffset: 252; 与dasharray相等 
+            */
+          }
+          @keyframes dash {
+            100% {
+              stroke-dashoffset: 0;
+            }
+          }
+        </style>
+      </defs>
+      <circle cx="50" cy="50" r="40" class="circle"></circle>
+      <rect x="100" y="100" width="80" height="80" class="rect"></rect>
+    </svg>
+    <script>
+      const circle = document.querySelector('.circle')
+      const rect = document.querySelector('.rect')
+      const circleLength = circle.getTotalLength()
+      const rectLength = rect.getTotalLength()
+      circle.setAttribute('stroke-dasharray', circleLength)
+      circle.setAttribute('stroke-dashoffset', circleLength)
+      circle.style.animation = 'dash 2s linear forwards'
+      rect.setAttribute('stroke-dasharray', rectLength)
+      rect.setAttribute('stroke-dashoffset', rectLength)
+      rect.style.animation = 'dash 2s linear forwards'
+    </script>
+  </body>
+</html>

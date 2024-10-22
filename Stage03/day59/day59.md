@@ -358,6 +358,7 @@ canvas.height = window.innerHeight
 const getRandom = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
 
 class Point {
+  // 函数参数默认值
   constructor(radius = 10, color = 'white') {
     this.radius = radius
     this.color = color
@@ -523,6 +524,34 @@ class MyClass {
 
 若属性求值需要依赖this访问其他属性, 或者可以直接使用构造函数的参数, 则可以将属性定义在构造函数中。(注意格式)
 
+##### 箭头函数
+
+本次示例中, 将箭头函数赋值给了公共字段
+
+```js
+class MyClass {
+  draw = () => {
+		// 函数体
+  }
+}
+```
+
+> 由于类体具有 this 上下文，因此作为类字段的箭头函数会关闭类的 this 上下文，箭头函数体中的 this 将正确指向实例（对于静态字段来说是类本身）。但是，由于它是一个闭包，而不是函数本身的绑定，因此 this 的值不会根据执行上下文而改变。
+
+箭头函数属性通常被称作“自动绑定方法”，因为它与普通方法的等价性相同：
+
+```js
+class MyClass {
+  draw() {
+		// 函数体
+  }
+}
+```
+
+但是要注意, 类在实例化时, 对公共的实例方法和公共的实例字段的处理是不同的, 公共方法会被添加到原型(prototype)上, 而公共字段会被添加到instance上, 所以使用“自动绑定方法”可能会导致更多的内存占用。所以在使用时要考虑其使用的必要性, 否则请使用普通函数。
+
+> **备注：**类字段是在*实例*（instance）上定义的，而不是在*原型*（prototype）上定义的，因此每次创建实例都会创建一个新的函数引用并分配一个新的闭包，这可能会导致比普通非绑定方法更多的内存使用。
+
 ### 数组
 
 #### Array() 构造函数
@@ -585,6 +614,12 @@ fill(value, start, end)
 ###### 返回值
 
 经 value 填充修改后的数组。
+
+### Math
+
+#### Math.hypot()
+
+**`Math.hypot()`** 函数返回所有参数的平方和的平方根
 
 ## 方框进度条
 

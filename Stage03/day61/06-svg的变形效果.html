@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      svg {
+        width: 300px;
+        height: 300px;
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <svg>
+      <defs>
+        <linearGradient id="linearGradient" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="red"></stop>
+          <stop offset="100%" stop-color="blue"></stop>
+        </linearGradient>
+        <style>
+          rect {
+            width: 100px;
+            height: 100px;
+            fill: url(#linearGradient);
+            fill-opacity: 0.5;
+            stroke: blueviolet;
+          }
+        </style>
+      </defs>
+      <!-- 
+      svg的transform属性可以对元素进行变形
+      这个样式只能在标签上的transform属性中使用
+      -->
+      <rect x="10" y="10" transform="translate(100, 100)"></rect>
+      <g transform="rotate(45) scale(2, 2)">
+        <!-- g元素将其内的元素进行分组，并对其进行统一变形 -->
+        <rect x="10" y="10"></rect>
+        <rect x="0" y="0"></rect>
+      </g>
+    </svg>
+  </body>
+</html>

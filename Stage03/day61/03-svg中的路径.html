@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      svg {
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <svg width="300" height="200">
+      <!-- 
+        M x y 表示将画笔移动到坐标（x，y）处
+        L x y 表示从当前位置画一条直线到坐标（x，y）处
+        l dx dy 表示从当前位置画一条相对直线到坐标（x+dx，y+dy）处
+        Z 表示闭合路径
+        建议L和l不要混合使用
+      -->
+      <path d="M 50 50 L 100 50 l 0 50 Z" stroke="black" fill="none"></path>
+    </svg>
+  </body>
+</html>

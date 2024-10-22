@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      svg {
+        width: 300px;
+        height: 300px;
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+  <body>
+    <svg>
+      <!-- 样式可以通过标签上的属性设置，也可以通过css样式设置 -->
+      <!-- 为了把svg的样式和普通css样式分离，可以把样式定义在defs标签中 -->
+      <defs>
+        <style>
+          rect {
+            width: 80px;
+            height: 80px;
+            fill: red;
+            fill-opacity: 0.5;
+            stroke: blueviolet;
+          }
+          line {
+            stroke: green;
+            stroke-width: 5;
+            stroke-opacity: 0.5; /* 描边透明度 */
+            stroke-linecap: round; /* 描边的端点类型 */
+            stroke-linejoin: round; /* 描边的连接类型 */
+            stroke-dasharray: 10; /* 描边的虚线间隔 */
+          }
+        </style>
+      </defs>
+      <rect x="10" y="10"></rect>
+      <line x1="10" y1="10" x2="80" y2="80"></line>
+    </svg>
+  </body>
+</html>

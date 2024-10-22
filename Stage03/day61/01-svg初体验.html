@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- 引入svg文件 -->
+      <img src="./01-svg初体验.svg" />
+      <object data="./01-svg初体验.svg" type="image/svg+xml"></object>
+    </div>
+
+    <!-- 
+    svg是一门标记语言(html和svg都是xml(标记语言)的方言, 通过在页面中添加标签的形式来实现绘图
+      在绘图性能上canvas优于svg 
+    svg绘制的是矢量图形,不会因为放大失真;canvas绘制的是位图,放大后会失真;所以svg适合绘制一些图标
+    svg的标签绘制到页面上是dom形式存在,所以svg可以方便地添加dom操作和动画效果
+    -->
+    <!-- 
+    svg放到了一个单独的.svg文件中需要在标签上添加命名空间xmlns
+    -->
+    <!-- 
+    viewBox属性设置svg的显示范围 
+    -->
+  </body>
+</html>

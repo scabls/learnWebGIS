@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .label {
+        position: relative;
+        width: 100px;
+        height: 2rem;
+        background-color: lightblue;
+        text-align: center;
+        line-height: 2rem;
+      }
+      ul {
+        position: absolute;
+        top: 2rem;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: pink;
+        margin: 0;
+        padding: 0 0 0 1rem;
+        text-align: left;
+        list-style: none;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="label">
+      <span class="button">点我</span>
+      <ul class="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+    </div>
+    <script>
+      const button = document.querySelector('.button')
+      const list = document.querySelector('.list')
+      button.addEventListener('click', function () {
+        // height设置成auto或其他由浏览器决定的与内容相符的关键字,如max-content
+        list.style.height = 'auto'
+        list.style.transition = 'height 0.3s ease-in-out'
+        // 发现过渡效果未生效,原因是transiton侦听css属性数值的变化,值设为关键字时,无法侦听
+        // 为了使高度根据内容变化, 又要被transiton侦听到,需要先获取auto后的高度,再将高度设为0, 再重新把获取到的具体数值给height
+        const height = list.offsetHeight
+        list.style.height = 0
+        // // 方式一: 触发reflow(访问dom的位置和几何信息)
+        // list.offsetHeight
+        // 方式二: 使用事件循环
+        setTimeout(() => (list.style.height = height + 'px'))
+        // 但是发现过渡依旧没有生效,这是因为浏览器在同一个渲染帧中先后设置了三次height,只要最后一次设置的会被渲染
+        // 处理方式一:触发重绘: 要在height=0和height=height+'px'之间强制渲染,即触发repaint,则要先触发reflow(重排),之后则自动触发repaint
+        // 处理方式二:事件循环: 设置0延迟的setTimeout,将操作放在setTimeout的回调中, 因为setTimeout的回调会被放入交互队列,等同步代码执行完才会执行,这样就保证两次height的设置不在同一个渲染帧中
+      })
+    </script>
+  </body>
+</html>
