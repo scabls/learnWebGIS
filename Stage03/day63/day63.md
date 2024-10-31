@@ -18,6 +18,12 @@ pnpm i ol
 @import 'node_modules/ol/ol.css';
 ```
 
+如果在vite等环境下, 可以在js文件中引入
+
+```js
+import 'ol/ol.css'
+```
+
 ### 设置地图容器的尺寸
 
 ```css

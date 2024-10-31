@@ -38,5 +38,28 @@ map.addLayer(vectorLayer)
 const vectorSource = vectorLayer.getSource()
 
 // 地图控件
-const fullScreenControl = new FullScreen()
-map.addControl(fullScreenControl)
+map.addLayer(vecLayer)
+//默认会添加3个控件 zoom rotate atribution(默认是隐藏的)
+const arrtributionControl = new Attribution({
+  label: '展开',
+  collapseLabel: '版权新中地所有 收起',
+})
+map.addControl(arrtributionControl)
+const fullscreenControl = new FullScreen()
+map.addControl(fullscreenControl)
+const mousePositionControl = new MousePosition()
+map.addControl(mousePositionControl)
+const scaleLineControl = new ScaleLine()
+map.addControl(scaleLineControl)
+const overviewMapControl = new OverviewMap()
+map.addControl(overviewMapControl)
+/*  
+map 地图实例 (view target layers controls interactions overlays)
+view 视图实例 (center zoom ...)
+layer 图层实例(tile image vector)
+source 数据源实例(xyz staticImage vectorSource(geojson geometry))
+feature 要素信息 (geometry style)
+overlay 覆盖物实例(element)
+interaction 交互实例(select draw)
+controls 控件实例(zoom rotate attribution fullscreen mouseposition scaleline overviewmap)   
+*/

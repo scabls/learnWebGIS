@@ -1,0 +1,20 @@
+{
+  "name": "orm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "cheerio": "^1.0.0",
+    "mockjs": "^1.1.0",
+    "mysql2": "^3.11.3",
+    "prettier": "^3.3.3",
+    "sequelize": "^6.37.4"
+  }
+}

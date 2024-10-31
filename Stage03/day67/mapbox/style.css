@@ -1,0 +1,17 @@
+@import 'mapbox-gl/dist/mapbox-gl.css';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#map {
+  position: absolute;
+  inset: 0;
+}
+.myPositionControl {
+  background-color: white;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
