@@ -8,7 +8,9 @@ import { Circle } from 'ol/geom'
 import Style from 'ol/style/Style'
 import Fill from 'ol/style/Fill'
 import Select from 'ol/interaction/Select.js'
-import { pointerMove } from 'ol/events/condition'
+import Draw from 'ol/interaction/Draw.js'
+import Stroke from 'ol/style/Stroke'
+
 const map = new Map({
   target: 'map',
 })
@@ -30,57 +32,59 @@ map.addLayer(tileLayer)
 const vectorLayer = new VectorLayer({
   source: new VectorSource(),
 })
-const circle = new Feature({
-  geometry: new Circle(center, 0.01),
-})
-circle.setStyle(
-  new Style({
-    fill: new Fill({
-      color: 'red',
-    }),
-  })
-)
-vectorLayer.getSource().addFeature(circle)
 map.addLayer(vectorLayer)
 
-circle.on('mouseover', function () {
-  this.setStyle(
-    new Style({
-      fill: new Fill({
-        color: 'blue',
-      }),
-    })
-  )
-})
-// 获取要素
+const vectorSource = vectorLayer.getSource()
 
-// map.on('pointermove', function (e) {
-//   // 获取circle并派发一个自定义事件
-//   map.forEachFeatureAtPixel(e.pixel, function (feature) {
-//     feature.dispatchEvent({ type: 'mouseover', event: e })
-//   })
-// })
-// map.on('pointermove', function (e) {
-//   // 获取circle并派发一个自定义事件
-//   const features = map.getFeaturesAtPixel(e.pixel)
-//   if (features.length === 0) return
-//   features[0].dispatchEvent({ type: 'mouseover', event: e })
-// })
-
-const select = new Select({
-  // 设置触发条件
-  condition: pointerMove,
+const strokeStyle = new Style({
+  stroke: new Stroke({
+    color: 'rgba(255, 0, 0, 0.5)',
+    width: 4,
+  }),
 })
-map.addInteraction(select)
-select.on('select', function (e) {
-  const feature = e.selected[0]
-  if (!feature) return
-  // 设置选中时的样式
-  feature.setStyle(
-    new Style({
-      fill: new Fill({
-        color: 'blue',
-      }),
-    })
-  )
+const fillStyle = new Style({
+  fill: new Fill({
+    color: 'rgba(255, 0, 0, 0.5)',
+  }),
+})
+// 绘制
+// 停止绘制: 左键双击 右键 滚轮
+const drawLine = new Draw({
+  type: 'LineString',
+  source: vectorSource,
+  // style: strokeStyle,
+})
+const drawCircle = new Draw({
+  type: 'Circle',
+  source: vectorSource,
+  // 绘制时的样式
+  style: fillStyle,
+})
+const drawPolygon = new Draw({
+  type: 'Polygon',
+  source: vectorSource,
+  // 绘制时的样式
+  style: fillStyle,
+})
+// 绘制结束时, 拿到绘制的feature
+drawCircle.on('drawend', function (e) {
+  // 绘制结束后的样式
+  e.feature.setStyle(fillStyle)
+})
+drawPolygon.on('drawend', function (e) {
+  e.feature.setStyle(fillStyle)
+})
+drawLine.on('drawend', function (e) {
+  e.feature.setStyle(strokeStyle)
+})
+const interactionArr = [drawLine, drawCircle, drawPolygon]
+interactionArr.forEach(draw => map.addInteraction(draw))
+const disableDraw = () => interactionArr.forEach(draw => draw.setActive(false))
+disableDraw()
+const btns = document.querySelectorAll('.btn')
+btns.forEach((btn, i) => {
+  btn.addEventListener('click', () => {
+    disableDraw()
+    interactionArr[i].setActive(true)
+  })
 })

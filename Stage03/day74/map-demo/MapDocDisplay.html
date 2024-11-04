@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./libs/include-openlayers-local.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #mapCon {
+        position: absolute;
+        inset: 0;
+      }
+    </style>
+  </head>
+  <!-- <body onload="init()"> -->
+  <body>
+    <div id="mapCon"></div>
+    <script>
+      //定义地图文档图层和地图
+      // var mapDocLayer, map
+      /** 初始化地图显示*/
+      const init = () => {
+        //初始化地图容器
+        const map = new ol.Map({
+          target: 'mapCon',
+          view: new ol.View({
+            center: [12966415.42, 4851114.49],
+            zoom: 8,
+            projection: 'EPSG:3857',
+          }),
+        })
+        //初始化地图文档图层对象
+        const mapDocLayer = new Zondy.Map.MapDocTileLayer('MapGIS IGS MapDocLayer', '北京市0619', {
+          ip: '127.0.0.1',
+          port: 8089,
+          projection: 'EPSG:3857',
+        })
+        //将地图文档图层加载到地图中
+        map.addLayer(mapDocLayer)
+      }
+      window.addEventListener('load', init)
+    </script>
+  </body>
+</html>
