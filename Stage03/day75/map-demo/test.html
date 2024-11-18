@@ -1,0 +1,139 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>矢量地图文档显示</title>
+    <script src="./libs/include-openlayers-local.js"></script>
+    <script type="text/javascript">
+        //定义地图文档图层和地图
+        var map = null;
+        var drawLayer = null;
+        var resultLayerArr = new Array()
+        var path = '';
+        /** 初始化地图显示*/
+        function init() {
+
+         //初始化地图容器
+         map = new ol.Map({
+                target: 'mapCon',
+                view: new ol.View({
+                    center: [116.51, 39.88],
+                    zoom: 8,
+                    projection: 'EPSG:4326',
+                }),
+            })
+
+            //初始化地图文档的图层对象，用于缓冲区分析的图层简单要素类
+            //初始化地图文档图层对象
+            var vectorLayer = new Zondy.Map.GdbpLayer("MapGIS IGS VectLayer", ["gdbp://MapGISLocalPlus/北京市/ds/交通/sfcls/高速公路_1"],
+                {
+                    ip: "127.0.0.1",
+                    port: "8089" //访问IGServer的端口号
+                });
+            //将地图文档图层加载到地图中
+            map.addLayer(vectorLayer);
+
+        }
+
+        function Analysis() {
+
+            //实例化ClassBufferBySingleRing类
+            var clsBufBySR = new Zondy.Service.ClassBufferBySingleRing({
+                //IGServer所在ip地址
+                ip: "127.0.0.1",
+                //IGServer请求端口号
+                port: "8089",
+                //缓冲时要素左侧缓冲半径
+                leftRad: 0.01,
+                //缓冲时要素右侧缓冲半径
+                rightRad: 0.01,
+                //不允许根据属性字段设置缓冲区半径
+                isByAtt: false
+            });
+            //源矢量图层的地址信息
+            clsBufBySR.srcInfo =
+                'gdbp://MapGISLocalPlus/北京市/ds/交通/sfcls/高速公路_1'; //目的矢量图层的地址信息
+            clsBufBySR.desInfo =
+                'gdbp://MapGISLocalPlus/北京市/ds/交通/sfcls/' +
+                'multiBuffAnalysisResultLayer' +
+                getCurentTime(); //调用基类Zondy.Service.AnalysisBase的execute方法执行类缓冲分析
+            path = clsBufBySR.desInfo;
+            clsBufBySR.execute(AnalysisSuccess, 'post', false, 'json', () => {
+            });
+        }
+
+        //分析成功后的回调
+        function AnalysisSuccess(data) {
+
+            if (!data.results) {
+                alert('缓冲失败，请检查参数！')
+            } else {
+                if (data.results.length != 0) {
+                    var resultLayerUrl = data.results[0].Value || data.results[0].value
+                    console.log("resultLayerUrl" + path)
+                    //将结果图层添加到地图视图中显示
+                    var resultLayer = new Zondy.Map.GdbpLayer('MapGIS IGS BuffAnalyResultLayer', [path], {
+                        ip: '127.0.0.1',
+                        port: '8089', //访问IGServer的端口号，.net版为6163 
+                        isBaseLayer: false,
+                    })
+                    map.addLayer(resultLayer)
+                    resultLayerArr.push(resultLayer)
+                }
+            }
+
+        }
+
+
+        function getCurentTime() {
+            var now = new Date()
+            //获取当前年份
+            var year = now.getFullYear()
+            //获取当前月份
+            var month = now.getMonth() + 1
+            //获取当前日期
+            var day = now.getDate()
+            //获取当前时刻
+            var hh = now.getHours()
+            //获取当前分钟
+            var mm = now.getMinutes()
+            //获取当前秒钟
+            var ss = now.getSeconds()
+            //将当前的日期拼串
+            var clock = year + '-'
+            if (month < 10) clock += '0'
+            clock += month + '-'
+            if (day < 10) clock += '0'
+            clock += day + '-'
+            if (hh < 10) clock += '0'
+            clock += hh
+            if (mm < 10) clock += '0'
+            clock += mm
+            if (ss < 10) clock += '0'
+            clock += ss
+            return clock
+        }
+
+
+
+    </script>
+
+
+</head>
+
+<body onload="init()">
+    <div id="mapCon" style="width: 100%; height: 95%; position: absolute;">
+        <div id="conditionControl" class="conditionControl">
+            <div class="title"><label>分析服务</label></div>
+            <HR class="hrClass">
+
+            <HR class="hrClass" style="position: absolute;top: 126px;">
+            <input type="button" class="btnClass" value="分析" onclick="Analysis()" />
+        </div>
+        <div id="mouse-position"></div>
+    </div>
+</body>
+
+</html>

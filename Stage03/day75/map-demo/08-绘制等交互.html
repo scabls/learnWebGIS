@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./libs/include-openlayers-local.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #mapCon {
+        position: absolute;
+        inset: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mapCon"></div>
+    <script>
+      const init = () => {
+        const map = new ol.Map({
+          target: 'mapCon',
+        })
+        const view = new ol.View({
+          projection: 'EPSG:3857',
+          center: [12949142, 4896517],
+          zoom: 8,
+          maxZoom: 14,
+          minZoom: 1,
+        })
+        const mapDocLayer = new Zondy.Map.MapDocTileLayer('MapGIS IGS MapDocLayer', '北京市0619', {
+          ip: '127.0.0.1',
+          port: 8089,
+          projection: 'EPSG:3857',
+        })
+        map.setView(view)
+        map.addLayer(mapDocLayer)
+        // 矢量图层
+        const vectorLayer = new ol.layer.Vector()
+        const vectorSource = new ol.source.Vector()
+        vectorLayer.setSource(vectorSource)
+        map.addLayer(vectorLayer)
+        // 实现矩形绘制
+        const rectangleGeom = (coordinates, geometry) => {
+          if (!geometry) geometry = new ol.geom.Polygon(null)
+          // 鼠标点的集合
+          const [start, end] = coordinates
+          // 矩形的四个顶点
+          const [x1, y1] = start
+          const [x3, y3] = end
+          const [x2, y2] = [x3, y1]
+          const [x4, y4] = [x1, y3]
+          // 矩形的坐标点
+          const points = [
+            [x1, y1],
+            [x2, y2],
+            [x3, y3],
+            [x4, y4],
+            [x1, y1],
+          ]
+          // 矩形的几何对象
+          geometry.setCoordinates([points])
+          return geometry
+        }
+        const draw = new ol.interaction.Draw({
+          type: 'LineString',
+          source: vectorSource,
+          geometryFunction: rectangleGeom,
+          maxPoints: 2,
+        })
+        map.addInteraction(draw)
+      }
+      window.addEventListener('DOMContentLoaded', init)
+    </script>
+  </body>
+</html>

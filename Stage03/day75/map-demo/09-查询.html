@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./libs/include-openlayers-local.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #mapCon {
+        position: absolute;
+        inset: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mapCon">
+      <div id="conditionControl" class="conditionControl">
+        <div class="title"><label>属性查询</label></div>
+        <hr class="hrClass" />
+
+        <hr class="hrClass" style="position: absolute; top: 126px" />
+        <input type="button" class="btnClass" value="查询" />
+      </div>
+      <div id="mouse-position"></div>
+    </div>
+    <script>
+      // 声明地图和查询结果图层
+      let map, queryResultLayer
+      const init = () => {
+        map = new ol.Map({
+          target: 'mapCon',
+        })
+        const view = new ol.View({
+          projection: 'EPSG:3857',
+          center: [12949142, 4896517],
+          zoom: 8,
+          maxZoom: 14,
+          minZoom: 1,
+        })
+        const mapDocLayer = new Zondy.Map.MapDocTileLayer('MapGIS IGS MapDocLayer', '北京市0619', {
+          ip: '127.0.0.1',
+          port: '8089',
+          projection: 'EPSG:3857',
+        })
+        map.setView(view)
+        map.addLayer(mapDocLayer)
+
+        // 矢量图层
+        const vectorLayer = new ol.layer.Vector()
+        const vectorSource = new ol.source.Vector()
+        vectorLayer.setSource(vectorSource)
+        map.addLayer(vectorLayer)
+
+        // 鼠标位置
+        const mousePosition = new ol.control.MousePosition({
+          // 坐标格式, 保留小数点位数
+          coordinateFormat: ol.coordinate.createStringXY(5),
+          //地图投影坐标系（若未设置则输出为默认投影坐标系下的坐标）
+          projection: 'EPSG:3857',
+        })
+        map.addControl(mousePosition)
+      }
+      // 查询功能
+      // 封装查询功能
+      const attQuery = () => {
+        // 调用封装的函数清除查询结果图层
+        clearA()
+
+        // 设置查询形状
+        const queryGeom = new Zondy.Object.Point2D(12949142, 4896517, {
+          nearDis: 1000,
+        })
+
+        // 设置查询规则
+        const queryRule = new Zondy.Service.QueryFeatureRule({
+          //是否仅比较要素的外包矩形
+          CompareRectOnly: false,
+          //是否将要素的可见性计算在内
+          EnableDisplayCondition: false,
+          //是否完全包含
+          MustInside: false,
+          //是否相交
+          Intersect: true,
+        })
+
+        // 设置查询结构
+        const queryStruct = new Zondy.Service.QueryFeatureStruct({
+          //是否包含属性信息
+          IncludeAttribute: true,
+          //是否包含几何图形信息
+          IncludeGeometry: true,
+          //是否包含图形显示参数
+          IncludeWebGraphic: false,
+        })
+
+        // 实例化化查询参数对象
+        const queryParam = new Zondy.Service.QueryParameter({
+          resultFormat: 'json',
+          geometry: queryGeom,
+          rule: queryRule,
+          struct: queryStruct,
+          // 分页号
+          pageIndex: 0,
+          // 每页记录数
+          recordNumber: 100,
+          // 条件查询的SQL语句
+          // where: '地类名称="有林地"',
+        })
+
+        // 实例化地图文档查询服务对象
+        const queryService = new Zondy.Service.QueryDocFeature(queryParam, '北京市0619', 0, {
+          ip: '127.0.0.1',
+          port: '8089',
+        })
+
+        // 执行查询服务对象的查询方法,参数为两个回调函数,成功和失败
+        queryService.query(querySuccess, queryError)
+      }
+      // 查询成功回调函数
+      const querySuccess = result => {
+        // 初始化Zondy.Format.PolygonJSON类
+        const format = new Zondy.Format.PolygonJSON()
+        // 将MapGIS要素JSON反序列化为ol.Feature类型数组
+        const features = format.read(result)
+
+        // 实例化一个矢量图层queryResultLayer用于高亮显示结果
+        queryResultLayer = new ol.layer.Vector({})
+        // 数据源
+        const queryResultSource = new ol.source.Vector({
+          features,
+          wrapX: false,
+        })
+        queryResultLayer.setSource(queryResultSource)
+        // 样式
+        const style = new ol.style.Style({
+          //填充色
+          fill: new ol.style.Fill({
+            color: 'rgba(255, 0, 0, 0.5)',
+          }),
+          //边线样式
+          stroke: new ol.style.Stroke({
+            color: 'rgba(255,204, 51, 1)',
+            width: 1,
+          }),
+        })
+        queryResultLayer.setStyle(style)
+        // 显示结果图层
+        map.addLayer(queryResultLayer)
+      }
+      // 查询失败回调函数
+      const queryError = error => {
+        console.log(error)
+      }
+      // 清除查询结果图层
+      const clearA = () => {
+        if (queryResultLayer) {
+          map.removeLayer(queryResultLayer)
+          queryResultLayer = null
+        }
+      }
+      window.addEventListener('DOMContentLoaded', init)
+      document.querySelector('.btnClass').addEventListener('click', attQuery)
+    </script>
+  </body>
+</html>

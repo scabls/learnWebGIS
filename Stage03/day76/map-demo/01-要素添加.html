@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./libs/include-openlayers-local.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #mapCon {
+        position: absolute;
+        inset: 0;
+      }
+      .btn {
+        position: absolute;
+        left: 0.5rem;
+        top: 5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mapCon"></div>
+    <button class="btn">点我</button>
+    <script>
+      const init = () => {
+        const map = new ol.Map({
+          target: 'mapCon',
+        })
+        const view = new ol.View({
+          projection: 'EPSG:4326',
+          center: [-171.99, 53.04],
+          zoom: 10,
+          maxZoom: 14,
+          minZoom: 1,
+        })
+        map.setView(view)
+
+        const vectorLayer = new Zondy.Map.GdbpLayer(
+          'gdbp layer',
+          ['gdbp://MapGISLocalPlus/test/sfcls/点'],
+          {
+            ip: '127.0.0.1',
+            port: '8089',
+          }
+        )
+        map.addLayer(vectorLayer)
+      }
+      window.addEventListener('DOMContentLoaded', init)
+
+      // 向矢量图层添加要素
+      const addFeature = () => {
+        // 创建图层要素编辑服务对象
+        const editService = new Zondy.Service.EditLayerFeature(
+          'gdbp://MapGISLocalPlus/test/sfcls/点',
+          {
+            ip: '127.0.0.1',
+            port: '8089',
+          }
+        )
+
+        // 通过要素数据集添加
+        // 定义要素数据集
+        const featureSet = new Zondy.Object.FeatureSet({})
+        // 定义要素数据集所需的属性结构
+        const AttStruct = new Zondy.Object.CAttStruct({
+          FldName: ['name', 'radius'],
+          FldNumber: 2,
+          FldType: ['string', 'double'],
+        })
+        featureSet.AttStruct = AttStruct
+
+        // 定义要添加到要素数据集的要素
+        // 创建一个要素
+        const feature = new Zondy.Object.Feature({})
+
+        // 设置要素的属性值,与属性结构对应
+        const attValue = ['中国', 1.0]
+        feature.setAttValues(attValue)
+        // 设置要素类型为点
+        feature.setFType(1)
+
+        // 设置当前点要素的几何信息(要素的几何图形描述)
+        const featureGeom = new Zondy.Object.FeatureGeometry({})
+        // 点几何信息
+        const pntObj = new Zondy.Object.GPoint(-171.99, 53.04)
+        featureGeom.setPntGeom([pntObj])
+        feature.fGeom = featureGeom
+
+        //设置当前点要素的图形参数信息
+        const graphic = new Zondy.Object.WebGraphicsInfo({
+          InfoType: 1,
+        })
+        // 描述点要素的符号参数信息
+        const cPntInfo = new Zondy.Object.CPointInfo({
+          Angle: 0,
+          Color: 8,
+          SymHeight: 12,
+          SymID: 98,
+          SymWidth: 12,
+        })
+        graphic.PntInfo = cPntInfo
+        feature.GraphicInfo = graphic
+
+        // 添加要素到要素数据集
+        featureSet.addFeature(feature)
+
+        // 调用服务的 add 方法添加要素
+        editService.add(
+          featureSet,
+          res => {
+            console.log(res)
+          },
+          e => {
+            console.log(e)
+          }
+        )
+      }
+      let clicked = false
+      document.querySelector('.btn').addEventListener('click', function () {
+        if (clicked) return
+        if (!clicked) clicked = true
+        addFeature()
+      })
+    </script>
+  </body>
+</html>

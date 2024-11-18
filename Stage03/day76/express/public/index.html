@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/axios@1.7.7/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div>
+      <button class="get">get</button>
+      <button class="post">post</button>
+    </div>
+    <script>
+      const getBtn = document.querySelector('.get')
+      const postBtn = document.querySelector('.post')
+      getBtn.addEventListener('click', () => {
+        axios.get('http://localhost:3001').then(res => console.log(res.data))
+      })
+      postBtn.addEventListener('click', () => {
+        axios
+          .post('http://localhost:3001/post', 'name=John&age=30', {
+            headers: {
+              // 设置请求头, 告诉服务器数据的格式:模拟表单提交
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+          })
+          .then(res => console.log(res.data))
+      })
+    </script>
+  </body>
+</html>

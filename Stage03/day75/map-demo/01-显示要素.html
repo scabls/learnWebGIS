@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./libs/include-openlayers-local.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #mapCon {
+        position: absolute;
+        inset: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mapCon"></div>
+    <script>
+      const init = () => {
+        const view = new ol.View({
+          projection: 'EPSG:4326',
+          center: [116.44, 40.16],
+          zoom: 8,
+          maxZoom: 14,
+          minZoom: 1,
+        })
+        const map = new ol.Map({
+          target: 'mapCon',
+          view,
+        })
+        const layers = [
+          'gdbp://MapGISLocalPlus/北京市/ds/行政区/sfcls/北京市',
+          'gdbp://MapGISLocalPlus/北京市/ds/交通/sfcls/高速公路_1',
+          'gdbp://MapGISLocalPlus/北京市/ds/行政区/sfcls/首都点', //位于下方的显示在上层
+        ]
+        const featureLayer = new Zondy.Map.GdbpLayer('MapGIS IGS GdbpLayer', layers, {
+          ip: '127.0.0.1',
+          port: 8089,
+        })
+        map.addLayer(featureLayer)
+      }
+      window.addEventListener('DOMContentLoaded', init)
+    </script>
+  </body>
+</html>

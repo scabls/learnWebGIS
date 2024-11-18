@@ -19,7 +19,7 @@ const router = createRouter({
       component: () => import('@/views/LoginView.vue'),
     },
     {
-      path: '/home',
+      path: '/home/:loginName',
       name: 'home',
       component: () => import('@/views/HomeView.vue'),
     },
@@ -31,8 +31,7 @@ router.beforeEach(async (to) => {
   if (to.name === 'login' || to.name === 'register') return true
   try {
     await getAdminProfile()
-    console.log('admin profile')
-    router.push({ name: 'home' })
+    return true
   } catch {
     console.log('未登录')
     return { name: 'login' }

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./libs/include-openlayers-local.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #mapCon {
+        position: absolute;
+        inset: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mapCon"></div>
+    <script>
+      const init = () => {
+        const map = new ol.Map({
+          target: 'mapCon',
+        })
+        const view = new ol.View({
+          projection: 'EPSG:3857',
+          center: [12949142, 4896517],
+          zoom: 8,
+          maxZoom: 14,
+          minZoom: 1,
+        })
+        const mapDocLayer = new Zondy.Map.MapDocTileLayer('MapGIS IGS MapDocLayer', '北京市0619', {
+          ip: '127.0.0.1',
+          port: '8089',
+          projection: 'EPSG:3857',
+        })
+        map.setView(view)
+        map.addLayer(mapDocLayer)
+        // 矢量图层
+        const vectorLayer = new ol.layer.Vector()
+        const vectorSource = new ol.source.Vector()
+        vectorLayer.setSource(vectorSource)
+        map.addLayer(vectorLayer)
+        // 点feature
+        const pointFeature = new ol.Feature({
+          geometry: new ol.geom.Point([12949142, 4896517]),
+        })
+        const pointStyle = new ol.style.Style({
+          image: new ol.style.Icon({
+            src: './images/地点.png',
+            anchor: [0.5, 1],
+            scale: 0.2,
+          }),
+        })
+        pointFeature.setStyle(pointStyle)
+        vectorSource.addFeature(pointFeature)
+        // 线feature
+        const lineFeature = new ol.Feature({
+          geometry: new ol.geom.LineString([
+            [12949142, 4896517],
+            [12989942, 4896517],
+          ]),
+        })
+        const lineStyle = new ol.style.Style({
+          stroke: new ol.style.Stroke({
+            color: 'green',
+            width: 2,
+          }),
+        })
+        lineFeature.setStyle(lineStyle)
+        vectorSource.addFeature(lineFeature)
+        // 面feature
+        const polygonFeature = new ol.Feature({
+          geometry: new ol.geom.Polygon([
+            [
+              [12949142, 4896517],
+              [12989942, 4947417],
+              [12949142, 4947417],
+              [12949142, 4896517],
+            ],
+          ]),
+        })
+        const polygonStyle = new ol.style.Style({
+          fill: new ol.style.Fill({
+            color: 'rgba(255, 0, 0, 0.5)',
+          }),
+          stroke: new ol.style.Stroke({
+            color: 'red',
+            width: 2,
+          }),
+        })
+        polygonFeature.setStyle(polygonStyle)
+        vectorSource.addFeature(polygonFeature)
+        // 圆形feature
+        const circleFeature = new ol.Feature({
+          geometry: new ol.geom.Circle([12949142, 4896517], 10000),
+        })
+        const circleStyle = new ol.style.Style({
+          fill: new ol.style.Fill({
+            color: 'rgba(0, 255, 0, 0.5)',
+          }),
+          stroke: new ol.style.Stroke({
+            color: 'blue',
+            width: 2,
+          }),
+        })
+        circleFeature.setStyle(circleStyle)
+        vectorSource.addFeature(circleFeature)
+        // 通过圆创建正方形feature
+        const squareFeature = new ol.Feature({
+          geometry: new ol.geom.Polygon.fromCircle(
+            circleFeature.getGeometry(),
+            4,
+            (45 / 360) * 2 * Math.PI
+          ), //4表示4条边, 第三个参数表示第一个顶点的逆时针弧度
+        })
+        const squareStyle = new ol.style.Style({
+          fill: new ol.style.Fill({
+            color: 'rgba(0, 0, 255, 0.5)',
+          }),
+          stroke: new ol.style.Stroke({
+            color: 'yellow',
+            width: 2,
+          }),
+        })
+        squareFeature.setStyle(squareStyle)
+        vectorSource.addFeature(squareFeature)
+      }
+      window.addEventListener('DOMContentLoaded', init)
+    </script>
+  </body>
+</html>

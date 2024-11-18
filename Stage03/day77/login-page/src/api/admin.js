@@ -1,13 +1,13 @@
 import request from './request'
 
-const adminLogin = ({ loginId, loginPwd } = {}) =>
-  request.post('/admin/login', { loginId, loginPwd })
+const adminLogin = ({ loginName, loginPwd } = {}) =>
+  request.post('/admin/login', { loginName, loginPwd })
 
-const adminRegister = ({ loginId, loginPwd } = {}) =>
+const adminRegister = ({ loginName, loginPwd } = {}) =>
   request({
     method: 'POST',
     url: '/admin/register',
-    data: { loginId, loginPwd },
+    data: { loginName, loginPwd },
   })
 
 const getAdminProfile = () => request.get('/admin/profile')

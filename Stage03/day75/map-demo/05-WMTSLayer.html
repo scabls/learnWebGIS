@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./libs/include-openlayers-local.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #mapCon {
+        position: absolute;
+        inset: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mapCon"></div>
+    <script>
+      const init = () => {
+        const view = new ol.View({
+          projection: 'EPSG:4326',
+          center: [116.397128, 39.916527],
+          zoom: 8,
+          maxZoom: 14,
+          minZoom: 1,
+        })
+        const map = new ol.Map({
+          target: 'mapCon',
+          view,
+        })
+        const projection = ol.proj.get('EPSG:4326')
+        const projectionExtent = projection.getExtent()
+        const size = ol.extent.getWidth(projectionExtent) / 256
+        const resolutions = new Array(14)
+        const matrixIds = new Array(14)
+        for (let z = 0; z < 14; z++) {
+          //为这个WMTS图层生存分辨率和matrixIds数组
+          resolutions[z] = size / Math.pow(2, z) / 2
+          matrixIds[z] = z
+        }
+        // WMTS服务访问基地址
+        const baseUrlTile = 'http://127.0.0.1:8089/igs/rest/ogc/WMTSServer'
+        // 初始化WMTS图层对象
+        const wmsLayer = new ol.layer.Tile({
+          opcity: 1,
+          source: new ol.source.TileWMS({
+            // wms服务基地址
+            url: baseUrlTile,
+            // 图层名称
+            layer: '北京市瓦片_01_1-12',
+            // 瓦片模型呈现标识，设置为投影坐标系
+            //样式
+            style: 'default',
+            //瓦片图片格式
+            format: 'image/png32',
+            tileGrid: new ol.tilegrid.WMTS({
+              //原点（左上角）
+              origin: ol.extent.getTopLeft(projectionExtent),
+              //分辨率数组
+              resolutions,
+              //矩阵标识列表，与地图级数保持一致
+              matrixIds,
+            }),
+            //数据的投影坐标系
+            projection: projection,
+            wrapX: false,
+          }),
+        })
+        map.addLayer(wmsLayer)
+      }
+      window.addEventListener('DOMContentLoaded', init)
+    </script>
+  </body>
+</html>

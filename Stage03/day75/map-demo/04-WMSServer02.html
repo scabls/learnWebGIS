@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./libs/include-openlayers-local.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #mapCon {
+        position: absolute;
+        inset: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mapCon"></div>
+    <script>
+      const init = () => {
+        const view = new ol.View({
+          projection: 'EPSG:3857',
+          center: [12966415.42, 4851114.49],
+          zoom: 8,
+          maxZoom: 14,
+          minZoom: 1,
+        })
+        const map = new ol.Map({
+          target: 'mapCon',
+          view,
+        })
+        const wmsLayer = new ol.layer.Tile({
+          source: new ol.source.TileWMS({
+            // wms服务地址
+            url: 'http://127.0.0.1:8089/igs/rest/services/北京市0619/WMSServer',
+            // 图层等参数
+            params: {
+              LAYERS:
+                '北京市0619:t0,北京市0619:t1,北京市0619:t2,北京市0619:t3,北京市0619:t4,北京市0619:t5,北京市0619:t6',
+              TILED: true,
+            },
+            // 服务类型
+            serverType: 'geoserver',
+          }),
+        })
+        map.addLayer(wmsLayer)
+      }
+      window.addEventListener('DOMContentLoaded', init)
+    </script>
+  </body>
+</html>

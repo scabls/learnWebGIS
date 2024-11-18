@@ -14,9 +14,9 @@
           class="login-form"
           ref="loginFormEl"
         >
-          <el-form-item label="用户名" prop="loginId">
+          <el-form-item label="用户名" prop="loginName">
             <el-input
-              v-model.trim="loginInfo.loginId"
+              v-model.trim="loginInfo.loginName"
               placeholder="请输入用户名"
               :prefix-icon="User"
               clearable
@@ -51,17 +51,18 @@ import { ref, useTemplateRef, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { User, Key } from '@element-plus/icons-vue'
 import { adminLogin, adminRegister } from '@/api/admin'
+import { ElMessageBox } from 'element-plus'
 
 const route = useRoute()
 const router = useRouter()
 const loginFormEl = useTemplateRef('loginFormEl')
 
 const loginInfo = ref({
-  loginId: '',
+  loginName: '',
   loginPwd: '',
 })
 const formRules = ref({
-  loginId: [
+  loginName: [
     { required: true, message: '请输入用户名', trigger: 'blur' },
     { min: 1, max: 100, message: '用户名长度在1到100个字符', trigger: 'blur' },
   ],
@@ -101,23 +102,38 @@ const handleSubmit = () => {
           break
       }
     } else {
-      alert(`${status.value}失败，请检查输入信息`)
+      ElMessageBox.alert(`${status.value}失败，请检查输入信息`, {
+        confirmButtonText: '确定',
+        type: 'error',
+      })
     }
   })
 }
 const handleLogin = async () => {
   try {
-    const res = await adminLogin(loginInfo.value)
-    console.log(res)
+    const loginName = await adminLogin(loginInfo.value)
+    router.push({ name: 'home', params: { loginName } })
   } catch (error) {
     switch (error.status) {
       case 400: {
-        alert('用户名或密码错误')
+        ElMessageBox.alert('用户名或密码错误', {
+          confirmButtonText: '确定',
+          type: 'error',
+        })
         break
       }
       case 404: {
-        const isConfirm = confirm('用户名未注册,是否跳转到注册页面')
-        if (isConfirm) router.push({ name: 'register' })
+        ElMessageBox.confirm('用户名未注册,是否跳转到注册页面', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          callback: (action) => {
+            switch (action) {
+              case 'confirm':
+                router.push({ name: 'register' })
+                break
+            }
+          },
+        })
         break
       }
     }
@@ -131,8 +147,18 @@ const handleRegister = async () => {
   } catch (error) {
     switch (error.status) {
       case 401: {
-        const isConfirm = confirm('注册失败,用户名已存在,是否跳转到登录页面')
-        if (isConfirm) router.push({ name: 'login' })
+        ElMessageBox.confirm('注册失败,用户名已存在,是否跳转到登录页面', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+          callback: (action) => {
+            switch (action) {
+              case 'confirm':
+                router.push({ name: 'login' })
+                break
+            }
+          },
+        })
         break
       }
     }
